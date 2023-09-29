@@ -5,20 +5,24 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "prebuild": "node src/nyafile-compiler.js",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
+    "jszip": "^3.10.1",
+    "next": "latest",
     "react": "latest",
-    "react-dom": "latest",
-    "next": "latest"
+    "react-dom": "latest"
   },
   "devDependencies": {
-    "typescript": "latest",
-    "@types/react": "latest",
+    "@types/archiver": "^5.3.3",
     "@types/node": "latest",
+    "@types/react": "latest",
     "@types/react-dom": "latest",
+    "archiver": "^6.0.1",
     "eslint": "latest",
-    "eslint-config-next": "latest"
+    "eslint-config-next": "latest",
+    "typescript": "latest"
   }
 }

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import NyafileProvider from "@/components/nya/NyafileProvider";
 import "./global.css"
 
 export const metadata: Metadata = {
@@ -13,7 +14,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <NyafileProvider>{children}</NyafileProvider>
+      </body>
     </html>
   )
 }

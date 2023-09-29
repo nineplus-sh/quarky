@@ -1,15 +1,12 @@
-"use client";
-import { useRouter } from 'next/navigation';
-import {useEffect} from "react";
+import { redirect } from 'next/navigation';
+import { cookies } from 'next/headers';
 
 export default function Page() {
-    const router = useRouter();
+    const cookieStore = cookies();
 
-    useEffect(() => {
-        if(document.cookie.indexOf('cookie_name=') != -1) {
-            router.replace("/client");
-        } else {
-            router.replace("/login");
-        }
-    }, []);
+    if(cookieStore.get("token")) {
+        redirect("/client");
+    } else {
+        redirect("/login");
+    }
 }
