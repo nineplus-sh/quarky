@@ -4,13 +4,31 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6c973ff6-cf96-4954-a901-1ba393330b71" name="Changes" comment="horrendous loading of nyafiles into context. calling it a night on this one">
-      <change afterPath="$PROJECT_DIR$/src/app/contexts/AppContext.ts" afterDir="false" />
+    <list default="true" id="b867886f-e5e7-420d-9bab-a7f0f966787d" name="Changes" comment="basic rewrite in Vite">
+      <change afterPath="$PROJECT_DIR$/.eslintrc.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bun.lockb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/_nyafile/img/quarkyheader.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/_nyafile/logo.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/_nyafile/manifest.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Main.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/nav/Header.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/nav/Header.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/contexts/AppContext.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/nyafile-compiler.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/screens/Loader.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/screens/Loader.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/screens/LoginScreen.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/vite-env.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tsconfig.node.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vite.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/webResources.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/login/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/login/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/nya/NyafileAsset.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/nya/NyafileAsset.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/nya/NyafileProvider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/NyafileProvider.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,37 +38,24 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="CSS File" />
-        <option value="TypeScript JSX File" />
         <option value="TypeScript File" />
+        <option value="TypeScript JSX File" />
+        <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory">{
-  &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;hakase-jpg&quot;
-  }
-}</component>
-  <component name="GithubPullRequestsUISettings">
-    <option name="selectedUrlAndAccountId">
-      <UrlAndAccount>
-        <option name="accountId" value="6ec105be-07a9-4c48-a642-562d61669a3a" />
-        <option name="url" value="https://github.com/meower-holdings/quarky" />
-      </UrlAndAccount>
-    </option>
-  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo">{
-  &quot;customColor&quot;: &quot;&quot;,
-  &quot;associatedIndex&quot;: 4
-}</component>
-  <component name="ProjectId" id="2W4EOMwbGytYCYneiSetM0QgI6S" />
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 4
+}]]></component>
+  <component name="ProjectId" id="2W8890WZ8VeOyChQAPtgdltIaQn" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
@@ -58,165 +63,67 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;senpai&quot;,
-    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;20.7.0&quot;,
-    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;20.7.0&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/vukky/Documents/Git/quarky/src/_nyafile&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;settings.typescriptcompiler&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/home/vukky/Documents/Git/quarky/node_modules/typescript/lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "senpai",
+    "javascript.nodejs.core.library.configured.version": "20.7.0",
+    "javascript.nodejs.core.library.typings.version": "20.7.0",
+    "last_opened_file_path": "/home/vukky/Documents/Git/quarky/src/_nyafile/img",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "ts.external.directory.path": "/home/vukky/Documents/Git/quarky/node_modules/typescript/lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
-  <component name="RdControllerToolWindowsLayoutState" isNewUi="true">
-    <layout>
-      <window_info id="Space Code Reviews" />
-      <window_info id="Bookmarks" side_tool="true" />
-      <window_info id="Commit_Guest" />
-      <window_info id="Pull Requests" />
-      <window_info id="Merge Requests" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.32994792" />
-      <window_info id="Commit" order="1" weight="0.32994792" />
-      <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="TODO" />
-      <window_info anchor="bottom" id="File Transfer" />
-      <window_info anchor="bottom" id="TypeScript" />
-      <window_info anchor="bottom" id="Version Control" order="0" weight="0.3296332" />
-      <window_info anchor="bottom" id="Problems View" order="2" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="3" visible="true" weight="0.25627413" />
-      <window_info anchor="bottom" id="Services" order="4" />
-      <window_info anchor="right" id="Endpoints" />
-      <window_info anchor="right" id="Meet New UI" side_tool="true" />
-      <window_info anchor="right" content_ui="combo" id="Notifications" order="0" weight="0.25" />
-    </layout>
-  </component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/_nyafile" />
-      <recent name="$PROJECT_DIR$/public" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/components" />
       <recent name="$PROJECT_DIR$/src/_nyafile/img" />
-      <recent name="$PROJECT_DIR$/src/app/login" />
-      <recent name="$PROJECT_DIR$/src/app/page" />
-      <recent name="$PROJECT_DIR$/src/components/nav" />
+      <recent name="$PROJECT_DIR$/src/_nyafile" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.dev">
-    <configuration name="dev" type="js.build_tools.npm" nameIsGenerated="true">
+  <component name="RunManager">
+    <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
       <scripts>
         <script value="dev" />
       </scripts>
-      <node-interpreter value="/usr/bin/bun" />
-      <package-manager value="/usr/bin/bun" />
-      <envs />
-      <method v="2" />
-    </configuration>
-    <configuration name="prebuild" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="prebuild" />
-      </scripts>
       <node-interpreter value="project" />
       <envs />
       <method v="2" />
     </configuration>
-    <list>
-      <item itemvalue="npm.dev" />
-      <item itemvalue="npm.prebuild" />
-    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.prebuild" />
+        <item itemvalue="npm.dev" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="6c973ff6-cf96-4954-a901-1ba393330b71" name="Changes" comment="" />
-      <created>1695983420016</created>
+      <changelist id="b867886f-e5e7-420d-9bab-a7f0f966787d" name="Changes" comment="" />
+      <created>1696102693169</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1695983420016</updated>
-      <workItem from="1695983424544" duration="1024000" />
-      <workItem from="1695992661132" duration="25167000" />
-      <workItem from="1696066874506" duration="1690000" />
+      <updated>1696102693169</updated>
+      <workItem from="1696102704572" duration="8466000" />
     </task>
-    <task id="LOCAL-00001" summary="init using next.js instead">
-      <option name="closed" value="true" />
-      <created>1695996653524</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1695996653524</updated>
-    </task>
-    <task id="LOCAL-00002" summary="header component">
-      <option name="closed" value="true" />
-      <created>1696008823338</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1696008823338</updated>
-    </task>
-    <task id="LOCAL-00003" summary="horrendous loading of nyafiles into context. calling it a night on this one">
-      <option name="closed" value="true" />
-      <created>1696026161331</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1696026161331</updated>
-    </task>
-    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="init using next.js instead" />
-    <MESSAGE value="header component" />
-    <MESSAGE value="horrendous loading of nyafiles into context. calling it a night on this one" />
-    <option name="LAST_COMMIT_MESSAGE" value="horrendous loading of nyafiles into context. calling it a night on this one" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/app/page.tsx</url>
-          <line>9</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="basic rewrite in Vite" />
+    <option name="LAST_COMMIT_MESSAGE" value="basic rewrite in Vite" />
   </component>
 </project>
