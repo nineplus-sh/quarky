@@ -4,24 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6c973ff6-cf96-4954-a901-1ba393330b71" name="Changes" comment="header component">
-      <change afterPath="$PROJECT_DIR$/src/_nyafile/lang/en_US.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/_nyafile/lang/en_UWU.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/_nyafile/logo.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/_nyafile/manifest.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/nya/NyafileAsset.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/nya/NyafileProvider.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/nyafile-compiler.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="6c973ff6-cf96-4954-a901-1ba393330b71" name="Changes" comment="horrendous loading of nyafiles into context. calling it a night on this one">
+      <change afterPath="$PROJECT_DIR$/src/app/contexts/AppContext.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bun.lockb" beforeDir="false" afterPath="$PROJECT_DIR$/bun.lockb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/quarkyheader.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/_nyafile/img/quarkyheader.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/stars.gif" beforeDir="false" afterPath="$PROJECT_DIR$/src/_nyafile/img/stars.gif" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layout.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/login/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/login/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/login/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/login/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/nya/NyafileAsset.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/nya/NyafileAsset.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/nya/NyafileProvider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/NyafileProvider.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,20 +21,20 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
-        <option value="TypeScript File" />
         <option value="TypeScript JSX File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "hakase-jpg"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;hakase-jpg&quot;
   }
-}]]></component>
+}</component>
   <component name="GithubPullRequestsUISettings">
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
@@ -69,28 +58,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "senpai",
-    "javascript.nodejs.core.library.configured.version": "20.7.0",
-    "javascript.nodejs.core.library.typings.version": "20.7.0",
-    "last_opened_file_path": "/home/vukky/Documents/Git/quarky/src/_nyafile",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "settings.typescriptcompiler",
-    "ts.external.directory.path": "/home/vukky/Documents/Git/quarky/node_modules/typescript/lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;senpai&quot;,
+    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;20.7.0&quot;,
+    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;20.7.0&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/vukky/Documents/Git/quarky/src/_nyafile&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;settings.typescriptcompiler&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/home/vukky/Documents/Git/quarky/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RdControllerToolWindowsLayoutState" isNewUi="true">
     <layout>
       <window_info id="Space Code Reviews" />
@@ -119,6 +108,7 @@
       <recent name="$PROJECT_DIR$/public" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components" />
       <recent name="$PROJECT_DIR$/src/_nyafile/img" />
       <recent name="$PROJECT_DIR$/src/app/login" />
       <recent name="$PROJECT_DIR$/src/app/page" />
@@ -166,7 +156,8 @@
       <option name="presentableId" value="Default" />
       <updated>1695983420016</updated>
       <workItem from="1695983424544" duration="1024000" />
-      <workItem from="1695992661132" duration="24786000" />
+      <workItem from="1695992661132" duration="25167000" />
+      <workItem from="1696066874506" duration="1690000" />
     </task>
     <task id="LOCAL-00001" summary="init using next.js instead">
       <option name="closed" value="true" />
@@ -184,7 +175,15 @@
       <option name="project" value="LOCAL" />
       <updated>1696008823338</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="horrendous loading of nyafiles into context. calling it a night on this one">
+      <option name="closed" value="true" />
+      <created>1696026161331</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1696026161331</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -205,6 +204,19 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="init using next.js instead" />
     <MESSAGE value="header component" />
-    <option name="LAST_COMMIT_MESSAGE" value="header component" />
+    <MESSAGE value="horrendous loading of nyafiles into context. calling it a night on this one" />
+    <option name="LAST_COMMIT_MESSAGE" value="horrendous loading of nyafiles into context. calling it a night on this one" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/app/page.tsx</url>
+          <line>9</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
