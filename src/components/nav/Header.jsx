@@ -1,6 +1,6 @@
 import styles from "./Header.module.css"
 
-export default function Header({title, description}: {title: string, description: string}) {
+export default function Header({title, description}) {
     return (
         <>
             <div className={styles.header}>
