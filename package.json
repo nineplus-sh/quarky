@@ -10,7 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@litdevs/nyalib": "^1.0.0",
+    "@litdevs/nyalib": "^1.2.1",
     "jszip": "^3.10.1",
     "localforage": "^1.10.0",
     "react": "^18.2.0",

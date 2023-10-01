@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b867886f-e5e7-420d-9bab-a7f0f966787d" name="Changes" comment="placeholder SpaceBackground" />
-    <list id="650e51f2-1d95-44bb-8bc4-d7fc5c5b3f82" name="Changes by Eier" comment="" />
-    <list id="daf3e3dd-a602-4fcd-b515-234504f77def" name="Changes by skelly" comment="">
+    <list default="true" id="b867886f-e5e7-420d-9bab-a7f0f966787d" name="Changes" comment="Fix lies">
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
+    <list id="650e51f2-1d95-44bb-8bc4-d7fc5c5b3f82" name="Changes by Eier" comment="" />
+    <list id="daf3e3dd-a602-4fcd-b515-234504f77def" name="Changes by skelly" comment="fix" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -111,7 +111,7 @@
       <workItem from="1696102704572" duration="8828000" />
       <workItem from="1696149082696" duration="3968000" />
       <workItem from="1696166288588" duration="11780000" />
-      <workItem from="1696185263995" duration="6384000" />
+      <workItem from="1696185263995" duration="6455000" />
     </task>
     <task id="LOCAL-00001" summary="basic rewrite in Vite">
       <option name="closed" value="true" />
@@ -169,11 +169,30 @@
       <option name="project" value="LOCAL" />
       <updated>1696196078310</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Fix lies">
+      <option name="closed" value="true" />
+      <created>1696197322786</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1696197322786</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
@@ -184,6 +203,8 @@
     <MESSAGE value="disgusting typescript garbage lingers" />
     <MESSAGE value="test" />
     <MESSAGE value="placeholder SpaceBackground" />
-    <option name="LAST_COMMIT_MESSAGE" value="placeholder SpaceBackground" />
+    <MESSAGE value="fix" />
+    <MESSAGE value="Fix lies" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix lies" />
   </component>
 </project>
