@@ -4,14 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b867886f-e5e7-420d-9bab-a7f0f966787d" name="Changes" comment="push broken routing code (there is no root)">
-      <change afterPath="$PROJECT_DIR$/src/routes/Client.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/routes/Root.jsx" afterDir="false" />
+    <list default="true" id="b867886f-e5e7-420d-9bab-a7f0f966787d" name="Changes" comment="nyafile loading into context is real">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/Loader.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/Loader.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/Loader.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/Loader.module.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,7 +94,7 @@
       <updated>1696102693169</updated>
       <workItem from="1696102704572" duration="8828000" />
       <workItem from="1696149082696" duration="3968000" />
-      <workItem from="1696166288588" duration="5081000" />
+      <workItem from="1696166288588" duration="8279000" />
     </task>
     <task id="LOCAL-00001" summary="basic rewrite in Vite">
       <option name="closed" value="true" />
@@ -125,7 +120,15 @@
       <option name="project" value="LOCAL" />
       <updated>1696153012253</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="nyafile loading into context is real">
+      <option name="closed" value="true" />
+      <created>1696171553557</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1696171553557</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -136,6 +139,7 @@
     <MESSAGE value="basic rewrite in Vite" />
     <MESSAGE value="will this fix builds" />
     <MESSAGE value="push broken routing code (there is no root)" />
-    <option name="LAST_COMMIT_MESSAGE" value="push broken routing code (there is no root)" />
+    <MESSAGE value="nyafile loading into context is real" />
+    <option name="LAST_COMMIT_MESSAGE" value="nyafile loading into context is real" />
   </component>
 </project>
