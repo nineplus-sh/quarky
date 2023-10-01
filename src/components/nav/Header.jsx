@@ -1,10 +1,11 @@
 import styles from "./Header.module.css"
+import NyafileImage from "../nyafile/NyafileImage.jsx";
 
 export default function Header({title, description}) {
     return (
         <>
             <div className={styles.header}>
-                <img className={styles.headerLogo} src={"/quarkyheader.svg"} alt={"A grayscale version of the Quarky logo."}/>
+                <NyafileImage className={styles.headerLogo} src={"img/quarkyheader"}/>
                 <span className={styles.headerText}>
                 <h1>{title}</h1>
                 <p>⮡ {description}</p>

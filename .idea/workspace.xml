@@ -4,7 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b867886f-e5e7-420d-9bab-a7f0f966787d" name="Changes" comment="disgusting typescript garbage lingers" />
+    <list default="true" id="b867886f-e5e7-420d-9bab-a7f0f966787d" name="Changes" comment="this is dumb but maybe">
+      <change afterPath="$PROJECT_DIR$/src/_nyafile/img/stars.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/backgrounds/fullsize/SpaceBackground.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/backgrounds/fullsize/SpaceBackground.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/nyafile/NyafileImage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bun.lockb" beforeDir="false" afterPath="$PROJECT_DIR$/bun.lockb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/nav/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/nav/Header.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/AuthenticationNeeded.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/AuthenticationNeeded.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/Root.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/Root.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vite.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/vite.config.js" afterDir="false" />
+    </list>
+    <list id="650e51f2-1d95-44bb-8bc4-d7fc5c5b3f82" name="Changes by Eier" comment="" />
+    <list id="daf3e3dd-a602-4fcd-b515-234504f77def" name="Changes by skelly" comment="">
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,13 +31,35 @@
       <list>
         <option value="TypeScript File" />
         <option value="TypeScript JSX File" />
-        <option value="CSS File" />
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;hakase-jpg&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="6ec105be-07a9-4c48-a642-562d61669a3a" />
+        <option name="url" value="https://github.com/meower-holdings/quarky" />
+      </UrlAndAccount>
+    </option>
+  </component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/package.json">
+      <ranges>
+        <range start1="7" end1="10" start2="7" end2="9" changelist="daf3e3dd-a602-4fcd-b515-234504f77def" />
+        <range start1="13" end1="13" start2="12" end2="13" changelist="b867886f-e5e7-420d-9bab-a7f0f966787d" />
+      </ranges>
+    </file>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -44,6 +82,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;senpai&quot;,
     &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;20.7.0&quot;,
     &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;20.7.0&quot;,
@@ -91,7 +130,8 @@
       <updated>1696102693169</updated>
       <workItem from="1696102704572" duration="8828000" />
       <workItem from="1696149082696" duration="3968000" />
-      <workItem from="1696166288588" duration="8859000" />
+      <workItem from="1696166288588" duration="11780000" />
+      <workItem from="1696185263995" duration="5685000" />
     </task>
     <task id="LOCAL-00001" summary="basic rewrite in Vite">
       <option name="closed" value="true" />
@@ -133,7 +173,15 @@
       <option name="project" value="LOCAL" />
       <updated>1696175706571</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="test">
+      <option name="closed" value="true" />
+      <created>1696176298879</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1696176298879</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -146,6 +194,7 @@
     <MESSAGE value="push broken routing code (there is no root)" />
     <MESSAGE value="nyafile loading into context is real" />
     <MESSAGE value="disgusting typescript garbage lingers" />
-    <option name="LAST_COMMIT_MESSAGE" value="disgusting typescript garbage lingers" />
+    <MESSAGE value="test" />
+    <option name="LAST_COMMIT_MESSAGE" value="test" />
   </component>
 </project>
