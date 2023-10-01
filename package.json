@@ -1,6 +1,6 @@
 {
   "name": "quarky",
-  "private": true,
+  "author": "Hakase",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
