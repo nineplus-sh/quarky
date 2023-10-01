@@ -5,9 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "prebuild": "node src/nyafile-compiler.js",
-    "build": "vite build",
-    "lint": "eslint . --report-unused-disable-directives --max-warnings 0",
+    "build": "node src/nyafile-compiler.js && vite build",
+    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
   "dependencies": {

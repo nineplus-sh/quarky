@@ -4,19 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b867886f-e5e7-420d-9bab-a7f0f966787d" name="Changes" comment="this is dumb but maybe">
-      <change afterPath="$PROJECT_DIR$/src/_nyafile/img/stars.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/backgrounds/fullsize/SpaceBackground.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/backgrounds/fullsize/SpaceBackground.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/nyafile/NyafileImage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bun.lockb" beforeDir="false" afterPath="$PROJECT_DIR$/bun.lockb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/nav/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/nav/Header.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/AuthenticationNeeded.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/AuthenticationNeeded.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/Root.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/Root.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vite.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/vite.config.js" afterDir="false" />
-    </list>
+    <list default="true" id="b867886f-e5e7-420d-9bab-a7f0f966787d" name="Changes" comment="placeholder SpaceBackground" />
     <list id="650e51f2-1d95-44bb-8bc4-d7fc5c5b3f82" name="Changes by Eier" comment="" />
     <list id="daf3e3dd-a602-4fcd-b515-234504f77def" name="Changes by skelly" comment="">
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
@@ -52,14 +40,6 @@
         <option name="url" value="https://github.com/meower-holdings/quarky" />
       </UrlAndAccount>
     </option>
-  </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/package.json">
-      <ranges>
-        <range start1="7" end1="10" start2="7" end2="9" changelist="daf3e3dd-a602-4fcd-b515-234504f77def" />
-        <range start1="13" end1="13" start2="12" end2="13" changelist="b867886f-e5e7-420d-9bab-a7f0f966787d" />
-      </ranges>
-    </file>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -131,7 +111,7 @@
       <workItem from="1696102704572" duration="8828000" />
       <workItem from="1696149082696" duration="3968000" />
       <workItem from="1696166288588" duration="11780000" />
-      <workItem from="1696185263995" duration="5685000" />
+      <workItem from="1696185263995" duration="6384000" />
     </task>
     <task id="LOCAL-00001" summary="basic rewrite in Vite">
       <option name="closed" value="true" />
@@ -181,7 +161,15 @@
       <option name="project" value="LOCAL" />
       <updated>1696176298879</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="placeholder SpaceBackground">
+      <option name="closed" value="true" />
+      <created>1696196078310</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1696196078310</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -195,6 +183,7 @@
     <MESSAGE value="nyafile loading into context is real" />
     <MESSAGE value="disgusting typescript garbage lingers" />
     <MESSAGE value="test" />
-    <option name="LAST_COMMIT_MESSAGE" value="test" />
+    <MESSAGE value="placeholder SpaceBackground" />
+    <option name="LAST_COMMIT_MESSAGE" value="placeholder SpaceBackground" />
   </component>
 </project>
