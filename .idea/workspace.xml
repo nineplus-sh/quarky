@@ -4,8 +4,30 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b867886f-e5e7-420d-9bab-a7f0f966787d" name="Changes" comment="Fix lies">
+    <list default="true" id="b867886f-e5e7-420d-9bab-a7f0f966787d" name="Changes" comment="add OSS notices and music&#10;&#10;#q2-6 State Done">
+      <change afterPath="$PROJECT_DIR$/public/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/_nyafile/data/licenses.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/_nyafile/music/login.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/modals/GenericModal.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/modals/GenericModal.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/modals/OSSModal.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/nyafile/NyafileChangeMusic.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/oss/OSSLibrary.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/oss/OSSList.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bun.lockb" beforeDir="false" afterPath="$PROJECT_DIR$/bun.lockb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/backgrounds/fullsize/SpaceBackground.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/backgrounds/fullsize/SpaceBackground.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/backgrounds/fullsize/SpaceBackground.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/backgrounds/fullsize/SpaceBackground.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/nav/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/nav/Header.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/nav/Header.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/nav/Header.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/nyafile/NyafileImage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/nyafile/NyafileImage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/contexts/AppContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/contexts/AppContext.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/AuthenticationNeeded.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/AuthenticationNeeded.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/Client.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/Client.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/Loader.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/Loader.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/Root.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/Root.jsx" afterDir="false" />
     </list>
     <list id="650e51f2-1d95-44bb-8bc4-d7fc5c5b3f82" name="Changes by Eier" comment="" />
     <list id="daf3e3dd-a602-4fcd-b515-234504f77def" name="Changes by skelly" comment="fix" />
@@ -56,34 +78,87 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;senpai&quot;,
-    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;20.7.0&quot;,
-    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;20.7.0&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/vukky/Documents/Git/quarky/src/_nyafile/img&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/home/vukky/.local/share/JetBrains/Toolbox/apps/WebStorm/ch-0/232.9921.42/plugins/javascript-impl/jsLanguageServicesImpl/external&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "senpai",
+    "javascript.nodejs.core.library.configured.version": "20.8.0",
+    "javascript.nodejs.core.library.typings.version": "20.8.0",
+    "last_opened_file_path": "/home/vukky/Documents/Git/quarky/src/components/oss",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "timeTracker.activityTracker": "null",
+    "timeTracker.comment": "",
+    "timeTracker.inactivityPeriodInMills": "600000",
+    "timeTracker.isAutoTrackingEnable": "false",
+    "timeTracker.isAutoTrackingTemporaryDisabled": "false",
+    "timeTracker.isManualTrackingEnable": "false",
+    "timeTracker.isPaused": "true",
+    "timeTracker.isPostAfterCommitEnabled": "false",
+    "timeTracker.isPostedScheduled": "true",
+    "timeTracker.isRunning": "false",
+    "timeTracker.isScheduledEnabled": "false",
+    "timeTracker.isWhenProjectClosedEnabled": "false",
+    "timeTracker.issueId": "Default",
+    "timeTracker.issueIdReadable": "Default",
+    "timeTracker.pausedTime": "0",
+    "timeTracker.query": "",
+    "timeTracker.recordedTime": "0",
+    "timeTracker.scheduledPeriod": "19:00:0",
+    "timeTracker.startTime": "0",
+    "timeTracker.timeInMills": "0",
+    "timeTracker.type": "Development",
+    "ts.external.directory.path": "/home/vukky/.local/share/JetBrains/Toolbox/apps/WebStorm/ch-0/232.9921.42/plugins/javascript-impl/jsLanguageServicesImpl/external",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
+  <component name="RdControllerToolWindowsLayoutState" isNewUi="true">
+    <layout>
+      <window_info id="Space Code Reviews" />
+      <window_info id="Bookmarks" side_tool="true" />
+      <window_info id="Commit_Guest" />
+      <window_info id="Pull Requests" />
+      <window_info id="Merge Requests" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.5005176" visible="true" weight="0.32994792" />
+      <window_info id="Commit" order="1" weight="0.25" />
+      <window_info id="Structure" order="2" sideWeight="0.4994824" side_tool="true" weight="0.32994792" />
+      <window_info anchor="bottom" id="TODO" />
+      <window_info anchor="bottom" id="File Transfer" />
+      <window_info active="true" anchor="bottom" id="Run" visible="true" weight="0.39140928" />
+      <window_info anchor="bottom" id="TypeScript" />
+      <window_info anchor="bottom" id="Version Control" order="0" />
+      <window_info anchor="bottom" id="Problems View" order="2" />
+      <window_info anchor="bottom" id="Terminal" order="3" weight="0.5304054" />
+      <window_info anchor="bottom" id="Services" order="4" weight="0.3296332" />
+      <window_info anchor="bottom" id="Debug" order="4" weight="0.2765444" />
+      <window_info anchor="right" id="Endpoints" />
+      <window_info anchor="right" id="Meet New UI" side_tool="true" />
+      <window_info anchor="right" content_ui="combo" id="Notifications" order="0" weight="0.25" />
+    </layout>
+  </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components/oss" />
       <recent name="$PROJECT_DIR$/src/_nyafile/img" />
       <recent name="$PROJECT_DIR$/src/_nyafile" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components/modals" />
+    </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="npm.dev">
+    <configuration name="nyafile-compiler.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/nyafile-compiler.js" working-dir="$PROJECT_DIR$/src">
+      <method v="2" />
+    </configuration>
     <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -94,9 +169,21 @@
       <envs />
       <method v="2" />
     </configuration>
+    <configuration name="postinstall" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="postinstall" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="npm.dev" />
+        <item itemvalue="Node.js.nyafile-compiler.js" />
+        <item itemvalue="npm.postinstall" />
       </list>
     </recent_temporary>
   </component>
@@ -111,7 +198,11 @@
       <workItem from="1696102704572" duration="8828000" />
       <workItem from="1696149082696" duration="3968000" />
       <workItem from="1696166288588" duration="11780000" />
-      <workItem from="1696185263995" duration="6455000" />
+      <workItem from="1696185263995" duration="7062000" />
+      <workItem from="1697186178515" duration="7730000" />
+      <workItem from="1697203445353" duration="8434000" />
+      <workItem from="1697215569656" duration="1923000" />
+      <workItem from="1697217528623" duration="5221000" />
     </task>
     <task id="LOCAL-00001" summary="basic rewrite in Vite">
       <option name="closed" value="true" />
@@ -177,8 +268,21 @@
       <option name="project" value="LOCAL" />
       <updated>1696197322786</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
-    <servers />
+    <task id="LOCAL-00009" summary="baka software">
+      <option name="closed" value="true" />
+      <created>1696197348212</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1696197348212</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
+    <servers>
+      <YouTrack url="https://youtrack.litdevs.org">
+        <option name="defaultSearch" value="project: q2" />
+        <username>random</username>
+      </YouTrack>
+    </servers>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
@@ -205,6 +309,8 @@
     <MESSAGE value="placeholder SpaceBackground" />
     <MESSAGE value="fix" />
     <MESSAGE value="Fix lies" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix lies" />
+    <MESSAGE value="baka software" />
+    <MESSAGE value="add OSS notices and music&#10;&#10;#q2-6 State Done" />
+    <option name="LAST_COMMIT_MESSAGE" value="add OSS notices and music&#10;&#10;#q2-6 State Done" />
   </component>
 </project>

@@ -4,6 +4,11 @@ import {useContext, useEffect} from "react";
 import Loader from "./Loader.jsx";
 import NyaFile from "@litdevs/nyalib";
 
+/**
+ * The root. Wraps later routes so that Nyafiles can be real.
+ * @returns {JSX.Element}
+ * @constructor
+ */
 export default function Root() {
     let appContext = useContext(AppContext);
 
@@ -12,7 +17,9 @@ export default function Root() {
             const nyafile = new NyaFile();
             await nyafile.load("/quarky.nya", true);
 
+            nyafile.queueCache("data/licenses", "text");
             nyafile.queueCache("img/stars");
+            nyafile.queueCache("music/login")
 
             await nyafile.waitAllCached();
             appContext.setNyafile(nyafile);

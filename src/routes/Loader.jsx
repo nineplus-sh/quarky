@@ -1,6 +1,11 @@
 import styles from "./Loader.module.css"
 import {version, author} from "../../package.json"
 
+/**
+ * The loading screen.
+ * @returns {JSX.Element}
+ * @constructor
+ */
 export default function Loader() {
     return (<div className={styles.loaderWrap}>
         <div className={styles.loader}>

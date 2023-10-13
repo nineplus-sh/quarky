@@ -1,0 +1,35 @@
+.ReactModal__Overlay {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.ReactModal__Content {
+    transform: scale(0);
+    transition: transform 0.3s cubic-bezier(1.000, -0.250, 0.000, 1.250);
+    scrollbar-color: #00a8f3 #2e3035;
+}
+
+.ReactModal__Content::-webkit-scrollbar-thumb {
+    background: #00a8f3;
+    border-radius: 10px;
+}
+.ReactModal__Content::-webkit-scrollbar {
+    background: #2e3035;
+    width: 10px;
+}
+
+.ReactModal__Overlay--after-open {
+    opacity: 1;
+}
+
+.ReactModal__Overlay--before-close {
+    opacity: 0;
+}
+
+.ReactModal__Content--after-open {
+    transform: scale(1);
+}
+
+.ReactModal__Content--before-close {
+    transform: scale(0);
+}

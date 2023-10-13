@@ -39,3 +39,10 @@
     width: 100%;
     content: ""
 }
+
+.headerAcknowledgements {
+    margin-left: auto;
+    align-self: center;
+    margin-right: 1em;
+    height: 2em;
+}

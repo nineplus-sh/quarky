@@ -7,4 +7,8 @@ import {createContext} from "react";
     setNyafile: Dispatch<SetStateAction<JSZipObject>>
 }*/
 
+/**
+ * The app context.
+ * @type {React.Context<{}>}
+ */
 export const AppContext = createContext({});

@@ -7,17 +7,26 @@ import AuthenticationNeeded from "./routes/AuthenticationNeeded.jsx";
 import Root from "./routes/Root.jsx";
 import Client from "./routes/Client.jsx";
 
-function App(props) {
+/**
+ * Wraps the route provider in an App, mainly so the app context can be real.
+ * @param props - The props of the component, provided by React.
+ * @returns {JSX.Element}
+ * @constructor
+ */
+export function App(props) {
     let [nyafile, setNyafile] = useState(null);
     let [loading, setLoading] = useState(true);
+    let [music, setMusic] = useState(undefined);
 
     return (
-        <AppContext.Provider value={{loading, setLoading, nyafile, setNyafile}}>
+        <AppContext.Provider value={{loading, setLoading, nyafile, setNyafile, music, setMusic}}>
+            <audio src={music} autoPlay={true} loop={true}></audio>
             {props.children}
         </AppContext.Provider>
     )
 }
 
+/* The router. In the words of Emilia, it routes. Wow... */
 const router = createBrowserRouter(
     createRoutesFromElements(
         <Route path="/" element={<Root />}>
