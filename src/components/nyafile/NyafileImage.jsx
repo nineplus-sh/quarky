@@ -20,8 +20,8 @@ export default function NyafileImage(props) {
         getDataUrl();
     }, []);
 
+    // noinspection HtmlRequiredAltAttribute
     return (
-        <!--suppress HtmlRequiredAltAttribute -->
         <img src={image} {...otherProps} />
     )
 }
