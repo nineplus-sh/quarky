@@ -19,14 +19,17 @@ export default function Root() {
 
             nyafile.queueCache("data/licenses", "text");
             nyafile.queueCache("img/stars");
-            nyafile.queueCache("music/login")
+            nyafile.queueCache("music/login");
+            nyafile.queueCache("sfx/info-modal-pop-in");
+            nyafile.queueCache("sfx/info-modal-pop-out");
+
 
             await nyafile.waitAllCached();
             appContext.setNyafile(nyafile);
             appContext.setLoading(false);
         }
         loadNyafile();
-    }, []);
+    }, [appContext, appContext.nyafile]);
 
     if(appContext.loading) return <Loader />
     return <Outlet />

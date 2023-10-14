@@ -21,6 +21,12 @@
         "licenses": "MIT",
         "repository": "https://github.com/eslint-community/regexpp",
         "licenseUrl": "https://github.com/eslint-community/regexpp/raw/master/LICENSE",
+        "parents": "eslint:@eslint-community/eslint-utils:quarky"
+    },
+    "@eslint-community/regexpp@4.9.1": {
+        "licenses": "MIT",
+        "repository": "https://github.com/eslint-community/regexpp",
+        "licenseUrl": "https://github.com/eslint-community/regexpp/raw/master/LICENSE",
         "parents": "quarky"
     },
     "@eslint/eslintrc@2.1.2": {
@@ -30,6 +36,12 @@
         "parents": "quarky"
     },
     "@eslint/js@8.50.0": {
+        "licenses": "MIT",
+        "repository": "https://github.com/eslint/eslint",
+        "licenseUrl": "https://github.com/eslint/eslint/raw/master/LICENSE",
+        "parents": "eslint:@eslint-community/eslint-utils:quarky"
+    },
+    "@eslint/js@8.51.0": {
         "licenses": "MIT",
         "repository": "https://github.com/eslint/eslint",
         "licenseUrl": "https://github.com/eslint/eslint/raw/master/LICENSE",
@@ -191,6 +203,42 @@
         "licenseUrl": "https://github.com/nodeca/argparse/raw/master/LICENSE",
         "parents": "quarky"
     },
+    "array-buffer-byte-length@1.0.0": {
+        "licenses": "MIT",
+        "repository": "https://github.com/inspect-js/array-buffer-byte-length",
+        "licenseUrl": "https://github.com/inspect-js/array-buffer-byte-length/raw/master/LICENSE",
+        "parents": "quarky"
+    },
+    "array-includes@3.1.7": {
+        "licenses": "MIT",
+        "repository": "https://github.com/es-shims/array-includes",
+        "licenseUrl": "https://github.com/es-shims/array-includes/raw/master/LICENSE",
+        "parents": "quarky"
+    },
+    "array.prototype.flat@1.3.2": {
+        "licenses": "MIT",
+        "repository": "https://github.com/es-shims/Array.prototype.flat",
+        "licenseUrl": "https://github.com/es-shims/Array.prototype.flat/raw/master/LICENSE",
+        "parents": "quarky"
+    },
+    "array.prototype.flatmap@1.3.2": {
+        "licenses": "MIT",
+        "repository": "https://github.com/es-shims/Array.prototype.flatMap",
+        "licenseUrl": "https://github.com/es-shims/Array.prototype.flatMap/raw/master/LICENSE",
+        "parents": "quarky"
+    },
+    "array.prototype.tosorted@1.1.2": {
+        "licenses": "MIT",
+        "repository": "https://github.com/es-shims/Array.prototype.toSorted",
+        "licenseUrl": "https://github.com/es-shims/Array.prototype.toSorted/raw/master/LICENSE",
+        "parents": "quarky"
+    },
+    "arraybuffer.prototype.slice@1.0.2": {
+        "licenses": "MIT",
+        "repository": "https://github.com/es-shims/ArrayBuffer.prototype.slice",
+        "licenseUrl": "https://github.com/es-shims/ArrayBuffer.prototype.slice/raw/master/LICENSE",
+        "parents": "quarky"
+    },
     "asap@2.0.6": {
         "licenses": "MIT",
         "repository": "https://github.com/kriskowal/asap",
@@ -207,6 +255,18 @@
         "licenses": "MIT",
         "repository": "https://github.com/caolan/async",
         "licenseUrl": "https://github.com/caolan/async/raw/master/LICENSE",
+        "parents": "quarky"
+    },
+    "asynciterator.prototype@1.0.0": {
+        "licenses": "MIT",
+        "repository": "https://github.com/ljharb/AsyncIterator.prototype",
+        "licenseUrl": "https://github.com/ljharb/AsyncIterator.prototype/raw/master/LICENSE",
+        "parents": "quarky"
+    },
+    "available-typed-arrays@1.0.5": {
+        "licenses": "MIT",
+        "repository": "https://github.com/inspect-js/available-typed-arrays",
+        "licenseUrl": "https://github.com/inspect-js/available-typed-arrays/raw/master/LICENSE",
         "parents": "quarky"
     },
     "b4a@1.6.4": {
@@ -237,6 +297,12 @@
         "licenses": "MIT",
         "repository": "https://github.com/brianloveswords/buffer-crc32",
         "licenseUrl": "https://github.com/brianloveswords/buffer-crc32/raw/master/LICENSE",
+        "parents": "quarky"
+    },
+    "call-bind@1.0.2": {
+        "licenses": "MIT",
+        "repository": "https://github.com/ljharb/call-bind",
+        "licenseUrl": "https://github.com/ljharb/call-bind/raw/master/LICENSE",
         "parents": "quarky"
     },
     "callsites@3.1.0": {
@@ -341,16 +407,64 @@
         "licenseUrl": "http://github.com/thlorenz/deep-is/raw/master/LICENSE",
         "parents": "quarky"
     },
+    "define-data-property@1.1.1": {
+        "licenses": "MIT",
+        "repository": "https://github.com/ljharb/define-data-property",
+        "licenseUrl": "https://github.com/ljharb/define-data-property/raw/master/LICENSE",
+        "parents": "quarky"
+    },
+    "define-properties@1.2.1": {
+        "licenses": "MIT",
+        "repository": "https://github.com/ljharb/define-properties",
+        "licenseUrl": "https://github.com/ljharb/define-properties/raw/master/LICENSE",
+        "parents": "quarky"
+    },
     "dezalgo@1.0.4": {
         "licenses": "ISC",
         "repository": "https://github.com/npm/dezalgo",
         "licenseUrl": "https://github.com/npm/dezalgo/raw/master/LICENSE",
         "parents": "quarky"
     },
+    "doctrine@2.1.0": {
+        "licenses": "Apache-2.0",
+        "repository": "https://github.com/eslint/doctrine",
+        "licenseUrl": "https://github.com/eslint/doctrine/raw/master/LICENSE",
+        "parents": "eslint-plugin-react:quarky"
+    },
     "doctrine@3.0.0": {
         "licenses": "Apache-2.0",
         "repository": "https://github.com/eslint/doctrine",
         "licenseUrl": "https://github.com/eslint/doctrine/raw/master/LICENSE",
+        "parents": "quarky"
+    },
+    "es-abstract@1.22.2": {
+        "licenses": "MIT",
+        "repository": "https://github.com/ljharb/es-abstract",
+        "licenseUrl": "https://github.com/ljharb/es-abstract/raw/master/LICENSE",
+        "parents": "quarky"
+    },
+    "es-iterator-helpers@1.0.15": {
+        "licenses": "MIT",
+        "repository": "https://github.com/es-shims/iterator-helpers",
+        "licenseUrl": "https://github.com/es-shims/iterator-helpers/raw/master/LICENSE",
+        "parents": "quarky"
+    },
+    "es-set-tostringtag@2.0.1": {
+        "licenses": "MIT",
+        "repository": "https://github.com/es-shims/es-set-tostringtag",
+        "licenseUrl": "https://github.com/es-shims/es-set-tostringtag/raw/master/LICENSE",
+        "parents": "quarky"
+    },
+    "es-shim-unscopables@1.0.0": {
+        "licenses": "MIT",
+        "repository": "https://github.com/ljharb/es-shim-unscopables",
+        "licenseUrl": "https://github.com/ljharb/es-shim-unscopables/raw/master/LICENSE",
+        "parents": "quarky"
+    },
+    "es-to-primitive@1.2.1": {
+        "licenses": "MIT",
+        "repository": "https://github.com/ljharb/es-to-primitive",
+        "licenseUrl": "https://github.com/ljharb/es-to-primitive/raw/master/LICENSE",
         "parents": "quarky"
     },
     "esbuild@0.18.20": {
@@ -383,6 +497,12 @@
         "licenseUrl": "github:ArnaudBarre/eslint-plugin-react-refresh",
         "parents": "quarky"
     },
+    "eslint-plugin-react@7.33.2": {
+        "licenses": "MIT",
+        "repository": "https://github.com/jsx-eslint/eslint-plugin-react",
+        "licenseUrl": "https://github.com/jsx-eslint/eslint-plugin-react/raw/master/LICENSE",
+        "parents": "quarky"
+    },
     "eslint-scope@7.2.2": {
         "licenses": "BSD-2-Clause",
         "repository": "https://github.com/eslint/eslint-scope",
@@ -396,6 +516,12 @@
         "parents": "quarky"
     },
     "eslint@8.50.0": {
+        "licenses": "MIT",
+        "repository": "https://github.com/eslint/eslint",
+        "licenseUrl": "https://github.com/eslint/eslint/raw/master/LICENSE",
+        "parents": "@eslint-community/eslint-utils:quarky"
+    },
+    "eslint@8.51.0": {
         "licenses": "MIT",
         "repository": "https://github.com/eslint/eslint",
         "licenseUrl": "https://github.com/eslint/eslint/raw/master/LICENSE",
@@ -491,10 +617,46 @@
         "licenseUrl": "https://github.com/WebReflection/flatted/raw/master/LICENSE",
         "parents": "quarky"
     },
+    "for-each@0.3.3": {
+        "licenses": "MIT",
+        "repository": "https://github.com/Raynos/for-each",
+        "licenseUrl": "https://github.com/Raynos/for-each/raw/master/LICENSE",
+        "parents": "quarky"
+    },
     "fs.realpath@1.0.0": {
         "licenses": "ISC",
         "repository": "https://github.com/isaacs/fs.realpath",
         "licenseUrl": "https://github.com/isaacs/fs.realpath/raw/master/LICENSE",
+        "parents": "quarky"
+    },
+    "function-bind@1.1.2": {
+        "licenses": "MIT",
+        "repository": "https://github.com/Raynos/function-bind",
+        "licenseUrl": "https://github.com/Raynos/function-bind/raw/master/LICENSE",
+        "parents": "quarky"
+    },
+    "function.prototype.name@1.1.6": {
+        "licenses": "MIT",
+        "repository": "https://github.com/es-shims/Function.prototype.name",
+        "licenseUrl": "https://github.com/es-shims/Function.prototype.name/raw/master/LICENSE",
+        "parents": "quarky"
+    },
+    "functions-have-names@1.2.3": {
+        "licenses": "MIT",
+        "repository": "https://github.com/inspect-js/functions-have-names",
+        "licenseUrl": "https://github.com/inspect-js/functions-have-names/raw/master/LICENSE",
+        "parents": "quarky"
+    },
+    "get-intrinsic@1.2.1": {
+        "licenses": "MIT",
+        "repository": "https://github.com/ljharb/get-intrinsic",
+        "licenseUrl": "https://github.com/ljharb/get-intrinsic/raw/master/LICENSE",
+        "parents": "quarky"
+    },
+    "get-symbol-description@1.0.0": {
+        "licenses": "MIT",
+        "repository": "https://github.com/inspect-js/get-symbol-description",
+        "licenseUrl": "https://github.com/inspect-js/get-symbol-description/raw/master/LICENSE",
         "parents": "quarky"
     },
     "github-url-from-git@1.5.0": {
@@ -537,6 +699,24 @@
         "licenses": "MIT",
         "repository": "https://github.com/sindresorhus/globals",
         "licenseUrl": "https://github.com/sindresorhus/globals/raw/master/license",
+        "parents": "@eslint/eslintrc:quarky"
+    },
+    "globals@13.23.0": {
+        "licenses": "MIT",
+        "repository": "https://github.com/sindresorhus/globals",
+        "licenseUrl": "https://github.com/sindresorhus/globals/raw/master/license",
+        "parents": "quarky"
+    },
+    "globalthis@1.0.3": {
+        "licenses": "MIT",
+        "repository": "https://github.com/ljharb/System.global",
+        "licenseUrl": "https://github.com/ljharb/System.global/raw/master/LICENSE",
+        "parents": "quarky"
+    },
+    "gopd@1.0.1": {
+        "licenses": "MIT",
+        "repository": "https://github.com/ljharb/gopd",
+        "licenseUrl": "https://github.com/ljharb/gopd/raw/master/LICENSE",
         "parents": "quarky"
     },
     "graceful-fs@3.0.12": {
@@ -563,6 +743,12 @@
         "licenseUrl": "https://github.com/sindresorhus/has-ansi",
         "parents": "quarky"
     },
+    "has-bigints@1.0.2": {
+        "licenses": "MIT",
+        "repository": "https://github.com/ljharb/has-bigints",
+        "licenseUrl": "https://github.com/ljharb/has-bigints/raw/master/LICENSE",
+        "parents": "quarky"
+    },
     "has-flag@3.0.0": {
         "licenses": "MIT",
         "repository": "https://github.com/sindresorhus/has-flag",
@@ -573,6 +759,36 @@
         "licenses": "MIT",
         "repository": "https://github.com/sindresorhus/has-flag",
         "licenseUrl": "https://github.com/sindresorhus/has-flag/raw/master/license",
+        "parents": "quarky"
+    },
+    "has-property-descriptors@1.0.0": {
+        "licenses": "MIT",
+        "repository": "https://github.com/inspect-js/has-property-descriptors",
+        "licenseUrl": "https://github.com/inspect-js/has-property-descriptors/raw/master/LICENSE",
+        "parents": "quarky"
+    },
+    "has-proto@1.0.1": {
+        "licenses": "MIT",
+        "repository": "https://github.com/inspect-js/has-proto",
+        "licenseUrl": "https://github.com/inspect-js/has-proto/raw/master/LICENSE",
+        "parents": "quarky"
+    },
+    "has-symbols@1.0.3": {
+        "licenses": "MIT",
+        "repository": "https://github.com/inspect-js/has-symbols",
+        "licenseUrl": "https://github.com/inspect-js/has-symbols/raw/master/LICENSE",
+        "parents": "quarky"
+    },
+    "has-tostringtag@1.0.0": {
+        "licenses": "MIT",
+        "repository": "https://github.com/inspect-js/has-tostringtag",
+        "licenseUrl": "https://github.com/inspect-js/has-tostringtag/raw/master/LICENSE",
+        "parents": "quarky"
+    },
+    "has@1.0.4": {
+        "licenses": "MIT",
+        "repository": "https://github.com/tarruda/has",
+        "licenseUrl": "https://github.com/tarruda/has/raw/master/LICENSE-MIT",
         "parents": "quarky"
     },
     "ignore@5.2.4": {
@@ -611,10 +827,70 @@
         "licenseUrl": "https://github.com/isaacs/inherits/raw/master/LICENSE",
         "parents": "quarky"
     },
+    "internal-slot@1.0.5": {
+        "licenses": "MIT",
+        "repository": "https://github.com/ljharb/internal-slot",
+        "licenseUrl": "https://github.com/ljharb/internal-slot/raw/master/LICENSE",
+        "parents": "quarky"
+    },
+    "is-array-buffer@3.0.2": {
+        "licenses": "MIT",
+        "repository": "https://github.com/inspect-js/is-array-buffer",
+        "licenseUrl": "https://github.com/inspect-js/is-array-buffer/raw/master/LICENSE",
+        "parents": "quarky"
+    },
+    "is-async-function@2.0.0": {
+        "licenses": "MIT",
+        "repository": "https://github.com/inspect-js/is-async-function",
+        "licenseUrl": "https://github.com/inspect-js/is-async-function/raw/master/LICENSE",
+        "parents": "quarky"
+    },
+    "is-bigint@1.0.4": {
+        "licenses": "MIT",
+        "repository": "https://github.com/inspect-js/is-bigint",
+        "licenseUrl": "https://github.com/inspect-js/is-bigint/raw/master/LICENSE",
+        "parents": "quarky"
+    },
+    "is-boolean-object@1.1.2": {
+        "licenses": "MIT",
+        "repository": "https://github.com/inspect-js/is-boolean-object",
+        "licenseUrl": "https://github.com/inspect-js/is-boolean-object/raw/master/LICENSE",
+        "parents": "quarky"
+    },
+    "is-callable@1.2.7": {
+        "licenses": "MIT",
+        "repository": "https://github.com/inspect-js/is-callable",
+        "licenseUrl": "https://github.com/inspect-js/is-callable/raw/master/LICENSE",
+        "parents": "quarky"
+    },
+    "is-core-module@2.13.0": {
+        "licenses": "MIT",
+        "repository": "https://github.com/inspect-js/is-core-module",
+        "licenseUrl": "https://github.com/inspect-js/is-core-module/raw/master/LICENSE",
+        "parents": "quarky"
+    },
+    "is-date-object@1.0.5": {
+        "licenses": "MIT",
+        "repository": "https://github.com/inspect-js/is-date-object",
+        "licenseUrl": "https://github.com/inspect-js/is-date-object/raw/master/LICENSE",
+        "parents": "quarky"
+    },
     "is-extglob@2.1.1": {
         "licenses": "MIT",
         "repository": "https://github.com/jonschlinkert/is-extglob",
         "licenseUrl": "https://github.com/jonschlinkert/is-extglob/raw/master/LICENSE",
+        "parents": "quarky"
+    },
+    "is-finalizationregistry@1.0.2": {
+        "licenses": "MIT",
+        "repository": "https://github.com/inspect-js/is-finalizationregistry",
+        "licenseUrl": "https://github.com/inspect-js/is-finalizationregistry/raw/master/LICENSE",
+        "parents": "quarky"
+    },
+    "is-generator-function@1.0.10": {
+        "licenses": "MIT",
+        "repository": "https://github.com/inspect-js/is-generator-function",
+        "licenseUrl": "https://github.com/inspect-js/is-generator-function/raw/master/LICENSE",
         "parents": "quarky"
     },
     "is-glob@4.0.3": {
@@ -623,10 +899,82 @@
         "licenseUrl": "https://github.com/micromatch/is-glob/raw/master/LICENSE",
         "parents": "quarky"
     },
+    "is-map@2.0.2": {
+        "licenses": "MIT",
+        "repository": "https://github.com/inspect-js/is-map",
+        "licenseUrl": "https://github.com/inspect-js/is-map/raw/master/LICENSE",
+        "parents": "quarky"
+    },
+    "is-negative-zero@2.0.2": {
+        "licenses": "MIT",
+        "repository": "https://github.com/inspect-js/is-negative-zero",
+        "licenseUrl": "https://github.com/inspect-js/is-negative-zero/raw/master/LICENSE",
+        "parents": "quarky"
+    },
+    "is-number-object@1.0.7": {
+        "licenses": "MIT",
+        "repository": "https://github.com/inspect-js/is-number-object",
+        "licenseUrl": "https://github.com/inspect-js/is-number-object/raw/master/LICENSE",
+        "parents": "quarky"
+    },
     "is-path-inside@3.0.3": {
         "licenses": "MIT",
         "repository": "https://github.com/sindresorhus/is-path-inside",
         "licenseUrl": "https://github.com/sindresorhus/is-path-inside/raw/master/license",
+        "parents": "quarky"
+    },
+    "is-regex@1.1.4": {
+        "licenses": "MIT",
+        "repository": "https://github.com/inspect-js/is-regex",
+        "licenseUrl": "https://github.com/inspect-js/is-regex/raw/master/LICENSE",
+        "parents": "quarky"
+    },
+    "is-set@2.0.2": {
+        "licenses": "MIT",
+        "repository": "https://github.com/inspect-js/is-set",
+        "licenseUrl": "https://github.com/inspect-js/is-set/raw/master/LICENSE",
+        "parents": "quarky"
+    },
+    "is-shared-array-buffer@1.0.2": {
+        "licenses": "MIT",
+        "repository": "https://github.com/inspect-js/is-shared-array-buffer",
+        "licenseUrl": "https://github.com/inspect-js/is-shared-array-buffer/raw/master/LICENSE",
+        "parents": "quarky"
+    },
+    "is-string@1.0.7": {
+        "licenses": "MIT",
+        "repository": "https://github.com/ljharb/is-string",
+        "licenseUrl": "https://github.com/ljharb/is-string/raw/master/LICENSE",
+        "parents": "quarky"
+    },
+    "is-symbol@1.0.4": {
+        "licenses": "MIT",
+        "repository": "https://github.com/inspect-js/is-symbol",
+        "licenseUrl": "https://github.com/inspect-js/is-symbol/raw/master/LICENSE",
+        "parents": "quarky"
+    },
+    "is-typed-array@1.1.12": {
+        "licenses": "MIT",
+        "repository": "https://github.com/inspect-js/is-typed-array",
+        "licenseUrl": "https://github.com/inspect-js/is-typed-array/raw/master/LICENSE",
+        "parents": "quarky"
+    },
+    "is-weakmap@2.0.1": {
+        "licenses": "MIT",
+        "repository": "https://github.com/inspect-js/is-weakmap",
+        "licenseUrl": "https://github.com/inspect-js/is-weakmap/raw/master/LICENSE",
+        "parents": "quarky"
+    },
+    "is-weakref@1.0.2": {
+        "licenses": "MIT",
+        "repository": "https://github.com/inspect-js/is-weakref",
+        "licenseUrl": "https://github.com/inspect-js/is-weakref/raw/master/LICENSE",
+        "parents": "quarky"
+    },
+    "is-weakset@2.0.2": {
+        "licenses": "MIT",
+        "repository": "https://github.com/inspect-js/is-weakset",
+        "licenseUrl": "https://github.com/inspect-js/is-weakset/raw/master/LICENSE",
         "parents": "quarky"
     },
     "isarray@1.0.0": {
@@ -635,10 +983,22 @@
         "licenseUrl": "https://github.com/juliangruber/isarray",
         "parents": "quarky"
     },
+    "isarray@2.0.5": {
+        "licenses": "MIT",
+        "repository": "https://github.com/juliangruber/isarray",
+        "licenseUrl": "https://github.com/juliangruber/isarray/raw/master/LICENSE",
+        "parents": "safe-array-concat:quarky"
+    },
     "isexe@2.0.0": {
         "licenses": "ISC",
         "repository": "https://github.com/isaacs/isexe",
         "licenseUrl": "https://github.com/isaacs/isexe/raw/master/LICENSE",
+        "parents": "quarky"
+    },
+    "iterator.prototype@1.1.2": {
+        "licenses": "MIT",
+        "repository": "https://github.com/ljharb/Iterator.prototype",
+        "licenseUrl": "https://github.com/ljharb/Iterator.prototype/raw/master/LICENSE",
         "parents": "quarky"
     },
     "jju@1.4.0": {
@@ -687,6 +1047,12 @@
         "licenses": "MIT",
         "repository": "https://github.com/samn/json-stable-stringify",
         "licenseUrl": "https://github.com/samn/json-stable-stringify/raw/master/LICENSE",
+        "parents": "quarky"
+    },
+    "jsx-ast-utils@3.3.5": {
+        "licenses": "MIT",
+        "repository": "https://github.com/jsx-eslint/jsx-ast-utils",
+        "licenseUrl": "https://github.com/jsx-eslint/jsx-ast-utils/raw/master/LICENSE.md",
         "parents": "quarky"
     },
     "jszip@3.10.1": {
@@ -867,6 +1233,48 @@
         "licenseUrl": "https://github.com/sindresorhus/object-assign/raw/master/license",
         "parents": "quarky"
     },
+    "object-inspect@1.12.3": {
+        "licenses": "MIT",
+        "repository": "https://github.com/inspect-js/object-inspect",
+        "licenseUrl": "https://github.com/inspect-js/object-inspect/raw/master/LICENSE",
+        "parents": "quarky"
+    },
+    "object-keys@1.1.1": {
+        "licenses": "MIT",
+        "repository": "https://github.com/ljharb/object-keys",
+        "licenseUrl": "https://github.com/ljharb/object-keys/raw/master/LICENSE",
+        "parents": "quarky"
+    },
+    "object.assign@4.1.4": {
+        "licenses": "MIT",
+        "repository": "https://github.com/ljharb/object.assign",
+        "licenseUrl": "https://github.com/ljharb/object.assign/raw/master/LICENSE",
+        "parents": "quarky"
+    },
+    "object.entries@1.1.7": {
+        "licenses": "MIT",
+        "repository": "https://github.com/es-shims/Object.entries",
+        "licenseUrl": "https://github.com/es-shims/Object.entries/raw/master/LICENSE",
+        "parents": "quarky"
+    },
+    "object.fromentries@2.0.7": {
+        "licenses": "MIT",
+        "repository": "https://github.com/es-shims/Object.fromEntries",
+        "licenseUrl": "https://github.com/es-shims/Object.fromEntries/raw/master/LICENSE",
+        "parents": "quarky"
+    },
+    "object.hasown@1.1.3": {
+        "licenses": "MIT",
+        "repository": "https://github.com/es-shims/Object.hasOwn",
+        "licenseUrl": "https://github.com/es-shims/Object.hasOwn/raw/master/LICENSE",
+        "parents": "quarky"
+    },
+    "object.values@1.1.7": {
+        "licenses": "MIT",
+        "repository": "https://github.com/es-shims/Object.values",
+        "licenseUrl": "https://github.com/es-shims/Object.values/raw/master/LICENSE",
+        "parents": "quarky"
+    },
     "once@1.4.0": {
         "licenses": "ISC",
         "repository": "https://github.com/isaacs/once",
@@ -919,6 +1327,12 @@
         "licenses": "MIT",
         "repository": "https://github.com/sindresorhus/path-key",
         "licenseUrl": "https://github.com/sindresorhus/path-key/raw/master/license",
+        "parents": "quarky"
+    },
+    "path-parse@1.0.7": {
+        "licenses": "MIT",
+        "repository": "https://github.com/jbgutierrez/path-parse",
+        "licenseUrl": "https://github.com/jbgutierrez/path-parse/raw/master/LICENSE",
         "parents": "quarky"
     },
     "picocolors@1.0.0": {
@@ -1051,10 +1465,28 @@
         "licenseUrl": "https://github.com/npm/readdir-scoped-modules/raw/master/LICENSE",
         "parents": "quarky"
     },
+    "reflect.getprototypeof@1.0.4": {
+        "licenses": "MIT",
+        "repository": "https://github.com/es-shims/Reflect.getPrototypeOf",
+        "licenseUrl": "https://github.com/es-shims/Reflect.getPrototypeOf/raw/master/LICENSE",
+        "parents": "quarky"
+    },
+    "regexp.prototype.flags@1.5.1": {
+        "licenses": "MIT",
+        "repository": "https://github.com/es-shims/RegExp.prototype.flags",
+        "licenseUrl": "https://github.com/es-shims/RegExp.prototype.flags/raw/master/LICENSE",
+        "parents": "quarky"
+    },
     "resolve-from@4.0.0": {
         "licenses": "MIT",
         "repository": "https://github.com/sindresorhus/resolve-from",
         "licenseUrl": "https://github.com/sindresorhus/resolve-from/raw/master/license",
+        "parents": "quarky"
+    },
+    "resolve@2.0.0-next.5": {
+        "licenses": "MIT",
+        "repository": "https://github.com/browserify/resolve",
+        "licenseUrl": "https://github.com/browserify/resolve/raw/master/LICENSE",
         "parents": "quarky"
     },
     "reusify@1.0.4": {
@@ -1081,6 +1513,12 @@
         "licenseUrl": "https://github.com/feross/run-parallel/raw/master/LICENSE",
         "parents": "quarky"
     },
+    "safe-array-concat@1.0.1": {
+        "licenses": "MIT",
+        "repository": "https://github.com/ljharb/safe-array-concat",
+        "licenseUrl": "https://github.com/ljharb/safe-array-concat/raw/master/LICENSE",
+        "parents": "quarky"
+    },
     "safe-buffer@5.1.2": {
         "licenses": "MIT",
         "repository": "https://github.com/feross/safe-buffer",
@@ -1093,6 +1531,12 @@
         "licenseUrl": "https://github.com/feross/safe-buffer/raw/master/LICENSE",
         "parents": "string_decoder:quarky"
     },
+    "safe-regex-test@1.0.0": {
+        "licenses": "MIT",
+        "repository": "https://github.com/ljharb/safe-regex-test",
+        "licenseUrl": "https://github.com/ljharb/safe-regex-test/raw/master/LICENSE",
+        "parents": "quarky"
+    },
     "scheduler@0.23.0": {
         "licenses": "MIT",
         "repository": "https://github.com/facebook/react",
@@ -1103,6 +1547,18 @@
         "licenses": "ISC",
         "repository": "https://github.com/npm/node-semver",
         "licenseUrl": "https://github.com/npm/node-semver/raw/master/LICENSE",
+        "parents": "normalize-package-data:quarky"
+    },
+    "semver@6.3.1": {
+        "licenses": "ISC",
+        "repository": "https://github.com/npm/node-semver",
+        "licenseUrl": "https://github.com/npm/node-semver/raw/master/LICENSE",
+        "parents": "quarky"
+    },
+    "set-function-name@2.0.1": {
+        "licenses": "MIT",
+        "repository": "https://github.com/ljharb/set-function-name",
+        "licenseUrl": "https://github.com/ljharb/set-function-name/raw/master/LICENSE",
         "parents": "quarky"
     },
     "setimmediate@1.0.5": {
@@ -1123,6 +1579,12 @@
         "licenseUrl": "https://github.com/sindresorhus/shebang-regex/raw/master/license",
         "parents": "quarky"
     },
+    "side-channel@1.0.4": {
+        "licenses": "MIT",
+        "repository": "https://github.com/ljharb/side-channel",
+        "licenseUrl": "https://github.com/ljharb/side-channel/raw/master/LICENSE",
+        "parents": "quarky"
+    },
     "slide@1.1.6": {
         "licenses": "ISC",
         "repository": "https://github.com/isaacs/slide-flow-control",
@@ -1139,6 +1601,30 @@
         "licenses": "MIT",
         "repository": "https://github.com/mafintosh/streamx",
         "licenseUrl": "https://github.com/mafintosh/streamx/raw/master/LICENSE",
+        "parents": "quarky"
+    },
+    "string.prototype.matchall@4.0.10": {
+        "licenses": "MIT",
+        "repository": "https://github.com/es-shims/String.prototype.matchAll",
+        "licenseUrl": "https://github.com/es-shims/String.prototype.matchAll/raw/master/LICENSE",
+        "parents": "quarky"
+    },
+    "string.prototype.trim@1.2.8": {
+        "licenses": "MIT",
+        "repository": "https://github.com/es-shims/String.prototype.trim",
+        "licenseUrl": "https://github.com/es-shims/String.prototype.trim/raw/master/LICENSE",
+        "parents": "quarky"
+    },
+    "string.prototype.trimend@1.0.7": {
+        "licenses": "MIT",
+        "repository": "https://github.com/es-shims/String.prototype.trimEnd",
+        "licenseUrl": "https://github.com/es-shims/String.prototype.trimEnd/raw/master/LICENSE",
+        "parents": "quarky"
+    },
+    "string.prototype.trimstart@1.0.7": {
+        "licenses": "MIT",
+        "repository": "https://github.com/es-shims/String.prototype.trimStart",
+        "licenseUrl": "https://github.com/es-shims/String.prototype.trimStart/raw/master/LICENSE",
         "parents": "quarky"
     },
     "string_decoder@1.1.1": {
@@ -1189,6 +1675,12 @@
         "licenseUrl": "https://github.com/chalk/supports-color/raw/master/license",
         "parents": "quarky"
     },
+    "supports-preserve-symlinks-flag@1.0.0": {
+        "licenses": "MIT",
+        "repository": "https://github.com/inspect-js/node-supports-preserve-symlinks-flag",
+        "licenseUrl": "https://github.com/inspect-js/node-supports-preserve-symlinks-flag/raw/master/LICENSE",
+        "parents": "quarky"
+    },
     "tar-stream@3.1.6": {
         "licenses": "MIT",
         "repository": "https://github.com/mafintosh/tar-stream",
@@ -1219,6 +1711,36 @@
         "licenseUrl": "https://github.com/sindresorhus/type-fest/raw/master/license",
         "parents": "quarky"
     },
+    "typed-array-buffer@1.0.0": {
+        "licenses": "MIT",
+        "repository": "https://github.com/ljharb/typed-array-buffer",
+        "licenseUrl": "https://github.com/ljharb/typed-array-buffer/raw/master/LICENSE",
+        "parents": "quarky"
+    },
+    "typed-array-byte-length@1.0.0": {
+        "licenses": "MIT",
+        "repository": "https://github.com/inspect-js/typed-array-byte-length",
+        "licenseUrl": "https://github.com/inspect-js/typed-array-byte-length/raw/master/LICENSE",
+        "parents": "quarky"
+    },
+    "typed-array-byte-offset@1.0.0": {
+        "licenses": "MIT",
+        "repository": "https://github.com/inspect-js/typed-array-byte-offset",
+        "licenseUrl": "https://github.com/inspect-js/typed-array-byte-offset/raw/master/LICENSE",
+        "parents": "quarky"
+    },
+    "typed-array-length@1.0.4": {
+        "licenses": "MIT",
+        "repository": "https://github.com/inspect-js/typed-array-length",
+        "licenseUrl": "https://github.com/inspect-js/typed-array-length/raw/master/LICENSE",
+        "parents": "quarky"
+    },
+    "unbox-primitive@1.0.2": {
+        "licenses": "MIT",
+        "repository": "https://github.com/ljharb/unbox-primitive",
+        "licenseUrl": "https://github.com/ljharb/unbox-primitive/raw/master/LICENSE",
+        "parents": "quarky"
+    },
     "uri-js@4.4.1": {
         "licenses": "BSD-2-Clause",
         "repository": "http://github.com/garycourt/uri-js",
@@ -1247,6 +1769,30 @@
         "licenses": "MIT",
         "repository": "https://github.com/BerkeleyTrue/warning",
         "licenseUrl": "https://github.com/BerkeleyTrue/warning/raw/master/LICENSE.md",
+        "parents": "quarky"
+    },
+    "which-boxed-primitive@1.0.2": {
+        "licenses": "MIT",
+        "repository": "https://github.com/inspect-js/which-boxed-primitive",
+        "licenseUrl": "https://github.com/inspect-js/which-boxed-primitive/raw/master/LICENSE",
+        "parents": "quarky"
+    },
+    "which-builtin-type@1.1.3": {
+        "licenses": "MIT",
+        "repository": "https://github.com/inspect-js/which-builtin-type",
+        "licenseUrl": "https://github.com/inspect-js/which-builtin-type/raw/master/LICENSE",
+        "parents": "quarky"
+    },
+    "which-collection@1.0.1": {
+        "licenses": "MIT",
+        "repository": "https://github.com/inspect-js/which-collection",
+        "licenseUrl": "https://github.com/inspect-js/which-collection/raw/master/LICENSE",
+        "parents": "quarky"
+    },
+    "which-typed-array@1.1.11": {
+        "licenses": "MIT",
+        "repository": "https://github.com/inspect-js/which-typed-array",
+        "licenseUrl": "https://github.com/inspect-js/which-typed-array/raw/master/LICENSE",
         "parents": "quarky"
     },
     "which@2.0.2": {

@@ -4,8 +4,8 @@
 }
 
 .ReactModal__Content {
-    transform: scale(0);
-    transition: transform 0.3s cubic-bezier(1.000, -0.250, 0.000, 1.250);
+    max-height: 0;
+    transition: transform 0.3s cubic-bezier(1.000, -0.250, 0.000, 1.250), max-height 0.3s cubic-bezier(1.000, -0.250, 0.000, 1.250);
     scrollbar-color: #00a8f3 #2e3035;
 }
 
@@ -27,9 +27,9 @@
 }
 
 .ReactModal__Content--after-open {
-    transform: scale(1);
+    max-height: 90%;
 }
 
 .ReactModal__Content--before-close {
-    transform: scale(0);
+    max-height: 0;
 }

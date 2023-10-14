@@ -1,5 +1,6 @@
 import {createContext} from "react";
 
+
 /*type AppContextType = {
     loading: boolean,
     setLoading: Dispatch<SetStateAction<boolean>>,
@@ -9,6 +10,8 @@ import {createContext} from "react";
 
 /**
  * The app context.
- * @type {React.Context<{}>}
  */
-export const AppContext = createContext({});
+export const AppContext = createContext({
+    /** @type {import("@litdevs/nyalib").default} **/
+    nyafile: null
+});

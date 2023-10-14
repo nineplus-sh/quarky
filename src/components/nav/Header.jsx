@@ -1,19 +1,23 @@
 import styles from "./Header.module.css"
 import NyafileImage from "../nyafile/NyafileImage.jsx";
 import OSSModal from "../modals/OSSModal.jsx";
-import {useState} from "react";
+import {useState, useContext} from "react";
+import {AppContext} from "../../contexts/AppContext.js";
 
 /**
- * The header of Quarky. This should not be used in the app itself, as no header is needed there.
- * @param {string} title - The title in the header.
- * @param {string} description - The description in the header.
+ * The header of Quarky. This should not be used in the client itself.
+ * @param {string} title
+ * @param {string} description
  * @returns {JSX.Element}
  * @constructor
  */
 export default function Header({title, description}) {
     const [ossModalOpen, setOssModalOpen] = useState(false);
+    const appContext = useContext(AppContext)
+
     function toggleModal() {
         setOssModalOpen(!ossModalOpen);
+        new Audio(appContext.nyafile.getCachedData(`sfx/info-modal-pop-${ossModalOpen ? "out" : "in"}`)).play();
     }
 
     return (<>

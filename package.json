@@ -11,7 +11,7 @@
     "postinstall": "npm-license-crawler --json src/_nyafile/data/licenses.json"
   },
   "dependencies": {
-    "@litdevs/nyalib": "^1.2.1",
+    "@litdevs/nyalib": "^1.3.0",
     "jszip": "^3.10.1",
     "localforage": "^1.10.0",
     "react": "^18.2.0",
@@ -22,7 +22,8 @@
   "devDependencies": {
     "@vitejs/plugin-react-swc": "^3.3.2",
     "archiver": "^6.0.1",
-    "eslint": "^8.45.0",
+    "eslint": "^8.51.0",
+    "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
     "npm-license-crawler": "^0.2.1",

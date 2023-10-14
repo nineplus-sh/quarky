@@ -20,7 +20,6 @@ export default function GenericModal({children, open, closer}) {
             },
             content: {
                 maxWidth: "25%",
-                maxHeight: "90%",
                 inset: "unset",
                 borderRadius: "15px"
             }
