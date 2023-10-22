@@ -4,19 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b867886f-e5e7-420d-9bab-a7f0f966787d" name="Changes" comment="even worse code than the last time">
-      <change afterPath="$PROJECT_DIR$/src/_nyafile/sfx/info-modal-pop-in.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/_nyafile/sfx/info-modal-pop-out.wav" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.eslintrc.cjs" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintrc.cjs" afterDir="false" />
+    <list default="true" id="b867886f-e5e7-420d-9bab-a7f0f966787d" name="Changes" comment="improve display of oss libraries">
+      <change afterPath="$PROJECT_DIR$/src/license-compiler.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bun.lockb" beforeDir="false" afterPath="$PROJECT_DIR$/bun.lockb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/_nyafile/data/licenses.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/_nyafile/data/licenses.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modals/GenericModal.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modals/GenericModal.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modals/GenericModal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modals/GenericModal.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/nav/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/nav/Header.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/contexts/AppContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/contexts/AppContext.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/Root.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/Root.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modals/OSSModal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modals/OSSModal.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/oss/OSSLibrary.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/oss/OSSLibrary.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/oss/OSSList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/oss/OSSList.jsx" afterDir="false" />
     </list>
     <list id="650e51f2-1d95-44bb-8bc4-d7fc5c5b3f82" name="Changes by Eier" comment="" />
     <list id="daf3e3dd-a602-4fcd-b515-234504f77def" name="Changes by skelly" comment="fix" />
@@ -67,52 +63,52 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "senpai",
-    "javascript.nodejs.core.library.configured.version": "20.8.0",
-    "javascript.nodejs.core.library.typings.version": "20.8.0",
-    "js.linters.configure.manually.selectedeslint": "true",
-    "last_opened_file_path": "/home/vukky/Documents/Git/quarky/src/_nyafile/sfx",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.standard": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.standard": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "settings.javascript.linters.eslint",
-    "timeTracker.activityTracker": "null",
-    "timeTracker.comment": "",
-    "timeTracker.inactivityPeriodInMills": "600000",
-    "timeTracker.isAutoTrackingEnable": "false",
-    "timeTracker.isAutoTrackingTemporaryDisabled": "false",
-    "timeTracker.isManualTrackingEnable": "false",
-    "timeTracker.isPaused": "true",
-    "timeTracker.isPostAfterCommitEnabled": "false",
-    "timeTracker.isPostedScheduled": "true",
-    "timeTracker.isRunning": "false",
-    "timeTracker.isScheduledEnabled": "false",
-    "timeTracker.isWhenProjectClosedEnabled": "false",
-    "timeTracker.issueId": "Default",
-    "timeTracker.issueIdReadable": "Default",
-    "timeTracker.pausedTime": "0",
-    "timeTracker.query": "",
-    "timeTracker.recordedTime": "0",
-    "timeTracker.scheduledPeriod": "19:00:0",
-    "timeTracker.startTime": "0",
-    "timeTracker.timeInMills": "0",
-    "timeTracker.type": "Development",
-    "ts.external.directory.path": "/home/vukky/.local/share/JetBrains/Toolbox/apps/WebStorm/ch-0/232.9921.42/plugins/javascript-impl/jsLanguageServicesImpl/external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;senpai&quot;,
+    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;20.8.0&quot;,
+    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;20.8.0&quot;,
+    &quot;js.linters.configure.manually.selectedeslint&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/vukky/Documents/Git/quarky/src/_nyafile/sfx&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;settings.javascript.linters.eslint&quot;,
+    &quot;timeTracker.activityTracker&quot;: &quot;null&quot;,
+    &quot;timeTracker.comment&quot;: &quot;&quot;,
+    &quot;timeTracker.inactivityPeriodInMills&quot;: &quot;600000&quot;,
+    &quot;timeTracker.isAutoTrackingEnable&quot;: &quot;false&quot;,
+    &quot;timeTracker.isAutoTrackingTemporaryDisabled&quot;: &quot;false&quot;,
+    &quot;timeTracker.isManualTrackingEnable&quot;: &quot;false&quot;,
+    &quot;timeTracker.isPaused&quot;: &quot;true&quot;,
+    &quot;timeTracker.isPostAfterCommitEnabled&quot;: &quot;false&quot;,
+    &quot;timeTracker.isPostedScheduled&quot;: &quot;true&quot;,
+    &quot;timeTracker.isRunning&quot;: &quot;false&quot;,
+    &quot;timeTracker.isScheduledEnabled&quot;: &quot;false&quot;,
+    &quot;timeTracker.isWhenProjectClosedEnabled&quot;: &quot;false&quot;,
+    &quot;timeTracker.issueId&quot;: &quot;Default&quot;,
+    &quot;timeTracker.issueIdReadable&quot;: &quot;Default&quot;,
+    &quot;timeTracker.pausedTime&quot;: &quot;0&quot;,
+    &quot;timeTracker.query&quot;: &quot;&quot;,
+    &quot;timeTracker.recordedTime&quot;: &quot;0&quot;,
+    &quot;timeTracker.scheduledPeriod&quot;: &quot;19:00:0&quot;,
+    &quot;timeTracker.startTime&quot;: &quot;0&quot;,
+    &quot;timeTracker.timeInMills&quot;: &quot;0&quot;,
+    &quot;timeTracker.type&quot;: &quot;Development&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/home/vukky/.local/share/JetBrains/Toolbox/apps/WebStorm/ch-0/232.9921.42/plugins/javascript-impl/jsLanguageServicesImpl/external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RdControllerToolWindowsLayoutState" isNewUi="true">
     <layout>
       <window_info id="Space Code Reviews" />
@@ -145,10 +141,11 @@
       <recent name="$PROJECT_DIR$/src/_nyafile" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/src/components/modals" />
     </key>
   </component>
-  <component name="RunManager" selected="Node.js.nyafile-compiler.js">
+  <component name="RunManager" selected="npm.dev">
     <configuration name="nyafile-compiler.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/nyafile-compiler.js" working-dir="$PROJECT_DIR$/src">
       <method v="2" />
     </configuration>
@@ -174,8 +171,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Node.js.nyafile-compiler.js" />
         <item itemvalue="npm.dev" />
+        <item itemvalue="Node.js.nyafile-compiler.js" />
         <item itemvalue="npm.postinstall" />
       </list>
     </recent_temporary>
@@ -196,6 +193,8 @@
       <workItem from="1697203445353" duration="8434000" />
       <workItem from="1697215569656" duration="1923000" />
       <workItem from="1697217528623" duration="14066000" />
+      <workItem from="1697912654453" duration="1362000" />
+      <workItem from="1697980192074" duration="6466000" />
     </task>
     <task id="LOCAL-00001" summary="basic rewrite in Vite">
       <option name="closed" value="true" />
@@ -322,14 +321,14 @@
     <MESSAGE value="add OSS notices and music&#10;&#10;#q2-6 State Done" />
     <MESSAGE value="thank you WebStorm this was very useful (the build broke)" />
     <MESSAGE value="even worse code than the last time" />
-    <option name="LAST_COMMIT_MESSAGE" value="even worse code than the last time" />
+    <MESSAGE value="improve display of oss libraries" />
+    <option name="LAST_COMMIT_MESSAGE" value="improve display of oss libraries" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/components/nav/Header.jsx</url>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>

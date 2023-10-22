@@ -14,7 +14,7 @@ export default function OSSList() {
 
     console.log(licenses)
     Object.entries(licenses).forEach(function([name, data]) {
-        processedLicenses.push({name: name, license: data.licenses})
+        processedLicenses.push({name: name, license: data.licenses, description: data.description, copyright: data.copyright})
     })
 
     return (<>

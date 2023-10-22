@@ -10,7 +10,7 @@ import GenericModal from "./GenericModal.jsx";
 export default function OSSModal(props) {
     return (<>
         <GenericModal {...props}>
-            <p>Quarky uses music by <a href={"https://www.hurtrecord.com/"}>HURT RECORD</a> and sound effects from <a href={"https://github.com/ppy/osu-resources"}>osu!resources</a>. Quarky also uses the following open source libraries (this list includes developer dependencies):</p>
+            <p>Quarky uses music by <a href={"https://www.hurtrecord.com/"}>HURT RECORD</a> and sound effects from <a href={"https://github.com/ppy/osu-resources"}>osu!resources</a>. Quarky also uses open source libraries:</p>
             <OSSList />
         </GenericModal>
     </>)
