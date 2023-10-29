@@ -14,22 +14,25 @@ export default function Root() {
 
     useEffect(() => {
         async function loadNyafile() {
+            await appContext.telegram.connect();
+            console.log(appContext.telegram.connected)
+
             const nyafile = new NyaFile();
             await nyafile.load("/quarky.nya", true);
 
             nyafile.queueCache("data/licenses", "text");
             nyafile.queueCache("img/stars");
+            nyafile.queueCache("img/quarky");
             nyafile.queueCache("music/login");
             nyafile.queueCache("sfx/info-modal-pop-in");
             nyafile.queueCache("sfx/info-modal-pop-out");
-
 
             await nyafile.waitAllCached();
             appContext.setNyafile(nyafile);
             appContext.setLoading(false);
         }
         loadNyafile();
-    }, [appContext, appContext.nyafile]);
+    }, []);
 
     if(appContext.loading) return <Loader />
     return <Outlet />

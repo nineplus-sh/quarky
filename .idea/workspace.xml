@@ -5,17 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b867886f-e5e7-420d-9bab-a7f0f966787d" name="Changes" comment="improve display of oss libraries">
-      <change afterPath="$PROJECT_DIR$/src/license-compiler.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/_nyafile/img/quarky.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/telegram/login/TelegramQRCode.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bun.lockb" beforeDir="false" afterPath="$PROJECT_DIR$/bun.lockb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/_nyafile/data/licenses.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/_nyafile/data/licenses.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modals/OSSModal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modals/OSSModal.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/oss/OSSLibrary.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/oss/OSSLibrary.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/oss/OSSList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/oss/OSSList.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/AuthenticationNeeded.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/AuthenticationNeeded.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/Root.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/Root.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vite.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/vite.config.js" afterDir="false" />
     </list>
     <list id="650e51f2-1d95-44bb-8bc4-d7fc5c5b3f82" name="Changes by Eier" comment="" />
-    <list id="daf3e3dd-a602-4fcd-b515-234504f77def" name="Changes by skelly" comment="fix" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -121,12 +122,12 @@
       <window_info id="Structure" order="2" sideWeight="0.4994824" side_tool="true" weight="0.32994792" />
       <window_info anchor="bottom" id="TODO" />
       <window_info anchor="bottom" id="File Transfer" />
-      <window_info active="true" anchor="bottom" id="Run" visible="true" weight="0.39140928" />
+      <window_info anchor="bottom" id="Run" weight="0.3296332" />
       <window_info anchor="bottom" id="TypeScript" />
       <window_info anchor="bottom" id="Version Control" order="0" />
-      <window_info anchor="bottom" id="Problems View" order="2" />
-      <window_info anchor="bottom" id="Terminal" order="3" weight="0.5304054" />
-      <window_info anchor="bottom" id="Services" order="4" weight="0.3296332" />
+      <window_info anchor="bottom" id="Problems View" order="1" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="2" visible="true" weight="0.3296332" />
+      <window_info anchor="bottom" id="Services" order="3" weight="0.3296332" />
       <window_info anchor="bottom" id="Debug" order="4" weight="0.2765444" />
       <window_info anchor="right" id="Endpoints" />
       <window_info anchor="right" id="Meet New UI" side_tool="true" />
@@ -145,7 +146,7 @@
       <recent name="$PROJECT_DIR$/src/components/modals" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.dev">
+  <component name="RunManager" selected="Node.js.nyafile-compiler.js">
     <configuration name="nyafile-compiler.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/nyafile-compiler.js" working-dir="$PROJECT_DIR$/src">
       <method v="2" />
     </configuration>
@@ -171,8 +172,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.dev" />
         <item itemvalue="Node.js.nyafile-compiler.js" />
+        <item itemvalue="npm.dev" />
         <item itemvalue="npm.postinstall" />
       </list>
     </recent_temporary>
@@ -194,7 +195,11 @@
       <workItem from="1697215569656" duration="1923000" />
       <workItem from="1697217528623" duration="14066000" />
       <workItem from="1697912654453" duration="1362000" />
-      <workItem from="1697980192074" duration="6466000" />
+      <workItem from="1697980192074" duration="13056000" />
+      <workItem from="1698392148881" duration="597000" />
+      <workItem from="1698576317491" duration="1028000" />
+      <workItem from="1698577400738" duration="6772000" />
+      <workItem from="1698592905689" duration="4052000" />
     </task>
     <task id="LOCAL-00001" summary="basic rewrite in Vite">
       <option name="closed" value="true" />
@@ -284,7 +289,15 @@
       <option name="project" value="LOCAL" />
       <updated>1697225032648</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="improve display of oss libraries">
+      <option name="closed" value="true" />
+      <created>1697996825882</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1697996825882</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers>
       <YouTrack url="https://youtrack.litdevs.org">
         <option name="defaultSearch" value="project: q2" />
