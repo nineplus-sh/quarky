@@ -1,6 +1,7 @@
 import {AppContext} from "../../../contexts/AppContext.js";
 import {useContext, useEffect, useRef, useState} from "react";
 import QRCodeStyling from "qr-code-styling";
+import localforage from "localforage";
 
 
 // i love u
@@ -22,8 +23,6 @@ export default function TelegramQRCode() {
     const ref = useRef(null);
     let [qrCode, setQrCode] = useState()
 
-
-
     useEffect(() => {
         async function getCode() {
             console.log(appContext.telegram.connected)
@@ -32,10 +31,11 @@ export default function TelegramQRCode() {
                 apiHash: import.meta.env.VITE_TG_API_HASH
             }, {
                 qrCode: async (code) => {
-                    setUrl(`tg://login?token=${base64url_encode(code.token)}`); // hell no it doesnt. must have pasted it in there by accident on my laptop (you know how the keyboard is)
+                    setUrl(`tg://login?token=${base64url_encode(code.token)}`);
                 }
             })
-            console.log(user);
+            await localforage.setItem("TG_SESSION", appContext.telegram.session.save())
+            appContext.setAccounts({telegram: user});
         }
         getCode();
     }, []);
@@ -56,15 +56,7 @@ export default function TelegramQRCode() {
             }));
         })()
 
-    }, []) // yeah ok that makes sense
-    // why it no cached?
-    // https://wanderers.cloud/file/isxF0g.png well THAT is interesting
-    // oh what   NO NO
-    // THE FILE EXTENSIOIN
-    ///  . ..  .. . THE FILE EXTENSION
-    // GOD DAMN IT
-    // works now :D
-    // i swear i do that every couple of times
+    }, [])
 
     useEffect(() => {
         if (!qrCode) return;

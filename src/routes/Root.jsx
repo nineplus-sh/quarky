@@ -3,6 +3,9 @@ import {AppContext} from "../contexts/AppContext.js";
 import {useContext, useEffect} from "react";
 import Loader from "./Loader.jsx";
 import NyaFile from "@litdevs/nyalib";
+import {TelegramClient} from "telegram";
+import {StringSession} from "telegram/sessions";
+import localforage from "localforage";
 
 /**
  * The root. Wraps later routes so that Nyafiles can be real.
@@ -14,8 +17,11 @@ export default function Root() {
 
     useEffect(() => {
         async function loadNyafile() {
-            await appContext.telegram.connect();
-            console.log(appContext.telegram.connected)
+            const telegramClient = new TelegramClient(new StringSession(await localforage.getItem("TG_SESSION")), parseInt(import.meta.env.VITE_TG_API_ID), import.meta.env.VITE_TG_API_HASH, { connectionRetries: 5 });
+            appContext.setTelegram(telegramClient);
+            await telegramClient.connect();
+
+            if(await telegramClient.isUserAuthorized()) appContext.setAccounts({telegram: await telegramClient.getMe()})
 
             const nyafile = new NyaFile();
             await nyafile.load("/quarky.nya", true);

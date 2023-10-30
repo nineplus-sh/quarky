@@ -4,17 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b867886f-e5e7-420d-9bab-a7f0f966787d" name="Changes" comment="improve display of oss libraries">
-      <change afterPath="$PROJECT_DIR$/src/_nyafile/img/quarky.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/telegram/login/TelegramQRCode.jsx" afterDir="false" />
+    <list default="true" id="b867886f-e5e7-420d-9bab-a7f0f966787d" name="Changes" comment="allow logging into telegram">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bun.lockb" beforeDir="false" afterPath="$PROJECT_DIR$/bun.lockb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/_nyafile/data/licenses.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/_nyafile/data/licenses.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/telegram/login/TelegramQRCode.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/telegram/login/TelegramQRCode.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/routes/AuthenticationNeeded.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/AuthenticationNeeded.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/Client.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/Client.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/routes/Root.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/Root.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vite.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/vite.config.js" afterDir="false" />
     </list>
     <list id="650e51f2-1d95-44bb-8bc4-d7fc5c5b3f82" name="Changes by Eier" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -117,16 +113,16 @@
       <window_info id="Commit_Guest" />
       <window_info id="Pull Requests" />
       <window_info id="Merge Requests" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.5005176" visible="true" weight="0.32994792" />
-      <window_info id="Commit" order="1" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.5005176" weight="0.24036458" />
+      <window_info active="true" id="Commit" order="1" visible="true" weight="0.24036458" />
       <window_info id="Structure" order="2" sideWeight="0.4994824" side_tool="true" weight="0.32994792" />
       <window_info anchor="bottom" id="TODO" />
       <window_info anchor="bottom" id="File Transfer" />
-      <window_info anchor="bottom" id="Run" weight="0.3296332" />
+      <window_info active="true" anchor="bottom" id="Run" visible="true" weight="0.31708494" />
       <window_info anchor="bottom" id="TypeScript" />
       <window_info anchor="bottom" id="Version Control" order="0" />
       <window_info anchor="bottom" id="Problems View" order="1" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="2" visible="true" weight="0.3296332" />
+      <window_info anchor="bottom" id="Terminal" order="2" weight="0.3296332" />
       <window_info anchor="bottom" id="Services" order="3" weight="0.3296332" />
       <window_info anchor="bottom" id="Debug" order="4" weight="0.2765444" />
       <window_info anchor="right" id="Endpoints" />
@@ -146,7 +142,7 @@
       <recent name="$PROJECT_DIR$/src/components/modals" />
     </key>
   </component>
-  <component name="RunManager" selected="Node.js.nyafile-compiler.js">
+  <component name="RunManager" selected="npm.dev">
     <configuration name="nyafile-compiler.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/nyafile-compiler.js" working-dir="$PROJECT_DIR$/src">
       <method v="2" />
     </configuration>
@@ -172,8 +168,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Node.js.nyafile-compiler.js" />
         <item itemvalue="npm.dev" />
+        <item itemvalue="Node.js.nyafile-compiler.js" />
         <item itemvalue="npm.postinstall" />
       </list>
     </recent_temporary>
@@ -199,7 +195,9 @@
       <workItem from="1698392148881" duration="597000" />
       <workItem from="1698576317491" duration="1028000" />
       <workItem from="1698577400738" duration="6772000" />
-      <workItem from="1698592905689" duration="4052000" />
+      <workItem from="1698592905689" duration="5856000" />
+      <workItem from="1698599400466" duration="860000" />
+      <workItem from="1698660055677" duration="4626000" />
     </task>
     <task id="LOCAL-00001" summary="basic rewrite in Vite">
       <option name="closed" value="true" />
@@ -297,7 +295,15 @@
       <option name="project" value="LOCAL" />
       <updated>1697996825882</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="add scannable telegram qr code">
+      <option name="closed" value="true" />
+      <created>1698597230232</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1698597230232</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers>
       <YouTrack url="https://youtrack.litdevs.org">
         <option name="defaultSearch" value="project: q2" />
@@ -335,7 +341,9 @@
     <MESSAGE value="thank you WebStorm this was very useful (the build broke)" />
     <MESSAGE value="even worse code than the last time" />
     <MESSAGE value="improve display of oss libraries" />
-    <option name="LAST_COMMIT_MESSAGE" value="improve display of oss libraries" />
+    <MESSAGE value="add scannable telegram qr code" />
+    <MESSAGE value="allow logging into telegram" />
+    <option name="LAST_COMMIT_MESSAGE" value="allow logging into telegram" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -343,6 +351,11 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/components/nav/Header.jsx</url>
           <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/main.jsx</url>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

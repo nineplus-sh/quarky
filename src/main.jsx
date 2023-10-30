@@ -6,8 +6,6 @@ import {AppContext} from "./contexts/AppContext.js";
 import AuthenticationNeeded from "./routes/AuthenticationNeeded.jsx";
 import Root from "./routes/Root.jsx";
 import Client from "./routes/Client.jsx";
-import {TelegramClient} from "telegram";
-import {StringSession} from "telegram/sessions";
 
 /**
  * Wraps the route provider in an App, mainly so the app context can be real.
@@ -19,10 +17,11 @@ export function App(props) {
     let [nyafile, setNyafile] = useState(null);
     let [loading, setLoading] = useState(true);
     let [music, setMusic] = useState(undefined);
-    let [telegram] = useState(new TelegramClient(new StringSession(''), parseInt(import.meta.env.VITE_TG_API_ID), import.meta.env.VITE_TG_API_HASH, { connectionRetries: 5 }));
+    let [telegram, setTelegram] = useState(undefined);
+    let [accounts, setAccounts] = useState({})
 
     return (
-        <AppContext.Provider value={{loading, setLoading, nyafile, setNyafile, music, setMusic, telegram}}>
+        <AppContext.Provider value={{loading, setLoading, nyafile, setNyafile, music, setMusic, telegram, setTelegram, accounts, setAccounts}}>
             <audio src={music} autoPlay={true} loop={true}></audio>
             {props.children}
         </AppContext.Provider>
