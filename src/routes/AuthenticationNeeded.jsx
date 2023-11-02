@@ -13,15 +13,14 @@ import {useContext} from "react";
  */
 export default function AuthenticationNeeded() {
     const appContext = useContext(AppContext);
-    changeMusic("music/login");
+    if(Object.keys(appContext.accounts).length === 0) {
+        changeMusic("music/login");
+        return (<>
+            <SpaceBackground />
+            <Header title={"Welcome to Quarky~"} description={"Let's sign in to use it now!"}></Header>
 
-    console.log(appContext.telegram.session.save())
-    console.log(appContext.accounts)
-    if(Object.keys(appContext.accounts).length === 0) return (<>
-        <SpaceBackground />
-        <Header title={"Welcome to Quarky~"} description={"Let's sign in to use it now!"}></Header>
-
-        <TelegramQRCode />
-    </>)
+            <TelegramQRCode />
+        </>)
+    }
     return <Outlet />
 }

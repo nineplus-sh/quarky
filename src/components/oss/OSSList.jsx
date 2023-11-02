@@ -4,7 +4,7 @@ import OSSLibrary from "./OSSLibrary.jsx";
 
 /**
  * Renders a list of open source libraries used by Quarky.
- * @returns {JSX.Element}
+ * @returns {Array[JSX.Element]}
  * @constructor
  */
 export default function OSSList() {
@@ -17,9 +17,5 @@ export default function OSSList() {
         processedLicenses.push({name: name, license: data.licenses, description: data.description, copyright: data.copyright})
     })
 
-    return (<>
-        {processedLicenses.map((library) => (
-            <OSSLibrary key={library.name} {...library}></OSSLibrary>
-        ))}
-    </>)
+    return processedLicenses.map((library) => <OSSLibrary key={library.name} {...library}></OSSLibrary> )
 }

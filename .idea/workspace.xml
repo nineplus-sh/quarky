@@ -5,12 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b867886f-e5e7-420d-9bab-a7f0f966787d" name="Changes" comment="allow logging into telegram">
+      <change afterPath="$PROJECT_DIR$/src/components/telegram/TelegramProfilePicture.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/telegram/nav/TelegramDM.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/telegram/nav/TelegramDMSelector.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vercel.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/oss/OSSList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/oss/OSSList.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/telegram/login/TelegramQRCode.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/telegram/login/TelegramQRCode.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/routes/AuthenticationNeeded.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/AuthenticationNeeded.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/routes/Client.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/Client.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/Root.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/Root.jsx" afterDir="false" />
     </list>
     <list id="650e51f2-1d95-44bb-8bc4-d7fc5c5b3f82" name="Changes by Eier" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -113,16 +116,17 @@
       <window_info id="Commit_Guest" />
       <window_info id="Pull Requests" />
       <window_info id="Merge Requests" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.5005176" weight="0.24036458" />
-      <window_info active="true" id="Commit" order="1" visible="true" weight="0.24036458" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.5005176" visible="true" weight="0.24036458" />
+      <window_info id="Commit" order="1" weight="0.24036458" />
       <window_info id="Structure" order="2" sideWeight="0.4994824" side_tool="true" weight="0.32994792" />
       <window_info anchor="bottom" id="TODO" />
+      <window_info anchor="bottom" id="Messages" weight="0.31708494" />
       <window_info anchor="bottom" id="File Transfer" />
-      <window_info active="true" anchor="bottom" id="Run" visible="true" weight="0.31708494" />
+      <window_info active="true" anchor="bottom" id="Run" visible="true" weight="0.3296332" />
       <window_info anchor="bottom" id="TypeScript" />
       <window_info anchor="bottom" id="Version Control" order="0" />
       <window_info anchor="bottom" id="Problems View" order="1" />
-      <window_info anchor="bottom" id="Terminal" order="2" weight="0.3296332" />
+      <window_info anchor="bottom" id="Terminal" order="2" weight="0.31708494" />
       <window_info anchor="bottom" id="Services" order="3" weight="0.3296332" />
       <window_info anchor="bottom" id="Debug" order="4" weight="0.2765444" />
       <window_info anchor="right" id="Endpoints" />
@@ -197,7 +201,11 @@
       <workItem from="1698577400738" duration="6772000" />
       <workItem from="1698592905689" duration="5856000" />
       <workItem from="1698599400466" duration="860000" />
-      <workItem from="1698660055677" duration="4626000" />
+      <workItem from="1698660055677" duration="4701000" />
+      <workItem from="1698682846200" duration="573000" />
+      <workItem from="1698775812109" duration="1231000" />
+      <workItem from="1698910372167" duration="7959000" />
+      <workItem from="1698935311849" duration="1426000" />
     </task>
     <task id="LOCAL-00001" summary="basic rewrite in Vite">
       <option name="closed" value="true" />
@@ -303,7 +311,15 @@
       <option name="project" value="LOCAL" />
       <updated>1698597230232</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="allow logging into telegram">
+      <option name="closed" value="true" />
+      <created>1698665924696</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1698665924696</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers>
       <YouTrack url="https://youtrack.litdevs.org">
         <option name="defaultSearch" value="project: q2" />
@@ -354,7 +370,6 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/main.jsx</url>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>

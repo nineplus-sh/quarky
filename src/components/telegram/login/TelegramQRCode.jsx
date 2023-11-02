@@ -24,8 +24,7 @@ export default function TelegramQRCode() {
     let [qrCode, setQrCode] = useState()
 
     useEffect(() => {
-        async function getCode() {
-            console.log(appContext.telegram.connected)
+        (async () => {
             const user = await appContext.telegram.signInUserWithQrCode({
                 apiId: parseInt(import.meta.env.VITE_TG_API_ID),
                 apiHash: import.meta.env.VITE_TG_API_HASH
@@ -36,8 +35,7 @@ export default function TelegramQRCode() {
             })
             await localforage.setItem("TG_SESSION", appContext.telegram.session.save())
             appContext.setAccounts({telegram: user});
-        }
-        getCode();
+        })()
     }, []);
 
     useEffect(() => {
@@ -55,7 +53,6 @@ export default function TelegramQRCode() {
                 },
             }));
         })()
-
     }, [])
 
     useEffect(() => {

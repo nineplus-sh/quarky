@@ -1,4 +1,4 @@
-import Header from "../components/nav/Header.jsx";
+import TelegramDMSelector from "../components/telegram/nav/TelegramDMSelector.jsx";
 
 /**
  * The client screen. Unused.
@@ -6,7 +6,7 @@ import Header from "../components/nav/Header.jsx";
  * @constructor
  */
 export default function Client() {
-    return (
-        <Header title={"Garbage placeholder page"} description={"Wow this is so bowing >~>"}></Header>
-    )
+    return (<>
+        <TelegramDMSelector />
+    </>)
 }
