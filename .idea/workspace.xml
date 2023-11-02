@@ -5,11 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b867886f-e5e7-420d-9bab-a7f0f966787d" name="Changes" comment="add message fetching">
-      <change afterPath="$PROJECT_DIR$/src/components/telegram/dialogs/TelegramMessage.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/telegram/dialogs/TelegramMessage.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/nav/MessageInput.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/nav/Dialog.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/nav/Dialog.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/telegram/nav/TelegramDMSelector.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/telegram/nav/TelegramDMSelector.jsx" afterDir="false" />
     </list>
     <list id="650e51f2-1d95-44bb-8bc4-d7fc5c5b3f82" name="Changes by Eier" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -202,7 +200,7 @@
       <workItem from="1698682846200" duration="573000" />
       <workItem from="1698775812109" duration="1231000" />
       <workItem from="1698910372167" duration="7959000" />
-      <workItem from="1698935311849" duration="14120000" />
+      <workItem from="1698935311849" duration="15008000" />
     </task>
     <task id="LOCAL-00001" summary="basic rewrite in Vite">
       <option name="closed" value="true" />
@@ -340,7 +338,15 @@
       <option name="project" value="LOCAL" />
       <updated>1698954039250</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="add message fetching">
+      <option name="closed" value="true" />
+      <created>1698957563143</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1698957563143</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers>
       <YouTrack url="https://youtrack.litdevs.org">
         <option name="defaultSearch" value="project: q2" />
