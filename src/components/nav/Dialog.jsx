@@ -1,8 +1,22 @@
-import {useContext} from "react";
+import {useContext, useEffect, useState} from "react";
 import {AppContext} from "../../contexts/AppContext.js";
+import {useParams} from "react-router-dom";
+import TelegramMessage from "../telegram/dialogs/TelegramMessage.jsx";
 
 export default function Dialog() {
     const appContext = useContext(AppContext);
+    let { dialogId } = useParams();
+    const [messages, setMessages] = useState([])
 
-    return <h1>Fuckin dialog!! rawr</h1>
+    useEffect(() => {
+        (async () => {
+            const _messages = await appContext.telegram.getMessages(dialogId, {limit: 50})
+            setMessages(_messages.reverse())
+        })()
+    }, []);
+
+    return (<>
+        {messages.map((message) => <TelegramMessage message={message} key={message.date} />)}
+        <hr/>
+    </>)
 }
