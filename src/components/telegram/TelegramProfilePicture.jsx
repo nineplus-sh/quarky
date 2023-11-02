@@ -1,6 +1,7 @@
-import {useContext, useLayoutEffect, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import {AppContext} from "../../contexts/AppContext.js";
 import {Api, utils} from "telegram";
+import styles from "./TelegramProfilePicture.module.css"
 
 /**
  * A Telegram DM.
@@ -10,7 +11,7 @@ import {Api, utils} from "telegram";
 export default function TelegramProfilePicture({photo, peer}) {
     const appContext = useContext(AppContext);
     const [img, setImg] = useState(photo.strippedThumb ? utils.strippedPhotoToJpg(photo.strippedThumb) : undefined);
-    useLayoutEffect(() => {
+    useEffect(() => {
         (async () => {
             let photoLocation = new Api.InputPeerPhotoFileLocation({
                 photoId: photo.photoId.value,
@@ -20,5 +21,5 @@ export default function TelegramProfilePicture({photo, peer}) {
         })()
     }, []);
 
-    return <img src={`data:image/jpeg;base64,${img?.toString("base64")}`} width={64} height={64} />
+    return <img src={`data:image/jpeg;base64,${img?.toString("base64")}`} className={styles.pfp} />
 }

@@ -4,16 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b867886f-e5e7-420d-9bab-a7f0f966787d" name="Changes" comment="allow logging into telegram">
-      <change afterPath="$PROJECT_DIR$/src/components/telegram/TelegramProfilePicture.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/telegram/nav/TelegramDM.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/telegram/nav/TelegramDMSelector.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vercel.json" afterDir="false" />
+    <list default="true" id="b867886f-e5e7-420d-9bab-a7f0f966787d" name="Changes" comment="add dm list">
+      <change afterPath="$PROJECT_DIR$/src/components/telegram/TelegramProfilePicture.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/telegram/nav/TelegramDM.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/oss/OSSList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/oss/OSSList.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/telegram/login/TelegramQRCode.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/telegram/login/TelegramQRCode.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/AuthenticationNeeded.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/AuthenticationNeeded.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/Client.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/Client.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/telegram/TelegramProfilePicture.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/telegram/TelegramProfilePicture.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/telegram/nav/TelegramDM.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/telegram/nav/TelegramDM.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/telegram/nav/TelegramDMSelector.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/telegram/nav/TelegramDMSelector.jsx" afterDir="false" />
     </list>
     <list id="650e51f2-1d95-44bb-8bc4-d7fc5c5b3f82" name="Changes by Eier" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -26,8 +24,8 @@
       <list>
         <option value="TypeScript File" />
         <option value="TypeScript JSX File" />
-        <option value="CSS File" />
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -205,7 +203,7 @@
       <workItem from="1698682846200" duration="573000" />
       <workItem from="1698775812109" duration="1231000" />
       <workItem from="1698910372167" duration="7959000" />
-      <workItem from="1698935311849" duration="1426000" />
+      <workItem from="1698935311849" duration="4584000" />
     </task>
     <task id="LOCAL-00001" summary="basic rewrite in Vite">
       <option name="closed" value="true" />
@@ -319,7 +317,15 @@
       <option name="project" value="LOCAL" />
       <updated>1698665924696</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="add dm list">
+      <option name="closed" value="true" />
+      <created>1698936836162</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1698936836162</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers>
       <YouTrack url="https://youtrack.litdevs.org">
         <option name="defaultSearch" value="project: q2" />
@@ -359,7 +365,8 @@
     <MESSAGE value="improve display of oss libraries" />
     <MESSAGE value="add scannable telegram qr code" />
     <MESSAGE value="allow logging into telegram" />
-    <option name="LAST_COMMIT_MESSAGE" value="allow logging into telegram" />
+    <MESSAGE value="add dm list" />
+    <option name="LAST_COMMIT_MESSAGE" value="add dm list" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

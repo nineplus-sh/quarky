@@ -17,5 +17,5 @@ export default function TelegramDMSelector() {
         })()
     }, []);
 
-    return dms.map((dm) => <><TelegramDM name={dm.name} photo={dm.entity.photo} key={dm.id.value} peer={dm.inputEntity} /><br/></>)
+    return dms.map((dm) => <TelegramDM name={dm.name} photo={dm.entity.photo} key={dm.id.value} peer={dm.inputEntity} message={dm.message.message} />)
 }
