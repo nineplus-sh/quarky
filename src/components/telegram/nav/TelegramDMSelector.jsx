@@ -2,6 +2,7 @@ import {AppContext} from "../../../contexts/AppContext.js";
 import {useContext, useLayoutEffect, useState} from "react";
 import TelegramDM from "./TelegramDM.jsx";
 
+
 /**
  * Allows you to select a Telegram DM.
  * @returns {Array[JSX.Element]}
@@ -17,5 +18,5 @@ export default function TelegramDMSelector() {
         })()
     }, []);
 
-    return dms.map((dm) => <TelegramDM name={dm.name} photo={dm.entity.photo} key={dm.id.value} peer={dm.inputEntity} message={dm.message.message} />)
+    return dms.map((dm) => <TelegramDM name={dm.name} photo={dm.entity.photo} key={dm.id.value} peer={dm.inputEntity} message={dm.message.message} id={dm.id.value} />)
 }

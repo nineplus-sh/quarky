@@ -6,6 +6,8 @@ import {AppContext} from "./contexts/AppContext.js";
 import AuthenticationNeeded from "./routes/AuthenticationNeeded.jsx";
 import Root from "./routes/Root.jsx";
 import Client from "./routes/Client.jsx";
+import Quark from "./components/nav/Quark.jsx";
+import Dialog from "./components/nav/Dialog.jsx";
 
 /**
  * Wraps the route provider in an App, mainly so the app context can be real.
@@ -33,7 +35,11 @@ const router = createBrowserRouter(
     createRoutesFromElements(
         <Route path="/" element={<Root />}>
             <Route path="/" element={<AuthenticationNeeded />}>
-                <Route path="/" element={<Client />}  />
+                <Route path="/" element={<Client />} >
+                    <Route path="/:quarkId" element={<Quark />} >
+                        <Route path="/:quarkId/:dialogId" element={<Dialog />} />
+                    </Route>
+                </Route>
             </Route>
         </Route>
     )
