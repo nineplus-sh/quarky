@@ -1,6 +1,12 @@
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 import ReactDOM from 'react-dom/client'
-import {createBrowserRouter, createRoutesFromElements, Route, RouterProvider} from "react-router-dom";
+import {
+    createBrowserRouter,
+    createRoutesFromElements, matchRoutes,
+    Route,
+    RouterProvider, useLocation,
+    useNavigationType
+} from "react-router-dom";
 import './index.css'
 import {AppContext} from "./contexts/AppContext.js";
 import AuthenticationNeeded from "./routes/AuthenticationNeeded.jsx";
@@ -8,6 +14,31 @@ import Root from "./routes/Root.jsx";
 import Client from "./routes/Client.jsx";
 import Quark from "./components/nav/Quark.jsx";
 import Dialog from "./components/nav/Dialog.jsx";
+import * as Sentry from "@sentry/react";
+
+Sentry.init({
+    dsn: "https://901c666ed03942d560e61928448bcf68@sentry.yggdrasil.cat/5",
+    environment: import.meta.env.MODE || "development",
+    integrations: [
+        new Sentry.BrowserTracing({
+            // Set 'tracePropagationTargets' to control for which URLs distributed tracing should be enabled
+            tracePropagationTargets: ["localhost"],
+            routingInstrumentation: Sentry.reactRouterV6Instrumentation(
+                useEffect,
+                useLocation,
+                useNavigationType,
+                createRoutesFromElements,
+                matchRoutes
+            ),
+        }),
+        new Sentry.Replay(),
+    ],
+    // Performance Monitoring
+    tracesSampleRate: 1.0, // Capture 100% of the transactions
+    // Session Replay
+    replaysSessionSampleRate: 0.1, // This sets the sample rate at 10%. You may want to change it to 100% while in development and then sample at a lower rate in production.
+    replaysOnErrorSampleRate: 1.0, // If you're not already sampling the entire session, change the sample rate to 100% when sampling sessions where errors occur.
+});
 
 /**
  * Wraps the route provider in an App, mainly so the app context can be real.
@@ -21,9 +52,10 @@ export function App(props) {
     let [music, setMusic] = useState(undefined);
     let [telegram, setTelegram] = useState(undefined);
     let [accounts, setAccounts] = useState({})
+    let [messageCache, setMessageCache] = useState({})
 
     return (
-        <AppContext.Provider value={{loading, setLoading, nyafile, setNyafile, music, setMusic, telegram, setTelegram, accounts, setAccounts}}>
+        <AppContext.Provider value={{loading, setLoading, nyafile, setNyafile, music, setMusic, telegram, setTelegram, accounts, setAccounts, messageCache, setMessageCache}}>
             <audio src={music} autoPlay={true} loop={true}></audio>
             {props.children}
         </AppContext.Provider>
@@ -31,7 +63,8 @@ export function App(props) {
 }
 
 /* The router. In the words of Emilia, it routes. Wow... */
-const router = createBrowserRouter(
+const sentryCreateBrowserRouter = Sentry.wrapCreateBrowserRouter(createBrowserRouter);
+const router = sentryCreateBrowserRouter(
     createRoutesFromElements(
         <Route path="/" element={<Root />}>
             <Route path="/" element={<AuthenticationNeeded />}>
