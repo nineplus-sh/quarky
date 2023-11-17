@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b867886f-e5e7-420d-9bab-a7f0f966787d" name="Changes" comment="fix new message handler">
+    <list default="true" id="b867886f-e5e7-420d-9bab-a7f0f966787d" name="Changes" comment="fix outgoing new message handler">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/nav/MessageInput.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/nav/MessageInput.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/Root.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/Root.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/nav/DialogMessages.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/nav/DialogMessages.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/telegram/nav/TelegramDM.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/telegram/nav/TelegramDM.jsx" afterDir="false" />
     </list>
     <list id="650e51f2-1d95-44bb-8bc4-d7fc5c5b3f82" name="Changes by Eier" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -204,7 +204,7 @@
       <workItem from="1699007332305" duration="6423000" />
       <workItem from="1699635748475" duration="866000" />
       <workItem from="1699636637538" duration="2147000" />
-      <workItem from="1700257723318" duration="1910000" />
+      <workItem from="1700257723318" duration="2501000" />
     </task>
     <task id="LOCAL-00001" summary="basic rewrite in Vite">
       <option name="closed" value="true" />
@@ -374,7 +374,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700258704344</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="fix outgoing new message handler">
+      <option name="closed" value="true" />
+      <created>1700259875707</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1700259875707</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers>
       <YouTrack url="https://youtrack.litdevs.org">
         <option name="defaultSearch" value="project: q2" />
@@ -421,7 +429,8 @@
     <MESSAGE value="add message input box" />
     <MESSAGE value="add diagnostics (EasyPrivacy users will hate this)" />
     <MESSAGE value="fix new message handler" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix new message handler" />
+    <MESSAGE value="fix outgoing new message handler" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix outgoing new message handler" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

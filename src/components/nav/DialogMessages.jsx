@@ -22,7 +22,6 @@ export default function DialogMessages() {
     }, [dialogId])
 
     useEffect(() => {
-        console.log(appContext.messageCache)
         if(!appContext.messageCache[dialogId]) return setMessages([]);
         setMessages(appContext.messageCache[dialogId].sort((a, b) => a.date - b.date))
     }, [dialogId, appContext.messageCache])
