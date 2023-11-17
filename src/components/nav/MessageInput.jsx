@@ -9,9 +9,17 @@ export default function MessageInput() {
 
     return (<form onSubmit={async (e) => {
         e.preventDefault();
-        await appContext.telegram.sendMessage(dialogId, {message: message});
+        const newMessage = await appContext.telegram.sendMessage(dialogId, {message: message});
+        let source = newMessage.chatId.value;
+        appContext.setMessageCache(previousValue => {
+            previousValue = { ...previousValue }
+            if(!previousValue[source]) previousValue[source] = [];
+            previousValue[source].push(newMessage)
+            return previousValue;
+        });
+        setMessage("")
     }}>
-        <input type={"text"} onInput={(e) => setMessage(e.target.value)} />
+        <input type={"text"} value={message} onInput={(e) => setMessage(e.target.value)} />
         <input type={"submit"} />
     </form>)
 }

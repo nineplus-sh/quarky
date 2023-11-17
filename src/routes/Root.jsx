@@ -1,4 +1,4 @@
-import {Outlet, useParams} from "react-router-dom";
+import {Outlet} from "react-router-dom";
 import {AppContext} from "../contexts/AppContext.js";
 import {useContext, useEffect} from "react";
 import Loader from "./Loader.jsx";
@@ -33,8 +33,7 @@ export default function Root() {
             await telegramClient.connect();
 
             if(await telegramClient.isUserAuthorized()) appContext.setAccounts({telegram: await telegramClient.getMe()})
-            telegramClient.addEventHandler(newMessageHandler, new NewMessage({incoming: true}));
-            telegramClient.addEventHandler(newMessageHandler, new NewMessage({outgoing: true}));
+            telegramClient.addEventHandler(newMessageHandler, new NewMessage({}));
 
             const nyafile = new NyaFile();
             await nyafile.load("/quarky.nya", true);
