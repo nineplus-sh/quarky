@@ -5,14 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b867886f-e5e7-420d-9bab-a7f0f966787d" name="Changes" comment="add diagnostics (EasyPrivacy users will hate this)">
-      <change afterPath="$PROJECT_DIR$/src/components/nav/DialogMessages.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bun.lockb" beforeDir="false" afterPath="$PROJECT_DIR$/bun.lockb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/_nyafile/data/licenses.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/_nyafile/data/licenses.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/nav/Dialog.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/nav/Dialog.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/telegram/dialogs/TelegramMessage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/telegram/dialogs/TelegramMessage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/telegram/nav/TelegramDMSelector.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/telegram/nav/TelegramDMSelector.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/routes/Root.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/Root.jsx" afterDir="false" />
     </list>
     <list id="650e51f2-1d95-44bb-8bc4-d7fc5c5b3f82" name="Changes by Eier" comment="" />
@@ -122,11 +116,11 @@
       <window_info anchor="bottom" id="TODO" />
       <window_info anchor="bottom" id="Messages" weight="0.31708494" />
       <window_info anchor="bottom" id="File Transfer" />
-      <window_info active="true" anchor="bottom" id="Run" visible="true" />
+      <window_info anchor="bottom" id="Run" />
       <window_info anchor="bottom" id="TypeScript" />
       <window_info anchor="bottom" id="Version Control" order="0" />
       <window_info anchor="bottom" id="Problems View" order="1" />
-      <window_info anchor="bottom" id="Terminal" order="2" weight="0.33028847" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="2" visible="true" weight="0.33028847" />
       <window_info anchor="bottom" id="Services" order="3" weight="0.3296332" />
       <window_info anchor="bottom" id="Debug" order="4" weight="0.2765444" />
       <window_info anchor="right" id="Endpoints" />
@@ -209,7 +203,8 @@
       <workItem from="1698935311849" duration="15629000" />
       <workItem from="1699007332305" duration="6423000" />
       <workItem from="1699635748475" duration="866000" />
-      <workItem from="1699636637538" duration="1244000" />
+      <workItem from="1699636637538" duration="2147000" />
+      <workItem from="1700257723318" duration="722000" />
     </task>
     <task id="LOCAL-00001" summary="basic rewrite in Vite">
       <option name="closed" value="true" />
@@ -363,7 +358,15 @@
       <option name="project" value="LOCAL" />
       <updated>1698959004406</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="add diagnostics (EasyPrivacy users will hate this)">
+      <option name="closed" value="true" />
+      <created>1699638148533</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1699638148533</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers>
       <YouTrack url="https://youtrack.litdevs.org">
         <option name="defaultSearch" value="project: q2" />

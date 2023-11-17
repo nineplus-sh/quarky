@@ -17,8 +17,7 @@ export default function Root() {
     let appContext = useContext(AppContext);
 
     function newMessageHandler(event) {
-        console.log(event.message)
-        let source = event.message._chat.id.value;
+        let source = event.message.chatId.value;
         appContext.setMessageCache(previousValue => {
             previousValue = { ...previousValue }
             if(!previousValue[source]) previousValue[source] = [];

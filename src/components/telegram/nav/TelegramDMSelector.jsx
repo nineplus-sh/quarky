@@ -15,7 +15,6 @@ export default function TelegramDMSelector() {
     useLayoutEffect(() => {
         (async () => {
             setDms(await appContext.telegram.getDialogs({}));
-            console.log((await appContext.telegram.getDialogs({}))[0])
         })()
     }, []);
 
