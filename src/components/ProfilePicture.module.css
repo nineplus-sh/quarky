@@ -1,0 +1,24 @@
+.pfp {
+    width: 64px;
+    height: 64px;
+}
+
+.petting {
+    display: inline-block;
+    cursor: grab;
+    animation: petting 1s infinite;
+}
+@keyframes petting {
+    0% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(-20deg);
+    }
+    50% {
+        transform: rotate(0deg);
+    }
+    75% {
+        transform: rotate(20deg);
+    }
+}

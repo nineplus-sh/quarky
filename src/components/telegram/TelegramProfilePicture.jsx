@@ -1,7 +1,7 @@
 import {useContext, useEffect, useState} from "react";
 import {AppContext} from "../../contexts/AppContext.js";
 import {Api, utils} from "telegram";
-import styles from "./TelegramProfilePicture.module.css"
+import ProfilePicture from "../ProfilePicture.jsx";
 
 /**
  * A Telegram DM.
@@ -21,5 +21,5 @@ export default function TelegramProfilePicture({photo, peer}) {
         })()
     }, []);
 
-    return <img src={`data:image/jpeg;base64,${img?.toString("base64")}`} className={styles.pfp} />
+    return <ProfilePicture src={`data:image/jpeg;base64,${img?.toString("base64")}`} />
 }
