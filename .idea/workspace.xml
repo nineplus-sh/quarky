@@ -5,15 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b867886f-e5e7-420d-9bab-a7f0f966787d" name="Changes" comment="add profile picture petting">
-      <change afterPath="$PROJECT_DIR$/src/_nyafile/sfx/purr.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ProfilePicture.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/_nyafile/img/daturyok.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Datsuryoku.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bun.lockb" beforeDir="false" afterPath="$PROJECT_DIR$/bun.lockb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/_nyafile/data/licenses.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/_nyafile/data/licenses.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/telegram/TelegramProfilePicture.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/telegram/TelegramProfilePicture.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/telegram/TelegramProfilePicture.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ProfilePicture.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/telegram/dialogs/TelegramMessage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/telegram/dialogs/TelegramMessage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modals/OSSModal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modals/OSSModal.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/routes/Root.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/Root.jsx" afterDir="false" />
     </list>
     <list id="650e51f2-1d95-44bb-8bc4-d7fc5c5b3f82" name="Changes by Eier" comment="" />
@@ -214,7 +213,8 @@
       <workItem from="1699636637538" duration="2147000" />
       <workItem from="1700257723318" duration="3189000" />
       <workItem from="1700299890959" duration="780000" />
-      <workItem from="1700390559844" duration="2282000" />
+      <workItem from="1700390559844" duration="5267000" />
+      <workItem from="1700413665405" duration="488000" />
     </task>
     <task id="LOCAL-00001" summary="basic rewrite in Vite">
       <option name="closed" value="true" />
@@ -408,7 +408,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700260818772</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="add profile picture petting">
+      <option name="closed" value="true" />
+      <created>1700392853131</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1700392853131</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers>
       <YouTrack url="https://youtrack.litdevs.org">
         <option name="defaultSearch" value="project: q2" />

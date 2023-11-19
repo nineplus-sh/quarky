@@ -39,6 +39,7 @@ export default function Root() {
             await nyafile.load("/quarky.nya", true);
 
             nyafile.queueCache("data/licenses", "text");
+            nyafile.queueCache("img/daturyok")
             nyafile.queueCache("img/stars");
             nyafile.queueCache("img/quarky");
             nyafile.queueCache("music/login");

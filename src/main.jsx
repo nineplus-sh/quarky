@@ -15,6 +15,7 @@ import Client from "./routes/Client.jsx";
 import Quark from "./components/nav/Quark.jsx";
 import Dialog from "./components/nav/Dialog.jsx";
 import * as Sentry from "@sentry/react";
+import { FlagProvider } from '@unleash/proxy-client-react';
 
 Sentry.init({
     dsn: "https://901c666ed03942d560e61928448bcf68@sentry.yggdrasil.cat/5",
@@ -39,6 +40,13 @@ Sentry.init({
     replaysSessionSampleRate: 0.1, // This sets the sample rate at 10%. You may want to change it to 100% while in development and then sample at a lower rate in production.
     replaysOnErrorSampleRate: 1.0, // If you're not already sampling the entire session, change the sample rate to 100% when sampling sessions where errors occur.
 });
+
+const unleashConfig = {
+    url: "https://feature-gacha.litdevs.org/api/frontend", // Your front-end API URL or the Unleash proxy's URL (https://<proxy-url>/proxy)
+    clientKey: import.meta.env.MODE === "production" ? "default:production.da748f8d265a85d1b487cd21ab7ead43596aaeb8f7b3f5a70f606457" : "default:development.1166a6d9ad3507ff9e5df9e0ee2a308a449da96f191909e97f00f2f2", // A client-side API token OR one of your proxy's designated client keys (previously known as proxy secrets)
+    refreshInterval: 15, // How often (in seconds) the client should poll the proxy for updates
+    appName: 'quarky2', // The name of your application. It's only used for identifying your application
+};
 
 /**
  * Wraps the route provider in an App, mainly so the app context can be real.
@@ -80,8 +88,10 @@ const router = sentryCreateBrowserRouter(
 
 ReactDOM.createRoot(document.getElementById('root')).render(
     //<React.StrictMode>
-        <App>
-            <RouterProvider router={router} />
-        </App>
+        <FlagProvider config={unleashConfig}>
+            <App>
+                <RouterProvider router={router} />
+            </App>
+        </FlagProvider>
     //</React.StrictMode>,
 )
