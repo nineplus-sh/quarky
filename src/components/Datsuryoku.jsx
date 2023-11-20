@@ -1,6 +1,5 @@
-import {AppContext} from "../contexts/AppContext.js";
-import {useContext} from "react";
 import { useFlag } from '@unleash/proxy-client-react';
+import NyafileImage from "./nyafile/NyafileImage.jsx";
 
 /**
  * 「日常に疲れたとき脱力する為のバナー」
@@ -9,9 +8,8 @@ import { useFlag } from '@unleash/proxy-client-react';
  * @constructor
  */
 export default function Datsuryoku() {
-    const appContext = useContext(AppContext);
     const useDirectLink = useFlag('Q2_DatsuryokuLink');
     return <a href={useDirectLink ? "http://stormypetrel.sakura.ne.jp/daturyoku.htm" : "https://web.archive.org/web/20231119170958/http://stormypetrel.sakura.ne.jp/daturyoku.htm"}>
-        <img src={appContext.nyafile.getCachedData("img/daturyok")} />
+        <NyafileImage src={"img/daturyok"} />
     </a>
 }

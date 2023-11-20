@@ -1,6 +1,6 @@
 import styles from "./Header.module.css"
 import NyafileImage from "../nyafile/NyafileImage.jsx";
-import OSSModal from "../modals/OSSModal.jsx";
+import CreditsModal from "../modals/CreditsModal.jsx";
 import {useState, useContext} from "react";
 import {AppContext} from "../../contexts/AppContext.js";
 
@@ -12,12 +12,12 @@ import {AppContext} from "../../contexts/AppContext.js";
  * @constructor
  */
 export default function Header({title, description}) {
-    const [ossModalOpen, setOssModalOpen] = useState(false);
+    const [creditsModalOpen, setCreditsModalOpen] = useState(false);
     const appContext = useContext(AppContext)
 
     function toggleModal() {
-        setOssModalOpen(!ossModalOpen);
-        new Audio(appContext.nyafile.getCachedData(`sfx/info-modal-pop-${ossModalOpen ? "out" : "in"}`)).play();
+        setCreditsModalOpen(!creditsModalOpen);
+        new Audio(appContext.nyafile.getCachedData(`sfx/info-modal-pop-${creditsModalOpen ? "out" : "in"}`)).play();
     }
 
     return (<>
@@ -31,6 +31,6 @@ export default function Header({title, description}) {
         </div>
         <div className={styles.headerShadow}></div>
 
-        <OSSModal open={ossModalOpen} closer={toggleModal}/>
+        <CreditsModal open={creditsModalOpen} closer={toggleModal}/>
     </>);
 }
