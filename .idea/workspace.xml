@@ -4,7 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b867886f-e5e7-420d-9bab-a7f0f966787d" name="Changes" comment="eat bun.lockb" />
+    <list default="true" id="b867886f-e5e7-420d-9bab-a7f0f966787d" name="Changes" comment="Add bad Telegram 2FA handler and special thanks section">
+      <change afterPath="$PROJECT_DIR$/src/_nyafile/img/blobbie.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/_nyafile/img/bye-man-justthetv.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/_nyafile/img/noicon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/_nyafile/img/quarkypixel.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/_nyafile/sfx/dialog-pop-in.wav" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bun.lockb" beforeDir="false" afterPath="$PROJECT_DIR$/bun.lockb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/_nyafile/img/quarkypixel.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modals/CreditsModal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modals/CreditsModal.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/telegram/login/TelegramQRCode.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/telegram/login/TelegramQRCode.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/nyafile-compiler.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/nyafile-compiler.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/AuthenticationNeeded.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/AuthenticationNeeded.jsx" afterDir="false" />
+    </list>
     <list id="650e51f2-1d95-44bb-8bc4-d7fc5c5b3f82" name="Changes by Eier" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -209,6 +223,7 @@
       <workItem from="1700492133176" duration="2905000" />
       <workItem from="1700568688821" duration="714000" />
       <workItem from="1700569431532" duration="1854000" />
+      <workItem from="1700591262270" duration="5259000" />
     </task>
     <task id="LOCAL-00001" summary="basic rewrite in Vite">
       <option name="closed" value="true" />
@@ -474,7 +489,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Fix lies" />
     <MESSAGE value="baka software" />
     <MESSAGE value="add OSS notices and music&#10;&#10;#q2-6 State Done" />
     <MESSAGE value="thank you WebStorm this was very useful (the build broke)" />
@@ -499,7 +513,8 @@
     <MESSAGE value="add sentry plugin" />
     <MESSAGE value="add sentry as trusted deps" />
     <MESSAGE value="eat bun.lockb" />
-    <option name="LAST_COMMIT_MESSAGE" value="eat bun.lockb" />
+    <MESSAGE value="Add bad Telegram 2FA handler and special thanks section" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add bad Telegram 2FA handler and special thanks section" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -510,7 +525,6 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/vite.config.js</url>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>

@@ -19,6 +19,11 @@ export default function CreditsModal(props) {
             <p style={{margin: 0}}><NyafileImage src={"img/hakase"} /> Hakase software © 2023</p>
             <p style={{margin: 0}}><NyafileImage src={"img/quarkypixel"} /> Version {version}</p>
             <hr/>
+            <h2 style={{margin: 0}}>Special thanks</h2>
+            <p style={{margin: 0}}><NyafileImage src={"img/blobbie"} /> Emilia for fixing various instances of horrendous code</p>
+            <p style={{margin: 0}}><NyafileImage src={"img/bye-man-justthetv"} /> Bye for giving free tummy rubs</p>
+            <p style={{margin: 0}}><NyafileImage src={"img/noicon"} /> Synne for finding a mysterious bug I didn&apos;t fix</p>
+            <hr/>
             <p>Quarky uses music by <a href={"https://www.hurtrecord.com/"}>HURT RECORD</a> and sound effects from <a href={"https://github.com/ppy/osu-resources"}>osu!resources</a>. Quarky also uses open source libraries:</p>
             <OSSList />
         </GenericModal>

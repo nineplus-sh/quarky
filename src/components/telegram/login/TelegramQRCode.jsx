@@ -2,6 +2,7 @@ import {AppContext} from "../../../contexts/AppContext.js";
 import {useContext, useEffect, useRef, useState} from "react";
 import QRCodeStyling from "qr-code-styling";
 import localforage from "localforage";
+import * as Sentry from "@sentry/react";
 
 
 // i love u
@@ -25,16 +26,33 @@ export default function TelegramQRCode() {
 
     useEffect(() => {
         (async () => {
-            const user = await appContext.telegram.signInUserWithQrCode({
-                apiId: parseInt(import.meta.env.VITE_TG_API_ID),
-                apiHash: import.meta.env.VITE_TG_API_HASH
-            }, {
-                qrCode: async (code) => {
-                    setUrl(`tg://login?token=${base64url_encode(code.token)}`);
+            try {
+                const user = await appContext.telegram.signInUserWithQrCode({
+                    apiId: parseInt(import.meta.env.VITE_TG_API_ID),
+                    apiHash: import.meta.env.VITE_TG_API_HASH
+                }, {
+                    qrCode: async (code) => {
+                        setUrl(`tg://login?token=${base64url_encode(code.token)}`);
+                    }
+                })
+                await localforage.setItem("TG_SESSION", appContext.telegram.session.save())
+                appContext.setAccounts({telegram: user});
+            } catch(e) {
+                if(e.message === "Account has 2FA enabled.") {
+                    const user = await appContext.telegram.signInWithPassword({
+                        apiId: parseInt(import.meta.env.VITE_TG_API_ID),
+                        apiHash: import.meta.env.VITE_TG_API_HASH
+                    }, {
+                        password: function(hint){return prompt(`Your account has Telegram 2FA enabled. Please enter your password.\nHint: ${hint}`);},
+                        onError: function(e) {Sentry.captureException(e);alert("Failed to log in. This error has been reported to Quarky developers.");}
+                    })
+                    await localforage.setItem("TG_SESSION", appContext.telegram.session.save())
+                    appContext.setAccounts({telegram: user});
+                } else {
+                    Sentry.captureException(e);
+                    alert("Failed to log in. This error has been reported to Quarky developers.");
                 }
-            })
-            await localforage.setItem("TG_SESSION", appContext.telegram.session.save())
-            appContext.setAccounts({telegram: user});
+            }
         })()
     }, []);
 
