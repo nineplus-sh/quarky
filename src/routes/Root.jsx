@@ -8,9 +8,6 @@ import {StringSession} from "telegram/sessions";
 import localforage from "localforage";
 import { NewMessage } from "telegram/events";
 
-
-const telegramClient = new TelegramClient(new StringSession(localStorage.getItem("TG_SESSION")), parseInt(import.meta.env.VITE_TG_API_ID), import.meta.env.VITE_TG_API_HASH, { connectionRetries: 5, autoReconnect: false });
-
 /**
  * The root. Wraps later routes so that Nyafiles can be real.
  * @returns {JSX.Element}
@@ -31,7 +28,7 @@ export default function Root() {
 
     useEffect(() => {
         async function loadNyafile() {
-            console.warn("Creating new TelegramClient")
+            const telegramClient = new TelegramClient(new StringSession(await localforage.getItem("TG_SESSION")), parseInt(import.meta.env.VITE_TG_API_ID), import.meta.env.VITE_TG_API_HASH, { connectionRetries: 5 });
             appContext.setTelegram(telegramClient);
             await telegramClient.connect();
 

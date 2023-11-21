@@ -33,7 +33,7 @@ export default function TelegramQRCode() {
                     setUrl(`tg://login?token=${base64url_encode(code.token)}`);
                 }
             })
-            localStorage.setItem("TG_SESSION", appContext.telegram.session.save())
+            await localforage.setItem("TG_SESSION", appContext.telegram.session.save())
             appContext.setAccounts({telegram: user});
         })()
     }, []);
