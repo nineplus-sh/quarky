@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b867886f-e5e7-420d-9bab-a7f0f966787d" name="Changes" comment="add sentry as trusted deps">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-    </list>
+    <list default="true" id="b867886f-e5e7-420d-9bab-a7f0f966787d" name="Changes" comment="eat bun.lockb" />
     <list id="650e51f2-1d95-44bb-8bc4-d7fc5c5b3f82" name="Changes by Eier" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,11 +112,11 @@
       <window_info anchor="bottom" id="TODO" />
       <window_info anchor="bottom" id="Messages" weight="0.33028847" />
       <window_info anchor="bottom" id="File Transfer" />
-      <window_info active="true" anchor="bottom" id="Run" visible="true" weight="0.33028847" />
+      <window_info anchor="bottom" id="Run" weight="0.33028847" />
       <window_info anchor="bottom" id="TypeScript" />
       <window_info anchor="bottom" id="Version Control" order="0" />
-      <window_info anchor="bottom" id="Problems View" order="1" />
-      <window_info anchor="bottom" id="Terminal" order="2" weight="0.33028847" />
+      <window_info anchor="bottom" id="Problems View" order="1" weight="0.33028847" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="2" visible="true" weight="0.33028847" />
       <window_info anchor="bottom" id="Services" order="3" weight="0.33028847" />
       <window_info anchor="bottom" id="Debug" order="4" weight="0.2765444" />
       <window_info anchor="right" id="Endpoints" />
@@ -211,7 +208,7 @@
       <workItem from="1700473443668" duration="5611000" />
       <workItem from="1700492133176" duration="2905000" />
       <workItem from="1700568688821" duration="714000" />
-      <workItem from="1700569431532" duration="1119000" />
+      <workItem from="1700569431532" duration="1854000" />
     </task>
     <task id="LOCAL-00001" summary="basic rewrite in Vite">
       <option name="closed" value="true" />
@@ -445,7 +442,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700570551907</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="eat bun.lockb">
+      <option name="closed" value="true" />
+      <created>1700570684006</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1700570684006</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers>
       <YouTrack url="https://youtrack.litdevs.org">
         <option name="defaultSearch" value="project: q2" />
@@ -469,7 +474,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="fix" />
     <MESSAGE value="Fix lies" />
     <MESSAGE value="baka software" />
     <MESSAGE value="add OSS notices and music&#10;&#10;#q2-6 State Done" />
@@ -494,7 +498,8 @@
     <MESSAGE value="add software info to credits modal" />
     <MESSAGE value="add sentry plugin" />
     <MESSAGE value="add sentry as trusted deps" />
-    <option name="LAST_COMMIT_MESSAGE" value="add sentry as trusted deps" />
+    <MESSAGE value="eat bun.lockb" />
+    <option name="LAST_COMMIT_MESSAGE" value="eat bun.lockb" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

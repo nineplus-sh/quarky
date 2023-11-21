@@ -88,12 +88,10 @@ const router = sentryCreateBrowserRouter(
 
 ReactDOM.createRoot(document.getElementById('root')).render(
     //<React.StrictMode>
-        <Sentry.ErrorBoundary fallback={<p>An error has occurred :(</p>} showDialog>
             <FlagProvider config={unleashConfig}>
                     <App>
                         <RouterProvider router={router} />
                     </App>
             </FlagProvider>
-        </Sentry.ErrorBoundary>
     //</React.StrictMode>,
 )

@@ -7,6 +7,7 @@ import {TelegramClient} from "telegram";
 import {StringSession} from "telegram/sessions";
 import localforage from "localforage";
 import { NewMessage } from "telegram/events";
+import * as Sentry from "@sentry/react";
 
 /**
  * The root. Wraps later routes so that Nyafiles can be real.
@@ -55,5 +56,5 @@ export default function Root() {
     }, []);
 
     if(appContext.loading) return <Loader />
-    return <Outlet />
+    return <Sentry.ErrorBoundary fallback={<p>An error has occurred :(</p>} showDialog><Outlet /></Sentry.ErrorBoundary>
 }
