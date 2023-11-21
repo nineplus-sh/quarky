@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b867886f-e5e7-420d-9bab-a7f0f966787d" name="Changes" comment="add sentry plugin" />
+    <list default="true" id="b867886f-e5e7-420d-9bab-a7f0f966787d" name="Changes" comment="add sentry as trusted deps">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+    </list>
     <list id="650e51f2-1d95-44bb-8bc4-d7fc5c5b3f82" name="Changes by Eier" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -208,7 +211,7 @@
       <workItem from="1700473443668" duration="5611000" />
       <workItem from="1700492133176" duration="2905000" />
       <workItem from="1700568688821" duration="714000" />
-      <workItem from="1700569431532" duration="803000" />
+      <workItem from="1700569431532" duration="1119000" />
     </task>
     <task id="LOCAL-00001" summary="basic rewrite in Vite">
       <option name="closed" value="true" />
@@ -434,7 +437,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700570201610</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="add sentry as trusted deps">
+      <option name="closed" value="true" />
+      <created>1700570551907</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1700570551907</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers>
       <YouTrack url="https://youtrack.litdevs.org">
         <option name="defaultSearch" value="project: q2" />
@@ -458,7 +469,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="placeholder SpaceBackground" />
     <MESSAGE value="fix" />
     <MESSAGE value="Fix lies" />
     <MESSAGE value="baka software" />
@@ -483,7 +493,8 @@
     <MESSAGE value="credits modal overhaul" />
     <MESSAGE value="add software info to credits modal" />
     <MESSAGE value="add sentry plugin" />
-    <option name="LAST_COMMIT_MESSAGE" value="add sentry plugin" />
+    <MESSAGE value="add sentry as trusted deps" />
+    <option name="LAST_COMMIT_MESSAGE" value="add sentry as trusted deps" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
