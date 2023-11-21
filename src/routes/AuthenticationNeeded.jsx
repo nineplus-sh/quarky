@@ -20,6 +20,14 @@ export default function AuthenticationNeeded() {
             <Header title={"Welcome to Quarky~"} description={"Let's sign in to use it now!"}></Header>
 
             <TelegramQRCode />
+            <button
+                type="button"
+                onClick={() => {
+                    throw new Error("Sentry Test Error");
+                }}
+            >
+                Break the world
+            </button>
         </>)
     }
     return <Outlet />

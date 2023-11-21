@@ -28,6 +28,7 @@
     "unleash-proxy-client": "^3.2.0"
   },
   "devDependencies": {
+    "@sentry/vite-plugin": "^2.10.1",
     "@vitejs/plugin-basic-ssl": "^1.0.1",
     "@vitejs/plugin-react-swc": "^3.3.2",
     "adm-zip": "^0.5.10",

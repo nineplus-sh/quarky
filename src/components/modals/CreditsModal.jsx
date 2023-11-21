@@ -2,7 +2,7 @@ import OSSList from "../oss/OSSList.jsx";
 import GenericModal from "./GenericModal.jsx";
 import Datsuryoku from "../Datsuryoku.jsx";
 import NyafileImage from "../nyafile/NyafileImage.jsx";
-import {version} from "../../../package.json"
+import {version} from "../../../package.json";
 
 /**
  * A wrapper around GenericModal for the open source library notices.
