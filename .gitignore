@@ -1,4 +1,7 @@
 *.nya
+.env
+# Hakase uses bun not yanr
+yarn.lock 
 
 # Logs
 logs

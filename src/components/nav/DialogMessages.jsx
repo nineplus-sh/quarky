@@ -26,5 +26,5 @@ export default function DialogMessages() {
         setMessages(appContext.messageCache[dialogId].sort((a, b) => a.date - b.date))
     }, [dialogId, appContext.messageCache])
 
-    return messages.map((message) => <TelegramMessage message={message} key={message.date} />)
+    return messages.map((message) => {return <TelegramMessage message={message} key={message.id} />})
 }
