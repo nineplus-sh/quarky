@@ -5,19 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b867886f-e5e7-420d-9bab-a7f0f966787d" name="Changes" comment="Add bad Telegram 2FA handler and special thanks section">
-      <change afterPath="$PROJECT_DIR$/src/_nyafile/img/blobbie.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/_nyafile/img/bye-man-justthetv.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/_nyafile/img/noicon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/_nyafile/img/quarkypixel.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/_nyafile/sfx/dialog-pop-in.wav" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bun.lockb" beforeDir="false" afterPath="$PROJECT_DIR$/bun.lockb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/_nyafile/img/quarkypixel.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modals/CreditsModal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modals/CreditsModal.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/telegram/login/TelegramQRCode.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/telegram/login/TelegramQRCode.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/nyafile-compiler.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/nyafile-compiler.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/AuthenticationNeeded.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/AuthenticationNeeded.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/Root.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/Root.jsx" afterDir="false" />
     </list>
     <list id="650e51f2-1d95-44bb-8bc4-d7fc5c5b3f82" name="Changes by Eier" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -223,7 +215,7 @@
       <workItem from="1700492133176" duration="2905000" />
       <workItem from="1700568688821" duration="714000" />
       <workItem from="1700569431532" duration="1854000" />
-      <workItem from="1700591262270" duration="5259000" />
+      <workItem from="1700591262270" duration="7053000" />
     </task>
     <task id="LOCAL-00001" summary="basic rewrite in Vite">
       <option name="closed" value="true" />
@@ -465,7 +457,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700570684006</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="Add bad Telegram 2FA handler and special thanks section">
+      <option name="closed" value="true" />
+      <created>1700597206136</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1700597206136</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers>
       <YouTrack url="https://youtrack.litdevs.org">
         <option name="defaultSearch" value="project: q2" />

@@ -56,5 +56,7 @@ export default function Root() {
     }, []);
 
     if(appContext.loading) return <Loader />
-    return <Sentry.ErrorBoundary fallback={<p>An error has occurred :(</p>} showDialog><Outlet /></Sentry.ErrorBoundary>
+    return <Sentry.ErrorBoundary fallback={
+        <iframe src="https://www.youtube-nocookie.com/embed/x6LovY_DdEE?autoplay=1&rel=0&controls=0" style={{position: "fixed", width: "100%", height: "100%"}} title="pls rember.mp4" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
+    } showDialog><Outlet /></Sentry.ErrorBoundary>
 }

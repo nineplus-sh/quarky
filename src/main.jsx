@@ -19,6 +19,7 @@ import { FlagProvider } from '@unleash/proxy-client-react';
 
 Sentry.init({
     dsn: "https://901c666ed03942d560e61928448bcf68@sentry.yggdrasil.cat/5",
+    tunnel: "https://quarky.skin/diagtun",
     environment: import.meta.env.MODE || "development",
     integrations: [
         new Sentry.BrowserTracing({
