@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b867886f-e5e7-420d-9bab-a7f0f966787d" name="Changes" comment="Add better Sentry fallback and tunnel">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/telegram/dialogs/TelegramMessage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/telegram/dialogs/TelegramMessage.jsx" afterDir="false" />
-    </list>
+    <list default="true" id="b867886f-e5e7-420d-9bab-a7f0f966787d" name="Changes" comment="Avoid dumping all rendered messages in sentry :eyes:" />
     <list id="650e51f2-1d95-44bb-8bc4-d7fc5c5b3f82" name="Changes by Eier" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -212,7 +209,7 @@
       <workItem from="1700492133176" duration="2905000" />
       <workItem from="1700568688821" duration="714000" />
       <workItem from="1700569431532" duration="1854000" />
-      <workItem from="1700591262270" duration="8122000" />
+      <workItem from="1700591262270" duration="8424000" />
     </task>
     <task id="LOCAL-00001" summary="basic rewrite in Vite">
       <option name="closed" value="true" />
@@ -470,7 +467,23 @@
       <option name="project" value="LOCAL" />
       <updated>1700599026943</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="Add fallbacks for action and media messages">
+      <option name="closed" value="true" />
+      <created>1700612661575</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1700612661575</updated>
+    </task>
+    <task id="LOCAL-00034" summary="Avoid dumping all rendered messages in sentry :eyes:">
+      <option name="closed" value="true" />
+      <created>1700612858509</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1700612858509</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers>
       <YouTrack url="https://youtrack.litdevs.org">
         <option name="defaultSearch" value="project: q2" />
@@ -494,8 +507,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="add OSS notices and music&#10;&#10;#q2-6 State Done" />
-    <MESSAGE value="thank you WebStorm this was very useful (the build broke)" />
     <MESSAGE value="even worse code than the last time" />
     <MESSAGE value="improve display of oss libraries" />
     <MESSAGE value="add scannable telegram qr code" />
@@ -519,7 +530,9 @@
     <MESSAGE value="eat bun.lockb" />
     <MESSAGE value="Add bad Telegram 2FA handler and special thanks section" />
     <MESSAGE value="Add better Sentry fallback and tunnel" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add better Sentry fallback and tunnel" />
+    <MESSAGE value="Add fallbacks for action and media messages" />
+    <MESSAGE value="Avoid dumping all rendered messages in sentry :eyes:" />
+    <option name="LAST_COMMIT_MESSAGE" value="Avoid dumping all rendered messages in sentry :eyes:" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
