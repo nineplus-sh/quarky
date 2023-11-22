@@ -2,7 +2,7 @@ import TelegramProfilePicture from "../TelegramProfilePicture.jsx";
 import styles from "./TelegramDM.module.css"
 import {Link} from "react-router-dom";
 import {useEffect, useState, useContext} from "react";
-import {AppContext} from "../../../contexts/AppContext.js";
+import {AppContext} from "../../../../contexts/AppContext.js";
 
 /**
  * A Telegram DM.

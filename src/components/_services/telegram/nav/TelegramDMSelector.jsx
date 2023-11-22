@@ -1,4 +1,4 @@
-import {AppContext} from "../../../contexts/AppContext.js";
+import {AppContext} from "../../../../contexts/AppContext.js";
 import {useContext, useLayoutEffect, useState} from "react";
 import TelegramDM from "./TelegramDM.jsx";
 

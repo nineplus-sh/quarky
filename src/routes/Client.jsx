@@ -1,5 +1,5 @@
 import { useState } from "react";
-import TelegramDMSelector from "../components/telegram/nav/TelegramDMSelector.jsx";
+import TelegramDMSelector from "../components/_services/telegram/nav/TelegramDMSelector.jsx";
 import {Outlet} from "react-router-dom";
 import { ClientContext } from "../contexts/ClientContext.js";
 

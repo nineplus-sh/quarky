@@ -8,6 +8,9 @@ import {StringSession} from "telegram/sessions";
 import localforage from "localforage";
 import { NewMessage } from "telegram/events";
 import * as Sentry from "@sentry/react";
+import LQ from "../util/LQ.js";
+import localForage from "localforage";
+import {useFlag, useUnleashContext} from '@unleash/proxy-client-react';
 
 /**
  * The root. Wraps later routes so that Nyafiles can be real.
@@ -16,6 +19,10 @@ import * as Sentry from "@sentry/react";
  */
 export default function Root() {
     let appContext = useContext(AppContext);
+    const updateContext = useUnleashContext();
+
+    const hakase = useFlag("Q2_HakaseBittanBittan");
+    const mio = useFlag("Q2_MioBittanBittan");
 
     function newMessageHandler(event) {
         let source = event.message.chatId.value;
@@ -33,8 +40,19 @@ export default function Root() {
             appContext.setTelegram(telegramClient);
             await telegramClient.connect();
 
-            if(await telegramClient.isUserAuthorized()) appContext.setAccounts({telegram: await telegramClient.getMe()})
+            if(await telegramClient.isUserAuthorized()) {
+                const user = await telegramClient.getMe()
+                appContext.setAccounts({telegram: user})
+                updateContext({telegramId: user.id.value})
+            }
             telegramClient.addEventHandler(newMessageHandler, new NewMessage({}));
+
+            const localConfig = await localForage.getItem("lightquark")
+            if(localConfig?.token) {
+                const LQuserdata = await LQ("user/me", "GET");
+                appContext.setAccounts(prev => ({...prev, "lightquark": LQuserdata}))
+                updateContext({lqId: LQuserdata.response.jwtData._id})
+            }
 
             const nyafile = new NyaFile();
             await nyafile.load("/quarky.nya", true);
@@ -56,7 +74,12 @@ export default function Root() {
     }, []);
 
     if(appContext.loading) return <Loader />
+
     return <Sentry.ErrorBoundary fallback={
-        <iframe src="https://www.youtube-nocookie.com/embed/x6LovY_DdEE?autoplay=1&rel=0&controls=0" style={{position: "fixed", width: "100%", height: "100%"}} title="pls rember.mp4" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
+        <iframe src={`https://www.youtube-nocookie.com/embed/${
+            hakase ? "5wS9lOHli0c" :
+                mio ? "mXQb0P9A2jE" :
+                    "x6LovY_DdEE"
+        }?autoplay=1&rel=0&controls=0`} style={{position: "fixed", width: "100%", height: "100%"}} frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
     } showDialog><Outlet /></Sentry.ErrorBoundary>
 }

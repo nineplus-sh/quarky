@@ -1,7 +1,7 @@
 import {useContext, useEffect, useState} from "react";
 import {AppContext} from "../../contexts/AppContext.js";
 import {useParams} from "react-router-dom";
-import TelegramMessage from "../telegram/dialogs/TelegramMessage.jsx";
+import TelegramMessage from "../_services/telegram/dialogs/TelegramMessage.jsx";
 
 export default function DialogMessages() {
     const appContext = useContext(AppContext);

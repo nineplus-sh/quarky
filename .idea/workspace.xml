@@ -4,9 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b867886f-e5e7-420d-9bab-a7f0f966787d" name="Changes" comment="unignore .env (.env.local is used for private info)">
+    <list default="true" id="b867886f-e5e7-420d-9bab-a7f0f966787d" name="Changes" comment="add basic lightquark authentication">
+      <change afterPath="$PROJECT_DIR$/public/mio.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/_services/lightquark/login/LightquarkLogin.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/util/LQ.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/util/LQResponse.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/telegram/dialogs/TelegramMessage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/telegram/dialogs/TelegramMessage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/nav/DialogMessages.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/nav/DialogMessages.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/telegram/TelegramProfilePicture.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/_services/telegram/TelegramProfilePicture.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/telegram/dialogs/TelegramMessage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/_services/telegram/dialogs/TelegramMessage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/telegram/dialogs/TelegramMessage.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/_services/telegram/dialogs/TelegramMessage.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/telegram/login/TelegramQRCode.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/_services/telegram/login/TelegramQRCode.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/telegram/nav/TelegramDM.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/_services/telegram/nav/TelegramDM.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/telegram/nav/TelegramDM.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/_services/telegram/nav/TelegramDM.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/telegram/nav/TelegramDMSelector.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/_services/telegram/nav/TelegramDMSelector.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/AuthenticationNeeded.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/AuthenticationNeeded.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/Client.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/Client.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/Root.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/Root.jsx" afterDir="false" />
     </list>
     <list id="650e51f2-1d95-44bb-8bc4-d7fc5c5b3f82" name="Changes by Eier" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -109,17 +124,17 @@
       <window_info id="Commit_Guest" />
       <window_info id="Pull Requests" />
       <window_info id="Merge Requests" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.5005176" weight="0.17526042" />
-      <window_info active="true" id="Commit" order="1" visible="true" weight="0.17526042" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.5005176" visible="true" weight="0.17526042" />
+      <window_info id="Commit" order="1" weight="0.17526042" />
       <window_info id="Structure" order="2" sideWeight="0.4994824" side_tool="true" weight="0.32994792" />
       <window_info anchor="bottom" id="TODO" />
       <window_info anchor="bottom" id="Messages" weight="0.33028847" />
       <window_info anchor="bottom" id="File Transfer" />
-      <window_info anchor="bottom" id="Run" weight="0.33028847" />
+      <window_info active="true" anchor="bottom" id="Run" visible="true" weight="0.33028847" />
       <window_info anchor="bottom" id="TypeScript" />
       <window_info anchor="bottom" id="Version Control" order="0" />
       <window_info anchor="bottom" id="Problems View" order="1" weight="0.33028847" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="2" visible="true" weight="0.33028847" />
+      <window_info anchor="bottom" id="Terminal" order="2" weight="0.33028847" />
       <window_info anchor="bottom" id="Services" order="3" weight="0.33028847" />
       <window_info anchor="bottom" id="Debug" order="4" weight="0.2765444" />
       <window_info anchor="right" id="Endpoints" />
@@ -135,6 +150,7 @@
       <recent name="$PROJECT_DIR$/src/_nyafile" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components/_services" />
       <recent name="$PROJECT_DIR$/src/components" />
       <recent name="$PROJECT_DIR$/src/components/telegram/dialogs" />
       <recent name="$PROJECT_DIR$" />
@@ -212,7 +228,9 @@
       <workItem from="1700492133176" duration="2905000" />
       <workItem from="1700568688821" duration="714000" />
       <workItem from="1700569431532" duration="1854000" />
-      <workItem from="1700591262270" duration="9648000" />
+      <workItem from="1700591262270" duration="10638000" />
+      <workItem from="1700655306308" duration="525000" />
+      <workItem from="1700663635273" duration="10402000" />
     </task>
     <task id="LOCAL-00001" summary="basic rewrite in Vite">
       <option name="closed" value="true" />
@@ -494,7 +512,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700613018931</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="allow (but ignore the properties of) MessageMediaWebPage">
+      <option name="closed" value="true" />
+      <created>1700614166774</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1700614166774</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers>
       <YouTrack url="https://youtrack.litdevs.org">
         <option name="defaultSearch" value="project: q2" />
@@ -518,8 +544,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="improve display of oss libraries" />
-    <MESSAGE value="add scannable telegram qr code" />
     <MESSAGE value="allow logging into telegram" />
     <MESSAGE value="add dm list" />
     <MESSAGE value="improve dm styling" />
@@ -543,7 +567,9 @@
     <MESSAGE value="Add fallbacks for action and media messages" />
     <MESSAGE value="Avoid dumping all rendered messages in sentry :eyes:" />
     <MESSAGE value="unignore .env (.env.local is used for private info)" />
-    <option name="LAST_COMMIT_MESSAGE" value="unignore .env (.env.local is used for private info)" />
+    <MESSAGE value="allow (but ignore the properties of) MessageMediaWebPage" />
+    <MESSAGE value="add basic lightquark authentication" />
+    <option name="LAST_COMMIT_MESSAGE" value="add basic lightquark authentication" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

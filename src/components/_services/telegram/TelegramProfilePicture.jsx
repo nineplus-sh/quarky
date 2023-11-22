@@ -1,8 +1,8 @@
 import {useContext, useEffect, useState} from "react";
-import {AppContext} from "../../contexts/AppContext.js";
+import {AppContext} from "../../../contexts/AppContext.js";
 import {Api, utils} from "telegram";
-import ProfilePicture from "../ProfilePicture.jsx";
-import { ClientContext } from "../../contexts/ClientContext.js";
+import ProfilePicture from "../../ProfilePicture.jsx";
+import { ClientContext } from "../../../contexts/ClientContext.js";
 
 /**
  * A Telegram DM.

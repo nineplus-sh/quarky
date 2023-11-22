@@ -1,8 +1,9 @@
-import {AppContext} from "../../../contexts/AppContext.js";
+import {AppContext} from "../../../../contexts/AppContext.js";
 import {useContext, useEffect, useRef, useState} from "react";
 import QRCodeStyling from "qr-code-styling";
 import localforage from "localforage";
 import * as Sentry from "@sentry/react";
+import {useUnleashContext} from "@unleash/proxy-client-react";
 
 
 // i love u
@@ -20,6 +21,7 @@ function base64url_encode(buffer) {
  */
 export default function TelegramQRCode() {
     const appContext = useContext(AppContext);
+    const updateContext = useUnleashContext();
     const [url, setUrl] = useState(null);
     const ref = useRef(null);
     let [qrCode, setQrCode] = useState()
@@ -37,6 +39,7 @@ export default function TelegramQRCode() {
                 })
                 await localforage.setItem("TG_SESSION", appContext.telegram.session.save())
                 appContext.setAccounts({telegram: user});
+                updateContext({telegramId: user.id.value})
             } catch(e) {
                 if(e.message === "Account has 2FA enabled.") {
                     const user = await appContext.telegram.signInWithPassword({
@@ -48,6 +51,7 @@ export default function TelegramQRCode() {
                     })
                     await localforage.setItem("TG_SESSION", appContext.telegram.session.save())
                     appContext.setAccounts({telegram: user});
+                    updateContext({telegramId: user.id.value})
                 } else {
                     Sentry.captureException(e);
                     alert("Failed to log in. This error has been reported to Quarky developers.");

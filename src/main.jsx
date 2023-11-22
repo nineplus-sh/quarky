@@ -15,7 +15,7 @@ import Client from "./routes/Client.jsx";
 import Quark from "./components/nav/Quark.jsx";
 import Dialog from "./components/nav/Dialog.jsx";
 import * as Sentry from "@sentry/react";
-import { FlagProvider } from '@unleash/proxy-client-react';
+import {FlagProvider} from '@unleash/proxy-client-react';
 
 Sentry.init({
     dsn: "https://901c666ed03942d560e61928448bcf68@sentry.yggdrasil.cat/5",
@@ -33,7 +33,9 @@ Sentry.init({
                 matchRoutes
             ),
         }),
-        new Sentry.Replay(),
+        new Sentry.Replay({
+            useCompression: false
+        }),
     ],
     // Performance Monitoring
     tracesSampleRate: 1.0, // Capture 100% of the transactions
