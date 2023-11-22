@@ -2,7 +2,6 @@ import TelegramProfilePicture from "../TelegramProfilePicture.jsx";
 import styles from "./TelegramMessage.module.css"
 
 export default function TelegramMessage({message}) {
-    console.log(message._sender, message)
     if(message.action || message.media) {
         return (<div className={styles.message}>
             <i>This version of Quarky does not support this message.</i>
