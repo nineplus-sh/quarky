@@ -49,7 +49,7 @@ export default function Root() {
 
             const localConfig = await localForage.getItem("lightquark")
             if(localConfig?.token) {
-                const LQuserdata = await LQ("user/me", "GET");
+                const LQuserdata = await LQ("user/me");
                 appContext.setAccounts(prev => ({...prev, "lightquark": LQuserdata}))
                 updateContext({lqId: LQuserdata.response.jwtData._id})
             }

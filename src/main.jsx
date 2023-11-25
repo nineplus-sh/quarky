@@ -12,7 +12,7 @@ import {AppContext} from "./contexts/AppContext.js";
 import AuthenticationNeeded from "./routes/AuthenticationNeeded.jsx";
 import Root from "./routes/Root.jsx";
 import Client from "./routes/Client.jsx";
-import Quark from "./components/nav/Quark.jsx";
+import ChannelView from "./components/nav/ChannelView.jsx";
 import Dialog from "./components/nav/Dialog.jsx";
 import * as Sentry from "@sentry/react";
 import {FlagProvider} from '@unleash/proxy-client-react';
@@ -80,7 +80,7 @@ const router = sentryCreateBrowserRouter(
         <Route path="/" element={<Root />}>
             <Route path="/" element={<AuthenticationNeeded />}>
                 <Route path="/" element={<Client />} >
-                    <Route path="/:quarkId" element={<Quark />} >
+                    <Route path="/:quarkId" element={<ChannelView />} >
                         <Route path="/:quarkId/:dialogId" element={<Dialog />} />
                     </Route>
                 </Route>

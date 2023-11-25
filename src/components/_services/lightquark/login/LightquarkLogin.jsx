@@ -24,7 +24,7 @@ export default function LightquarkLogin() {
             localConfig.token = LQdata.response.access_token;
             await localForage.setItem("lightquark", localConfig);
 
-            const LQuserdata = await LQ("user/me", "GET");
+            const LQuserdata = await LQ("user/me");
             appContext.setAccounts(prev => ({...prev, "lightquark": LQuserdata}))
             updateContext({lqId: LQuserdata.response.jwtData._id})
         } else {

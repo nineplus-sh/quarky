@@ -10,7 +10,7 @@ import {version} from "../../package.json";
  * @param skipAuth
  * @return {Promise<APIResponse>}
  */
-export default async function LQ (apiMethod, httpMethod, body = undefined, skipAuth = false) {
+export default async function LQ (apiMethod, httpMethod = "GET", body = undefined, skipAuth = false) {
     let localConfig = await localForage.getItem("lightquark")
     if (!skipAuth && !localConfig.token) throw new Error("Missing token")
     try {

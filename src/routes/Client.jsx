@@ -2,6 +2,7 @@ import { useState } from "react";
 import TelegramDMSelector from "../components/_services/telegram/nav/TelegramDMSelector.jsx";
 import {Outlet} from "react-router-dom";
 import { ClientContext } from "../contexts/ClientContext.js";
+import QuarkList from "../components/_services/lightquark/nav/QuarkList.jsx";
 
 /**
  * The client screen.
@@ -17,6 +18,7 @@ export default function Client() {
             resolvedAvatarCache, setResolvedAvatarCache
         }}>
             <Outlet />
+            <QuarkList />
             <TelegramDMSelector />
         </ClientContext.Provider>
     </>)
