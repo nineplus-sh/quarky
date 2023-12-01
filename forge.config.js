@@ -8,14 +8,23 @@ export default {
   rebuildConfig: {},
   hooks: {
     packageAfterPrune: (_config, buildPath) => {
-      const gypPath = path.join(
+      const bufferutilGyp = path.join(
           buildPath,
           'node_modules',
           'bufferutil',
           'build',
           'node_gyp_bins'
       );
-      fs.rmSync(gypPath, {recursive: true, force: true}); // https://stackoverflow.com/a/76816826
+      const utf8ValidateGyp = path.join(
+          buildPath,
+          'node_modules',
+          'utf-8-validate',
+          'build',
+          'node_gyp_bins'
+      );
+
+      fs.rmSync(bufferutilGyp, {recursive: true, force: true}); // https://stackoverflow.com/a/76816826
+      fs.rmSync(utf8ValidateGyp, {recursive: true, force: true}); // https://stackoverflow.com/a/76816826
     }
   },
   makers: [
