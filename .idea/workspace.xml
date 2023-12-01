@@ -5,19 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b867886f-e5e7-420d-9bab-a7f0f966787d" name="Changes" comment="Add Lightquark quark and channel lists">
+      <change afterPath="$PROJECT_DIR$/.github/workflows/publish-linux.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.github/workflows/publish-macos.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.github/workflows/publish-windows.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/desktop/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/desktop/resources/update.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/desktop/resources/update@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/desktop/resources/update@5x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/forge.config.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/public/mio.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/_services/lightquark/nav/LightquarkChannel.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/_services/lightquark/nav/LightquarkChannelList.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/_services/lightquark/nav/Quark.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/_services/lightquark/nav/QuarkList.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/nav/ChannelView.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/_services/lightquark/login/LightquarkLogin.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/_services/lightquark/login/LightquarkLogin.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/nav/Quark.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bun.lockb" beforeDir="false" afterPath="$PROJECT_DIR$/bun.lockb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/_nyafile/data/licenses.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/_nyafile/data/licenses.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/Client.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/Client.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/Root.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/Root.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/LQ.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/LQ.js" afterDir="false" />
     </list>
     <list id="650e51f2-1d95-44bb-8bc4-d7fc5c5b3f82" name="Changes by Eier" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -67,52 +69,52 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;senpai&quot;,
-    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;20.8.0&quot;,
-    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;20.8.0&quot;,
-    &quot;js.linters.configure.manually.selectedeslint&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/vukky/Documents/Git/quarky/src/_nyafile/sfx&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;settings.javascript.linters.eslint&quot;,
-    &quot;timeTracker.activityTracker&quot;: &quot;null&quot;,
-    &quot;timeTracker.comment&quot;: &quot;&quot;,
-    &quot;timeTracker.inactivityPeriodInMills&quot;: &quot;600000&quot;,
-    &quot;timeTracker.isAutoTrackingEnable&quot;: &quot;false&quot;,
-    &quot;timeTracker.isAutoTrackingTemporaryDisabled&quot;: &quot;false&quot;,
-    &quot;timeTracker.isManualTrackingEnable&quot;: &quot;false&quot;,
-    &quot;timeTracker.isPaused&quot;: &quot;true&quot;,
-    &quot;timeTracker.isPostAfterCommitEnabled&quot;: &quot;false&quot;,
-    &quot;timeTracker.isPostedScheduled&quot;: &quot;true&quot;,
-    &quot;timeTracker.isRunning&quot;: &quot;false&quot;,
-    &quot;timeTracker.isScheduledEnabled&quot;: &quot;false&quot;,
-    &quot;timeTracker.isWhenProjectClosedEnabled&quot;: &quot;false&quot;,
-    &quot;timeTracker.issueId&quot;: &quot;Default&quot;,
-    &quot;timeTracker.issueIdReadable&quot;: &quot;Default&quot;,
-    &quot;timeTracker.pausedTime&quot;: &quot;0&quot;,
-    &quot;timeTracker.query&quot;: &quot;&quot;,
-    &quot;timeTracker.recordedTime&quot;: &quot;0&quot;,
-    &quot;timeTracker.scheduledPeriod&quot;: &quot;19:00:0&quot;,
-    &quot;timeTracker.startTime&quot;: &quot;0&quot;,
-    &quot;timeTracker.timeInMills&quot;: &quot;0&quot;,
-    &quot;timeTracker.type&quot;: &quot;Development&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/home/vukky/.local/share/JetBrains/Toolbox/apps/WebStorm/ch-0/232.9921.42/plugins/javascript-impl/jsLanguageServicesImpl/external&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "senpai",
+    "javascript.nodejs.core.library.configured.version": "21.2.0",
+    "javascript.nodejs.core.library.typings.version": "20.10.1",
+    "js.linters.configure.manually.selectedeslint": "true",
+    "last_opened_file_path": "/home/vukky/Documents/Git/quarky/.github/workflows",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.standard": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "settings.javascript.linters.eslint",
+    "timeTracker.activityTracker": "null",
+    "timeTracker.comment": "",
+    "timeTracker.inactivityPeriodInMills": "600000",
+    "timeTracker.isAutoTrackingEnable": "false",
+    "timeTracker.isAutoTrackingTemporaryDisabled": "false",
+    "timeTracker.isManualTrackingEnable": "false",
+    "timeTracker.isPaused": "true",
+    "timeTracker.isPostAfterCommitEnabled": "false",
+    "timeTracker.isPostedScheduled": "true",
+    "timeTracker.isRunning": "false",
+    "timeTracker.isScheduledEnabled": "false",
+    "timeTracker.isWhenProjectClosedEnabled": "false",
+    "timeTracker.issueId": "Default",
+    "timeTracker.issueIdReadable": "Default",
+    "timeTracker.pausedTime": "0",
+    "timeTracker.query": "",
+    "timeTracker.recordedTime": "0",
+    "timeTracker.scheduledPeriod": "19:00:0",
+    "timeTracker.startTime": "0",
+    "timeTracker.timeInMills": "0",
+    "timeTracker.type": "Development",
+    "ts.external.directory.path": "/home/vukky/.local/share/JetBrains/Toolbox/apps/WebStorm/ch-0/232.9921.42/plugins/javascript-impl/jsLanguageServicesImpl/external",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RdControllerToolWindowsLayoutState" isNewUi="true">
     <layout>
       <window_info id="Space Code Reviews" />
@@ -140,34 +142,25 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/.github/workflows" />
       <recent name="$PROJECT_DIR$/src/_nyafile/sfx" />
       <recent name="$PROJECT_DIR$/src/components/oss" />
       <recent name="$PROJECT_DIR$/src/_nyafile/img" />
       <recent name="$PROJECT_DIR$/src/_nyafile" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/packages" />
       <recent name="$PROJECT_DIR$/src/components/_services" />
       <recent name="$PROJECT_DIR$/src/components" />
       <recent name="$PROJECT_DIR$/src/components/telegram/dialogs" />
       <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/src/components/modals" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.dev">
-    <configuration name="nyafile-compiler.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/nyafile-compiler.js" working-dir="$PROJECT_DIR$/src">
+  <component name="RunManager" selected="npm.Start Electron app">
+    <configuration name="nyafile-compiler.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="nyafile-compiler.js" working-dir="$PROJECT_DIR$/src">
       <method v="2" />
     </configuration>
-    <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="dev" />
-      </scripts>
-      <node-interpreter value="project" />
-      <envs />
-      <method v="2" />
-    </configuration>
-    <configuration name="postinstall" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+    <configuration name="Compile license and nyafile" type="js.build_tools.npm" temporary="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
       <scripts>
@@ -177,11 +170,37 @@
       <envs />
       <method v="2" />
     </configuration>
+    <configuration name="Start Electron app" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="Start Vite app" type="js.build_tools.npm" temporary="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="serve" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Node.js.nyafile-compiler.js" />
+      <item itemvalue="npm.Start Electron app" />
+      <item itemvalue="npm.Start Vite app" />
+      <item itemvalue="npm.Compile license and nyafile" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.dev" />
+        <item itemvalue="npm.Start Vite app" />
         <item itemvalue="Node.js.nyafile-compiler.js" />
-        <item itemvalue="npm.postinstall" />
+        <item itemvalue="npm.Compile license and nyafile" />
       </list>
     </recent_temporary>
   </component>
@@ -227,6 +246,11 @@
       <workItem from="1700591262270" duration="10638000" />
       <workItem from="1700655306308" duration="525000" />
       <workItem from="1700663635273" duration="23115000" />
+      <workItem from="1700907929602" duration="256000" />
+      <workItem from="1700992837321" duration="12000" />
+      <workItem from="1701355913270" duration="599000" />
+      <workItem from="1701357399154" duration="5796000" />
+      <workItem from="1701439717823" duration="14350000" />
     </task>
     <task id="LOCAL-00001" summary="basic rewrite in Vite">
       <option name="closed" value="true" />
@@ -532,7 +556,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700685614640</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="Add Lightquark quark and channel lists">
+      <option name="closed" value="true" />
+      <created>1700908015618</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1700908015618</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers>
       <YouTrack url="https://youtrack.litdevs.org">
         <option name="defaultSearch" value="project: q2" />
