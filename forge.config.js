@@ -1,8 +1,23 @@
+import * as path from "path";
+import * as fs from "fs";
+
 export default {
   packagerConfig: {
     asar: true
   },
   rebuildConfig: {},
+  hooks: {
+    packageAfterPrune: async (_config, buildPath) => {
+      const gypPath = path.join(
+          buildPath,
+          'node_modules',
+          'bufferutil',
+          'build',
+          'node_gyp_bins'
+      );
+      await fs.rm(gypPath); // https://stackoverflow.com/a/76816826
+    }
+  },
   makers: [
     {
       name: '@electron-forge/maker-squirrel',
