@@ -7,7 +7,7 @@ export default {
   },
   rebuildConfig: {},
   hooks: {
-    packageAfterPrune: async (_config, buildPath) => {
+    packageAfterPrune: (_config, buildPath) => {
       const gypPath = path.join(
           buildPath,
           'node_modules',
@@ -15,7 +15,7 @@ export default {
           'build',
           'node_gyp_bins'
       );
-      await fs.rm(gypPath); // https://stackoverflow.com/a/76816826
+      fs.rmSync(gypPath, {recursive: true, force: true}); // https://stackoverflow.com/a/76816826
     }
   },
   makers: [
