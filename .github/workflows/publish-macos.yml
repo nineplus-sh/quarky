@@ -1,4 +1,4 @@
-name: Publish Linux build
+name: Publish macOS build
 
 on:
   push:
