@@ -18,7 +18,7 @@ if (isDev) {
         const dialogOpts = {
             type: 'info',
             buttons: ['Update!', 'Remind me next time'],
-            title: 'Fresh Quarky Desktop for you~!',
+            title: 'Fresh Quarky Desktop for you~',
             message: "A new version of Quarky Desktop is available!",
             detail: 'The update has been downloaded. Restart Quarky Desktop to apply the update.',
             icon: nativeImage.createFromPath(__dirname + "/resources/update.png")
