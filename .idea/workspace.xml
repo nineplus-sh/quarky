@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b867886f-e5e7-420d-9bab-a7f0f966787d" name="Changes" comment="p-pwease">
+    <list default="true" id="b867886f-e5e7-420d-9bab-a7f0f966787d" name="Changes" comment="pleae">
       <change afterPath="$PROJECT_DIR$/public/mio.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/publish-macos.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/publish-macos.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.jsx" afterDir="false" />
     </list>
     <list id="650e51f2-1d95-44bb-8bc4-d7fc5c5b3f82" name="Changes by Eier" comment="" />
@@ -237,7 +238,7 @@
       <workItem from="1700992837321" duration="12000" />
       <workItem from="1701355913270" duration="599000" />
       <workItem from="1701357399154" duration="5796000" />
-      <workItem from="1701439717823" duration="15034000" />
+      <workItem from="1701439717823" duration="15437000" />
     </task>
     <task id="LOCAL-00001" summary="basic rewrite in Vite">
       <option name="closed" value="true" />
@@ -591,7 +592,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701465607803</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="pleae">
+      <option name="closed" value="true" />
+      <created>1701465744997</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1701465744997</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers>
       <YouTrack url="https://youtrack.litdevs.org">
         <option name="defaultSearch" value="project: q2" />
@@ -615,7 +624,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="add diagnostics (EasyPrivacy users will hate this)" />
     <MESSAGE value="fix new message handler" />
     <MESSAGE value="fix outgoing new message handler" />
     <MESSAGE value="update telegramdm preview" />
@@ -640,7 +648,8 @@
     <MESSAGE value="ok now deploy" />
     <MESSAGE value="I'm so good at GitHub Actions" />
     <MESSAGE value="p-pwease" />
-    <option name="LAST_COMMIT_MESSAGE" value="p-pwease" />
+    <MESSAGE value="pleae" />
+    <option name="LAST_COMMIT_MESSAGE" value="pleae" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
