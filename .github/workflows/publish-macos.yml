@@ -5,7 +5,7 @@ on:
     branches:
       - "senpai"
     paths:
-      - "desktop"
+      - "desktop/**"
 
 jobs:
   build:

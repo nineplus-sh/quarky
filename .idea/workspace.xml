@@ -4,21 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b867886f-e5e7-420d-9bab-a7f0f966787d" name="Changes" comment="Add Lightquark quark and channel lists">
-      <change afterPath="$PROJECT_DIR$/.github/workflows/publish-linux.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.github/workflows/publish-macos.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.github/workflows/publish-windows.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/desktop/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/desktop/resources/update.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/desktop/resources/update@2x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/desktop/resources/update@5x.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/forge.config.js" afterDir="false" />
+    <list default="true" id="b867886f-e5e7-420d-9bab-a7f0f966787d" name="Changes" comment="ok now deploy">
       <change afterPath="$PROJECT_DIR$/public/mio.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bun.lockb" beforeDir="false" afterPath="$PROJECT_DIR$/bun.lockb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/_nyafile/data/licenses.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/_nyafile/data/licenses.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/publish-macos.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/publish-macos.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/publish-windows.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/publish-windows.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktop/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/desktop/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.jsx" afterDir="false" />
     </list>
     <list id="650e51f2-1d95-44bb-8bc4-d7fc5c5b3f82" name="Changes by Eier" comment="" />
@@ -250,7 +240,7 @@
       <workItem from="1700992837321" duration="12000" />
       <workItem from="1701355913270" duration="599000" />
       <workItem from="1701357399154" duration="5796000" />
-      <workItem from="1701439717823" duration="14350000" />
+      <workItem from="1701439717823" duration="14664000" />
     </task>
     <task id="LOCAL-00001" summary="basic rewrite in Vite">
       <option name="closed" value="true" />
@@ -564,7 +554,23 @@
       <option name="project" value="LOCAL" />
       <updated>1700908015618</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="yolo electron app (terrible)">
+      <option name="closed" value="true" />
+      <created>1701465059712</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1701465059712</updated>
+    </task>
+    <task id="LOCAL-00041" summary="ok now deploy">
+      <option name="closed" value="true" />
+      <created>1701465237931</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1701465237931</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers>
       <YouTrack url="https://youtrack.litdevs.org">
         <option name="defaultSearch" value="project: q2" />
@@ -588,8 +594,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="improve dm styling" />
-    <MESSAGE value="add routing" />
     <MESSAGE value="add message fetching" />
     <MESSAGE value="add message input box" />
     <MESSAGE value="add diagnostics (EasyPrivacy users will hate this)" />
@@ -613,7 +617,9 @@
     <MESSAGE value="add basic lightquark authentication" />
     <MESSAGE value="Add rendering of Telegram stickers" />
     <MESSAGE value="Add Lightquark quark and channel lists" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add Lightquark quark and channel lists" />
+    <MESSAGE value="yolo electron app (terrible)" />
+    <MESSAGE value="ok now deploy" />
+    <option name="LAST_COMMIT_MESSAGE" value="ok now deploy" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
