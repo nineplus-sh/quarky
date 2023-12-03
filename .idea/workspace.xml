@@ -4,9 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b867886f-e5e7-420d-9bab-a7f0f966787d" name="Changes" comment="Me when I can't read">
+    <list default="true" id="b867886f-e5e7-420d-9bab-a7f0f966787d" name="Changes" comment="">
       <change afterPath="$PROJECT_DIR$/public/mio.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/desktop/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/_services/lightquark/dialogs/LightquarkMessage.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/_services/lightquark/dialogs/LightquarkMessage.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/_nyafile/data/licenses.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/_nyafile/data/licenses.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/nav/DialogMessages.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/nav/DialogMessages.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/nav/MessageInput.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/nav/MessageInput.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.jsx" afterDir="false" />
     </list>
     <list id="650e51f2-1d95-44bb-8bc4-d7fc5c5b3f82" name="Changes by Eier" comment="" />
@@ -68,7 +73,7 @@
     "javascript.nodejs.core.library.configured.version": "21.2.0",
     "javascript.nodejs.core.library.typings.version": "20.10.1",
     "js.linters.configure.manually.selectedeslint": "true",
-    "last_opened_file_path": "/home/vukky/Documents/Git/quarky/.github/workflows",
+    "last_opened_file_path": "/home/vukky/Documents/Git/quarky/src/components/_services/lightquark",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.standard": "true",
@@ -99,7 +104,7 @@
     "timeTracker.startTime": "0",
     "timeTracker.timeInMills": "0",
     "timeTracker.type": "Development",
-    "ts.external.directory.path": "/home/vukky/.local/share/JetBrains/Toolbox/apps/WebStorm/ch-0/232.9921.42/plugins/javascript-impl/jsLanguageServicesImpl/external",
+    "ts.external.directory.path": "/home/vukky/.local/share/JetBrains/Toolbox/apps/webstorm/plugins/javascript-impl/jsLanguageServicesImpl/external",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -130,11 +135,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components/_services/lightquark" />
       <recent name="$PROJECT_DIR$/.github/workflows" />
       <recent name="$PROJECT_DIR$/src/_nyafile/sfx" />
       <recent name="$PROJECT_DIR$/src/components/oss" />
       <recent name="$PROJECT_DIR$/src/_nyafile/img" />
-      <recent name="$PROJECT_DIR$/src/_nyafile" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/packages" />
@@ -238,23 +243,11 @@
       <workItem from="1700992837321" duration="12000" />
       <workItem from="1701355913270" duration="599000" />
       <workItem from="1701357399154" duration="5796000" />
-      <workItem from="1701439717823" duration="17843000" />
-    </task>
-    <task id="LOCAL-00002" summary="will this fix builds">
-      <option name="closed" value="true" />
-      <created>1696112281547</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1696112281547</updated>
-    </task>
-    <task id="LOCAL-00003" summary="push broken routing code (there is no root)">
-      <option name="closed" value="true" />
-      <created>1696153012253</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1696153012253</updated>
+      <workItem from="1701439717823" duration="19019000" />
+      <workItem from="1701511561957" duration="2766000" />
+      <workItem from="1701521031577" duration="76000" />
+      <workItem from="1701522740178" duration="6000" />
+      <workItem from="1701558335509" duration="4068000" />
     </task>
     <task id="LOCAL-00004" summary="nyafile loading into context is real">
       <option name="closed" value="true" />
@@ -632,7 +625,23 @@
       <option name="project" value="LOCAL" />
       <updated>1701468416887</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="Me when I can't read">
+      <option name="closed" value="true" />
+      <created>1701468426308</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1701468426308</updated>
+    </task>
+    <task id="LOCAL-00052" summary="HHHHHHHHHHH">
+      <option name="closed" value="true" />
+      <created>1701468625800</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1701468625800</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers>
       <YouTrack url="https://youtrack.litdevs.org">
         <option name="defaultSearch" value="project: q2" />
@@ -656,7 +665,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="add profile picture petting" />
     <MESSAGE value="add unleash integration" />
     <MESSAGE value="credits modal overhaul" />
     <MESSAGE value="add software info to credits modal" />
@@ -681,7 +689,8 @@
     <MESSAGE value="#macOS" />
     <MESSAGE value="hdfhadfhsdfghsdfghdfshdfhsdfhsdfhsdfhsdfhsdfhdfhsdfhsdf" />
     <MESSAGE value="Me when I can't read" />
-    <option name="LAST_COMMIT_MESSAGE" value="Me when I can't read" />
+    <MESSAGE value="HHHHHHHHHHH" />
+    <option name="LAST_COMMIT_MESSAGE" value="HHHHHHHHHHH" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

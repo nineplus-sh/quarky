@@ -2,16 +2,26 @@ import {useContext, useEffect, useState} from "react";
 import {AppContext} from "../../contexts/AppContext.js";
 import {useParams} from "react-router-dom";
 import TelegramMessage from "../_services/telegram/dialogs/TelegramMessage.jsx";
+import LightquarkMessage from "../_services/lightquark/dialogs/LightquarkMessage.jsx";
+import LQ from "../../util/LQ.js";
 
 export default function DialogMessages() {
     const appContext = useContext(AppContext);
-    let { dialogId } = useParams();
+    let { quarkId, dialogId } = useParams();
     const [messages, setMessages] = useState([])
 
     useEffect(() => {
         (async () => {
             if(!appContext.messageCache[dialogId]) {
-                const _messages = await appContext.telegram.getMessages(dialogId, {limit: 50});
+                let _messages;
+
+                if(quarkId !== "telegram") {
+                    _messages = (await LQ(`channel/${dialogId}/messages`)).response.messages
+                    console.log(_messages)
+                } else {
+                    _messages = await appContext.telegram.getMessages(dialogId, {limit: 50})
+                }
+
                 appContext.setMessageCache(previousValue => {
                     previousValue = { ...previousValue }
                     previousValue[dialogId] = _messages;
@@ -23,8 +33,13 @@ export default function DialogMessages() {
 
     useEffect(() => {
         if(!appContext.messageCache[dialogId]) return setMessages([]);
-        setMessages(appContext.messageCache[dialogId].sort((a, b) => a.date - b.date))
+        if(quarkId === "telegram") {
+            setMessages(appContext.messageCache[dialogId].sort((a, b) => a.date - b.date))
+        } else {
+            setMessages(appContext.messageCache[dialogId].sort((a, b) => a.message.timestamp - b.message.timestamp))
+        }
     }, [dialogId, appContext.messageCache])
 
-    return messages.map((message) => <TelegramMessage message={message} key={message.id} />)
+    const MessageType = quarkId !== "telegram" ? LightquarkMessage : TelegramMessage;
+    return messages.map((message) => <MessageType message={message} key={message.id} />)
 }
