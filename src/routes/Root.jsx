@@ -11,6 +11,7 @@ import * as Sentry from "@sentry/react";
 import LQ from "../util/LQ.js";
 import localForage from "localforage";
 import {useFlag, useUnleashContext} from '@unleash/proxy-client-react';
+import useWebSocket from "react-use-websocket";
 
 /**
  * The root. Wraps later routes so that Nyafiles can be real.
@@ -24,7 +25,7 @@ export default function Root() {
     const hakase = useFlag("Q2_HakaseBittanBittan");
     const mio = useFlag("Q2_MioBittanBittan");
 
-    function newMessageHandler(event) {
+    function telegramMessageHandler(event) {
         let source = event.message.chatId.value;
         appContext.setMessageCache(previousValue => {
             previousValue = { ...previousValue }
@@ -45,10 +46,13 @@ export default function Root() {
                 appContext.setAccounts({telegram: user})
                 updateContext({telegramId: user.id.value})
             }
-            telegramClient.addEventHandler(newMessageHandler, new NewMessage({}));
+            telegramClient.addEventHandler(telegramMessageHandler, new NewMessage({}));
 
             const localConfig = await localForage.getItem("lightquark")
             if(localConfig?.token) {
+                const network = await LQ("network");
+                
+
                 const LQuserdata = await LQ("user/me");
                 appContext.setAccounts(prev => ({...prev, "lightquark": LQuserdata}))
                 updateContext({lqId: LQuserdata.response.jwtData._id})
