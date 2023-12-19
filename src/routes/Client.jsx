@@ -31,7 +31,7 @@ export default function Client() {
                 case "messageCreate":
                     appContext.setMessageCache(previousValue => {
                         previousValue = { ...previousValue }
-                        if(!previousValue[eventData.message.channelId]) previousValue[source] = [];
+                        if(!previousValue[eventData.message.channelId]) previousValue[eventData.message.channelId] = [];
                         previousValue[eventData.message.channelId].push(eventData)
                         return previousValue;
                     });
