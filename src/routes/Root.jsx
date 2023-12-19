@@ -11,7 +11,10 @@ import * as Sentry from "@sentry/react";
 import LQ from "../util/LQ.js";
 import localForage from "localforage";
 import {useFlag, useUnleashContext} from '@unleash/proxy-client-react';
-import useWebSocket from "react-use-websocket";
+import i18next from 'i18next';
+import LanguageDetector from "i18next-browser-languagedetector";
+import {initReactI18next} from "react-i18next";
+import resourcesToBackend from "i18next-resources-to-backend";
 
 /**
  * The root. Wraps later routes so that Nyafiles can be real.
@@ -57,6 +60,23 @@ export default function Root() {
 
             const nyafile = new NyaFile();
             await nyafile.load("/quarky.nya", true);
+
+            await i18next
+                .use(initReactI18next)
+                .use(resourcesToBackend((language, namespace, callback) => {
+                    nyafile.getAssetJson(`lang/${language}`)
+                        .then((nya) => {
+                            callback(null, nya)
+                        })
+                        .catch((error) => {
+                            callback(error, null)
+                        })
+                }))
+                .use(LanguageDetector)
+                .init({
+                    fallbackLng: 'en',
+                    debug: true
+                })
 
             nyafile.queueCache("data/licenses", "text");
             nyafile.queueCache("img/daturyok")

@@ -1,4 +1,4 @@
-import {app, BrowserWindow, autoUpdater, dialog, nativeImage} from "electron";
+import {app, BrowserWindow, autoUpdater, dialog, nativeImage, shell} from "electron";
 import electron_squirrel_startup from "electron-squirrel-startup";
 if (electron_squirrel_startup) app.quit();
 
@@ -34,6 +34,11 @@ const createWindow = () => {
         width: 800,
         height: 600
     })
+
+    win.webContents.setWindowOpenHandler(({ url }) => {
+        shell.openExternal(url);
+        return { action: 'deny' };
+    });
 
     if (!isDev) {
         autoUpdater.checkForUpdates();

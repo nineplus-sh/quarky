@@ -1,5 +1,16 @@
 {
     "HEADER_WELCOME": "Welcome to Quarky~!",
     "HEADER_WELCOME_SUB": "Let's sign in to use it now!",
-    "HEADER_SERVICE_LOGIN": "Sign in with the services you want Quarky to use."
+    "HEADER_SERVICE_LOGIN": "Sign in with the services you want Quarky to use.",
+    "DONE": "I'm done!",
+
+    "CREDITS_BUTTON": "Acknowledgements",
+    "QUARKY_NAME": "Quarky 2",
+    "QUARKY_DESCRIPTION": "A chat client for Lightquark and Telegram",
+    "QUARKY_BYLINE": "Hakase software © {{year}}",
+    "QUARKY_VERSION": "Version {{version}}",
+    "CREDITS_SPECIAL_THANKS": "Special thanks",
+    "CREDITS_EMILIA": "Emilia for fixing various instances of horrendous code",
+    "CREDITS_BYE": "Bye for giving free tummy rubs",
+    "CREDITS_SYNNE": "Synne for finding a mysterious bug I didn't fix"
 }

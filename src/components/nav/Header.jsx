@@ -3,6 +3,7 @@ import NyafileImage from "../nyafile/NyafileImage.jsx";
 import CreditsModal from "../modals/CreditsModal.jsx";
 import {useState, useContext} from "react";
 import {AppContext} from "../../contexts/AppContext.js";
+import {useTranslation} from "react-i18next";
 
 /**
  * The header of Quarky. This should not be used in the client itself.
@@ -13,7 +14,8 @@ import {AppContext} from "../../contexts/AppContext.js";
  */
 export default function Header({title, description}) {
     const [creditsModalOpen, setCreditsModalOpen] = useState(false);
-    const appContext = useContext(AppContext)
+    const appContext = useContext(AppContext);
+    const {t} = useTranslation();
 
     function toggleModal() {
         setCreditsModalOpen(!creditsModalOpen);
@@ -27,7 +29,7 @@ export default function Header({title, description}) {
                 <h1>{title}</h1>
                 <p>⮡ {description}</p>
             </span>
-            <button className={styles.headerAcknowledgements} onClick={toggleModal}>Acknowledgements</button>
+            <button className={styles.headerAcknowledgements} onClick={toggleModal}>{t("CREDITS_BUTTON")}</button>
         </div>
         <div className={styles.headerShadow}></div>
 

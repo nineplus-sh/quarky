@@ -18,8 +18,7 @@ export default function Client() {
     let [resolvedAvatarCache, setResolvedAvatarCache] = useState({});
     const [lqSockURL, setLqSockURL] = useState(null);
     const [lqSockToken, setLqSockToken] = useState(null);
-    const [discordSockURL, setDiscordSockURL] = useState(null);
-    const [heartbeatMessage, setHeartbeatMessage] = useState("*gurgles*")
+    const [heartbeatMessage, setHeartbeatMessage] = useState("*gurgles*");
     const [quarks, setQuarks] = useState(undefined);
     const appContext = useContext(AppContext)
 
@@ -51,7 +50,6 @@ export default function Client() {
             interval: 15000
         }
     })
-    // const discordSock = useWebSocket("https://");
 
     useEffect(() => {(async () => {
         if (appContext.accounts.lightquark && !lqSockURL) {

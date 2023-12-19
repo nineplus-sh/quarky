@@ -6,6 +6,7 @@ import {Outlet} from "react-router-dom";
 import {AppContext} from "../contexts/AppContext.js";
 import {useContext, useEffect, useState} from "react";
 import LightquarkLogin from "../components/_services/lightquark/login/LightquarkLogin.jsx";
+import {useTranslation} from "react-i18next"
 
 /**
  * The authentication needed ("login") screen.
@@ -19,6 +20,7 @@ export default function AuthenticationNeeded() {
     const appContext = useContext(AppContext);
     const [service, setService] = useState("");
     const [done, setDone] = useState(false);
+    const { t } = useTranslation();
 
     useEffect(() => {
         if(appContext.accounts[service]) setService("")
@@ -27,24 +29,21 @@ export default function AuthenticationNeeded() {
     if(Object.keys(appContext.accounts).length === 0 || (!done && !prevAuthed)) {
         return (<>
             <SpaceBackground />
-            <Header title={"Welcome to Quarky~"} description={"Let's sign in to use it now!"}></Header>
+            <Header title={t("HEADER_WELCOME")} description={t("HEADER_WELCOME_SUB")}></Header>
 
             <div style={{color: "white"}}>
-                <h2>Sign in with the services you want Quarky to use.</h2>
-
-                {{ lightquark: <LightquarkLogin/>,
+                {{
+                    lightquark: <LightquarkLogin/>,
                     telegram: <TelegramQRCode/>
-                }[service]}
+                }[service] || <h2>{t("HEADER_SERVICE_LOGIN")}</h2>}
 
-                <button onClick={()=>setService("lightquark")} disabled={appContext.accounts.lightquark}>Lightquark</button>
+                <button onClick={() => setService("lightquark")} disabled={appContext.accounts.lightquark}>Lightquark</button>
                 <button onClick={()=>setService("telegram")} disabled={appContext.accounts.telegram}>Telegram</button>
-                <button onClick={()=>alert("Discord support not implemented yet ;~;")} disabled={appContext.accounts.discord}>Discord</button>
 
-                <button onClick={function(){
-                    if(Object.keys(appContext.accounts).length === 0) return alert("lol no");
+                <button disabled={Object.keys(appContext.accounts).length === 0} onClick={function(){
                     localStorage.setItem("USER_AUTHED", "bet");
                     setDone(true);
-                }}>I&apos;m done!</button>
+                }}>{t("DONE")}</button>
             </div>
         </>)
     }

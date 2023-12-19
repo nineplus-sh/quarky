@@ -4,10 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b867886f-e5e7-420d-9bab-a7f0f966787d" name="Changes" comment="Independent accounts &amp; bot messages">
+    <list default="true" id="b867886f-e5e7-420d-9bab-a7f0f966787d" name="Changes" comment="explosion">
       <change afterPath="$PROJECT_DIR$/public/mio.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bun.lockb" beforeDir="false" afterPath="$PROJECT_DIR$/bun.lockb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/desktop/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/desktop/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/_nyafile/lang/en.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/_nyafile/lang/en.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modals/CreditsModal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modals/CreditsModal.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/nav/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/nav/Header.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/AuthenticationNeeded.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/AuthenticationNeeded.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/routes/Client.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/Client.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/routes/Root.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/Root.jsx" afterDir="false" />
     </list>
@@ -22,8 +29,8 @@
       <list>
         <option value="TypeScript File" />
         <option value="TypeScript JSX File" />
-        <option value="JavaScript File" />
         <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -62,6 +69,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Node.js.nyafile-compiler.js.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
@@ -70,7 +78,7 @@
     "javascript.nodejs.core.library.configured.version": "21.4.0",
     "javascript.nodejs.core.library.typings.version": "20.10.5",
     "js.linters.configure.manually.selectedeslint": "true",
-    "last_opened_file_path": "/home/vukky/Documents/Git/quarky/src/components/_services/lightquark",
+    "last_opened_file_path": "/home/vukky/Documents/Git/quarky/src/util",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.standard": "true",
@@ -113,13 +121,13 @@
       <window_info id="Commit_Guest" />
       <window_info id="Pull Requests" />
       <window_info id="Merge Requests" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.5005176" weight="0.17526042" />
-      <window_info active="true" id="Commit" order="1" visible="true" weight="0.17526042" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.5005176" visible="true" weight="0.17526042" />
+      <window_info id="Commit" order="1" weight="0.17526042" />
       <window_info id="Structure" order="2" sideWeight="0.4994824" side_tool="true" weight="0.32994792" />
       <window_info anchor="bottom" id="TODO" />
       <window_info anchor="bottom" id="Messages" weight="0.33028847" />
       <window_info anchor="bottom" id="File Transfer" />
-      <window_info active="true" anchor="bottom" id="Run" visible="true" />
+      <window_info anchor="bottom" id="Run" />
       <window_info anchor="bottom" id="TypeScript" />
       <window_info anchor="bottom" id="Version Control" order="0" />
       <window_info anchor="bottom" id="Problems View" order="1" weight="0.33028847" />
@@ -133,11 +141,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/util" />
       <recent name="$PROJECT_DIR$/src/components/_services/lightquark" />
       <recent name="$PROJECT_DIR$/.github/workflows" />
       <recent name="$PROJECT_DIR$/src/_nyafile/sfx" />
       <recent name="$PROJECT_DIR$/src/components/oss" />
-      <recent name="$PROJECT_DIR$/src/_nyafile/img" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/packages" />
@@ -147,7 +155,7 @@
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.Start Electron app">
+  <component name="RunManager" selected="Node.js.nyafile-compiler.js">
     <configuration name="nyafile-compiler.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="nyafile-compiler.js" working-dir="$PROJECT_DIR$/src">
       <method v="2" />
     </configuration>
@@ -189,8 +197,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.Start Vite app" />
         <item itemvalue="Node.js.nyafile-compiler.js" />
+        <item itemvalue="npm.Start Vite app" />
         <item itemvalue="npm.Compile license and nyafile" />
       </list>
     </recent_temporary>
@@ -249,23 +257,7 @@
       <workItem from="1701787302609" duration="9000" />
       <workItem from="1702481664853" duration="3930000" />
       <workItem from="1702914435433" duration="7901000" />
-      <workItem from="1702971743132" duration="519000" />
-    </task>
-    <task id="LOCAL-00006" summary="test">
-      <option name="closed" value="true" />
-      <created>1696176298879</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1696176298879</updated>
-    </task>
-    <task id="LOCAL-00007" summary="placeholder SpaceBackground">
-      <option name="closed" value="true" />
-      <created>1696196078310</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1696196078310</updated>
+      <workItem from="1702971743132" duration="2127000" />
     </task>
     <task id="LOCAL-00008" summary="Fix lies">
       <option name="closed" value="true" />
@@ -643,7 +635,23 @@
       <option name="project" value="LOCAL" />
       <updated>1702918312935</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="Add Lightquark websocket">
+      <option name="closed" value="true" />
+      <created>1702972336994</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1702972336994</updated>
+    </task>
+    <task id="LOCAL-00056" summary="explosion">
+      <option name="closed" value="true" />
+      <created>1702972662990</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1702972662990</updated>
+    </task>
+    <option name="localTasksCounter" value="57" />
     <servers>
       <YouTrack url="https://youtrack.litdevs.org">
         <option name="defaultSearch" value="project: q2" />
@@ -667,8 +675,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="add software info to credits modal" />
-    <MESSAGE value="add sentry plugin" />
     <MESSAGE value="add sentry as trusted deps" />
     <MESSAGE value="eat bun.lockb" />
     <MESSAGE value="Add bad Telegram 2FA handler and special thanks section" />
@@ -692,7 +698,9 @@
     <MESSAGE value="HHHHHHHHHHH" />
     <MESSAGE value="I'm too eepy sleepy let me go to bed" />
     <MESSAGE value="Independent accounts &amp; bot messages" />
-    <option name="LAST_COMMIT_MESSAGE" value="Independent accounts &amp; bot messages" />
+    <MESSAGE value="Add Lightquark websocket" />
+    <MESSAGE value="explosion" />
+    <option name="LAST_COMMIT_MESSAGE" value="explosion" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -704,6 +712,11 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/vite.config.js</url>
           <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/routes/Root.jsx</url>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
