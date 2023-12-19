@@ -4,16 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b867886f-e5e7-420d-9bab-a7f0f966787d" name="Changes" comment="I'm too eepy sleepy let me go to bed">
+    <list default="true" id="b867886f-e5e7-420d-9bab-a7f0f966787d" name="Changes" comment="Independent accounts &amp; bot messages">
       <change afterPath="$PROJECT_DIR$/public/mio.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bun.lockb" beforeDir="false" afterPath="$PROJECT_DIR$/bun.lockb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/_nyafile/data/licenses.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/_nyafile/data/licenses.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/_services/lightquark/dialogs/LightquarkMessage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/_services/lightquark/dialogs/LightquarkMessage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/_services/lightquark/nav/LightquarkChannelList.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/_services/lightquark/nav/LightquarkChannelList.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/AuthenticationNeeded.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/AuthenticationNeeded.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/routes/Client.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/Client.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/routes/Root.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/Root.jsx" afterDir="false" />
     </list>
@@ -65,53 +59,53 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;senpai&quot;,
-    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;21.4.0&quot;,
-    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;20.10.4&quot;,
-    &quot;js.linters.configure.manually.selectedeslint&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/vukky/Documents/Git/quarky/src/components/_services/lightquark&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;npm.Start Electron app.executor&quot;: &quot;Run&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;settings.javascript.linters.eslint&quot;,
-    &quot;timeTracker.activityTracker&quot;: &quot;null&quot;,
-    &quot;timeTracker.comment&quot;: &quot;&quot;,
-    &quot;timeTracker.inactivityPeriodInMills&quot;: &quot;600000&quot;,
-    &quot;timeTracker.isAutoTrackingEnable&quot;: &quot;false&quot;,
-    &quot;timeTracker.isAutoTrackingTemporaryDisabled&quot;: &quot;false&quot;,
-    &quot;timeTracker.isManualTrackingEnable&quot;: &quot;false&quot;,
-    &quot;timeTracker.isPaused&quot;: &quot;true&quot;,
-    &quot;timeTracker.isPostAfterCommitEnabled&quot;: &quot;false&quot;,
-    &quot;timeTracker.isPostedScheduled&quot;: &quot;true&quot;,
-    &quot;timeTracker.isRunning&quot;: &quot;false&quot;,
-    &quot;timeTracker.isScheduledEnabled&quot;: &quot;false&quot;,
-    &quot;timeTracker.isWhenProjectClosedEnabled&quot;: &quot;false&quot;,
-    &quot;timeTracker.issueId&quot;: &quot;Default&quot;,
-    &quot;timeTracker.issueIdReadable&quot;: &quot;Default&quot;,
-    &quot;timeTracker.pausedTime&quot;: &quot;0&quot;,
-    &quot;timeTracker.query&quot;: &quot;&quot;,
-    &quot;timeTracker.recordedTime&quot;: &quot;0&quot;,
-    &quot;timeTracker.scheduledPeriod&quot;: &quot;19:00:0&quot;,
-    &quot;timeTracker.startTime&quot;: &quot;0&quot;,
-    &quot;timeTracker.timeInMills&quot;: &quot;0&quot;,
-    &quot;timeTracker.type&quot;: &quot;Development&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/home/vukky/.local/share/JetBrains/Toolbox/apps/webstorm/plugins/javascript-impl/jsLanguageServicesImpl/external&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "senpai",
+    "javascript.nodejs.core.library.configured.version": "21.4.0",
+    "javascript.nodejs.core.library.typings.version": "20.10.5",
+    "js.linters.configure.manually.selectedeslint": "true",
+    "last_opened_file_path": "/home/vukky/Documents/Git/quarky/src/components/_services/lightquark",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.standard": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "npm.Start Electron app.executor": "Run",
+    "settings.editor.selected.configurable": "settings.javascript.linters.eslint",
+    "timeTracker.activityTracker": "null",
+    "timeTracker.comment": "",
+    "timeTracker.inactivityPeriodInMills": "600000",
+    "timeTracker.isAutoTrackingEnable": "false",
+    "timeTracker.isAutoTrackingTemporaryDisabled": "false",
+    "timeTracker.isManualTrackingEnable": "false",
+    "timeTracker.isPaused": "true",
+    "timeTracker.isPostAfterCommitEnabled": "false",
+    "timeTracker.isPostedScheduled": "true",
+    "timeTracker.isRunning": "false",
+    "timeTracker.isScheduledEnabled": "false",
+    "timeTracker.isWhenProjectClosedEnabled": "false",
+    "timeTracker.issueId": "Default",
+    "timeTracker.issueIdReadable": "Default",
+    "timeTracker.pausedTime": "0",
+    "timeTracker.query": "",
+    "timeTracker.recordedTime": "0",
+    "timeTracker.scheduledPeriod": "19:00:0",
+    "timeTracker.startTime": "0",
+    "timeTracker.timeInMills": "0",
+    "timeTracker.type": "Development",
+    "ts.external.directory.path": "/home/vukky/.local/share/JetBrains/Toolbox/apps/webstorm/plugins/javascript-impl/jsLanguageServicesImpl/external",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RdControllerToolWindowsLayoutState" isNewUi="true">
     <layout>
       <window_info id="Space Code Reviews" />
@@ -119,13 +113,13 @@
       <window_info id="Commit_Guest" />
       <window_info id="Pull Requests" />
       <window_info id="Merge Requests" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.5005176" visible="true" weight="0.17526042" />
-      <window_info id="Commit" order="1" weight="0.17526042" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.5005176" weight="0.17526042" />
+      <window_info active="true" id="Commit" order="1" visible="true" weight="0.17526042" />
       <window_info id="Structure" order="2" sideWeight="0.4994824" side_tool="true" weight="0.32994792" />
       <window_info anchor="bottom" id="TODO" />
       <window_info anchor="bottom" id="Messages" weight="0.33028847" />
       <window_info anchor="bottom" id="File Transfer" />
-      <window_info active="true" anchor="bottom" id="Run" visible="true" weight="0.33028847" />
+      <window_info active="true" anchor="bottom" id="Run" visible="true" />
       <window_info anchor="bottom" id="TypeScript" />
       <window_info anchor="bottom" id="Version Control" order="0" />
       <window_info anchor="bottom" id="Problems View" order="1" weight="0.33028847" />
@@ -254,15 +248,8 @@
       <workItem from="1701558335509" duration="8428000" />
       <workItem from="1701787302609" duration="9000" />
       <workItem from="1702481664853" duration="3930000" />
-      <workItem from="1702914435433" duration="3662000" />
-    </task>
-    <task id="LOCAL-00005" summary="disgusting typescript garbage lingers">
-      <option name="closed" value="true" />
-      <created>1696175706571</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1696175706571</updated>
+      <workItem from="1702914435433" duration="7901000" />
+      <workItem from="1702971743132" duration="519000" />
     </task>
     <task id="LOCAL-00006" summary="test">
       <option name="closed" value="true" />
@@ -648,7 +635,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701563085857</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="Independent accounts &amp; bot messages">
+      <option name="closed" value="true" />
+      <created>1702918312935</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1702918312935</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers>
       <YouTrack url="https://youtrack.litdevs.org">
         <option name="defaultSearch" value="project: q2" />
@@ -672,7 +667,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="credits modal overhaul" />
     <MESSAGE value="add software info to credits modal" />
     <MESSAGE value="add sentry plugin" />
     <MESSAGE value="add sentry as trusted deps" />
@@ -697,7 +691,8 @@
     <MESSAGE value="Me when I can't read" />
     <MESSAGE value="HHHHHHHHHHH" />
     <MESSAGE value="I'm too eepy sleepy let me go to bed" />
-    <option name="LAST_COMMIT_MESSAGE" value="I'm too eepy sleepy let me go to bed" />
+    <MESSAGE value="Independent accounts &amp; bot messages" />
+    <option name="LAST_COMMIT_MESSAGE" value="Independent accounts &amp; bot messages" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
