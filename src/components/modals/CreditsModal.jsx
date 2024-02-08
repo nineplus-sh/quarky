@@ -2,7 +2,7 @@ import OSSList from "../oss/OSSList.jsx";
 import GenericModal from "./GenericModal.jsx";
 import Datsuryoku from "../Datsuryoku.jsx";
 import NyafileImage from "../nyafile/NyafileImage.jsx";
-import {version} from "../../../package.json";
+import {version, codename} from "../../../package.json";
 import {useTranslation} from "react-i18next";
 
 /**
@@ -19,8 +19,8 @@ export default function CreditsModal(props) {
             <h1 style={{margin: 0}}><NyafileImage src={"img/quarky"} width={"40em"}/> {t("QUARKY_NAME")} <span style={{float: "right"}}><Datsuryoku  /></span></h1>
             <p style={{margin: 0}}><i>{t("QUARKY_DESCRIPTION")}</i></p>
             <br/>
-            <p style={{margin: 0}}><NyafileImage src={"img/hakase"} /> {t("QUARKY_BYLINE", {year: "2023"})}</p>
-            <p style={{margin: 0}}><NyafileImage src={"img/quarkypixel"} /> {t("QUARKY_VERSION", {version})}</p>
+            <p style={{margin: 0}}><NyafileImage src={"img/hakase"} /> {t("QUARKY_BYLINE", {year: "2023-2024"})}</p>
+            <p style={{margin: 0}}><NyafileImage src={"img/quarkypixel"} /> {t("QUARKY_VERSION", {version, codename})}</p>
             <hr/>
             <h2 style={{margin: 0}}>{t("CREDITS_SPECIAL_THANKS")}</h2>
             <p style={{margin: 0}}><NyafileImage src={"img/blobbie"} /> {t("CREDITS_EMILIA")}</p>

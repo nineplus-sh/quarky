@@ -5,6 +5,7 @@ if (electron_squirrel_startup) app.quit();
 import isDev from 'electron-is-dev';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
+import os from "node:os";
 const __dirname = fileURLToPath(dirname(import.meta.url));
 
 const hazel = "https://roald.hakase.life";
@@ -32,13 +33,15 @@ if (isDev) {
 const createWindow = () => {
     const win = new BrowserWindow({
         width: 800,
-        height: 600
+        height: 600,
+        icon: nativeImage.createFromPath(__dirname + `/resources/quarky.${os.platform() === "win32" ? "ico" : "png"}`)
     })
 
     win.webContents.setWindowOpenHandler(({ url }) => {
         shell.openExternal(url);
         return { action: 'deny' };
     });
+    win.setMenuBarVisibility(false)
 
     if (!isDev) {
         autoUpdater.checkForUpdates();

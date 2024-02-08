@@ -3,11 +3,14 @@ import * as fs from "fs";
 
 export default {
   packagerConfig: {
-    asar: true
+    asar: true,
+    icon: 'desktop/resources/quarky'
   },
   rebuildConfig: {},
   hooks: {
     packageAfterPrune: (_config, buildPath) => {
+      // https://stackoverflow.com/a/76816826
+
       const bufferutilGyp = path.join(
           buildPath,
           'node_modules',
@@ -23,14 +26,17 @@ export default {
           'node_gyp_bins'
       );
 
-      fs.rmSync(bufferutilGyp, {recursive: true, force: true}); // https://stackoverflow.com/a/76816826
-      fs.rmSync(utf8ValidateGyp, {recursive: true, force: true}); // https://stackoverflow.com/a/76816826
+      fs.rmSync(bufferutilGyp, {recursive: true, force: true});
+      fs.rmSync(utf8ValidateGyp, {recursive: true, force: true});
     }
   },
   makers: [
     {
       name: '@electron-forge/maker-squirrel',
-      config: {},
+      config: {
+        iconUrl: 'https://quarky.hakase.life/favicon.ico',
+        setupIcon: 'desktop/resources/quarkysetup.ico'
+      },
     },
     {
       name: '@electron-forge/maker-zip',
@@ -38,11 +44,25 @@ export default {
     },
     {
       name: '@electron-forge/maker-deb',
-      config: {},
+      config: {
+        options: {
+          icon: 'desktop/resources/quarky.png',
+          categories: ["Network"],
+          homepage: 'https://quarky.hakase.life',
+          priority: 'optional',
+          section: 'web'
+        }
+      },
     },
     {
       name: '@electron-forge/maker-rpm',
-      config: {},
+      config: {
+        options: {
+          icon: 'desktop/resources/quarky.png',
+          categories: ["Network"],
+          homepage: 'https://quarky.hakase.life'
+        }
+      },
     },
     {
       name: '@electron-forge/maker-dmg',

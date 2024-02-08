@@ -6,9 +6,9 @@
 
     "CREDITS_BUTTON": "Acknowledgements",
     "QUARKY_NAME": "Quarky 2",
-    "QUARKY_DESCRIPTION": "A chat client for Lightquark and Telegram",
+    "QUARKY_DESCRIPTION": "\"The worst chat app on Earth\" for Lightquark and Telegram",
     "QUARKY_BYLINE": "Hakase software © {{year}}",
-    "QUARKY_VERSION": "Version {{version}}",
+    "QUARKY_VERSION": "Version {{version}} (\"{{codename}}\")",
     "CREDITS_SPECIAL_THANKS": "Special thanks",
     "CREDITS_EMILIA": "Emilia for fixing various instances of horrendous code",
     "CREDITS_BYE": "Bye for giving free tummy rubs",
