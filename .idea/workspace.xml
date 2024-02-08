@@ -5,18 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b867886f-e5e7-420d-9bab-a7f0f966787d" name="Changes" comment="explosion">
-      <change afterPath="$PROJECT_DIR$/public/mio.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/desktop/resources/quarky.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/desktop/resources/quarky.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/desktop/resources/quarky@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/desktop/resources/quarkysetup.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/_nyafile/img/quarkysetup.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/dialogs/Message.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/dialogs/RichEmbed.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bun.lockb" beforeDir="false" afterPath="$PROJECT_DIR$/bun.lockb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/desktop/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/desktop/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/forge.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/forge.config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/_nyafile/data/licenses.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/_nyafile/data/licenses.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/_nyafile/lang/en.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/_nyafile/lang/en.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/_services/lightquark/dialogs/LightquarkMessage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/_services/lightquark/dialogs/LightquarkMessage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/_services/lightquark/dialogs/LightquarkMessage.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/dialogs/Message.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/_services/telegram/dialogs/TelegramMessage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/_services/telegram/dialogs/TelegramMessage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/_services/telegram/dialogs/TelegramMessage.module.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/_services/telegram/dialogs/TelegramSticker.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/_services/telegram/dialogs/TelegramSticker.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/modals/CreditsModal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modals/CreditsModal.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/nav/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/nav/Header.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/AuthenticationNeeded.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/AuthenticationNeeded.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/Client.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/Client.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/Root.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/Root.jsx" afterDir="false" />
     </list>
     <list id="650e51f2-1d95-44bb-8bc4-d7fc5c5b3f82" name="Changes by Eier" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -75,10 +84,10 @@
     "WebServerToolWindowFactoryState": "false",
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "senpai",
-    "javascript.nodejs.core.library.configured.version": "21.4.0",
-    "javascript.nodejs.core.library.typings.version": "20.10.5",
+    "javascript.nodejs.core.library.configured.version": "21.5.0",
+    "javascript.nodejs.core.library.typings.version": "20.11.5",
     "js.linters.configure.manually.selectedeslint": "true",
-    "last_opened_file_path": "/home/vukky/Documents/Git/quarky/src/util",
+    "last_opened_file_path": "/home/hakase/Downloads/doki-theme-jetbrains-88.5-1.12.0.zip",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.standard": "true",
@@ -88,7 +97,8 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "npm.Start Electron app.executor": "Run",
-    "settings.editor.selected.configurable": "settings.javascript.linters.eslint",
+    "npm.Start Vite app.executor": "Run",
+    "settings.editor.selected.configurable": "configurable.group.editor",
     "timeTracker.activityTracker": "null",
     "timeTracker.comment": "",
     "timeTracker.inactivityPeriodInMills": "600000",
@@ -118,25 +128,28 @@
     <layout>
       <window_info id="Space Code Reviews" />
       <window_info id="Bookmarks" side_tool="true" />
-      <window_info id="Commit_Guest" />
-      <window_info id="Pull Requests" />
       <window_info id="Merge Requests" />
+      <window_info id="Commit_Guest" />
+      <window_info id="npm" show_stripe_button="false" side_tool="true" />
+      <window_info id="Pull Requests" />
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.5005176" visible="true" weight="0.17526042" />
       <window_info id="Commit" order="1" weight="0.17526042" />
       <window_info id="Structure" order="2" sideWeight="0.4994824" side_tool="true" weight="0.32994792" />
+      <window_info anchor="bottom" id="TypeScript" />
       <window_info anchor="bottom" id="TODO" />
       <window_info anchor="bottom" id="Messages" weight="0.33028847" />
       <window_info anchor="bottom" id="File Transfer" />
-      <window_info anchor="bottom" id="Run" />
-      <window_info anchor="bottom" id="TypeScript" />
+      <window_info active="true" anchor="bottom" id="Run" visible="true" weight="0.25432694" />
+      <window_info anchor="bottom" id="Find" />
       <window_info anchor="bottom" id="Version Control" order="0" />
       <window_info anchor="bottom" id="Problems View" order="1" weight="0.33028847" />
       <window_info anchor="bottom" id="Terminal" order="2" weight="0.33028847" />
       <window_info anchor="bottom" id="Services" order="3" weight="0.33028847" />
-      <window_info anchor="bottom" id="Debug" order="4" weight="0.2765444" />
+      <window_info anchor="bottom" id="Debug" order="4" weight="0.33028847" />
       <window_info anchor="right" id="Endpoints" />
       <window_info anchor="right" id="Meet New UI" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Notifications" order="0" weight="0.25" />
+      <window_info anchor="right" id="AIAssistant" order="1" weight="0.25" />
     </layout>
   </component>
   <component name="RecentsManager">
@@ -148,14 +161,14 @@
       <recent name="$PROJECT_DIR$/src/components/oss" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components/dialogs" />
       <recent name="$PROJECT_DIR$/packages" />
       <recent name="$PROJECT_DIR$/src/components/_services" />
       <recent name="$PROJECT_DIR$/src/components" />
       <recent name="$PROJECT_DIR$/src/components/telegram/dialogs" />
-      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager" selected="Node.js.nyafile-compiler.js">
+  <component name="RunManager" selected="npm.Start Electron app">
     <configuration name="nyafile-compiler.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="nyafile-compiler.js" working-dir="$PROJECT_DIR$/src">
       <method v="2" />
     </configuration>
@@ -192,8 +205,8 @@
     <list>
       <item itemvalue="Node.js.nyafile-compiler.js" />
       <item itemvalue="npm.Start Electron app" />
-      <item itemvalue="npm.Start Vite app" />
       <item itemvalue="npm.Compile license and nyafile" />
+      <item itemvalue="npm.Start Vite app" />
     </list>
     <recent_temporary>
       <list>
@@ -258,6 +271,16 @@
       <workItem from="1702481664853" duration="3930000" />
       <workItem from="1702914435433" duration="7901000" />
       <workItem from="1702971743132" duration="2127000" />
+      <workItem from="1705486686723" duration="1279000" />
+      <workItem from="1705489756208" duration="1201000" />
+      <workItem from="1705504326347" duration="938000" />
+      <workItem from="1705577056157" duration="1828000" />
+      <workItem from="1705590828970" duration="1708000" />
+      <workItem from="1705605976033" duration="5647000" />
+      <workItem from="1706471330297" duration="667000" />
+      <workItem from="1707405224702" duration="1780000" />
+      <workItem from="1707410646137" duration="148000" />
+      <workItem from="1707410805791" duration="4538000" />
     </task>
     <task id="LOCAL-00008" summary="Fix lies">
       <option name="closed" value="true" />
@@ -652,12 +675,7 @@
       <updated>1702972662990</updated>
     </task>
     <option name="localTasksCounter" value="57" />
-    <servers>
-      <YouTrack url="https://youtrack.litdevs.org">
-        <option name="defaultSearch" value="project: q2" />
-        <username>random</username>
-      </YouTrack>
-    </servers>
+    <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
@@ -715,7 +733,6 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/routes/Root.jsx</url>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>

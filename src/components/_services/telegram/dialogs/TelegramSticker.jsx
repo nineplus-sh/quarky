@@ -27,6 +27,6 @@ export default function TelegramSticker({media}) {
     const photoSize = media.thumbs.find(thumb => thumb.className === "PhotoSize");
     const [image, setImage] = useState(photoPath ? svgToImgURL(pathToSvg(photoPath.bytes)) : "")
 
-    if(media.mimeType !== "image/webp") return <i>Quarky does not support this sticker type.</i>
+    if(media.mimeType !== "image/webp") return <i>This version of Quarky does not support this sticker type.</i>
     return <img src={image} width={photoSize.w} height={photoSize.h} />
 }
