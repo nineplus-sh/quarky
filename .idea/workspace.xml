@@ -4,11 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b867886f-e5e7-420d-9bab-a7f0f966787d" name="Changes" comment="Update app icons">
-      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+    <list default="true" id="b867886f-e5e7-420d-9bab-a7f0f966787d" name="Changes" comment="Fix the part where nothing works">
+      <change afterPath="$PROJECT_DIR$/src/_nyafile/img/loginheadervukky.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/_nyafile/img/orb_2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/_nyafile/img/orb_3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/_nyafile/img/orb_4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/_nyafile/img/orb_5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/_nyafile/sfx/button-hover.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/_nyafile/sfx/button-select.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/modals/LoginModal.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/modals/LoginModal.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/desktop/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/desktop/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/_nyafile/data/licenses.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/_nyafile/data/licenses.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/_nyafile/lang/en.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/_nyafile/lang/en.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/_services/telegram/login/TelegramQRCode.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/_services/telegram/login/TelegramQRCode.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/nav/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/nav/Header.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/AuthenticationNeeded.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/AuthenticationNeeded.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/Root.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/Root.jsx" afterDir="false" />
     </list>
     <list id="650e51f2-1d95-44bb-8bc4-d7fc5c5b3f82" name="Changes by Eier" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -67,10 +79,10 @@
     "WebServerToolWindowFactoryState": "false",
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "senpai",
-    "javascript.nodejs.core.library.configured.version": "21.5.0",
-    "javascript.nodejs.core.library.typings.version": "20.11.5",
+    "javascript.nodejs.core.library.configured.version": "21.6.1",
+    "javascript.nodejs.core.library.typings.version": "20.11.20",
     "js.linters.configure.manually.selectedeslint": "true",
-    "last_opened_file_path": "/home/hakase/Downloads/doki-theme-jetbrains-88.5-1.12.0.zip",
+    "last_opened_file_path": "/home/hakase/Documents/Git/pancake-tower",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.standard": "true",
@@ -81,7 +93,7 @@
     "nodejs_package_manager_path": "npm",
     "npm.Start Electron app.executor": "Run",
     "npm.Start Vite app.executor": "Run",
-    "settings.editor.selected.configurable": "configurable.group.editor",
+    "settings.editor.selected.configurable": "ImportCost",
     "timeTracker.activityTracker": "null",
     "timeTracker.comment": "",
     "timeTracker.inactivityPeriodInMills": "600000",
@@ -263,15 +275,11 @@
       <workItem from="1706471330297" duration="667000" />
       <workItem from="1707405224702" duration="1780000" />
       <workItem from="1707410646137" duration="148000" />
-      <workItem from="1707410805791" duration="6758000" />
-    </task>
-    <task id="LOCAL-00010" summary="add OSS notices and music&#10;&#10;#q2-6 State Done">
-      <option name="closed" value="true" />
-      <created>1697224553523</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1697224553523</updated>
+      <workItem from="1707410805791" duration="7305000" />
+      <workItem from="1708115716976" duration="19000" />
+      <workItem from="1708955362399" duration="380000" />
+      <workItem from="1708955749237" duration="4850000" />
+      <workItem from="1708961054361" duration="5409000" />
     </task>
     <task id="LOCAL-00011" summary="thank you WebStorm this was very useful (the build broke)">
       <option name="closed" value="true" />
@@ -657,7 +665,15 @@
       <option name="project" value="LOCAL" />
       <updated>1707415479223</updated>
     </task>
-    <option name="localTasksCounter" value="59" />
+    <task id="LOCAL-00059" summary="Fix the part where nothing works">
+      <option name="closed" value="true" />
+      <created>1707418288825</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1707418288825</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -676,7 +692,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Add bad Telegram 2FA handler and special thanks section" />
     <MESSAGE value="Add better Sentry fallback and tunnel" />
     <MESSAGE value="Add fallbacks for action and media messages" />
     <MESSAGE value="Avoid dumping all rendered messages in sentry :eyes:" />
@@ -701,7 +716,8 @@
     <MESSAGE value="explosion" />
     <MESSAGE value="Add rich embeds" />
     <MESSAGE value="Update app icons" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update app icons" />
+    <MESSAGE value="Fix the part where nothing works" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix the part where nothing works" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -713,10 +729,6 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/vite.config.js</url>
           <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/routes/Root.jsx</url>
-          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

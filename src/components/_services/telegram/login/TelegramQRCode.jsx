@@ -4,6 +4,7 @@ import QRCodeStyling from "qr-code-styling";
 import localforage from "localforage";
 import * as Sentry from "@sentry/react";
 import {useUnleashContext} from "@unleash/proxy-client-react";
+import {t} from "i18next";
 
 
 // i love u
@@ -29,6 +30,7 @@ export default function TelegramQRCode() {
     useEffect(() => {
         (async () => {
             try {
+                await appContext.telegram.connect()
                 const user = await appContext.telegram.signInUserWithQrCode({
                     apiId: parseInt(import.meta.env.VITE_TG_API_ID),
                     apiHash: import.meta.env.VITE_TG_API_HASH
@@ -47,12 +49,13 @@ export default function TelegramQRCode() {
                         apiHash: import.meta.env.VITE_TG_API_HASH
                     }, {
                         password: function(hint){return prompt(`Your account has Telegram 2FA enabled. Please enter your password.\nHint: ${hint}`);},
-                        onError: function(e) {Sentry.captureException(e);alert("Failed to log in. This error has been reported to Quarky developers.");}
+                        onError: function(e) {console.log(e);Sentry.captureException(e);alert("Failed to log in. This error has been reported to Quarky developers.");}
                     })
                     await localforage.setItem("TG_SESSION", appContext.telegram.session.save())
                     appContext.setAccounts({telegram: user});
                     updateContext({telegramId: user.id.value})
                 } else {
+                    console.log(e);
                     Sentry.captureException(e);
                     alert("Failed to log in. This error has been reported to Quarky developers.");
                 }
@@ -89,5 +92,5 @@ export default function TelegramQRCode() {
         });
     }, [url, qrCode]);
 
-    return (<div ref={ref}/>)
+    return (<><div ref={ref}/>{url ? "" : <p>{t("TELEGRAM_CONNECTING")}</p>}</>)
 }

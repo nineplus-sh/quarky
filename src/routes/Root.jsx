@@ -42,9 +42,9 @@ export default function Root() {
         async function loadNyafile() {
             const telegramClient = new TelegramClient(new StringSession(await localforage.getItem("TG_SESSION")), parseInt(import.meta.env.VITE_TG_API_ID), import.meta.env.VITE_TG_API_HASH, { connectionRetries: 5 });
             appContext.setTelegram(telegramClient);
-            await telegramClient.connect();
 
-            if(await telegramClient.isUserAuthorized()) {
+            if(await localforage.getItem("TG_SESSION")) {
+                await telegramClient.connect();
                 const user = await telegramClient.getMe()
                 appContext.setAccounts({telegram: user})
                 updateContext({telegramId: user.id.value})
@@ -79,12 +79,12 @@ export default function Root() {
                 })
 
             nyafile.queueCache("data/licenses", "text");
-            nyafile.queueCache("img/daturyok")
             nyafile.queueCache("img/stars");
             nyafile.queueCache("img/quarky");
             nyafile.queueCache("music/login");
             nyafile.queueCache("sfx/info-modal-pop-in");
             nyafile.queueCache("sfx/info-modal-pop-out");
+            nyafile.queueCache("sfx/button-select");
             nyafile.queueCache("sfx/purr");
 
             await nyafile.waitAllCached();

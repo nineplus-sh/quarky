@@ -1,8 +1,8 @@
 {
   "name": "quarky",
-  "description": "The worst chat app on Earth",
+  "description": "An alright chat app on Earth",
   "author": "Hakase",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "codename": "Nano",
 
   "type": "module",

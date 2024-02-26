@@ -1,0 +1,94 @@
+.centerwrap {
+    position: fixed;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.login {
+    background-color: white;
+    border-radius: 10px;
+    color: black;
+    width: fit-content;
+    padding: 2em;
+}
+
+.planet {
+    z-index: -1;
+    position: absolute;
+    top: -7.5em;
+    left: 0;
+    right: 0;
+    margin:0px auto;
+
+    width: 11em;
+    animation: 5s float ease-in-out infinite;
+}
+
+.orbs {
+    position: absolute;
+    top: -4em;
+    left: 0;
+    right: 0;
+    margin:0px auto;
+
+    width: fit-content;
+}
+.orbwrap {
+    position: absolute;
+}
+.orb {
+    width: 2em;
+    border-radius: 100%;
+}
+
+.orbs .orbwrap:nth-of-type(1) {
+    right: 5em;
+    transform: rotate(-20deg)
+}
+.orbs .orbwrap:nth-of-type(2) {
+    left: 5em;
+    transform: rotate(20deg)
+}
+.orbs .orbwrap:nth-of-type(3) {
+    top: -4em;
+    right: 3.5em;
+    transform: rotate(-20deg)
+}
+.orbs .orbwrap:nth-of-type(4) {
+    top: -4em;
+    left: 3.5em;
+    transform: rotate(20deg)
+}
+.orbs .orbwrap:nth-of-type(5) {
+    top: -5.5em;
+    left: -0.6em;
+}
+
+.orbs .orbwrap:nth-of-type(1) .orb {
+    animation: 2s float ease-in-out infinite;
+}
+.orbs .orbwrap:nth-of-type(2) .orb {
+    animation: 3s float ease-in-out infinite;
+}
+.orbs .orbwrap:nth-of-type(3) .orb {
+    animation: 4s float ease-in-out infinite;
+}
+.orbs .orbwrap:nth-of-type(4) .orb {
+    animation: 5s float ease-in-out infinite;
+}
+.orbs .orbwrap:nth-of-type(5) .orb {
+    animation: 6s float ease-in-out infinite;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}

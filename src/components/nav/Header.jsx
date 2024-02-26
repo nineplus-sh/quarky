@@ -19,6 +19,7 @@ export default function Header({title, description}) {
 
     function toggleModal() {
         setCreditsModalOpen(!creditsModalOpen);
+        if(!creditsModalOpen) { new Audio(appContext.nyafile.getCachedData("sfx/button-select")).play(); }
         new Audio(appContext.nyafile.getCachedData(`sfx/info-modal-pop-${creditsModalOpen ? "out" : "in"}`)).play();
     }
 
