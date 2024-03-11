@@ -4,23 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b867886f-e5e7-420d-9bab-a7f0f966787d" name="Changes" comment="Fix the part where nothing works">
-      <change afterPath="$PROJECT_DIR$/src/_nyafile/img/loginheadervukky.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/_nyafile/img/orb_2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/_nyafile/img/orb_3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/_nyafile/img/orb_4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/_nyafile/img/orb_5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/_nyafile/sfx/button-hover.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/_nyafile/sfx/button-select.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/modals/LoginModal.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/modals/LoginModal.module.css" afterDir="false" />
+    <list default="true" id="b867886f-e5e7-420d-9bab-a7f0f966787d" name="Changes" comment="New login screen">
+      <change afterPath="$PROJECT_DIR$/src/components/nav/ChannelView.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/nav/Dialog.module.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/nav/GenericQuark.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/routes/Client.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/_nyafile/lang/en.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/_nyafile/lang/en.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/_services/telegram/login/TelegramQRCode.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/_services/telegram/login/TelegramQRCode.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/nav/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/nav/Header.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/AuthenticationNeeded.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/AuthenticationNeeded.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/Root.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/Root.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/_services/lightquark/nav/Quark.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/_services/lightquark/nav/Quark.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/nav/ChannelView.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/nav/ChannelView.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/nav/Dialog.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/nav/Dialog.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/Client.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/Client.jsx" afterDir="false" />
     </list>
     <list id="650e51f2-1d95-44bb-8bc4-d7fc5c5b3f82" name="Changes by Eier" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -70,55 +63,55 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Node.js.nyafile-compiler.js.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "senpai",
-    "javascript.nodejs.core.library.configured.version": "21.6.1",
-    "javascript.nodejs.core.library.typings.version": "20.11.20",
-    "js.linters.configure.manually.selectedeslint": "true",
-    "last_opened_file_path": "/home/hakase/Documents/Git/pancake-tower",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.standard": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.standard": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "npm.Start Electron app.executor": "Run",
-    "npm.Start Vite app.executor": "Run",
-    "settings.editor.selected.configurable": "ImportCost",
-    "timeTracker.activityTracker": "null",
-    "timeTracker.comment": "",
-    "timeTracker.inactivityPeriodInMills": "600000",
-    "timeTracker.isAutoTrackingEnable": "false",
-    "timeTracker.isAutoTrackingTemporaryDisabled": "false",
-    "timeTracker.isManualTrackingEnable": "false",
-    "timeTracker.isPaused": "true",
-    "timeTracker.isPostAfterCommitEnabled": "false",
-    "timeTracker.isPostedScheduled": "true",
-    "timeTracker.isRunning": "false",
-    "timeTracker.isScheduledEnabled": "false",
-    "timeTracker.isWhenProjectClosedEnabled": "false",
-    "timeTracker.issueId": "Default",
-    "timeTracker.issueIdReadable": "Default",
-    "timeTracker.pausedTime": "0",
-    "timeTracker.query": "",
-    "timeTracker.recordedTime": "0",
-    "timeTracker.scheduledPeriod": "19:00:0",
-    "timeTracker.startTime": "0",
-    "timeTracker.timeInMills": "0",
-    "timeTracker.type": "Development",
-    "ts.external.directory.path": "/home/vukky/.local/share/JetBrains/Toolbox/apps/webstorm/plugins/javascript-impl/jsLanguageServicesImpl/external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Node.js.nyafile-compiler.js.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;senpai&quot;,
+    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;21.6.1&quot;,
+    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;20.11.20&quot;,
+    &quot;js.linters.configure.manually.selectedeslint&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/hakase/Documents/Git/pancake-tower&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.Start Electron app.executor&quot;: &quot;Run&quot;,
+    &quot;npm.Start Vite app.executor&quot;: &quot;Run&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;settings.sync&quot;,
+    &quot;timeTracker.activityTracker&quot;: &quot;null&quot;,
+    &quot;timeTracker.comment&quot;: &quot;&quot;,
+    &quot;timeTracker.inactivityPeriodInMills&quot;: &quot;600000&quot;,
+    &quot;timeTracker.isAutoTrackingEnable&quot;: &quot;false&quot;,
+    &quot;timeTracker.isAutoTrackingTemporaryDisabled&quot;: &quot;false&quot;,
+    &quot;timeTracker.isManualTrackingEnable&quot;: &quot;false&quot;,
+    &quot;timeTracker.isPaused&quot;: &quot;true&quot;,
+    &quot;timeTracker.isPostAfterCommitEnabled&quot;: &quot;false&quot;,
+    &quot;timeTracker.isPostedScheduled&quot;: &quot;true&quot;,
+    &quot;timeTracker.isRunning&quot;: &quot;false&quot;,
+    &quot;timeTracker.isScheduledEnabled&quot;: &quot;false&quot;,
+    &quot;timeTracker.isWhenProjectClosedEnabled&quot;: &quot;false&quot;,
+    &quot;timeTracker.issueId&quot;: &quot;Default&quot;,
+    &quot;timeTracker.issueIdReadable&quot;: &quot;Default&quot;,
+    &quot;timeTracker.pausedTime&quot;: &quot;0&quot;,
+    &quot;timeTracker.query&quot;: &quot;&quot;,
+    &quot;timeTracker.recordedTime&quot;: &quot;0&quot;,
+    &quot;timeTracker.scheduledPeriod&quot;: &quot;19:00:0&quot;,
+    &quot;timeTracker.startTime&quot;: &quot;0&quot;,
+    &quot;timeTracker.timeInMills&quot;: &quot;0&quot;,
+    &quot;timeTracker.type&quot;: &quot;Development&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/home/vukky/.local/share/JetBrains/Toolbox/apps/webstorm/plugins/javascript-impl/jsLanguageServicesImpl/external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RdControllerToolWindowsLayoutState" isNewUi="true">
     <layout>
       <window_info id="Space Code Reviews" />
@@ -279,15 +272,12 @@
       <workItem from="1708115716976" duration="19000" />
       <workItem from="1708955362399" duration="380000" />
       <workItem from="1708955749237" duration="4850000" />
-      <workItem from="1708961054361" duration="5409000" />
-    </task>
-    <task id="LOCAL-00011" summary="thank you WebStorm this was very useful (the build broke)">
-      <option name="closed" value="true" />
-      <created>1697225032648</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1697225032648</updated>
+      <workItem from="1708961054361" duration="6697000" />
+      <workItem from="1709058126029" duration="31000" />
+      <workItem from="1709223607671" duration="666000" />
+      <workItem from="1709462148758" duration="7000" />
+      <workItem from="1710166268344" duration="627000" />
+      <workItem from="1710182476572" duration="3599000" />
     </task>
     <task id="LOCAL-00012" summary="improve display of oss libraries">
       <option name="closed" value="true" />
@@ -673,7 +663,15 @@
       <option name="project" value="LOCAL" />
       <updated>1707418288825</updated>
     </task>
-    <option name="localTasksCounter" value="60" />
+    <task id="LOCAL-00060" summary="New login screen">
+      <option name="closed" value="true" />
+      <created>1708966848323</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1708966848323</updated>
+    </task>
+    <option name="localTasksCounter" value="61" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -692,7 +690,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Add better Sentry fallback and tunnel" />
     <MESSAGE value="Add fallbacks for action and media messages" />
     <MESSAGE value="Avoid dumping all rendered messages in sentry :eyes:" />
     <MESSAGE value="unignore .env (.env.local is used for private info)" />
@@ -717,7 +714,8 @@
     <MESSAGE value="Add rich embeds" />
     <MESSAGE value="Update app icons" />
     <MESSAGE value="Fix the part where nothing works" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix the part where nothing works" />
+    <MESSAGE value="New login screen" />
+    <option name="LAST_COMMIT_MESSAGE" value="New login screen" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

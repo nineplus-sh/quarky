@@ -1,5 +1,4 @@
 import {useContext, useEffect, useState} from "react";
-import TelegramDMSelector from "../components/_services/telegram/nav/TelegramDMSelector.jsx";
 import {Outlet} from "react-router-dom";
 import { ClientContext } from "../contexts/ClientContext.js";
 import QuarkList from "../components/_services/lightquark/nav/QuarkList.jsx";
@@ -7,6 +6,8 @@ import {AppContext} from "../contexts/AppContext.js";
 import LQ from "../util/LQ.js";
 import useWebSocket from "react-use-websocket";
 import localForage from "localforage";
+import GenericQuark from "../components/nav/GenericQuark.jsx";
+import styles from "./Client.module.css"
 
 /**
  * The client screen.
@@ -66,9 +67,13 @@ export default function Client() {
             avatarCache, setAvatarCache,
             resolvedAvatarCache, setResolvedAvatarCache
         }}>
-            <Outlet />
-            {appContext.accounts.lightquark ? <QuarkList /> : null}
-            {appContext.accounts.telegram ? <TelegramDMSelector /> : null}
+            <div className={styles.client}>
+                <div className={styles.quarkList}>
+                    {appContext.accounts.telegram ? <GenericQuark link={"/telegram"}/> : null}
+                    {appContext.accounts.lightquark ? <QuarkList/> : null}
+                </div>
+                <Outlet/>
+            </div>
         </ClientContext.Provider>
     </>)
 }
