@@ -4,16 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b867886f-e5e7-420d-9bab-a7f0f966787d" name="Changes" comment="New login screen">
-      <change afterPath="$PROJECT_DIR$/src/components/nav/ChannelView.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/nav/Dialog.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/nav/GenericQuark.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/routes/Client.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/_services/lightquark/nav/Quark.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/_services/lightquark/nav/Quark.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/nav/ChannelView.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/nav/ChannelView.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/nav/Dialog.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/nav/Dialog.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/Client.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/Client.jsx" afterDir="false" />
+    <list default="true" id="b867886f-e5e7-420d-9bab-a7f0f966787d" name="Changes" comment="Add Discord layout">
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <list id="650e51f2-1d95-44bb-8bc4-d7fc5c5b3f82" name="Changes by Eier" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -277,15 +269,7 @@
       <workItem from="1709223607671" duration="666000" />
       <workItem from="1709462148758" duration="7000" />
       <workItem from="1710166268344" duration="627000" />
-      <workItem from="1710182476572" duration="3599000" />
-    </task>
-    <task id="LOCAL-00012" summary="improve display of oss libraries">
-      <option name="closed" value="true" />
-      <created>1697996825882</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1697996825882</updated>
+      <workItem from="1710182476572" duration="3781000" />
     </task>
     <task id="LOCAL-00013" summary="add scannable telegram qr code">
       <option name="closed" value="true" />
@@ -671,7 +655,15 @@
       <option name="project" value="LOCAL" />
       <updated>1708966848323</updated>
     </task>
-    <option name="localTasksCounter" value="61" />
+    <task id="LOCAL-00061" summary="Add Discord layout">
+      <option name="closed" value="true" />
+      <created>1710186240377</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1710186240377</updated>
+    </task>
+    <option name="localTasksCounter" value="62" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -690,7 +682,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Add fallbacks for action and media messages" />
     <MESSAGE value="Avoid dumping all rendered messages in sentry :eyes:" />
     <MESSAGE value="unignore .env (.env.local is used for private info)" />
     <MESSAGE value="allow (but ignore the properties of) MessageMediaWebPage" />
@@ -715,7 +706,8 @@
     <MESSAGE value="Update app icons" />
     <MESSAGE value="Fix the part where nothing works" />
     <MESSAGE value="New login screen" />
-    <option name="LAST_COMMIT_MESSAGE" value="New login screen" />
+    <MESSAGE value="Add Discord layout" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Discord layout" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
