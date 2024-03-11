@@ -20,7 +20,7 @@ export default function TelegramDM({name, photo, peer, message, id}) {
 
     return (<Link to={`/telegram/${id}`}>
         <div className={styles.dm}>
-            {photo && photo.className !== "ChatPhotoEmpty" ? <TelegramProfilePicture photo={photo} peer={peer} /> : ""}
+            <TelegramProfilePicture photo={photo} peer={peer} />
             <span className={styles.info}> {name}<br/><span className={styles.message}>{messageText}</span></span>
         </div>
     </Link>)
