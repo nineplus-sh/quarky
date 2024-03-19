@@ -1,8 +1,10 @@
 .channelList {
-    max-width: 15.5em;
+    width: 15.5em;
     overflow-x: hidden;
     max-height: 100vh;
     overflow-y: scroll;
+
+    flex: none;
 }
 
 .messageArea {
