@@ -34,7 +34,6 @@ export default function TelegramMessage({message}) {
             {message.message}
         </Message>
     } else {
-        console.log(message.media)
         return <Message content={""}>
             <i>This version of Quarky does not support this message type.</i>
         </Message>
