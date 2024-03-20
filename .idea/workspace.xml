@@ -4,12 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b867886f-e5e7-420d-9bab-a7f0f966787d" name="Changes" comment="That did something I suppose">
-      <change afterPath="$PROJECT_DIR$/src/components/_services/telegram/dialogs/TelegramPhoto.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/dialogs/Photo.jsx" afterDir="false" />
+    <list default="true" id="b867886f-e5e7-420d-9bab-a7f0f966787d" name="Changes" comment="OUGHHHHHHHH">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/_services/telegram/dialogs/TelegramMessage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/_services/telegram/dialogs/TelegramMessage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/dialogs/Message.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/dialogs/Message.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bun.lockb" beforeDir="false" afterPath="$PROJECT_DIR$/bun.lockb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/_nyafile/data/licenses.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/_nyafile/data/licenses.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/_services/telegram/dialogs/TelegramSticker.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/_services/telegram/dialogs/TelegramSticker.jsx" afterDir="false" />
     </list>
     <list id="650e51f2-1d95-44bb-8bc4-d7fc5c5b3f82" name="Changes by Eier" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -276,39 +277,7 @@
       <workItem from="1710182476572" duration="7723000" />
       <workItem from="1710603148348" duration="678000" />
       <workItem from="1710841279476" duration="2262000" />
-      <workItem from="1710951082363" duration="4799000" />
-    </task>
-    <task id="LOCAL-00016" summary="improve dm styling">
-      <option name="closed" value="true" />
-      <created>1698940566588</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1698940566588</updated>
-    </task>
-    <task id="LOCAL-00017" summary="add routing">
-      <option name="closed" value="true" />
-      <created>1698954039250</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1698954039250</updated>
-    </task>
-    <task id="LOCAL-00018" summary="add message fetching">
-      <option name="closed" value="true" />
-      <created>1698957563143</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1698957563143</updated>
-    </task>
-    <task id="LOCAL-00019" summary="add message input box">
-      <option name="closed" value="true" />
-      <created>1698959004406</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1698959004406</updated>
+      <workItem from="1710951082363" duration="9967000" />
     </task>
     <task id="LOCAL-00020" summary="add diagnostics (EasyPrivacy users will hate this)">
       <option name="closed" value="true" />
@@ -670,7 +639,39 @@
       <option name="project" value="LOCAL" />
       <updated>1710843379199</updated>
     </task>
-    <option name="localTasksCounter" value="65" />
+    <task id="LOCAL-00065" summary="Pictures">
+      <option name="closed" value="true" />
+      <created>1710956122674</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1710956122674</updated>
+    </task>
+    <task id="LOCAL-00066" summary="Oughhhhhhh">
+      <option name="closed" value="true" />
+      <created>1710956144077</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1710956144077</updated>
+    </task>
+    <task id="LOCAL-00067" summary="Pick largest size instead of progressive size">
+      <option name="closed" value="true" />
+      <created>1710956577082</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1710956577082</updated>
+    </task>
+    <task id="LOCAL-00068" summary="OUGHHHHHHHH">
+      <option name="closed" value="true" />
+      <created>1710956593314</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1710956593314</updated>
+    </task>
+    <option name="localTasksCounter" value="69" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -689,10 +690,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="add basic lightquark authentication" />
-    <MESSAGE value="Add rendering of Telegram stickers" />
-    <MESSAGE value="Add Lightquark quark and channel lists" />
-    <MESSAGE value="yolo electron app (terrible)" />
     <MESSAGE value="ok now deploy" />
     <MESSAGE value="I'm so good at GitHub Actions" />
     <MESSAGE value="p-pwease" />
@@ -714,7 +711,11 @@
     <MESSAGE value="verbump" />
     <MESSAGE value="&quot;Fix&quot; Telegram users with no profile picture" />
     <MESSAGE value="That did something I suppose" />
-    <option name="LAST_COMMIT_MESSAGE" value="That did something I suppose" />
+    <MESSAGE value="Pictures" />
+    <MESSAGE value="Oughhhhhhh" />
+    <MESSAGE value="Pick largest size instead of progressive size" />
+    <MESSAGE value="OUGHHHHHHHH" />
+    <option name="LAST_COMMIT_MESSAGE" value="OUGHHHHHHHH" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
