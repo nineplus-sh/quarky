@@ -4,7 +4,6 @@ import {useContext, useEffect, useState} from "react";
 import {AppContext} from "../../../../contexts/AppContext.js";
 
 export default function TelegramPhoto({media}) {
-    console.log(media)
 
     const strippedSize = media.photo.sizes.find(size => size.type === "i")
 
