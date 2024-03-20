@@ -3,8 +3,6 @@
 }
 
 .content {
-    display: flex;
-    flex-direction: column;
     padding-top: 0.7em;
     padding-left: 0.5em;
 }

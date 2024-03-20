@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b867886f-e5e7-420d-9bab-a7f0f966787d" name="Changes" comment="&quot;Fix&quot; Telegram users with no profile picture">
+    <list default="true" id="b867886f-e5e7-420d-9bab-a7f0f966787d" name="Changes" comment="That did something I suppose">
+      <change afterPath="$PROJECT_DIR$/src/components/_services/telegram/dialogs/TelegramPhoto.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/dialogs/Photo.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/nav/ChannelView.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/nav/ChannelView.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/Client.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/Client.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/_services/telegram/dialogs/TelegramMessage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/_services/telegram/dialogs/TelegramMessage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/dialogs/Message.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/dialogs/Message.module.css" afterDir="false" />
     </list>
     <list id="650e51f2-1d95-44bb-8bc4-d7fc5c5b3f82" name="Changes by Eier" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -57,55 +59,55 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Node.js.nyafile-compiler.js.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;senpai&quot;,
-    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;21.6.1&quot;,
-    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;20.11.20&quot;,
-    &quot;js.linters.configure.manually.selectedeslint&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/hakase/Documents/Git/pancake-tower&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;npm.Start Electron app.executor&quot;: &quot;Run&quot;,
-    &quot;npm.Start Vite app.executor&quot;: &quot;Run&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;settings.sync&quot;,
-    &quot;timeTracker.activityTracker&quot;: &quot;null&quot;,
-    &quot;timeTracker.comment&quot;: &quot;&quot;,
-    &quot;timeTracker.inactivityPeriodInMills&quot;: &quot;600000&quot;,
-    &quot;timeTracker.isAutoTrackingEnable&quot;: &quot;false&quot;,
-    &quot;timeTracker.isAutoTrackingTemporaryDisabled&quot;: &quot;false&quot;,
-    &quot;timeTracker.isManualTrackingEnable&quot;: &quot;false&quot;,
-    &quot;timeTracker.isPaused&quot;: &quot;true&quot;,
-    &quot;timeTracker.isPostAfterCommitEnabled&quot;: &quot;false&quot;,
-    &quot;timeTracker.isPostedScheduled&quot;: &quot;true&quot;,
-    &quot;timeTracker.isRunning&quot;: &quot;false&quot;,
-    &quot;timeTracker.isScheduledEnabled&quot;: &quot;false&quot;,
-    &quot;timeTracker.isWhenProjectClosedEnabled&quot;: &quot;false&quot;,
-    &quot;timeTracker.issueId&quot;: &quot;Default&quot;,
-    &quot;timeTracker.issueIdReadable&quot;: &quot;Default&quot;,
-    &quot;timeTracker.pausedTime&quot;: &quot;0&quot;,
-    &quot;timeTracker.query&quot;: &quot;&quot;,
-    &quot;timeTracker.recordedTime&quot;: &quot;0&quot;,
-    &quot;timeTracker.scheduledPeriod&quot;: &quot;19:00:0&quot;,
-    &quot;timeTracker.startTime&quot;: &quot;0&quot;,
-    &quot;timeTracker.timeInMills&quot;: &quot;0&quot;,
-    &quot;timeTracker.type&quot;: &quot;Development&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/home/vukky/.local/share/JetBrains/Toolbox/apps/webstorm/plugins/javascript-impl/jsLanguageServicesImpl/external&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Node.js.nyafile-compiler.js.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "senpai",
+    "javascript.nodejs.core.library.configured.version": "21.6.1",
+    "javascript.nodejs.core.library.typings.version": "20.11.20",
+    "js.linters.configure.manually.selectedeslint": "true",
+    "last_opened_file_path": "/home/hakase/Documents/Git/pancake-tower",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.standard": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "npm.Start Electron app.executor": "Run",
+    "npm.Start Vite app.executor": "Run",
+    "settings.editor.selected.configurable": "settings.sync",
+    "timeTracker.activityTracker": "null",
+    "timeTracker.comment": "",
+    "timeTracker.inactivityPeriodInMills": "600000",
+    "timeTracker.isAutoTrackingEnable": "false",
+    "timeTracker.isAutoTrackingTemporaryDisabled": "false",
+    "timeTracker.isManualTrackingEnable": "false",
+    "timeTracker.isPaused": "true",
+    "timeTracker.isPostAfterCommitEnabled": "false",
+    "timeTracker.isPostedScheduled": "true",
+    "timeTracker.isRunning": "false",
+    "timeTracker.isScheduledEnabled": "false",
+    "timeTracker.isWhenProjectClosedEnabled": "false",
+    "timeTracker.issueId": "Default",
+    "timeTracker.issueIdReadable": "Default",
+    "timeTracker.pausedTime": "0",
+    "timeTracker.query": "",
+    "timeTracker.recordedTime": "0",
+    "timeTracker.scheduledPeriod": "19:00:0",
+    "timeTracker.startTime": "0",
+    "timeTracker.timeInMills": "0",
+    "timeTracker.type": "Development",
+    "ts.external.directory.path": "/home/hakase/.local/share/JetBrains/Toolbox/apps/webstorm/plugins/javascript-impl/jsLanguageServicesImpl/external",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RdControllerToolWindowsLayoutState" isNewUi="true">
     <layout>
       <window_info id="Space Code Reviews" />
@@ -273,15 +275,8 @@
       <workItem from="1710166268344" duration="627000" />
       <workItem from="1710182476572" duration="7723000" />
       <workItem from="1710603148348" duration="678000" />
-      <workItem from="1710841279476" duration="1994000" />
-    </task>
-    <task id="LOCAL-00015" summary="add dm list">
-      <option name="closed" value="true" />
-      <created>1698936836162</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1698936836162</updated>
+      <workItem from="1710841279476" duration="2262000" />
+      <workItem from="1710951082363" duration="4799000" />
     </task>
     <task id="LOCAL-00016" summary="improve dm styling">
       <option name="closed" value="true" />
@@ -667,7 +662,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710186710848</updated>
     </task>
-    <option name="localTasksCounter" value="64" />
+    <task id="LOCAL-00064" summary="That did something I suppose">
+      <option name="closed" value="true" />
+      <created>1710843379199</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1710843379199</updated>
+    </task>
+    <option name="localTasksCounter" value="65" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -686,7 +689,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="allow (but ignore the properties of) MessageMediaWebPage" />
     <MESSAGE value="add basic lightquark authentication" />
     <MESSAGE value="Add rendering of Telegram stickers" />
     <MESSAGE value="Add Lightquark quark and channel lists" />
@@ -711,7 +713,8 @@
     <MESSAGE value="Add Discord layout" />
     <MESSAGE value="verbump" />
     <MESSAGE value="&quot;Fix&quot; Telegram users with no profile picture" />
-    <option name="LAST_COMMIT_MESSAGE" value="&quot;Fix&quot; Telegram users with no profile picture" />
+    <MESSAGE value="That did something I suppose" />
+    <option name="LAST_COMMIT_MESSAGE" value="That did something I suppose" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
