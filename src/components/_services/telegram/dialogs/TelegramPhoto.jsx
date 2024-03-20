@@ -4,8 +4,9 @@ import {useContext, useEffect, useState} from "react";
 import {AppContext} from "../../../../contexts/AppContext.js";
 
 export default function TelegramPhoto({media}) {
+    console.log(media)
+
     const strippedSize = media.photo.sizes.find(size => size.type === "i")
-    console.log(utils.strippedPhotoToJpg(strippedSize.bytes))
 
     const [src, setSrc] = useState(strippedSize?.bytes ? `data:image/jpg;base64,${utils.strippedPhotoToJpg(strippedSize.bytes).toString("base64")}` : undefined);
     const appContext = useContext(AppContext)
@@ -17,7 +18,7 @@ export default function TelegramPhoto({media}) {
                 id: media.photo.id.value,
                 fileReference: media.photo.fileReference,
                 accessHash: media.photo.accessHash.value,
-                thumbSize: media.photo.sizes.find(size => size.className === "PhotoSizeProgressive").type
+                thumbSize: media.photo.sizes[media.photo.sizes.length - 1].type
             })
             const photoDownload = await appContext.telegram.downloadFile(photoLocation);
             const dataUrl = `data:image/webp;base64,${photoDownload.toString("base64")}`;
@@ -25,5 +26,5 @@ export default function TelegramPhoto({media}) {
         })()
     }, []);
 
-    return <Photo src={src} height={media.photo.sizes.find(size => size.className === "PhotoSizeProgressive").h} width={media.photo.sizes.find(size => size.className === "PhotoSizeProgressive").w}/>
+    return <Photo src={src} height={media.photo.sizes[media.photo.sizes.length - 1].h} width={media.photo.sizes[media.photo.sizes.length - 1].w}/>
 }
