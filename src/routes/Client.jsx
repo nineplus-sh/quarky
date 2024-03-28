@@ -68,10 +68,10 @@ export default function Client() {
             resolvedAvatarCache, setResolvedAvatarCache
         }}>
             <div className={styles.client}>
-                <div className={styles.quarkList}>
+                {appContext.accounts.lightquark ? <div className={styles.quarkList}>
                     {appContext.accounts.telegram ? <GenericQuark link={"/telegram"}/> : null}
                     {appContext.accounts.lightquark ? <QuarkList/> : null}
-                </div>
+                </div> : null}
                 <Outlet/>
             </div>
         </ClientContext.Provider>

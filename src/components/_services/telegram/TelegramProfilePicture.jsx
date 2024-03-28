@@ -19,7 +19,7 @@ export default function TelegramProfilePicture({photo, peer}) {
     const [img, setImg] = useState(photo?.strippedThumb ? utils.strippedPhotoToJpg(photo.strippedThumb) : undefined);
     useEffect(() => {
         (async () => {
-            if(!photo) return;
+            if(!photo || !photo.photoId) return;
             if (avatarCache[photo.photoId.value]) {
                 console.log("Cached avatar found")
                 setImg(await avatarCache[photo.photoId.value])
@@ -39,5 +39,5 @@ export default function TelegramProfilePicture({photo, peer}) {
         })()
     }, [photo, peer]);
 
-    return <div onClick={() => {console.log(resolvedAvatarCache)}}><ProfilePicture src={resolvedAvatarCache[photo?.photoId.value] || `data:image/jpeg;base64,${img?.toString("base64")}`} /></div>
+    return <div onClick={() => {console.log(resolvedAvatarCache)}}><ProfilePicture src={resolvedAvatarCache[photo?.photoId?.value] || `data:image/jpeg;base64,${img?.toString("base64")}`} /></div>
 }
