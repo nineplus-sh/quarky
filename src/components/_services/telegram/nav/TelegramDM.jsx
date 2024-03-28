@@ -15,7 +15,7 @@ export default function TelegramDM({name, photo, peer, message, id}) {
     useEffect(() => {
         let thisCache = appContext.messageCache[id];
         if(!thisCache) return;
-        setMessageText(thisCache[thisCache.length-1].message)
+        setMessageText(thisCache.sort((a, b) => a.date - b.date)[thisCache.length-1].message)
     }, [appContext.messageCache])
 
     return (<Link to={`/telegram/${id}`}>
