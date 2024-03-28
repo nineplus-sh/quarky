@@ -69,7 +69,7 @@ export default function Client() {
         }}>
             <div className={styles.client}>
                 {appContext.accounts.lightquark ? <div className={styles.quarkList}>
-                    {appContext.accounts.telegram ? <GenericQuark link={"/telegram"}/> : null}
+                    {appContext.accounts.telegram ? <GenericQuark link={"/telegram"} icon={appContext.nyafile.getCachedData("img/telegram_quark")}/> : null}
                     {appContext.accounts.lightquark ? <QuarkList/> : null}
                 </div> : null}
                 <Outlet/>

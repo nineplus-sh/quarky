@@ -80,6 +80,7 @@ export default function Root() {
 
             nyafile.queueCache("data/licenses", "text");
             nyafile.queueCache("img/stars");
+            nyafile.queueCache("img/telegram_quark");
             nyafile.queueCache("img/quarky");
             nyafile.queueCache("music/login");
             nyafile.queueCache("sfx/info-modal-pop-in");
