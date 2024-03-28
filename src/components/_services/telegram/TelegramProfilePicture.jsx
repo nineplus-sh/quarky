@@ -39,5 +39,5 @@ export default function TelegramProfilePicture({photo, peer}) {
         })()
     }, [photo, peer]);
 
-    return <div onClick={() => {console.log(resolvedAvatarCache)}}><ProfilePicture src={resolvedAvatarCache[photo?.photoId?.value] || `data:image/jpeg;base64,${img?.toString("base64")}`} /></div>
+    return <ProfilePicture src={resolvedAvatarCache[photo?.photoId?.value] || `data:image/jpeg;base64,${img?.toString("base64")}`} />
 }

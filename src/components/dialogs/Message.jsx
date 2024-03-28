@@ -4,12 +4,12 @@ import * as linkify from "linkifyjs";
 import RichEmbed from "./RichEmbed.jsx";
 
 export default function Message({children, avatar, username, content}) {
-    return (<div className={styles.message}>
+    return (<div className={styles.messagewrapper}>
         {avatar}
-        <span className={styles.content}>
-            <b>{username}</b><br/>
+        <span className={styles.message}>
+            <b>{username}</b>
             <Linkify options={{"target": "_blank", "rel": "noreferrer"}}>
-                {children}
+                <span className={styles.messagecontent}>{children}</span>
             </Linkify>
 
             {linkify.find(content).map(link => <RichEmbed url={link.value}/>)}

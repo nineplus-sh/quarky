@@ -4,4 +4,7 @@
     overflow-y: scroll;
     overflow-x: hidden;
     overflow-wrap: anywhere;
+
+    scrollbar-width: thin;
+    scrollbar-color: #00a8f3 white;
 }

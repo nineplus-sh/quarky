@@ -7,7 +7,10 @@
     flex-direction:column;
     flex: 0 0 auto;
 
-    max-height: 100vh;
+    max-height: 99vh;
     overflow-y: hidden;
     overflow-x: hidden;
+    padding-right: 0.5em;
+    padding-left: 0.3em;
+    padding-top: 0.5em;
 }

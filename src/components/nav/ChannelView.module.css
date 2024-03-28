@@ -1,10 +1,14 @@
 .channelList {
     width: 15.5em;
     overflow-x: hidden;
-    max-height: 100vh;
+    max-height: 99vh;
     overflow-y: scroll;
 
     flex: none;
+    padding-top: 0.5em;
+    padding-left: 0.3em;
+    scrollbar-width: thin;
+    scrollbar-color: #00a8f3 white;
 }
 
 .messageArea {
