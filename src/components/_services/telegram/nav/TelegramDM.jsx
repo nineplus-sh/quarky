@@ -18,10 +18,12 @@ export default function TelegramDM({name, photo, peer, message, id}) {
         setMessageText(thisCache.sort((a, b) => a.date - b.date)[thisCache.length-1].message)
     }, [appContext.messageCache])
 
-    return (<Link to={`/telegram/${id}`}>
+    return (<Link to={`/telegram/${id}`} className={styles.dmLink}
+                  onMouseEnter={() => new Audio(appContext.nyafile.getCachedData("sfx/default-hover")).play()}
+                  onClick={() => new Audio(appContext.nyafile.getCachedData("sfx/default-select")).play()}>
         <div className={styles.dm}>
             <TelegramProfilePicture photo={photo} peer={peer} />
-            <span className={styles.info}> {name}<br/><span className={styles.message}>{messageText}</span></span>
+            <span className={styles.info}><b className={styles.name}>{name}</b><span className={styles.message}>{messageText}</span></span>
         </div>
     </Link>)
 }

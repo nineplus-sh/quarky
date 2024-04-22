@@ -1,0 +1,19 @@
+.quark {
+    padding-bottom: 0.5em;
+}
+
+.icon {
+    border-radius: 10px;
+}
+
+.quark.stretch .icon {
+    animation: stretch 0.3s forwards;
+}
+@keyframes stretch {
+    0% {
+        transform: scale(1)
+    }
+    50% {
+        transform: scale(1, 0.5) translate(0, 50%);
+    }
+}

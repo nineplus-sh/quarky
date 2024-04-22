@@ -83,9 +83,11 @@ export default function Root() {
             nyafile.queueCache("img/telegram_quark");
             nyafile.queueCache("img/quarky");
             nyafile.queueCache("music/login");
+            nyafile.queueCache("sfx/button-select");
+            nyafile.queueCache("sfx/default-select");
+            nyafile.queueCache("sfx/default-hover");
             nyafile.queueCache("sfx/info-modal-pop-in");
             nyafile.queueCache("sfx/info-modal-pop-out");
-            nyafile.queueCache("sfx/button-select");
             nyafile.queueCache("sfx/purr");
 
             await nyafile.waitAllCached();
