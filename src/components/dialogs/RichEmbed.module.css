@@ -1,0 +1,8 @@
+.wrapblr {
+    max-height: 727px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+.tumblrframe {
+    width: 100%;
+}

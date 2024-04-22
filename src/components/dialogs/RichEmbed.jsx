@@ -1,24 +1,29 @@
+import {useEffect, useRef, useState} from "react";
+import styles from "./RichEmbed.module.css";
+
 export default function RichEmbed({url}) {
+    const [tumblrHeight, setTumblrHeight] = useState(0);
+    const ourFrame = useRef(null);
+    useEffect(() => {
+        const iframeEventHandler = (estrogen) => {
+            if(ourFrame?.current?.contentWindow !== estrogen.source) return;
+            if(estrogen.data.startsWith('{"method":"tumblr-post:sizeChange"')) {
+                setTumblrHeight(JSON.parse(estrogen.data).args[0]);
+            }
+        }
+
+        window.addEventListener('message', iframeEventHandler)
+        return () => window.removeEventListener('message', iframeEventHandler)
+    }, [])
+
     if(!url.startsWith('http')) return;
 
     const urlWrap = new URL(url);
-    switch (urlWrap.hostname) {
-        case "reddit.com":
-        case "www.reddit.com":
-        case "old.reddit.com":
-        case "new.reddit.com":
-        case "sh.reddit.com":
-        case "embed.reddit.com":
-            if(
-                /^(https?:\/\/(\w+\.|)reddit\.com)\/(?:r|u|user)\/\w+\/comments\/\w+\/?([^/]*?)(\/?|\/\w*\/?)(\?.*)?$/.test(url) ||
-                /^(https?:\/\/(\w+\.|)reddit\.com)\/r\/\w+\/?(\?.*)?$/.test(url)
-            ) {
-                urlWrap.hostname = "embed.reddit.com";
-                return <iframe src={urlWrap.href}/>
-            } else {
-                return null;
-            }
-        default:
-            return null;
+
+    let tumblr;
+    if(!tumblr) tumblr = urlWrap.href.match(/https?:\/\/(.*)\.tumblr\.com\/post\/(\d*)/);
+    if(!tumblr) tumblr = urlWrap.href.match(/https?:\/\/www\.tumblr\.com\/(.*)\/(\d*)/)
+    if(tumblr) {
+        return <div className={styles.wrapblr}><iframe src={`https://embed.tumblr.com/embed/post/${tumblr[1]}/${tumblr[2]}`} ref={ourFrame} height={tumblrHeight} className={styles.tumblrframe}/></div>
     }
 }

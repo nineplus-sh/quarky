@@ -10,8 +10,11 @@ export default function MessageInput() {
 
     return (<form onSubmit={async (e) => {
         e.preventDefault();
+        let wantedMessage = message;
+        setMessage("");
+
         if(quarkId === "telegram") {
-            const newMessage = await appContext.telegram.sendMessage(dialogId, {message: message});
+            const newMessage = await appContext.telegram.sendMessage(dialogId, {message: wantedMessage});
             let source = newMessage.chatId.value;
             appContext.setMessageCache(previousValue => {
                 previousValue = { ...previousValue }
@@ -20,7 +23,7 @@ export default function MessageInput() {
                 return previousValue;
             });
         } else {
-            await LQ(`channel/${dialogId}/messages`, "POST", {content: message})
+            await LQ(`channel/${dialogId}/messages`, "POST", {content: wantedMessage})
         }
         setMessage("")
     }}>
