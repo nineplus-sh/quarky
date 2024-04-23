@@ -1,4 +1,4 @@
-import {useContext, useEffect, useState} from "react";
+import {useContext, useEffect, useLayoutEffect, useState} from "react";
 import {AppContext} from "../../contexts/AppContext.js";
 import {useParams} from "react-router-dom";
 import TelegramMessage from "../_services/telegram/dialogs/TelegramMessage.jsx";
@@ -39,7 +39,7 @@ export default function DialogMessages() {
             setMessages(appContext.messageCache[dialogId].sort((a, b) => a.message.timestamp - b.message.timestamp))
         }
 
-        document.querySelector("div[class^='_messages_']").lastChild.scrollIntoView({"behavior": "smooth"});
+        document.querySelector("div[class^='_messages_']").lastChild?.scrollIntoView({"behavior": "smooth"});
     }, [dialogId, appContext.messageCache])
 
     const MessageType = quarkId !== "telegram" ? LightquarkMessage : TelegramMessage;
