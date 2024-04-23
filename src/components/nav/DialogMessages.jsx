@@ -38,6 +38,8 @@ export default function DialogMessages() {
         } else {
             setMessages(appContext.messageCache[dialogId].sort((a, b) => a.message.timestamp - b.message.timestamp))
         }
+
+        document.querySelector("div[class^='_messages_']").lastChild.scrollIntoView({"behavior": "smooth"});
     }, [dialogId, appContext.messageCache])
 
     const MessageType = quarkId !== "telegram" ? LightquarkMessage : TelegramMessage;
