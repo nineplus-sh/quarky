@@ -61,12 +61,11 @@ export function App(props) {
     let [nyafile, setNyafile] = useState(null);
     let [loading, setLoading] = useState(true);
     let [music, setMusic] = useState(undefined);
-    let [telegram, setTelegram] = useState(undefined);
     let [accounts, setAccounts] = useState({})
     let [messageCache, setMessageCache] = useState({})
 
     return (
-        <AppContext.Provider value={{loading, setLoading, nyafile, setNyafile, music, setMusic, telegram, setTelegram, accounts, setAccounts, messageCache, setMessageCache}}>
+        <AppContext.Provider value={{loading, setLoading, nyafile, setNyafile, music, setMusic, accounts, setAccounts, messageCache, setMessageCache}}>
             <audio src={music} autoPlay={true} loop={true}></audio>
             {props.children}
         </AppContext.Provider>

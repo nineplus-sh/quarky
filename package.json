@@ -45,7 +45,6 @@
     "react-lottie": "^1.2.4",
     "react-modal": "^3.16.1",
     "react-router-dom": "^6.16.0",
-    "telegram": "browser",
     "unleash-proxy-client": "^3.2.0"
   },
   "devDependencies": {

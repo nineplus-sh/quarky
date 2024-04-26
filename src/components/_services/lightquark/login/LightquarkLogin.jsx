@@ -4,7 +4,7 @@ import localForage from "localforage";
 import LQ from "../../../../util/LQ.js";
 import {useUnleashContext} from "@unleash/proxy-client-react";
 
-export default function LightquarkLogin() {
+export default function LightquarkLogin({setDone}) {
     const appContext = useContext(AppContext)
     const updateContext = useUnleashContext();
     const [network, setNetwork] = useState('https://lightquark.network');
@@ -27,6 +27,9 @@ export default function LightquarkLogin() {
             const LQuserdata = await LQ("user/me");
             appContext.setAccounts(prev => ({...prev, "lightquark": LQuserdata}))
             updateContext({lqId: LQuserdata.response.jwtData._id})
+
+            localStorage.setItem("USER_AUTHED", "bet");
+            setDone(true);
         } else {
             alert("Lightquark login failed :(")
         }

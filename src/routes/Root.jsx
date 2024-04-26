@@ -3,10 +3,7 @@ import {AppContext} from "../contexts/AppContext.js";
 import {useContext, useEffect} from "react";
 import Loader from "./Loader.jsx";
 import NyaFile from "@litdevs/nyalib";
-import {TelegramClient} from "telegram";
-import {StringSession} from "telegram/sessions";
 import localforage from "localforage";
-import { NewMessage } from "telegram/events";
 import * as Sentry from "@sentry/react";
 import LQ from "../util/LQ.js";
 import localForage from "localforage";
@@ -28,29 +25,8 @@ export default function Root() {
     const hakase = useFlag("Q2_HakaseBittanBittan");
     const mio = useFlag("Q2_MioBittanBittan");
 
-    function telegramMessageHandler(event) {
-        let source = event.message.chatId.value;
-        appContext.setMessageCache(previousValue => {
-            previousValue = { ...previousValue }
-            if(!previousValue[source]) previousValue[source] = [];
-            previousValue[source].push(event.message)
-            return previousValue;
-        });
-    }
-
     useEffect(() => {
         async function loadNyafile() {
-            const telegramClient = new TelegramClient(new StringSession(await localforage.getItem("TG_SESSION")), parseInt(import.meta.env.VITE_TG_API_ID), import.meta.env.VITE_TG_API_HASH, { connectionRetries: 5 });
-            appContext.setTelegram(telegramClient);
-
-            if(await localforage.getItem("TG_SESSION")) {
-                await telegramClient.connect();
-                const user = await telegramClient.getMe()
-                appContext.setAccounts({telegram: user})
-                updateContext({telegramId: user.id.value})
-            }
-            telegramClient.addEventHandler(telegramMessageHandler, new NewMessage({}));
-
             const localConfig = await localForage.getItem("lightquark")
             if(localConfig?.token) {
                 const LQuserdata = await LQ("user/me");
@@ -80,7 +56,6 @@ export default function Root() {
 
             nyafile.queueCache("data/licenses", "text");
             nyafile.queueCache("img/stars");
-            nyafile.queueCache("img/telegram_quark");
             nyafile.queueCache("img/quarky");
             nyafile.queueCache("music/login");
             nyafile.queueCache("sfx/button-select");

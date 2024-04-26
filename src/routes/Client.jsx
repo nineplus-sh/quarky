@@ -68,10 +68,9 @@ export default function Client() {
             resolvedAvatarCache, setResolvedAvatarCache
         }}>
             <div className={styles.client}>
-                {appContext.accounts.lightquark ? <div className={styles.quarkList}>
-                    {appContext.accounts.telegram ? <GenericQuark link={"/telegram"} icon={appContext.nyafile.getCachedData("img/telegram_quark")}/> : null}
-                    {appContext.accounts.lightquark ? <QuarkList/> : null}
-                </div> : null}
+                <div className={styles.quarkList}>
+                    <QuarkList/>
+                </div>
                 <Outlet/>
             </div>
         </ClientContext.Provider>
