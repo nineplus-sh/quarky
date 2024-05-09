@@ -15,7 +15,6 @@
     "build": "node src/nyafile-compiler.js && vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "postinstall": "node src/license-compiler.js && node src/nyafile-compiler.js",
     "package": "electron-forge package",
     "make": "electron-forge make",
     "publish": "electron-forge publish"
