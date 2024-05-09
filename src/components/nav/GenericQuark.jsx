@@ -8,7 +8,7 @@ export default function GenericQuark({link, icon}) {
     const [isStretching, stretchIt] = useState(false);
     const appContext = useContext(AppContext);
 
-    return <Link to={link} className={classnames(styles.quark, {[styles.stretch]: isStretching})}  onAnimationEnd={() => stretchIt(false)} onClick={() => {
+    return <span className={classnames(styles.quark, {[styles.stretch]: isStretching})}  onAnimationEnd={() => stretchIt(false)} onClick={() => {
         stretchIt(false);
         setTimeout(function() {
             stretchIt(true);
@@ -16,5 +16,5 @@ export default function GenericQuark({link, icon}) {
         }, 9)
     }} onMouseEnter={() => new Audio(appContext.nyafile.getCachedData("sfx/default-hover")).play()}>
         <img src={icon} width={64} height={64} className={styles.icon}/>
-    </Link>
+    </span>
 }

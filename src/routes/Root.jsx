@@ -30,8 +30,8 @@ export default function Root() {
             const localConfig = await localForage.getItem("lightquark")
             if(localConfig?.token) {
                 const LQuserdata = await LQ("user/me");
-                appContext.setAccounts(prev => ({...prev, "lightquark": LQuserdata}))
-                updateContext({lqId: LQuserdata.response.jwtData._id})
+                appContext.setAccounts(prev => ({...prev, "lightquark": LQuserdata.response.user}))
+                updateContext({lqId: LQuserdata.response.user._id})
             }
 
             const nyafile = new NyaFile();
@@ -56,6 +56,7 @@ export default function Root() {
 
             nyafile.queueCache("data/licenses", "text");
             nyafile.queueCache("img/stars");
+            nyafile.queueCache("img/quark_join");
             nyafile.queueCache("img/quarky");
             nyafile.queueCache("music/login");
             nyafile.queueCache("sfx/button-select");

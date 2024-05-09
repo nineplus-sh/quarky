@@ -16,6 +16,7 @@ import ChannelView from "./components/nav/ChannelView.jsx";
 import Dialog from "./components/nav/Dialog.jsx";
 import * as Sentry from "@sentry/react";
 import {FlagProvider} from '@unleash/proxy-client-react';
+import NiceModal from '@ebay/nice-modal-react';
 
 Sentry.init({
     dsn: "https://901c666ed03942d560e61928448bcf68@sentry.yggdrasil.cat/5",
@@ -91,9 +92,11 @@ const router = sentryCreateBrowserRouter(
 ReactDOM.createRoot(document.getElementById('root')).render(
     //<React.StrictMode>
             <FlagProvider config={unleashConfig}>
-                    <App>
+                <App>
+                    <NiceModal.Provider>
                         <RouterProvider router={router} />
-                    </App>
+                    </NiceModal.Provider>
+                </App>
             </FlagProvider>
     //</React.StrictMode>,
 )

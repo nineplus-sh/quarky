@@ -1,6 +1,6 @@
 import GenericQuark from "../../../nav/GenericQuark.jsx";
+import {Link} from "react-router-dom";
 
 export default function Quark({quark}) {
-    if(quark._id === "000000000000000000000000") return;
-    return <GenericQuark link={`/lq_${quark.id}`} icon={quark.iconUri} />
+    return <Link to={`/lq_${quark._id}`}><GenericQuark icon={quark.iconUri} /></Link>
 }

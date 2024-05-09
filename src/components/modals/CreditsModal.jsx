@@ -4,18 +4,19 @@ import Datsuryoku from "../Datsuryoku.jsx";
 import NyafileImage from "../nyafile/NyafileImage.jsx";
 import {version, codename} from "../../../package.json";
 import {useTranslation} from "react-i18next";
+import NiceModal, {useModal} from "@ebay/nice-modal-react";
 
 /**
  * A wrapper around GenericModal for the open source library notices.
- * @param props - The props of the component, provided by React. Refer to GenericModal for the props.
  * @returns {JSX.Element}
  * @constructor
  */
-export default function CreditsModal(props) {
+export default NiceModal.create(() => {
+    const modal = useModal();
     const { t } = useTranslation();
 
     return (<>
-        <GenericModal {...props}>
+        <GenericModal modal={modal}>
             <h1 style={{margin: 0}}><NyafileImage src={"img/quarky"} width={"40em"}/> {t("QUARKY_NAME")} <span style={{float: "right"}}><Datsuryoku  /></span></h1>
             <p style={{margin: 0}}><i>{t("QUARKY_DESCRIPTION")}</i></p>
             <br/>
@@ -31,4 +32,4 @@ export default function CreditsModal(props) {
             <OSSList />
         </GenericModal>
     </>)
-}
+})

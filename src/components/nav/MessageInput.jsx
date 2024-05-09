@@ -11,7 +11,10 @@ export default function MessageInput() {
         let wantedMessage = message;
         setMessage("");
 
-        await LQ(`channel/${dialogId}/messages`, "POST", {content: wantedMessage})
+        const formData = new FormData();
+        formData.append("payload", JSON.stringify({content: wantedMessage}));
+
+        await LQ(`channel/${dialogId}/messages`, "POST", formData)
         setMessage("")
     }}>
         <input type={"text"} value={message} onInput={(e) => setMessage(e.target.value)} />

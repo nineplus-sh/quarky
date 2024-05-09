@@ -18,9 +18,13 @@ export default async function LQ (apiMethod, httpMethod = "GET", body = undefine
         let requestBody = undefined;
         if (httpMethod !== "GET") {
             headers.Accept = "application/json";
-            headers["Content-Type"] = "application/json";
-            headers["lq-agent"] = `Quarky/${version}`
-            requestBody = JSON.stringify(body);
+            headers["lq-agent"] = `Quarky/${version}`;
+            if(body instanceof FormData) {
+                requestBody = body;
+            } else {
+                headers["Content-Type"] = "application/json";
+                requestBody = JSON.stringify(body);
+            }
         }
         if (!skipAuth) headers.Authorization = `Bearer ${localConfig.token}`;
         let apiRequest = await fetch(`${localConfig.network.baseUrl}/${localConfig.network.version}/${apiMethod}${httpMethod === "GET" && body ? "?" + new URLSearchParams(body) : ""}`, {
@@ -29,6 +33,12 @@ export default async function LQ (apiMethod, httpMethod = "GET", body = undefine
             body: requestBody
         })
         let apiResponse = await apiRequest.json();
+        if(apiResponse.request?.status_code === 401 && apiMethod !== "auth/refresh") {
+            localConfig.token = (await LQ("auth/refresh", "POST", {"accessToken": localConfig.token, "refreshToken": localConfig.refreshToken})).response.accessToken;
+            await localForage.setItem("lightquark", localConfig);
+
+            return (await LQ(apiMethod, httpMethod, body, skipAuth));
+        }
         return new APIResponse(apiResponse, apiRequest.status, true)
     } catch (e) {
         console.error("[apiCall]", e);

@@ -25,7 +25,7 @@ export default function DialogMessages() {
 
     useEffect(() => {
         if(!appContext.messageCache[dialogId]) return setMessages([]);
-        setMessages(appContext.messageCache[dialogId].sort((a, b) => a.message.timestamp - b.message.timestamp))
+        setMessages(appContext.messageCache[dialogId].sort((a, b) => a.timestamp - b.timestamp))
 
         document.querySelector("div[class^='_messages_']").lastChild?.scrollIntoView({"behavior": "smooth"});
     }, [dialogId, appContext.messageCache])

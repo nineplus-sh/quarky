@@ -2,7 +2,18 @@
     "HEADER_WELCOME": "Welcome to Quarky~!",
     "HEADER_WELCOME_SUB": "Let's sign in to use it now!",
     "HEADER_SERVICE_LOGIN": "Sign in with the services you want Quarky to use.",
+
     "DONE": "I'm done!",
+    "OKAY": "Got it",
+
+    "LQ_SERVER_OUTDATED_TITLE": "This network won't work with Quarky",
+    "LQ_SERVER_OUTDATED_BODY": "{{name}} is running an unsupported version of Lightquark. Please ask {{maintainer}} to update it.",
+    "SIGN_OUT": "Sign out",
+    "LQ_SERVER_OFFLINE_TITLE": "This network is offline",
+    "LQ_SERVER_OFFLINE_BODY": "Something went wrong when trying to connect to {{name}}. If you're connected to the internet, this means the network is down. Try again later.",
+
+    "JOIN_QUARK": "Join a quark!",
+    "JOIN_QUARK_BODY": "Type in the quark's invite code to join it.",
 
     "CREDITS_BUTTON": "Acknowledgements",
     "QUARKY_NAME": "Quarky 2",

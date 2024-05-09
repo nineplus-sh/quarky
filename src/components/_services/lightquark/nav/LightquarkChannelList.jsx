@@ -10,9 +10,10 @@ export default function LightquarkChannelList() {
     useEffect(() => {
         (async () => {
             const LQquark = (await LQ(`quark/${quarkId.split("lq_")[1]}`)).response.quark;
+            console.log(LQquark)
             setChannels(LQquark.channels)
         })()
     }, [quarkId])
 
-    return channels.map((channel) => <LightquarkChannel channel={channel} key={channel._id} />)
+    return channels.map((channel) => <LightquarkChannel channel={channel} quarkId={quarkId.split("lq_")[1]} key={channel._id} />)
 }
