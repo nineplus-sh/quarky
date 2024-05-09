@@ -53,7 +53,7 @@ const createWindow = () => {
     win.loadURL(
         isDev
             ? 'https://localhost:2009'
-            :  'https://quarky.hakase.life'
+            :  'https://quarky.nineplus.sh'
     );
 }
 

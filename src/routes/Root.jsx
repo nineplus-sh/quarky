@@ -54,7 +54,6 @@ export default function Root() {
                     debug: true
                 })
 
-            nyafile.queueCache("data/licenses", "text");
             nyafile.queueCache("img/stars");
             nyafile.queueCache("img/quark_join");
             nyafile.queueCache("img/quarky");
