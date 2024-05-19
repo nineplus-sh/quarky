@@ -1,11 +1,16 @@
 import archiver from "archiver";
 import {createWriteStream} from "fs";
+import {dirname, resolve} from "path";
+import {fileURLToPath} from "url";
 
-const output = createWriteStream(new URL('../public/quarky.nya', import.meta.url));
+const __dirname = fileURLToPath(dirname(import.meta.url));
+
+
+const output = createWriteStream(resolve(__dirname, '../public/quarky.nya'));
 const archive = archiver('zip', {
     zlib: { level: 9 } // Sets the compression level.
 });
 
 archive.pipe(output);
-archive.directory(new URL('_nyafile', import.meta.url).pathname, false)
+archive.directory(resolve(__dirname, '_nyafile'), false)
 archive.finalize();
