@@ -11,6 +11,7 @@ import styles from "./Client.module.css"
 import NiceModal from "@ebay/nice-modal-react";
 import NetworkUnsupportedModal from "../components/modals/NetworkUnsupportedModal.jsx";
 import JoinQuark from "../components/_services/lightquark/nav/JoinQuark.jsx";
+import Loader from "./Loader.jsx";
 
 /**
  * The client screen.
@@ -52,6 +53,19 @@ export default function Client() {
     })
 
     useEffect(() => {(async () => {
+        if(window.hiddenside.hardcoreGaming && window.hiddenside.casualGaming) {
+            const gameData = await fetch("https://gameplus.nineplus.sh/api/games").then(res => res.json());
+            window.hiddenside.hardcoreGaming(gameData);
+
+            window.hiddenside.casualGaming((games) => {
+                if(games.length === 0) {
+                    console.log(games);
+                } else {
+                    console.log(games[0].name, games)
+                }
+            })
+        }
+
         if (appContext.accounts.lightquark && !lqSockURL) {
             const network = await LQ("network"); // TODO: Add NetworkOfflineModal here as well
             if(!network.raw.cdnBaseUrl) {
@@ -74,6 +88,6 @@ export default function Client() {
                 </div>
                 <Outlet/>
             </div>
-        : null}</ClientContext.Provider>
+        : <Loader/>}</ClientContext.Provider>
     </>)
 }

@@ -6,6 +6,5 @@ export default function Dialog() {
     return (<>
         <div className={styles.messages}><DialogMessages /></div>
         <MessageInput />
-        <hr/>
     </>)
 }
