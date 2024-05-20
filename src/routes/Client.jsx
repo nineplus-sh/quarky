@@ -53,7 +53,7 @@ export default function Client() {
     })
 
     useEffect(() => {(async () => {
-        if(window.hiddenside.hardcoreGaming && window.hiddenside.casualGaming) {
+        if(window.hiddenside && window.hiddenside.hardcoreGaming && window.hiddenside.casualGaming) {
             const gameData = await fetch("https://gameplus.nineplus.sh/api/games").then(res => res.json());
             window.hiddenside.hardcoreGaming(gameData);
 
