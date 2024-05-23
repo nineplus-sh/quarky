@@ -1,0 +1,22 @@
+.member {
+    display: flex;
+    margin-bottom: 0.5em;
+
+    align-items: center;
+    cursor: pointer;
+    border-radius: 15px;
+}
+.member:hover {
+    background-color: lightgray;
+}
+.memberName {
+    margin: 0;
+    padding-left: 0.5em;
+    font-size: 0.8em;
+    font-weight: bolder;
+}
+.memberStatus {
+    margin: 0;
+    font-size: 0.8em;
+    font-weight: lighter;
+}

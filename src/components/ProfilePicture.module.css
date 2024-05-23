@@ -1,7 +1,7 @@
 .pfp {
-    width: 64px;
-    height: 64px;
     border-radius: 10px;
+}
+.pfp.message {
     clip-path: polygon(100% 0, 100% 63%, 84% 76%, 100% 88%, 100% 100%, 0 100%, 0 0);
 }
 

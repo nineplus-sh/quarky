@@ -5,7 +5,7 @@ export default function LightquarkMessage({message}) {
     const botMetadata = message.specialAttributes.find(attr => attr.type === "botMessage");
 
     return <Message username={botMetadata?.username || message.author.username}
-                    avatar={<ProfilePicture src={botMetadata?.avatarUri || message.author.avatarUri}/>}
+                    avatar={<ProfilePicture src={botMetadata?.avatarUri || message.author.avatarUri} isMessage={true}/>}
                     content={message.content}>
         {message.content}
     </Message>

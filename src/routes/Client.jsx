@@ -53,19 +53,6 @@ export default function Client() {
     })
 
     useEffect(() => {(async () => {
-        if(window.hiddenside.hardcoreGaming && window.hiddenside.casualGaming) {
-            const gameData = await fetch("https://gameplus.nineplus.sh/api/games").then(res => res.json());
-            window.hiddenside.hardcoreGaming(gameData);
-
-            window.hiddenside.casualGaming((games) => {
-                if(games.length === 0) {
-                    console.log(games);
-                } else {
-                    console.log(games[0].name, games)
-                }
-            })
-        }
-
         if (appContext.accounts.lightquark && !lqSockURL) {
             const network = await LQ("network"); // TODO: Add NetworkOfflineModal here as well
             if(!network.raw.cdnBaseUrl) {
@@ -73,6 +60,22 @@ export default function Client() {
             }
             setLqSockURL(network.raw.gateway)
         }
+
+        if(window.hiddenside.hardcoreGaming && window.hiddenside.casualGaming) {
+            const gameData = await fetch("https://gameplus.nineplus.sh/api/games").then(res => res.json());
+            window.hiddenside.hardcoreGaming(gameData);
+
+            window.hiddenside.casualGaming((games) => {
+                /*if(games.length !== 0) {
+                    LQ("user/me/status", "PUT", {
+                        "type": "playing",
+                        "name": games[0].name,
+                        "primaryImage": `https://gameplus.nineplus.sh/game/${games[0]._id}/icon`
+                    })
+                }*/
+            })
+        }
+
         setClientReady(true);
     })()}, [appContext.accounts]);
 

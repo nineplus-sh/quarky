@@ -9,8 +9,8 @@ export default function LightquarkChannelList() {
 
     useEffect(() => {
         (async () => {
+            setChannels([])
             const LQquark = (await LQ(`quark/${quarkId.split("lq_")[1]}`)).response.quark;
-            console.log(LQquark)
             setChannels(LQquark.channels)
         })()
     }, [quarkId])
