@@ -65,8 +65,14 @@ export default function Client() {
             const gameData = await fetch("https://gameplus.nineplus.sh/api/games").then(res => res.json());
             window.hiddenside.hardcoreGaming(gameData);
 
+            // Not using state here since the value is only used inside this effect
+            // A state would not update since no new render 
+            let currentGameId = "BLELELELE"
             window.hiddenside.casualGaming((games) => {
-                if(games.length !== 0) {
+                console.log(games, currentGameId)
+                if(games.length !== 0 && games[0]._id !== currentGameId) {
+                    console.log(`Now playing ${games[0].name} ${games[0]._id}`)
+                    currentGameId = games[0]._id
                     const formData = new FormData();
                     formData.append("payload", JSON.stringify({
                         "type": "playing",
@@ -75,7 +81,8 @@ export default function Client() {
                     }));
 
                     LQ("user/me/status", "PUT", formData)
-                } else {
+                } else if (games.length === 0 && currentGameId !== "BLELELELE") {
+                    currentGameId = "BLELELELE"
                     LQ("user/me/status", "DELETE")
                 }
             })
