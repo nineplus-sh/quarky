@@ -2,7 +2,7 @@ import psList from "@667/ps-list";
 import {parentPort} from "worker_threads";
 import {exec} from "child_process";
 
-const getPowershell = 'powershell.exe -Command "Get-CimInstance Win32_Process | Select-Object Name, ExecutablePath, CommandLine | ConvertTo-Json"';
+const getPowershell = 'powershell.exe -NoLogo -NoProfile -Command "Get-CimInstance Win32_Process | Select-Object Name, ExecutablePath, CommandLine | ConvertTo-Json"';
 
 async function getProcesses() {
     if(process.platform === "win32") {
@@ -18,8 +18,8 @@ async function getProcesses() {
                 }
                 const processes = JSON.parse(stdout).map(process => {
                     return {
-                        name: process.Name,
-                        path: process.ExecutablePath?.replace(/\\/g, '/'),
+                        // name: process.Name,
+                        name: process.ExecutablePath?.replace(/\\/g, '/') || process.Name,
                         cmd: process.CommandLine?.replace(/\\/g, '/')
                     };
                 });
@@ -31,21 +31,51 @@ async function getProcesses() {
     }
 }
 
-async function gameCheck(database) {
-    const processList = await getProcesses();
-    const games = database.filter(game => game.executables.some(executable => processList.some(process => process.name.toLowerCase().endsWith(executable.name) && process.cmd.includes(executable.arguments))));
+function checkLambda(executable, process) {
+    return process.name.toLowerCase().endsWith(executable.name) && process.cmd.includes(executable.arguments)
+}
 
+let processBlacklist = [];
+async function gameCheck(database) {
+    let processList = await getProcesses();
+    // console.debug(`Got ${processList.length} processes`)
+    processList = processList.filter(p => !processBlacklist.includes(p.cmd)) // Remove blacklisted processes
+    // console.debug(`${processList.length} potential games`)
+    let games = [];
+    let gameProcesses = []
+    database.forEach(game => {
+        const isRunning = processList.some(p => {
+            const isGame = game.executables.some(e => {
+                return checkLambda(e, p)
+            })
+            if (isGame) {
+                gameProcesses.push(p.cmd)
+            }
+            return isGame;
+        })
+        if (isRunning) {
+            games.push(game)
+        }
+    })
+    processList.forEach(p => {
+        const isGame = gameProcesses.includes(p.cmd)
+        if (isGame) {
+            // console.debug(`${p.name} is a game`)
+        }
+        else if (!processBlacklist.includes(p.cmd)) {
+            processBlacklist.push(p.cmd)
+        }
+    })
+    // console.debug(games)
+    return games;
     /* TODO
     This is a very barebones proof of concept implementation.
     Ideas for expansion:
 
-    - Make use of the platform prop
+    - Make use of the platform property
     - Add a way to prioritize games with arguments over those without, and those with more specific paths over those without
     - Allow executables running under Wine to be treated as standard win32 executables
-    - Store the processes that were not games and do not attempt filtering on them again
      */
-
-    return games;
 }
 
 parentPort.on('message', async (database) => {
