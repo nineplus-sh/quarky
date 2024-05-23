@@ -66,13 +66,18 @@ export default function Client() {
             window.hiddenside.hardcoreGaming(gameData);
 
             window.hiddenside.casualGaming((games) => {
-                /*if(games.length !== 0) {
-                    LQ("user/me/status", "PUT", {
+                if(games.length !== 0) {
+                    const formData = new FormData();
+                    formData.append("payload", JSON.stringify({
                         "type": "playing",
-                        "name": games[0].name,
+                        "primaryText": games[0].name,
                         "primaryImage": `https://gameplus.nineplus.sh/game/${games[0]._id}/icon`
-                    })
-                }*/
+                    }));
+
+                    LQ("user/me/status", "PUT", formData)
+                } else {
+                    LQ("user/me/status", "DELETE")
+                }
             })
         }
 
