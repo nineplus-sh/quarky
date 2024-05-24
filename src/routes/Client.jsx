@@ -92,6 +92,7 @@ export default function Client() {
             // A state would not update since no new render 
             let currentGameId = "BLELELELE"
             window.hiddenside.casualGaming((games) => {
+                console.log(games, currentGameId)
                 if(games.length !== 0 && games[0]._id !== currentGameId) {
                     console.log(`Now playing ${games[0].name} ${games[0]._id}`)
                     currentGameId = games[0]._id
