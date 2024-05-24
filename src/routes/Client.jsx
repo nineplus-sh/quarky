@@ -25,6 +25,7 @@ export default function Client() {
     const [lqSockURL, setLqSockURL] = useState(null);
     const [lqSockToken, setLqSockToken] = useState(null);
     const [heartbeatMessage, setHeartbeatMessage] = useState("*gurgles*");
+    let [userCache, setUserCache] = useState({})
     const appContext = useContext(AppContext)
 
     const lqSock = useWebSocket(lqSockURL, {
@@ -38,6 +39,28 @@ export default function Client() {
                         previousValue[eventData.channelId].push(eventData.message)
                         return previousValue;
                     });
+                    break;
+                case "userUpdate":
+                    if (!userCache[eventData.user._id]) {
+                        setUserCache(p => {
+                            p[eventData.user._id] = eventData.user;
+                            return p;
+                        })
+                    } else {
+                        setUserCache(p => {
+                            let status = p[eventData.user._id]?.status
+                            p[eventData.user._id] = eventData.user;
+                            p[eventData.user._id].status = status;
+                            return p
+                        })
+                    }
+                    break;
+                case "statusUpdate":
+                    console.log(`Status of ${eventData.user.username} changed!`, eventData.user?.status)
+                    setUserCache(p => {
+                        p[eventData.user._id] = eventData.user;
+                        return p;
+                    })
                     break;
                 default:
                     //console.log("Well.. THAT just happened!", message.data)
@@ -69,7 +92,6 @@ export default function Client() {
             // A state would not update since no new render 
             let currentGameId = "BLELELELE"
             window.hiddenside.casualGaming((games) => {
-                console.log(games, currentGameId)
                 if(games.length !== 0 && games[0]._id !== currentGameId) {
                     console.log(`Now playing ${games[0].name} ${games[0]._id}`)
                     currentGameId = games[0]._id
@@ -94,7 +116,8 @@ export default function Client() {
     return (<>
         <ClientContext.Provider value={{
             avatarCache, setAvatarCache,
-            resolvedAvatarCache, setResolvedAvatarCache
+            resolvedAvatarCache, setResolvedAvatarCache,
+            userCache, setUserCache
         }}>{clientReady ?
             <div className={styles.client}>
                 <div className={styles.quarkList}>

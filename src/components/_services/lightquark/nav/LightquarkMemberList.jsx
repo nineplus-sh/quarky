@@ -1,16 +1,25 @@
-import {useEffect, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import LQ from "../../../../util/LQ.js";
 import {useParams} from "react-router-dom";
 import {LightquarkMember} from "./LightquarkMember.jsx";
 import styles from "./LightquarkMemberList.module.css";
+import {ClientContext} from "../../../../contexts/ClientContext.js";
 
 export default function LightquarkMemberList() {
     const [members, setMembers] = useState([])
+    const {setUserCache} = useContext(ClientContext)
     const {dialogId} = useParams();
 
     useEffect(() => {
         (async () => {
-            setMembers((await LQ(`channel/${dialogId}/members`)).response.users)
+            let members = await LQ(`channel/${dialogId}/members`);
+            members.response.users.forEach(member => {
+                setUserCache(p => {
+                    p[member._id] = member
+                    return p;
+                })
+            })
+            setMembers(members.response.users)
         })()
     }, [dialogId])
 

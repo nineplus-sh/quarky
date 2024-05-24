@@ -66,7 +66,12 @@ export function App(props) {
     let [messageCache, setMessageCache] = useState({})
 
     return (
-        <AppContext.Provider value={{loading, setLoading, nyafile, setNyafile, music, setMusic, accounts, setAccounts, messageCache, setMessageCache}}>
+        <AppContext.Provider value={{
+            loading, setLoading, 
+            nyafile, setNyafile, 
+            music, setMusic, 
+            accounts, setAccounts, 
+            messageCache, setMessageCache}}>
             <audio src={music} autoPlay={true} loop={true}></audio>
             {props.children}
         </AppContext.Provider>
