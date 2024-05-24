@@ -1,0 +1,11 @@
+.status, .introduction {
+    display: flex;
+    align-items: center;
+}
+
+.introduction .name {
+    font-size: 1.3em;
+}
+.name {
+    margin: 0 0 0 0.5em;
+}
