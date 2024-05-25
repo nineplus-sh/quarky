@@ -1,0 +1,13 @@
+.aviebox {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.name {
+    margin: 0 0 0 0.5em;
+}
+
+.logout {
+    margin-left: auto;
+}

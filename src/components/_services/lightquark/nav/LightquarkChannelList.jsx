@@ -15,5 +15,7 @@ export default function LightquarkChannelList() {
         })()
     }, [quarkId])
 
-    return channels.map((channel) => <LightquarkChannel channel={channel} quarkId={quarkId.split("lq_")[1]} key={channel._id} />)
+    return <div>
+        {channels.map((channel) => <LightquarkChannel channel={channel} quarkId={quarkId.split("lq_")[1]} key={channel._id} />)}
+    </div>
 }

@@ -1,5 +1,5 @@
 import {useContext, useEffect, useState} from "react";
-import {Outlet} from "react-router-dom";
+import {Outlet, useNavigate, useParams} from "react-router-dom";
 import { ClientContext } from "../contexts/ClientContext.js";
 import QuarkList from "../components/_services/lightquark/nav/QuarkList.jsx";
 import {AppContext} from "../contexts/AppContext.js";
@@ -26,7 +26,9 @@ export default function Client() {
     const [lqSockToken, setLqSockToken] = useState(null);
     const [heartbeatMessage, setHeartbeatMessage] = useState("*gurgles*");
     let [userCache, setUserCache] = useState({})
-    const appContext = useContext(AppContext)
+    const appContext = useContext(AppContext);
+    const navigate = useNavigate();
+    const {quarkId} = useParams();
 
     const lqSock = useWebSocket(lqSockURL, {
         onMessage: (message) => {
@@ -76,6 +78,8 @@ export default function Client() {
     })
 
     useEffect(() => {(async () => {
+        if(!quarkId) navigate("/lq_100000000000000000000000");
+
         if (appContext.accounts.lightquark && !lqSockURL) {
             const network = await LQ("network"); // TODO: Add NetworkOfflineModal here as well
             if(!network.raw.cdnBaseUrl) {

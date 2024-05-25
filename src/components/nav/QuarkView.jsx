@@ -1,12 +1,16 @@
 import {Outlet} from "react-router-dom";
 import LightquarkChannelList from "../_services/lightquark/nav/LightquarkChannelList.jsx";
 import styles from "./QuarkView.module.css";
+import Aviebox from "../_services/lightquark/nav/Aviebox.jsx";
 
 export default function QuarkView() {
     return <>
-        <div className={styles.channelList}>
-            <LightquarkChannelList/>
+        <div className={styles.quarkView}>
+            <div className={styles.channelListWrap}>
+                <LightquarkChannelList/>
+                <Aviebox/>
+            </div>
+            <Outlet/>
         </div>
-        <Outlet/>
     </>
 }
