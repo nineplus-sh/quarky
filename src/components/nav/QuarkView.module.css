@@ -1,4 +1,4 @@
-.channelList {
+.channelListWrap {
     width: 15.5em;
     overflow-x: hidden;
     max-height: 99vh;
@@ -9,4 +9,14 @@
     padding-left: 0.3em;
     scrollbar-width: thin;
     scrollbar-color: #00a8f3 white;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.quarkView {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
 }

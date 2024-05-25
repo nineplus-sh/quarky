@@ -84,7 +84,7 @@ const router = sentryCreateBrowserRouter(
     createRoutesFromElements(
         <Route path="/" element={<Root />}>
             <Route path="/" element={<AuthenticationNeeded />}>
-                <Route path="/" element={<Client />} >
+                <Route path="/" element={<Client />}  >
                     <Route path="/:quarkId" element={<QuarkView />} >
                         <Route path="/:quarkId/:dialogId" element={<ChannelView />} />
                     </Route>
