@@ -6,7 +6,6 @@ import {AppContext} from "../contexts/AppContext.js";
 import LQ from "../util/LQ.js";
 import useWebSocket from "react-use-websocket";
 import localForage from "localforage";
-import GenericQuark from "../components/nav/GenericQuark.jsx";
 import styles from "./Client.module.css"
 import NiceModal from "@ebay/nice-modal-react";
 import NetworkUnsupportedModal from "../components/modals/NetworkUnsupportedModal.jsx";
@@ -23,11 +22,12 @@ export default function Client() {
     let [resolvedAvatarCache, setResolvedAvatarCache] = useState({});
     const [clientReady, setClientReady] = useState(false);
     const [lqSockURL, setLqSockURL] = useState(null);
-    const [lqSockToken, setLqSockToken] = useState(null);
-    const [heartbeatMessage, setHeartbeatMessage] = useState("*gurgles*");
-    let [userCache, setUserCache] = useState({})
-    const appContext = useContext(AppContext);
+    const [heartbeatMessage] = useState("*gurgles*");
     const navigate = useNavigate();
+    const {userCache, 
+        setUserCache, 
+        accounts, 
+        setMessageCache} = useContext(AppContext)
     const {quarkId} = useParams();
 
     const lqSock = useWebSocket(lqSockURL, {
@@ -35,7 +35,7 @@ export default function Client() {
             const eventData = JSON.parse(message.data);
             switch(eventData.event) {
                 case "messageCreate":
-                    appContext.setMessageCache(previousValue => {
+                    setMessageCache(previousValue => {
                         previousValue = { ...previousValue }
                         if(!previousValue[eventData.channelId]) previousValue[eventData.channelId] = [];
                         previousValue[eventData.channelId].push(eventData.message)
@@ -53,7 +53,7 @@ export default function Client() {
                             let status = p[eventData.user._id]?.status
                             p[eventData.user._id] = eventData.user;
                             p[eventData.user._id].status = status;
-                            return p
+                            return structuredClone(p);
                         })
                     }
                     break;
@@ -61,7 +61,7 @@ export default function Client() {
                     console.log(`Status of ${eventData.user.username} changed!`, eventData.user?.status)
                     setUserCache(p => {
                         p[eventData.user._id] = eventData.user;
-                        return p;
+                        return structuredClone(p);
                     })
                     break;
                 default:
@@ -80,7 +80,7 @@ export default function Client() {
     useEffect(() => {(async () => {
         if(!quarkId) navigate("/lq_100000000000000000000000");
 
-        if (appContext.accounts.lightquark && !lqSockURL) {
+        if (accounts.lightquark && !lqSockURL) {
             const network = await LQ("network"); // TODO: Add NetworkOfflineModal here as well
             if(!network.raw.cdnBaseUrl) {
                 return NiceModal.show(NetworkUnsupportedModal, { name: `${network.raw.name} (${network.raw.linkBase})`, maintainer: network.raw.maintainer, signOut: true });
@@ -96,7 +96,6 @@ export default function Client() {
             // A state would not update since no new render 
             let currentGameId = "BLELELELE"
             window.hiddenside.casualGaming((games) => {
-                console.log(games, currentGameId)
                 if(games.length !== 0 && games[0]._id !== currentGameId) {
                     console.log(`Now playing ${games[0].name} ${games[0]._id}`)
                     currentGameId = games[0]._id
@@ -117,13 +116,12 @@ export default function Client() {
         }
 
         setClientReady(true);
-    })()}, [appContext.accounts]);
+    })()}, [accounts]);
 
     return (<>
         <ClientContext.Provider value={{
             avatarCache, setAvatarCache,
-            resolvedAvatarCache, setResolvedAvatarCache,
-            userCache, setUserCache
+            resolvedAvatarCache, setResolvedAvatarCache
         }}>{clientReady ?
             <div className={styles.client}>
                 <div className={styles.quarkList}>

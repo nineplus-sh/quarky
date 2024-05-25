@@ -3,11 +3,11 @@ import LQ from "../../../../util/LQ.js";
 import {useParams} from "react-router-dom";
 import {LightquarkMember} from "./LightquarkMember.jsx";
 import styles from "./LightquarkMemberList.module.css";
-import {ClientContext} from "../../../../contexts/ClientContext.js";
+import {AppContext} from "../../../../contexts/AppContext.js";
 
 export default function LightquarkMemberList() {
     const [members, setMembers] = useState([])
-    const {setUserCache} = useContext(ClientContext)
+    const {setUserCache} = useContext(AppContext)
     const {dialogId} = useParams();
 
     useEffect(() => {
