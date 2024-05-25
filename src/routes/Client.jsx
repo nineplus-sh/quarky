@@ -104,7 +104,8 @@ export default function Client() {
                     formData.append("payload", JSON.stringify({
                         "type": "playing",
                         "primaryText": games[0].name,
-                        "primaryImageUri": `https://gameplus.nineplus.sh/game/${games[0]._id}/icon`
+                        "primaryImageUri": `https://gameplus.nineplus.sh/game/${games[0]._id}/icon`,
+                        "startTime": new Date()
                     }));
 
                     LQ("user/me/status", "PUT", formData)

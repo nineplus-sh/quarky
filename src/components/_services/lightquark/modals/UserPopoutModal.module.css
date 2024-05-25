@@ -6,6 +6,6 @@
 .introduction .name {
     font-size: 1.3em;
 }
-.name {
+.gameinfo, .name {
     margin: 0 0 0 0.5em;
 }
