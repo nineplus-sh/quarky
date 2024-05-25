@@ -8,7 +8,7 @@ import UserPopoutModal from "../modals/UserPopoutModal.jsx";
 export function LightquarkMember({member}) {
     const {userCache} = useContext(ClientContext)
     return (
-        <div className={styles.member} onClick={() => NiceModal.show(UserPopoutModal, {user: member})}>
+        <div className={styles.member} onClick={() => NiceModal.show(UserPopoutModal, {user: userCache[member._id]})}>
             <ProfilePicture src={userCache[member._id].avatarUri} px={40}/>
             <p className={styles.memberName}>
                 {userCache[member._id].username}
