@@ -32,4 +32,9 @@ export default function RichEmbed({url}) {
     if(steamStore) {
         return <div className={styles.richEmbedWrap}><iframe className={styles.richEmbed} height={195} src={`https://store.steampowered.com/widget/${steamStore[1]}/?utm_source=quarky`}/></div>
     }
+
+    let soundcloud = urlWrap.href.match(/https?:\/\/soundcloud\.com\/\w{3,25}\/\w+/)
+    if(soundcloud) {
+        return <div className={styles.richEmbedWrap}><iframe className={styles.richEmbed} height={166} src={`https://w.soundcloud.com/player/?url=${urlWrap.href}&color=%23ff5500&auto_play=false&hide_related=true&show_comments=true&show_user=true&show_reposts=true&show_teaser=false`}/></div>
+    }
 }
