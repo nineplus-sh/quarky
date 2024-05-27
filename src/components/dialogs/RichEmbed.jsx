@@ -30,6 +30,6 @@ export default function RichEmbed({url}) {
 
     let steamStore = urlWrap.href.match(/https?:\/\/store\.steampowered\.com\/app\/(\d*)/)
     if(steamStore) {
-        return <div className={styles.richEmbedWrap}><iframe className={styles.richEmbed} height={190} src={`https://store.steampowered.com/widget/${steamStore[1]}/?utm_source=quarky`}/></div>
+        return <div className={styles.richEmbedWrap}><iframe className={styles.richEmbed} height={195} src={`https://store.steampowered.com/widget/${steamStore[1]}/?utm_source=quarky`}/></div>
     }
 }
