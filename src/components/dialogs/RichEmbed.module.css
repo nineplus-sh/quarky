@@ -3,6 +3,7 @@
     overflow-y: scroll;
     overflow-x: hidden;
 }
-.tumblrframe {
+.richEmbed {
     width: 100%;
+    border: none;
 }
