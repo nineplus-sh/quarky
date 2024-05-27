@@ -3,7 +3,7 @@
     flex-direction: row;
     align-items: center;
 
-    background: var(--background-color-darker);
+    background: var(--background-color-lesser);
     padding: 0.5em;
 }
 

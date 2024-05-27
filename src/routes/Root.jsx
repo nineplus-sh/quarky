@@ -27,6 +27,18 @@ export default function Root() {
 
     useEffect(() => {
         async function loadNyafile() {
+            let themePalette = await localForage.getItem("palette");
+            if(!themePalette) {
+                const wantsDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+                themePalette = wantsDark ? "dark" : "light";
+            }
+            document.documentElement.classList.add(`theme-${themePalette}`);
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener("change", async e => {
+                if(await localForage.getItem("palette")) return;
+                document.documentElement.classList.remove("theme-light", "theme-dark", "theme-hotdog");
+                document.documentElement.classList.add(`theme-${e.matches ? "dark" : "light"}`);
+            })
+
             const localConfig = await localForage.getItem("lightquark")
             if(localConfig?.token) {
                 const LQuserdata = await LQ("user/me");

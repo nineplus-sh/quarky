@@ -2,16 +2,37 @@
   --accent-color: #00A8F3;
   --darker-accent-color: #007db5;
 
-  --background-color: #0194da;
-  --background-color-dark: #00729f;
-  --background-color-darker: #005678;
-  --background-color-darkest: #00354a;
-
   --text-color: white;
-  --text-color-dark: black;
+  --text-color-inverted: black;
   color: var(--text-color)
 }
 
 body {
   margin: 0;
+}
+
+.theme-light {
+  --background-color-max: #0194da;
+  --background-color-less: #00729f;
+  --background-color-lesser: #005678;
+  --background-color-min: #00354a;
+}
+.theme-dark {
+  --background-color-max: #00354a;
+  --background-color-less: #005678;
+  --background-color-lesser: #00729f;
+  --background-color-min: #0194da;
+}
+.theme-hotdog { /*
+Hey everyone my name is Hakase and welcome to another Useless Quarky Facts short.
+FACT: Did you know that Quarky has a secret Hotdog theme that is never used?
+The only way to access this theme is by blah blah blah...
+ */
+  --background-color-max: yellow;
+  --background-color-less: yellow;
+  --background-color-lesser: red;
+  --background-color-min: red;
+
+  --text-color: black;
+  --text-color-inverted: black;
 }

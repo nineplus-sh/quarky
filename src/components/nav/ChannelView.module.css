@@ -3,8 +3,6 @@
     flex-direction: column;
     flex-grow: 1;
     width: 100%;
-
-    background-color: var(--background-color)
 }
 
 .memberList {
@@ -19,7 +17,7 @@
     scrollbar-width: thin;
     scrollbar-color: var(--accent-color) white;
 
-    background: var(--background-color-dark);
+    background: var(--background-color-less);
 }
 
 .messages {
