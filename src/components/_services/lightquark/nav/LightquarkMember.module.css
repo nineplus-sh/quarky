@@ -7,7 +7,7 @@
     border-radius: 15px;
 }
 .member:hover {
-    background-color: lightgray;
+    background-color: var(--background-color-darker);
 }
 .memberName {
     margin: 0;

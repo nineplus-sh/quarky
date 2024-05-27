@@ -2,6 +2,9 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+
+    background: var(--background-color-darker);
+    padding: 0.5em;
 }
 
 .name {

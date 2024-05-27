@@ -11,7 +11,7 @@
 }
 
 .messagecontent {
-    background-color: lightgray;
+    background: var(--background-color-darker);
     border-radius: 10px;
     padding: 0.5em;
     margin-top: 0.5em;
@@ -22,7 +22,7 @@
 
 .messagecontent::before {
     content: "";
-    background-color: lightgray;
+    background: var(--background-color-darker);
 
     clip-path: polygon(100% 0%, 0% 50%, 100% 100%);
     position: absolute;

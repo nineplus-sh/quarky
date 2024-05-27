@@ -3,19 +3,23 @@
     flex-direction: column;
     flex-grow: 1;
     width: 100%;
+
+    background-color: var(--background-color)
 }
 
 .memberList {
     width: 15.5em;
     overflow-x: hidden;
-    max-height: 99vh;
+    max-height: 100vh;
     overflow-y: scroll;
 
     flex: none;
     padding-top: 0.5em;
     padding-left: 0.3em;
     scrollbar-width: thin;
-    scrollbar-color: #00a8f3 white;
+    scrollbar-color: var(--accent-color) white;
+
+    background: var(--background-color-dark);
 }
 
 .messages {
@@ -26,5 +30,5 @@
     overflow-wrap: anywhere;
 
     scrollbar-width: thin;
-    scrollbar-color: #00a8f3 white;
+    scrollbar-color: var(--accent-color) white;
 }
