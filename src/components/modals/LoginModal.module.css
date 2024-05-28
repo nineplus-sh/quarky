@@ -21,9 +21,9 @@
 
 .transRadial {
     background: repeating-conic-gradient(aqua 0deg 10deg, pink 10deg 20deg, white 20deg 30deg, pink 30deg 40deg);
-    mask-image: radial-gradient(circle, black 50%, transparent 70%);
+    mask-image: radial-gradient(circle, black 0%, transparent 60%);
     mask-composite: intersect, exclude;
-    width: 20em;
+    max-width: 20em;
     height: 20em;
 
     z-index: -3;

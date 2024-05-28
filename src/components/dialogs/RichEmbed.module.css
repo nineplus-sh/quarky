@@ -3,6 +3,7 @@
     max-width: 542px;
     overflow-y: scroll;
     overflow-x: hidden;
+    scrollbar-width: thin;
 }
 .richEmbed {
     width: 100%;

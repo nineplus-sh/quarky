@@ -8,7 +8,6 @@ export default function RichEmbed({url}) {
         const iframeEventHandler = (estrogen) => {
             if(ourFrame?.current?.contentWindow !== estrogen.source) return;
             if(estrogen.origin !== "https://embed.tumblr.com") return;
-            console.log(estrogen)
             if(estrogen.data.type === "embed-size") {
                 return setTumblrHeight(estrogen.data.height);
             }
@@ -45,5 +44,10 @@ export default function RichEmbed({url}) {
     let spotify = urlWrap.href.match(/https?:\/\/open\.spotify\.com\/track\/(\w+)/)
     if(spotify) {
         return <div className={styles.richEmbedWrap}><iframe className={styles.richEmbed} height={80} src={`https://open.spotify.com/embed/track/${spotify[1]}`}/></div>
+    }
+
+    let tweet = urlWrap.href.match(/https?:\/\/(?:x|twitter|fixupx|fxtwitter|vxtwitter|twittpr|fixvx)\.com\/\w+\/status\/(\d+)/)
+    if(tweet) { // TODO: figure out height & theme query parameter can be light or dark
+        return <div className={styles.richEmbedWrap}><iframe className={styles.richEmbed} src={`https://platform.twitter.com/embed/Tweet.html?dnt=true&id=${tweet[1]}`}/></div>
     }
 }
