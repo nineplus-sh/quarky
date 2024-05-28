@@ -1,5 +1,6 @@
 .wrapblr {
-    max-height: 727px;
+    max-height: 30vh;
+    max-width: 542px;
     overflow-y: scroll;
     overflow-x: hidden;
 }

@@ -7,9 +7,13 @@ export default function RichEmbed({url}) {
     useEffect(() => {
         const iframeEventHandler = (estrogen) => {
             if(ourFrame?.current?.contentWindow !== estrogen.source) return;
+            if(estrogen.origin !== "https://embed.tumblr.com") return;
             console.log(estrogen)
+            if(estrogen.data.type === "embed-size") {
+                return setTumblrHeight(estrogen.data.height);
+            }
             if(estrogen.data.startsWith('{"method":"tumblr-post:sizeChange"')) {
-                setTumblrHeight(JSON.parse(estrogen.data).args[0]);
+                return setTumblrHeight(JSON.parse(estrogen.data).args[0]);
             }
         }
 
@@ -40,6 +44,6 @@ export default function RichEmbed({url}) {
 
     let spotify = urlWrap.href.match(/https?:\/\/open\.spotify\.com\/track\/(\w+)/)
     if(spotify) {
-        return <div className={styles.richEmbedWrap}><iframe className={styles.richEmbed} height={100} src={`https://open.spotify.com/embed/track/${spotify[1]}`}/></div>
+        return <div className={styles.richEmbedWrap}><iframe className={styles.richEmbed} height={80} src={`https://open.spotify.com/embed/track/${spotify[1]}`}/></div>
     }
 }
