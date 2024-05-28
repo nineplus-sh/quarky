@@ -73,6 +73,7 @@ export default function Root() {
             nyafile.queueCache("sfx/button-select");
             nyafile.queueCache("sfx/default-select");
             nyafile.queueCache("sfx/default-hover");
+            nyafile.queueCache("sfx/error");
             nyafile.queueCache("sfx/info-modal-pop-in");
             nyafile.queueCache("sfx/info-modal-pop-out");
             nyafile.queueCache("sfx/purr");

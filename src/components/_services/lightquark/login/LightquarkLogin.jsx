@@ -67,7 +67,7 @@ export default function LightquarkLogin({setDone}) {
         if(!thingieSuccessful) return;
 
         const LQdata = await LQ("auth/token", "POST", {email, password}, true);
-        if(LQdata.fetchSuccess === true) {
+        if(LQdata.request.success === true) {
             await setLocalConfig({...localConfig, token: LQdata.response.access_token, refreshToken: LQdata.response.refresh_token});
 
             const LQuserdata = await LQ("user/me");
@@ -77,17 +77,17 @@ export default function LightquarkLogin({setDone}) {
             localStorage.setItem("USER_AUTHED", "bet");
             setDone(true);
         } else {
-            await localForage.removeItem("lightquark");
-            alert("Lightquark login failed :(")
+            new Audio(appContext.nyafile.getCachedData("sfx/error")).play();
+            setTimeout(() => alert(LQdata.response.message), 5);
         }
     }
 
     return (<>
         <h1>Sign in with your Lightquark account</h1>
         <form onSubmit={login}>
-            <input type={"text"} value={network} onBlur={getConfig} onChange={e => setNetwork(e.target.value)}/>
-            <input type={"email"} placeholder={"hakase@litdevs.org"} onChange={e => setEmail(e.target.value)}/>
-            <input type={"password"} placeholder={"(password)"} onChange={e => setPassword(e.target.value)}/>
+            <input required type={"text"} value={network} onBlur={getConfig} onChange={e => setNetwork(e.target.value)}/>
+            <input required type={"email"} placeholder={"hakase@litdevs.org"} onChange={e => setEmail(e.target.value)}/>
+            <input required type={"password"} placeholder={"(password)"} onChange={e => setPassword(e.target.value)}/>
             <input type={"submit"} />
         </form>
     </>)
