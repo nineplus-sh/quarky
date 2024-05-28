@@ -22,6 +22,8 @@ export default function AuthenticationNeeded() {
 
     if(Object.keys(appContext.accounts).length === 0 || (!done && !prevAuthed)) {
         return (<>
+            <audio src={appContext.nyafile.getCachedData("music/login")} autoPlay={true} loop={true}/>
+
             <SpaceBackground />
             <Header title={t("HEADER_WELCOME")} description={t("HEADER_WELCOME_SUB")}></Header>
 
