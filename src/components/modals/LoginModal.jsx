@@ -20,14 +20,17 @@ export default function LoginModal({setDone}) {
     }, [appContext.accounts]);
 
     return <div className={styles.centerwrap}>
-        <NyafileImage src={"img/loginheadervukky"} className={styles.planet}/>
+        <div className={styles.characterContainer}>
+            <NyafileImage src={"img/loginheadervukky"} className={styles.planet}/>
+            <div className={styles.transRadial}/>
 
-        <div className={styles.orbs}>
-            <span className={styles.orbwrap}><img src={"https://logo.litdevs.org/api/vukky/bg"} className={styles.orb}/></span>
-            <span className={styles.orbwrap}><NyafileImage src={"img/orb_2"} className={styles.orb}/></span>
-            <span className={styles.orbwrap}><NyafileImage src={"img/orb_3"} className={styles.orb}/></span>
-            <span className={styles.orbwrap}><NyafileImage src={"img/orb_4"} className={styles.orb}/></span>
-            <span className={styles.orbwrap}><NyafileImage src={"img/orb_5"} className={styles.orb}/></span>
+            <div className={styles.orbs}>
+                <span className={styles.orbwrap}><img src={"https://logo.litdevs.org/api/vukky/bg"} className={styles.orb}/></span>
+                <span className={styles.orbwrap}><NyafileImage src={"img/orb_2"} className={styles.orb}/></span>
+                <span className={styles.orbwrap}><NyafileImage src={"img/orb_3"} className={styles.orb}/></span>
+                <span className={styles.orbwrap}><NyafileImage src={"img/orb_4"} className={styles.orb}/></span>
+                <span className={styles.orbwrap}><NyafileImage src={"img/orb_5"} className={styles.orb}/></span>
+            </div>
         </div>
 
         <div className={styles.login}>

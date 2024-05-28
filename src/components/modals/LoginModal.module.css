@@ -13,16 +13,38 @@
     padding: 2em;
 }
 
+.characterContainer {
+    position: relative;
+    z-index: -1;
+    animation: 5s float ease-in-out infinite;
+}
+
+.transRadial {
+    background: repeating-conic-gradient(aqua 0deg 10deg, pink 10deg 20deg, white 20deg 30deg, pink 30deg 40deg);
+    mask-image: radial-gradient(circle, black 50%, transparent 70%);
+    mask-composite: intersect, exclude;
+    width: 20em;
+    height: 20em;
+
+    z-index: -3;
+    position: absolute;
+    top: -11.5em;
+    left: 0;
+    right: 0;
+    margin:0px auto;
+
+    animation: rotate 40s infinite linear reverse;
+}
+
 .planet {
     z-index: -1;
     position: absolute;
     top: -7.5em;
     left: 0;
     right: 0;
-    margin:0px auto;
+    margin:0 auto;
 
     width: 11em;
-    animation: 5s float ease-in-out infinite;
 }
 
 .orbs {
@@ -31,6 +53,7 @@
     left: 0;
     right: 0;
     margin:0px auto;
+    z-index: -2;
 
     width: fit-content;
 }
@@ -90,5 +113,10 @@
     }
     100% {
         transform: translateY(0);
+    }
+}
+@keyframes rotate {
+    100% {
+        transform: rotate(360deg);
     }
 }
