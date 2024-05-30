@@ -1,6 +1,14 @@
 :root {
   --accent-color: #00A8F3;
   --darker-accent-color: #007db5;
+  --darkest-accent-color: #006690;
+
+  --primary-button-color: var(--accent-color);
+  --primary-button-shadow: var(--darker-accent-color);
+  --primary-button-active-shadow: var(--darkest-accent-color);
+  --other-button-color: #eee;
+  --other-button-shadow: #ddd;
+  --other-button-active-shadow: #aaa;
 
   --text-color: white;
   --text-color-inverted: black;

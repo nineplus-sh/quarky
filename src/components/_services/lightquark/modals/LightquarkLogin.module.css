@@ -1,0 +1,72 @@
+.networkInfoArea {
+    border-bottom: 3px solid var(--accent-color);
+    margin-bottom: 0.5em;
+}
+.networkInfo {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 0.5em;
+}
+.networkDetails {
+    margin-left: 0.5em;
+}
+.networkDetails p {
+    margin: 0;
+}
+.networkName {
+    font-size: larger;
+}
+.networkMetadata {
+    font-size: smaller;
+}
+.networkDescription {
+    font-size: smaller;
+    font-style: italic;
+}
+.networkLogo {
+    width: 3em;
+    height: 3em;
+    border-radius: 10px;
+}
+
+.loginForm {
+    display: flex;
+    flex-direction: column;
+}
+.loginInput {
+    margin-bottom: 0.5em;
+}
+.prettyButton {
+    padding: 0.5em;
+    margin: 0.5em;
+    border-radius: 10px;
+    border: none;
+
+    cursor: pointer;
+}
+.prettyButton:not([disabled]):hover {
+    transform: translateY(-2px);
+}
+.prettyButton:not([disabled]):hover:active {
+    transform: translateY(0px);
+}
+
+.primaryButton {
+    background-color: var(--primary-button-color);
+    color: black;
+    box-shadow: 0 5px var(--primary-button-shadow);
+}
+.primaryButton[disabled], .primaryButton:not([disabled]):hover:active {
+    background-color: var(--primary-button-shadow);
+    box-shadow: 0 3px var(--primary-button-active-shadow);
+}
+
+.otherButton {
+    background-color: var(--other-button-color);
+    color: black;
+    box-shadow: 0 5px var(--other-button-shadow);
+}
+.otherButton[disabled], .otherButton:not([disabled]):hover:active {
+    background-color: var(--other-button-shadow);
+    box-shadow: 0 3px var(--other-button-active-shadow);
+}

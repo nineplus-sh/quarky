@@ -10,7 +10,9 @@
     border-radius: 10px;
     color: black;
     width: fit-content;
-    padding: 2em;
+    padding: 1em;
+    /* TODO: Modal bounce for tab changes */
+    max-width: 25em;
 }
 
 .characterContainer {

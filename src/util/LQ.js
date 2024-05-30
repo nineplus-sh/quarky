@@ -8,10 +8,11 @@ import {version} from "../../package.json";
  * @param httpMethod
  * @param body
  * @param skipAuth
+ * @param localConfigOverride
  * @return {Promise<APIResponse>}
  */
-export default async function LQ (apiMethod, httpMethod = "GET", body = undefined, skipAuth = false) {
-    let localConfig = await localForage.getItem("lightquark")
+export default async function LQ (apiMethod, httpMethod = "GET", body = undefined, skipAuth = false, localConfigOverride) {
+    let localConfig = localConfigOverride || await localForage.getItem("lightquark")
     if (!skipAuth && !localConfig.token) throw new Error("Missing token")
     try {
         let headers = {};

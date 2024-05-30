@@ -8,7 +8,7 @@ export default function Message({children, avatar, username, content}) {
         {avatar}
         <span className={styles.message}>
             <b>{username}</b>
-            <Linkify options={{"target": "_blank", "rel": "noreferrer"}}>
+            <Linkify options={{"target": "_blank", "rel": "noreferrer noopener"}}>
                 <span className={styles.messagecontent}>{children} {linkify.find(content).map(link => <RichEmbed url={link.value}/>)}</span>
             </Linkify>
         </span>

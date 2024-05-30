@@ -1,4 +1,4 @@
-import LightquarkLogin from "../_services/lightquark/login/LightquarkLogin.jsx";
+import LightquarkLogin from "../_services/lightquark/modals/LightquarkLogin.jsx";
 import {AppContext} from "../../contexts/AppContext.js";
 import {useContext, useEffect, useState} from "react";
 import {t} from "i18next";

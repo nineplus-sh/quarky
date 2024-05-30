@@ -82,9 +82,6 @@ export default function Client() {
 
         if (accounts.lightquark && !lqSockURL) {
             const network = await LQ("network"); // TODO: Add NetworkOfflineModal here as well
-            if(!network.raw.cdnBaseUrl) {
-                return NiceModal.show(NetworkUnsupportedModal, { name: `${network.raw.name} (${network.raw.linkBase})`, maintainer: network.raw.maintainer, signOut: true });
-            }
             setLqSockURL(network.raw.gateway)
         }
 
