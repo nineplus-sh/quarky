@@ -7,10 +7,12 @@ export default function LightquarkMessage({message}) {
     const botMetadata = message.specialAttributes.find(attr => attr.type === "botMessage");
     const clientAttributes = message.specialAttributes.find(attr => attr.type === "clientAttributes");
     const {userCache} = useContext(AppContext);
+    const noBotAuthor = userCache[message.author._id] || message.author;
+    const author = botMetadata || noBotAuthor;
 
-    return <Message username={botMetadata?.username || userCache[message.author._id]?.username || message.author.username}
-                    avatar={<ProfilePicture src={botMetadata?.avatarUri || userCache[message.author.id]?.avatarUri || message.author.avatarUri} isMessage={true}/>}
-                    content={message.content} botName={botMetadata ? userCache[message.author._id]?.username || message.author.username : null} isDiscord={clientAttributes?.quarkcord}>
+    return <Message username={author.username}
+                    avatar={<ProfilePicture src={author.avatarUri} isMessage={true}/>}
+                    content={message.content} isBot={noBotAuthor.isBot} botName={botMetadata ? noBotAuthor.username : null} isDiscord={clientAttributes?.quarkcord}>
         {message.content}
     </Message>
 }
