@@ -2,17 +2,22 @@ import {useEffect, useRef, useState} from "react";
 import styles from "./RichEmbed.module.css";
 
 export default function RichEmbed({url}) {
-    const [tumblrHeight, setTumblrHeight] = useState(0);
+    const [embedHeight, setEmbedHeight] = useState(0);
     const ourFrame = useRef(null);
     useEffect(() => {
         const iframeEventHandler = (estrogen) => {
             if(ourFrame?.current?.contentWindow !== estrogen.source) return;
-            if(estrogen.origin !== "https://embed.tumblr.com") return;
-            if(estrogen.data.type === "embed-size") {
-                return setTumblrHeight(estrogen.data.height);
-            }
-            if(estrogen.data.startsWith('{"method":"tumblr-post:sizeChange"')) {
-                return setTumblrHeight(JSON.parse(estrogen.data).args[0]);
+            if(estrogen.origin === "https://embed.tumblr.com") {
+                if(estrogen.data.type === "embed-size") {
+                    return setEmbedHeight(estrogen.data.height);
+                }
+                if(estrogen.data.startsWith('{"method":"tumblr-post:sizeChange"')) {
+                    return setEmbedHeight(JSON.parse(estrogen.data).args[0]);
+                }
+            } else if (estrogen.origin === "https://platform.twitter.com") {
+                if(estrogen.data["twttr.embed"].method === "twttr.private.resize") {
+                    return setEmbedHeight(estrogen.data["twttr.embed"].params[0].height);
+                }
             }
         }
 
@@ -28,7 +33,7 @@ export default function RichEmbed({url}) {
     if(!tumblr) tumblr = urlWrap.href.match(/https?:\/\/(.*)\.tumblr\.com\/post\/(\d*)/);
     if(!tumblr) tumblr = urlWrap.href.match(/https?:\/\/www\.tumblr\.com\/(.*)\/(\d*)/)
     if(tumblr) {
-        return <div className={styles.wrapblr}><iframe src={`https://embed.tumblr.com/embed/post/${tumblr[1]}/${tumblr[2]}`} ref={ourFrame} height={tumblrHeight} className={styles.richEmbed}/></div>
+        return <div className={styles.wrapblr}><iframe src={`https://embed.tumblr.com/embed/post/${tumblr[1]}/${tumblr[2]}`} ref={ourFrame} height={embedHeight} className={styles.richEmbed}/></div>
     }
 
     let steamStore = urlWrap.href.match(/https?:\/\/store\.steampowered\.com\/app\/(\d*)/)
@@ -47,7 +52,7 @@ export default function RichEmbed({url}) {
     }
 
     let tweet = urlWrap.href.match(/https?:\/\/(?:x|twitter|fixupx|fxtwitter|vxtwitter|twittpr|fixvx)\.com\/\w+\/status\/(\d+)/)
-    if(tweet) { // TODO: figure out height & theme query parameter can be light or dark
-        return <div className={styles.richEmbedWrap}><iframe className={styles.richEmbed} src={`https://platform.twitter.com/embed/Tweet.html?dnt=true&id=${tweet[1]}`}/></div>
+    if(tweet) { // TODO: "theme" query parameter can be light or dark
+        return <div className={styles.richEmbedWrap}><iframe src={`https://platform.twitter.com/embed/Tweet.html?dnt=true&id=${tweet[1]}`} ref={ourFrame} height={embedHeight} className={styles.richEmbed} /></div>
     }
 }
