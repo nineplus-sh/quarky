@@ -16,6 +16,9 @@
     padding: 0.5em;
     margin-top: 8px;
 
+    min-height: 22px;
+    min-width: 22px;
+
     position: relative;
     width: fit-content;
 }
