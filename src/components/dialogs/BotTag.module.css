@@ -1,0 +1,10 @@
+.botTag {
+    border-radius: 5px;
+    font-size: 0.8em;
+    padding: 0.1em 0.2em;
+    background-color: var(--accent-color);
+}
+
+.discord {
+    background-color: #161cbb;
+}
