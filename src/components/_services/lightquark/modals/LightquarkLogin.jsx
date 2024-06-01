@@ -115,15 +115,15 @@ export default function LightquarkLogin({setDone}) {
                 <form onSubmit={tokenByLogin} className={styles.loginForm}>
                     <input className={styles.loginInput} required type="email" placeholder="hakase@litdevs.org" value={email} onChange={e => setEmail(e.target.value)} />
                     <input className={styles.loginInput} required type="password" placeholder="(password)" value={password} onChange={e => setPassword(e.target.value)} />
-                    <input className={`${styles.prettyButton} ${styles.primaryButton}`} type="submit" disabled={isSwitching || Object.keys(networkData).length === 0} value={t(isSwitching ? "LOGIN_SIGNING_IN" : "GO")}/>
                     <button className={`${styles.prettyButton} ${styles.otherButton}`} type="button" disabled={isSwitching} onClick={() => switchTab("create")}>{t("LOGIN_CREATE_ACCOUNT")}</button>
+                    <input className={`${styles.prettyButton} ${styles.primaryButton}`} type="submit" disabled={isSwitching || Object.keys(networkData).length === 0} value={t(isSwitching ? "LOGIN_SIGNING_IN" : "GO")}/>
                 </form>
             </> : tab === "network" ? <>
                 <p>{t("LOGIN_SWITCH_NETWORKS_BODY", {name: networkData.name})}</p>
                 <form onSubmit={switchNetwork} className={styles.loginForm}>
                     <input className={styles.loginInput} required disabled={isSwitching} type="text" placeholder={network} value={networkSwitch} onChange={e => setNetworkSwitch(e.target.value)}/>
-                    <button className={`${styles.prettyButton} ${styles.otherButton}`} type="button" disabled={isSwitching} onClick={() => switchTab("login")}>{t("BACK")}</button>
-                    <input className={`${styles.prettyButton} ${styles.primaryButton}`} type="submit" disabled={isSwitching} value={t(isSwitching ? "LOGIN_SWITCHING_NETWORKS" : "LOGIN_SWITCH_NETWORKS")}/>
+                    <input className={`${styles.prettyButton} ${styles.otherButton}`} type="submit" disabled={isSwitching} value={t(isSwitching ? "LOGIN_SWITCHING_NETWORKS" : "LOGIN_SWITCH_NETWORKS")}/>
+                    <button className={`${styles.prettyButton} ${styles.primaryButton}`} type="button" disabled={isSwitching} onClick={() => switchTab("login")}>{t("BACK")}</button>
                 </form>
             </> : tab === "create" ? <>
                 <p>Account creation is not yet available.</p>
