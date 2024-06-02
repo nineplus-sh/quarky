@@ -49,16 +49,16 @@ export default function Root() {
             const nyafile = new NyaFile();
             await nyafile.load("/quarky.nya", true);
 
+            const languages = import.meta.glob('../langs/*.json');
+
             await i18next
                 .use(initReactI18next)
                 .use(resourcesToBackend((language, namespace, callback) => {
-                    nyafile.getAssetJson(`lang/${language}`)
-                        .then((nya) => {
-                            callback(null, nya)
-                        })
-                        .catch((error) => {
-                            callback(error, null)
-                        })
+                    if(languages[`../langs/${language}.json`]) {
+                        languages[`../langs/${language}.json`]().then((lang) => callback(null, lang))
+                    } else {
+                        callback("This is not a language supported by Quarky! :cat2:", null)
+                    }
                 }))
                 .use(LanguageDetector)
                 .init({
