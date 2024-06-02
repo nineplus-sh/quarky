@@ -1,17 +1,26 @@
 import Modal from 'react-modal'
 import "./GenericModal.css"
+import {useContext, useEffect, useRef} from "react";
+import {AppContext} from "../../contexts/AppContext.js";
 
 /**
  * A generic wrapper around react-modal. Depending on your needs, there might be a more specific wrapper around this one.
- * @param children - The props of the component, provided by React.
- * @param open {boolean} - If the modal should be shown or not.
- * @param closer {function} - The function to run when the modal should be closed. Usually a useState setter higher in the component tree.
  * @returns {JSX.Element}
  * @constructor
  */
-export default function GenericModal({children, open, closer}) {
+export default function GenericModal({children, modal, allowNonEventClose = true}) {
+    const appContext = useContext(AppContext);
+    const firstUpdate = useRef(true)
+
+    useEffect(() => {
+        if (firstUpdate.current) { firstUpdate.current = false; return; }
+
+        new Audio(appContext.nyafile.getCachedData(`sfx/info-modal-pop-${modal.visible ? "in" : "out"}`)).play();
+        if(!modal.visible) setTimeout(modal.remove, 300)
+    }, [modal.visible]);
+
     return (
-        <Modal isOpen={open} closeTimeoutMS={300} shouldCloseOnOverlayClick={true} onRequestClose={closer} style={{
+        <Modal appElement={document.querySelector("#root")} isOpen={modal.visible} closeTimeoutMS={300} shouldCloseOnOverlayClick={allowNonEventClose} onRequestClose={() => modal.hide()} style={{
             overlay: {
                 display: "flex",
                 justifyContent: "center",

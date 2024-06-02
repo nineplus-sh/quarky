@@ -4,13 +4,14 @@
 }
 
 .ReactModal__Content {
-    max-height: 0;
+    transform: scaleY(0);
     transition: transform 0.3s cubic-bezier(1.000, -0.250, 0.000, 1.250), max-height 0.3s cubic-bezier(1.000, -0.250, 0.000, 1.250);
-    scrollbar-color: #00a8f3 #2e3035;
+    scrollbar-color: var(--accent-color) #2e3035;
+    color: var(--text-color-inverted);
 }
 
 .ReactModal__Content::-webkit-scrollbar-thumb {
-    background: #00a8f3;
+    background: var(--accent-color);
     border-radius: 10px;
 }
 .ReactModal__Content::-webkit-scrollbar {
@@ -27,9 +28,9 @@
 }
 
 .ReactModal__Content--after-open {
-    max-height: 90%;
+    transform: scaleY(1);
 }
 
 .ReactModal__Content--before-close {
-    max-height: 0;
+    transform: scaleY(0);
 }

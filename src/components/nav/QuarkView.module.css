@@ -1,0 +1,25 @@
+.channelListWrap {
+    width: 15.5em;
+    overflow-x: hidden;
+    max-height: 100vh;
+    overflow-y: scroll;
+
+    flex: none;
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent-color) white;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.channelListWrap > div:first-child {
+    flex-grow: 1;
+}
+
+.quarkView {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    background-color: var(--background-color-max);
+}

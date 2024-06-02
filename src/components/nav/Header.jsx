@@ -1,9 +1,8 @@
 import styles from "./Header.module.css"
 import NyafileImage from "../nyafile/NyafileImage.jsx";
 import CreditsModal from "../modals/CreditsModal.jsx";
-import {useState, useContext} from "react";
-import {AppContext} from "../../contexts/AppContext.js";
 import {useTranslation} from "react-i18next";
+import NiceModal from "@ebay/nice-modal-react";
 
 /**
  * The header of Quarky. This should not be used in the client itself.
@@ -13,15 +12,7 @@ import {useTranslation} from "react-i18next";
  * @constructor
  */
 export default function Header({title, description}) {
-    const [creditsModalOpen, setCreditsModalOpen] = useState(false);
-    const appContext = useContext(AppContext);
     const {t} = useTranslation();
-
-    function toggleModal() {
-        setCreditsModalOpen(!creditsModalOpen);
-        if(!creditsModalOpen) { new Audio(appContext.nyafile.getCachedData("sfx/button-select")).play(); }
-        new Audio(appContext.nyafile.getCachedData(`sfx/info-modal-pop-${creditsModalOpen ? "out" : "in"}`)).play();
-    }
 
     return (<>
         <div className={styles.header}>
@@ -30,10 +21,8 @@ export default function Header({title, description}) {
                 <h1>{title}</h1>
                 <p>⮡ {description}</p>
             </span>
-            <button className={styles.headerAcknowledgements} onClick={toggleModal}>{t("CREDITS_BUTTON")}</button>
+            <button className={styles.headerAcknowledgements} onClick={() => NiceModal.show(CreditsModal)}>{t("CREDITS_BUTTON")}</button>
         </div>
         <div className={styles.headerShadow}></div>
-
-        <CreditsModal open={creditsModalOpen} closer={toggleModal}/>
     </>);
 }

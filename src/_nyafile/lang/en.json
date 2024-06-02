@@ -1,16 +1,39 @@
 {
     "HEADER_WELCOME": "Welcome to Quarky~!",
     "HEADER_WELCOME_SUB": "Let's sign in to use it now!",
-    "HEADER_SERVICE_LOGIN": "Sign in with the services you want Quarky to use.",
-    "DONE": "I'm done!",
-    "TELEGRAM_CONNECTING": "Connecting to Telegram… (this will take ~5 seconds)",
+
+    "LOGIN_PASSWORD": "(password)",
+    "LOGIN_SWITCH_NETWORKS": "Switch network",
+    "LOGIN_SWITCHING_NETWORKS": "Switching networks...",
+    "LOGIN_SIGNING_IN": "Signing in...",
+    "LOGIN_SWITCH_NETWORKS_BODY": "If you want to connect to a different network than {{name}}, enter the link to it below. Otherwise, you should go back.",
+    "LOGIN_NETWORK_BYLINE": "{{domain}} ({{version}}) run by {{maintainer}}",
+    "LOGIN_CREATE_ACCOUNT": "Create account",
+
+    "GO": "Go!",
+    "OKAY": "Got it",
+    "BACK": "Never mind",
+
+    "LQ_SERVER_OUTDATED_TITLE": "This network won't work with Quarky",
+    "LQ_SERVER_OUTDATED_BODY": "{{name}} is running an unsupported version of Lightquark. Please ask {{maintainer}} to update it.",
+    "SIGN_OUT": "Sign out",
+    "LQ_SERVER_OFFLINE_TITLE": "This network is offline",
+    "LQ_SERVER_OFFLINE_BODY": "Something went wrong when trying to connect to {{name}}. If you're connected to the internet, this means the network is down. Try again later.",
+
+    "JOIN_QUARK": "Join a quark!",
+    "JOIN_QUARK_BODY": "Type in the quark's invite code to join it.",
+
     "CREDITS_BUTTON": "Acknowledgements",
+
     "QUARKY_NAME": "Quarky 2",
-    "QUARKY_DESCRIPTION": "\"An alright chat app on Earth\" for Lightquark and Telegram",
-    "QUARKY_BYLINE": "Hakase software © {{year}}",
-    "QUARKY_VERSION": "Version {{version}} (\"{{codename}}\")",
+    "QUARKY_DESCRIPTION": "The world's silliest chat app.",
+    "QUARKY_VERSION": "You are running version {{version}} ({{codename}})",
     "CREDITS_SPECIAL_THANKS": "Special thanks",
     "CREDITS_EMILIA": "Emilia for various instances of fixing code",
     "CREDITS_BYE": "Bye for giving free tummy rubs",
-    "CREDITS_SYNNE": "Synne for finding a mysterious bug I didn't fix"
+    "CREDITS_SYNNE": "Synne for finding a mysterious bug I didn't fix",
+    "CREDITS_OSS": "All the developers of Quarky's dependencies",
+    "CREDITS_OSUHRDTHDFL": "osu! for sound effects and HURT RECORD for music",
+    "CREDITS_OSS_LIST": "(view list)",
+    "CREDITS_LEGAL_NOTICE": "2023-2024 ninePLUS. All rights reserved. Quarky™, ninePLUS™, the Quarky bubble, and the nineMARK are trademarks of ninePLUS, a Hakase brand. All other trademarks are property of their respective owners."
 }

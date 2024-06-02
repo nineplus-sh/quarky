@@ -3,10 +3,7 @@ import {AppContext} from "../contexts/AppContext.js";
 import {useContext, useEffect} from "react";
 import Loader from "./Loader.jsx";
 import NyaFile from "@litdevs/nyalib";
-import {TelegramClient} from "telegram";
-import {StringSession} from "telegram/sessions";
 import localforage from "localforage";
-import { NewMessage } from "telegram/events";
 import * as Sentry from "@sentry/react";
 import LQ from "../util/LQ.js";
 import localForage from "localforage";
@@ -28,34 +25,25 @@ export default function Root() {
     const hakase = useFlag("Q2_HakaseBittanBittan");
     const mio = useFlag("Q2_MioBittanBittan");
 
-    function telegramMessageHandler(event) {
-        let source = event.message.chatId.value;
-        appContext.setMessageCache(previousValue => {
-            previousValue = { ...previousValue }
-            if(!previousValue[source]) previousValue[source] = [];
-            previousValue[source].push(event.message)
-            return previousValue;
-        });
-    }
-
     useEffect(() => {
         async function loadNyafile() {
-            const telegramClient = new TelegramClient(new StringSession(await localforage.getItem("TG_SESSION")), parseInt(import.meta.env.VITE_TG_API_ID), import.meta.env.VITE_TG_API_HASH, { connectionRetries: 5 });
-            appContext.setTelegram(telegramClient);
-
-            if(await localforage.getItem("TG_SESSION")) {
-                await telegramClient.connect();
-                const user = await telegramClient.getMe()
-                appContext.setAccounts({telegram: user})
-                updateContext({telegramId: user.id.value})
+            let themePalette = await localForage.getItem("palette");
+            if(!themePalette) {
+                const wantsDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+                themePalette = wantsDark ? "dark" : "light";
             }
-            telegramClient.addEventHandler(telegramMessageHandler, new NewMessage({}));
+            document.documentElement.classList.add(`theme-${themePalette}`);
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener("change", async e => {
+                if(await localForage.getItem("palette")) return;
+                document.documentElement.classList.remove("theme-light", "theme-dark", "theme-hotdog");
+                document.documentElement.classList.add(`theme-${e.matches ? "dark" : "light"}`);
+            })
 
             const localConfig = await localForage.getItem("lightquark")
             if(localConfig?.token) {
                 const LQuserdata = await LQ("user/me");
-                appContext.setAccounts(prev => ({...prev, "lightquark": LQuserdata}))
-                updateContext({lqId: LQuserdata.response.jwtData._id})
+                appContext.setAccounts(prev => ({...prev, "lightquark": LQuserdata.response.user}))
+                updateContext({lqId: LQuserdata.response.user._id})
             }
 
             const nyafile = new NyaFile();
@@ -78,13 +66,16 @@ export default function Root() {
                     debug: true
                 })
 
-            nyafile.queueCache("data/licenses", "text");
             nyafile.queueCache("img/stars");
+            nyafile.queueCache("img/quark_join");
             nyafile.queueCache("img/quarky");
             nyafile.queueCache("music/login");
+            nyafile.queueCache("sfx/button-select");
+            nyafile.queueCache("sfx/default-select");
+            nyafile.queueCache("sfx/default-hover");
+            nyafile.queueCache("sfx/error");
             nyafile.queueCache("sfx/info-modal-pop-in");
             nyafile.queueCache("sfx/info-modal-pop-out");
-            nyafile.queueCache("sfx/button-select");
             nyafile.queueCache("sfx/purr");
 
             await nyafile.waitAllCached();

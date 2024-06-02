@@ -1,0 +1,7 @@
+.modal {
+    display: flex;
+    flex-direction: row;
+}
+.modalImage {
+    padding-right: 1em;
+}

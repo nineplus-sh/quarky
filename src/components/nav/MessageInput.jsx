@@ -1,27 +1,20 @@
 import {useParams} from "react-router-dom";
-import {useContext, useState} from "react";
-import {AppContext} from "../../contexts/AppContext.js";
+import {useState} from "react";
 import LQ from "../../util/LQ.js";
 
 export default function MessageInput() {
-    let { quarkId, dialogId } = useParams();
+    let { dialogId } = useParams();
     let [message, setMessage] = useState("");
-    const appContext = useContext(AppContext);
 
     return (<form onSubmit={async (e) => {
         e.preventDefault();
-        if(quarkId === "telegram") {
-            const newMessage = await appContext.telegram.sendMessage(dialogId, {message: message});
-            let source = newMessage.chatId.value;
-            appContext.setMessageCache(previousValue => {
-                previousValue = { ...previousValue }
-                if(!previousValue[source]) previousValue[source] = [];
-                previousValue[source].push(newMessage)
-                return previousValue;
-            });
-        } else {
-            await LQ(`channel/${dialogId}/messages`, "POST", {content: message})
-        }
+        let wantedMessage = message;
+        setMessage("");
+
+        const formData = new FormData();
+        formData.append("payload", JSON.stringify({content: wantedMessage}));
+
+        await LQ(`channel/${dialogId}/messages`, "POST", formData)
         setMessage("")
     }}>
         <input type={"text"} value={message} onInput={(e) => setMessage(e.target.value)} />

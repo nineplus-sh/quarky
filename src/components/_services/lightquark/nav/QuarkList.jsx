@@ -7,7 +7,7 @@ export default function QuarkList() {
 
     useEffect(() => {
         (async () => {
-            const LQquarks = (await LQ("quark/me")).response.quarks;
+            const LQquarks = (await LQ("quark")).response.quarks;
             setQuarks(LQquarks)
         })()
     }, [])

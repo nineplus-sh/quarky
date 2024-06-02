@@ -12,10 +12,11 @@ import {AppContext} from "./contexts/AppContext.js";
 import AuthenticationNeeded from "./routes/AuthenticationNeeded.jsx";
 import Root from "./routes/Root.jsx";
 import Client from "./routes/Client.jsx";
+import QuarkView from "./components/nav/QuarkView.jsx";
 import ChannelView from "./components/nav/ChannelView.jsx";
-import Dialog from "./components/nav/Dialog.jsx";
 import * as Sentry from "@sentry/react";
 import {FlagProvider} from '@unleash/proxy-client-react';
+import NiceModal from '@ebay/nice-modal-react';
 
 Sentry.init({
     dsn: "https://901c666ed03942d560e61928448bcf68@sentry.yggdrasil.cat/5",
@@ -61,12 +62,19 @@ export function App(props) {
     let [nyafile, setNyafile] = useState(null);
     let [loading, setLoading] = useState(true);
     let [music, setMusic] = useState(undefined);
-    let [telegram, setTelegram] = useState(undefined);
     let [accounts, setAccounts] = useState({})
     let [messageCache, setMessageCache] = useState({})
-
+    let [userCache, setUserCache] = useState({})
+    
     return (
-        <AppContext.Provider value={{loading, setLoading, nyafile, setNyafile, music, setMusic, telegram, setTelegram, accounts, setAccounts, messageCache, setMessageCache}}>
+        <AppContext.Provider value={{
+            loading, setLoading, 
+            nyafile, setNyafile, 
+            music, setMusic, 
+            accounts, setAccounts, 
+            messageCache, setMessageCache,
+            userCache, setUserCache
+        }}>
             <audio src={music} autoPlay={true} loop={true}></audio>
             {props.children}
         </AppContext.Provider>
@@ -79,9 +87,9 @@ const router = sentryCreateBrowserRouter(
     createRoutesFromElements(
         <Route path="/" element={<Root />}>
             <Route path="/" element={<AuthenticationNeeded />}>
-                <Route path="/" element={<Client />} >
-                    <Route path="/:quarkId" element={<ChannelView />} >
-                        <Route path="/:quarkId/:dialogId" element={<Dialog />} />
+                <Route path="/" element={<Client />}  >
+                    <Route path="/:quarkId" element={<QuarkView />} >
+                        <Route path="/:quarkId/:dialogId" element={<ChannelView />} />
                     </Route>
                 </Route>
             </Route>
@@ -92,9 +100,11 @@ const router = sentryCreateBrowserRouter(
 ReactDOM.createRoot(document.getElementById('root')).render(
     //<React.StrictMode>
             <FlagProvider config={unleashConfig}>
-                    <App>
+                <App>
+                    <NiceModal.Provider>
                         <RouterProvider router={router} />
-                    </App>
+                    </NiceModal.Provider>
+                </App>
             </FlagProvider>
     //</React.StrictMode>,
 )

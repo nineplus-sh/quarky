@@ -34,7 +34,7 @@ export default {
     {
       name: '@electron-forge/maker-squirrel',
       config: {
-        iconUrl: 'https://quarky.hakase.life/favicon.ico',
+        iconUrl: 'https://quarky.nineplus.sh/favicon.ico',
         setupIcon: 'desktop/resources/quarkysetup.ico'
       },
     },
@@ -48,7 +48,7 @@ export default {
         options: {
           icon: 'desktop/resources/quarky.png',
           categories: ["Network"],
-          homepage: 'https://quarky.hakase.life',
+          homepage: 'https://www.nineplus.sh/quarky',
           priority: 'optional',
           section: 'web'
         }
@@ -60,7 +60,7 @@ export default {
         options: {
           icon: 'desktop/resources/quarky.png',
           categories: ["Network"],
-          homepage: 'https://quarky.hakase.life'
+          homepage: 'https://www.nineplus.sh/quarky'
         }
       },
     },

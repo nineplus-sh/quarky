@@ -1,34 +1,38 @@
-import OSSList from "../oss/OSSList.jsx";
 import GenericModal from "./GenericModal.jsx";
 import Datsuryoku from "../Datsuryoku.jsx";
 import NyafileImage from "../nyafile/NyafileImage.jsx";
 import {version, codename} from "../../../package.json";
 import {useTranslation} from "react-i18next";
+import NiceModal, {useModal} from "@ebay/nice-modal-react";
 
 /**
  * A wrapper around GenericModal for the open source library notices.
- * @param props - The props of the component, provided by React. Refer to GenericModal for the props.
  * @returns {JSX.Element}
  * @constructor
  */
-export default function CreditsModal(props) {
+export default NiceModal.create(() => {
+    const modal = useModal();
     const { t } = useTranslation();
 
     return (<>
-        <GenericModal {...props}>
-            <h1 style={{margin: 0}}><NyafileImage src={"img/quarky"} width={"40em"}/> {t("QUARKY_NAME")} <span style={{float: "right"}}><Datsuryoku  /></span></h1>
-            <p style={{margin: 0}}><i>{t("QUARKY_DESCRIPTION")}</i></p>
-            <br/>
-            <p style={{margin: 0}}><NyafileImage src={"img/hakase"} /> {t("QUARKY_BYLINE", {year: "2023-2024"})}</p>
-            <p style={{margin: 0}}><NyafileImage src={"img/quarkypixel"} /> {t("QUARKY_VERSION", {version, codename})}</p>
+        <GenericModal modal={modal}>
+            <div style={{display: "flex", alignItems: "center", flexDirection: "column"}}>
+                <div><NyafileImage src={"img/nineplus"} width={"140em"}/>
+                    <NyafileImage src={"img/quarkymark"} width={"80em"} style={{paddingLeft: "0.5em"}}/></div>
+                <p style={{margin: 0}}><i>{t("QUARKY_DESCRIPTION")}</i></p>
+                <p style={{margin: 0}}>{t("QUARKY_VERSION", {version, codename})}</p>
+            </div>
             <hr/>
+
             <h2 style={{margin: 0}}>{t("CREDITS_SPECIAL_THANKS")}</h2>
-            <p style={{margin: 0}}><NyafileImage src={"img/blobbie"} /> {t("CREDITS_EMILIA")}</p>
-            <p style={{margin: 0}}><NyafileImage src={"img/bye-man-justthetv"} /> {t("CREDITS_BYE")}</p>
-            <p style={{margin: 0}}><NyafileImage src={"img/noicon"} /> {t("CREDITS_SYNNE")}</p>
+            <p style={{margin: 0}}><NyafileImage src={"img/blobbie"}/> {t("CREDITS_EMILIA")}</p>
+            <p style={{margin: 0}}><NyafileImage src={"img/bye-man-justthetv"}/> {t("CREDITS_BYE")}</p>
+            <p style={{margin: 0}}><NyafileImage src={"img/noicon"}/> {t("CREDITS_SYNNE")}</p>
+            <p style={{margin: 0}}><NyafileImage src={"img/javascript"}/> {t("CREDITS_OSS")} <a href={"https://github.com/nineplus-sh/quarky/network/dependencies"}>{t("CREDITS_OSS_LIST")}</a></p>
+            <p style={{margin: 0}}><NyafileImage src={"img/pixelaudio"}/> {t("CREDITS_OSUHRDTHDFL")}</p>
             <hr/>
-            <p>Quarky uses music by <a href={"https://www.hurtrecord.com/"}>HURT RECORD</a> and sound effects from <a href={"https://github.com/ppy/osu-resources"}>osu!resources</a>. Quarky also uses open source libraries:</p>
-            <OSSList />
+            <p><NyafileImage src={"img/nineplus_pixel"}/> {t("CREDITS_LEGAL_NOTICE")}</p>
+            <span style={{float: "left"}}><Datsuryoku/> <NyafileImage src={"img/lightquark"}/></span>
         </GenericModal>
     </>)
-}
+})

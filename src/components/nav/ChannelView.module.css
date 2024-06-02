@@ -1,12 +1,32 @@
-.channelList {
-    max-width: 15.5em;
-    overflow-x: hidden;
-    max-height: 100vh;
-    overflow-y: scroll;
-}
-
 .messageArea {
     display: flex;
     flex-direction: column;
+    flex-grow: 1;
     width: 100%;
+}
+
+.memberList {
+    width: 15.5em;
+    overflow-x: hidden;
+    max-height: 100vh;
+    overflow-y: scroll;
+
+    flex: none;
+    padding-top: 0.5em;
+    padding-left: 0.3em;
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent-color) white;
+
+    background: var(--background-color-less);
+}
+
+.messages {
+    width: 100%;
+    max-height: 95vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    overflow-wrap: anywhere;
+
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent-color) white;
 }

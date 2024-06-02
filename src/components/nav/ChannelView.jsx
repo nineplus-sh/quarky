@@ -1,14 +1,16 @@
-import {Outlet, useParams} from "react-router-dom";
-import LightquarkChannelList from "../_services/lightquark/nav/LightquarkChannelList.jsx";
-import TelegramDMSelector from "../_services/telegram/nav/TelegramDMSelector.jsx";
+import MessageInput from "./MessageInput.jsx";
+import DialogMessages from "./DialogMessages.jsx";
 import styles from "./ChannelView.module.css";
+import LightquarkMemberList from "../_services/lightquark/nav/LightquarkMemberList.jsx";
 
 export default function ChannelView() {
-    let { quarkId } = useParams();
-
-    if(quarkId !== "telegram") {
-        return <><div className={styles.channelList}><LightquarkChannelList /></div><div className={styles.messageArea}><Outlet /></div></>
-    } else {
-        return <><div className={styles.channelList}><TelegramDMSelector /></div><div className={styles.messageArea}><Outlet/></div></>
-    }
+    return (<>
+        <div className={styles.messageArea}>
+            <div className={styles.messages}><DialogMessages/></div>
+            <MessageInput/>
+        </div>
+        <div className={styles.memberList}>
+            <LightquarkMemberList/>
+        </div>
+    </>)
 }
