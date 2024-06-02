@@ -35,11 +35,10 @@ export default function Client() {
             const eventData = JSON.parse(message.data);
             switch(eventData.event) {
                 case "messageCreate":
-                    setMessageCache(previousValue => {
-                        previousValue = { ...previousValue }
-                        if(!previousValue[eventData.channelId]) previousValue[eventData.channelId] = [];
-                        previousValue[eventData.channelId].push(eventData.message)
-                        return previousValue;
+                    setMessageCache(p => {
+                        if(!p[eventData.channelId]) p[eventData.channelId] = [];
+                        p[eventData.channelId].push(eventData.message)
+                        return structuredClone(p);
                     });
                     break;
                 case "userUpdate":
@@ -58,11 +57,26 @@ export default function Client() {
                     }
                     break;
                 case "statusUpdate":
-                    console.log(`Status of ${eventData.user.username} changed!`, eventData.user?.status)
                     setUserCache(p => {
                         p[eventData.user._id] = eventData.user;
                         return structuredClone(p);
                     })
+                    break;
+                case "messageUpdate":
+                    setMessageCache(p => {
+                        if(!p[eventData.channelId]) {
+                            p[eventData.channelId] = [];
+                            p[eventData.channelId].push(eventData.message);
+                        } else {
+                            const old = p[eventData.channelId].findIndex((message) => eventData.message._id === message._id);
+                            if(old) {
+                                p[eventData.channelId][old] = eventData.message;
+                            } else {
+                                p[eventData.channelId].push(eventData.message);
+                            }
+                        }
+                        return structuredClone(p);
+                    });
                     break;
                 default:
                     //console.log("Well.. THAT just happened!", message.data)
