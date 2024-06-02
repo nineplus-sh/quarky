@@ -10,7 +10,7 @@ export default function LightquarkMessage({message}) {
     const noBotAuthor = userCache[message.author._id] || message.author;
     const author = botMetadata || noBotAuthor;
 
-    return <Message username={author.username}
+    return <Message username={author.username} timestamp={message.timestamp}
                     avatar={<ProfilePicture src={author.avatarUri} isMessage={true}/>}
                     content={message.content} isBot={noBotAuthor.isBot} botName={botMetadata ? noBotAuthor.username : null} isDiscord={clientAttributes?.quarkcord}>
         {message.content}

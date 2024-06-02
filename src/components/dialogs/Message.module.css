@@ -35,3 +35,7 @@
     height: 5px;
     display: inline-block;
 }
+
+.timestamp {
+    font-size: 0.8em;
+}
