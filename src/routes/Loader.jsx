@@ -14,7 +14,7 @@ export default function Loader({loadingString}) {
         <div className={styles.loader}>
             <p className={styles.loaderText}>
                 <span className={styles.loaderSymbol}>☯</span> {t("LOADING_TITLE")}<br/>
-                <small><small>{t(loadingString)}<br/>Quarky {version} (c) {author}</small></small>
+                <small><small>{t(loadingString)}<br/>Quarky {version} &copy; {author}</small></small>
             </p>
         </div>
     </div>)
