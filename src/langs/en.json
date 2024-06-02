@@ -1,4 +1,9 @@
 {
+    "LOADING_TITLE": "Kitties are now preparing, please wait warmly.",
+    "LOADING_NYAFILE": "Downloading app assets",
+    "LOADING_WEBSOCKET": "Connecting to network",
+    "LOADING_GAMES": "Downloading game detection database",
+
     "HEADER_WELCOME": "Welcome to Quarky~!",
     "HEADER_WELCOME_SUB": "Let's sign in to use it now!",
 

@@ -6,9 +6,7 @@ import {AppContext} from "../contexts/AppContext.js";
 import LQ from "../util/LQ.js";
 import useWebSocket from "react-use-websocket";
 import localForage from "localforage";
-import styles from "./Client.module.css"
-import NiceModal from "@ebay/nice-modal-react";
-import NetworkUnsupportedModal from "../components/modals/NetworkUnsupportedModal.jsx";
+import styles from "./Client.module.css";
 import JoinQuark from "../components/_services/lightquark/nav/JoinQuark.jsx";
 import Loader from "./Loader.jsx";
 
@@ -29,6 +27,7 @@ export default function Client() {
         accounts, 
         setMessageCache} = useContext(AppContext)
     const {quarkId} = useParams();
+    const [loadingString, setLoadingString] = useState("LOADING_WEBSOCKET");
 
     const lqSock = useWebSocket(lqSockURL, {
         onMessage: (message) => {
@@ -100,6 +99,7 @@ export default function Client() {
         }
 
         if(window.hiddenside && window.hiddenside.hardcoreGaming && window.hiddenside.casualGaming) {
+            setLoadingString("LOADING_GAMES");
             const gameData = await fetch("https://gameplus.nineplus.sh/api/games").then(res => res.json());
             window.hiddenside.hardcoreGaming(gameData);
 
@@ -141,6 +141,6 @@ export default function Client() {
                 </div>
                 <Outlet/>
             </div>
-        : <Loader/>}</ClientContext.Provider>
+        : <Loader loadingString={loadingString}/>}</ClientContext.Provider>
     </>)
 }

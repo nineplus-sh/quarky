@@ -1,6 +1,6 @@
 import {Outlet} from "react-router-dom";
 import {AppContext} from "../contexts/AppContext.js";
-import {useContext, useEffect} from "react";
+import {useContext, useEffect, useState} from "react";
 import Loader from "./Loader.jsx";
 import NyaFile from "@litdevs/nyalib";
 import localforage from "localforage";
@@ -10,7 +10,7 @@ import localForage from "localforage";
 import {useFlag, useUnleashContext} from '@unleash/proxy-client-react';
 import i18next from 'i18next';
 import LanguageDetector from "i18next-browser-languagedetector";
-import {initReactI18next} from "react-i18next";
+import {initReactI18next, useTranslation} from "react-i18next";
 import resourcesToBackend from "i18next-resources-to-backend";
 
 /**
@@ -21,6 +21,7 @@ import resourcesToBackend from "i18next-resources-to-backend";
 export default function Root() {
     let appContext = useContext(AppContext);
     const updateContext = useUnleashContext();
+    const [loadingString, setLoadingString] = useState("LOADING_TRANSLATIONS");
 
     const hakase = useFlag("Q2_HakaseBittanBittan");
     const mio = useFlag("Q2_MioBittanBittan");
@@ -39,16 +40,6 @@ export default function Root() {
                 document.documentElement.classList.add(`theme-${e.matches ? "dark" : "light"}`);
             })
 
-            const localConfig = await localForage.getItem("lightquark")
-            if(localConfig?.token) {
-                const LQuserdata = await LQ("user/me");
-                appContext.setAccounts(prev => ({...prev, "lightquark": LQuserdata.response.user}))
-                updateContext({lqId: LQuserdata.response.user._id})
-            }
-
-            const nyafile = new NyaFile();
-            await nyafile.load("/quarky.nya", true);
-
             const languages = import.meta.glob('../langs/*.json');
 
             await i18next
@@ -66,6 +57,11 @@ export default function Root() {
                     debug: true
                 })
 
+            setLoadingString("LOADING_NYAFILE");
+
+            const nyafile = new NyaFile();
+            await nyafile.load("/quarky.nya", true);
+
             nyafile.queueCache("img/stars");
             nyafile.queueCache("img/quark_join");
             nyafile.queueCache("img/quarky");
@@ -80,12 +76,20 @@ export default function Root() {
 
             await nyafile.waitAllCached();
             appContext.setNyafile(nyafile);
+
+            const localConfig = await localForage.getItem("lightquark")
+            if(localConfig?.token) {
+                const LQuserdata = await LQ("user/me");
+                appContext.setAccounts(prev => ({...prev, "lightquark": LQuserdata.response.user}))
+                updateContext({lqId: LQuserdata.response.user._id})
+            }
+
             appContext.setLoading(false);
         }
         loadNyafile();
     }, []);
 
-    if(appContext.loading) return <Loader />
+    if(appContext.loading) return <Loader loadingString={loadingString} />
 
     return <Sentry.ErrorBoundary fallback={
         <iframe src={`https://www.youtube-nocookie.com/embed/${
