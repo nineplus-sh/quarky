@@ -27,7 +27,6 @@ export default NiceModal.create(() => {
             <h2 style={{margin: 0}}>{t("CREDITS_SPECIAL_THANKS")}</h2>
             <p style={{margin: 0}}><NyafileImage src={"img/blobbie"}/> {t("CREDITS_EMILIA")}</p>
             <p style={{margin: 0}}><NyafileImage src={"img/bye-man-justthetv"}/> {t("CREDITS_BYE")}</p>
-            <p style={{margin: 0}}><NyafileImage src={"img/noicon"}/> {t("CREDITS_SYNNE")}</p>
             <p style={{margin: 0}}><NyafileImage src={"img/javascript"}/> {t("CREDITS_OSS")} <a href={"https://github.com/nineplus-sh/quarky/network/dependencies"}>{t("CREDITS_OSS_LIST")}</a></p>
             <p style={{margin: 0}}><NyafileImage src={"img/pixelaudio"}/> {t("CREDITS_OSUHRDTHDFL")}</p>
             <hr/>
