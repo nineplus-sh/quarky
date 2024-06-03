@@ -67,7 +67,7 @@ export default function Root() {
         loadNyafile();
     }, []);
 
-    if(true) return <Loader loadingString={loadingString} />
+    if(appContext.loading) return <Loader loadingString={loadingString} />
 
     return <Sentry.ErrorBoundary fallback={
         <iframe src={`https://www.youtube-nocookie.com/embed/${
