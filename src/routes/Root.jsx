@@ -3,15 +3,10 @@ import {AppContext} from "../contexts/AppContext.js";
 import {useContext, useEffect, useState} from "react";
 import Loader from "./Loader.jsx";
 import NyaFile from "@litdevs/nyalib";
-import localforage from "localforage";
 import * as Sentry from "@sentry/react";
 import LQ from "../util/LQ.js";
 import localForage from "localforage";
 import {useFlag, useUnleashContext} from '@unleash/proxy-client-react';
-import i18next from 'i18next';
-import LanguageDetector from "i18next-browser-languagedetector";
-import {initReactI18next, useTranslation} from "react-i18next";
-import resourcesToBackend from "i18next-resources-to-backend";
 
 /**
  * The root. Wraps later routes so that Nyafiles can be real.
@@ -39,23 +34,6 @@ export default function Root() {
                 document.documentElement.classList.remove("theme-light", "theme-dark", "theme-hotdog");
                 document.documentElement.classList.add(`theme-${e.matches ? "dark" : "light"}`);
             })
-
-            const languages = import.meta.glob('../langs/*.json');
-
-            await i18next
-                .use(initReactI18next)
-                .use(resourcesToBackend((language, namespace, callback) => {
-                    if(languages[`../langs/${language}.json`]) {
-                        languages[`../langs/${language}.json`]().then((lang) => callback(null, lang))
-                    } else {
-                        callback("This is not a language supported by Quarky! :cat2:", null)
-                    }
-                }))
-                .use(LanguageDetector)
-                .init({
-                    fallbackLng: 'en',
-                    debug: true
-                })
 
             setLoadingString("LOADING_NYAFILE");
 
@@ -89,7 +67,7 @@ export default function Root() {
         loadNyafile();
     }, []);
 
-    if(appContext.loading) return <Loader loadingString={loadingString} />
+    if(true) return <Loader loadingString={loadingString} />
 
     return <Sentry.ErrorBoundary fallback={
         <iframe src={`https://www.youtube-nocookie.com/embed/${

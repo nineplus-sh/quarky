@@ -17,6 +17,11 @@ import ChannelView from "./components/nav/ChannelView.jsx";
 import * as Sentry from "@sentry/react";
 import {FlagProvider} from '@unleash/proxy-client-react';
 import NiceModal from '@ebay/nice-modal-react';
+import i18next from "i18next";
+import {initReactI18next} from "react-i18next";
+import resourcesToBackend from "i18next-resources-to-backend";
+import LanguageDetector from "i18next-browser-languagedetector";
+import holidays from './util/holidays.json';
 
 Sentry.init({
     dsn: "https://901c666ed03942d560e61928448bcf68@sentry.yggdrasil.cat/5",
@@ -61,14 +66,56 @@ const unleashConfig = {
 export function App(props) {
     let [nyafile, setNyafile] = useState(null);
     let [loading, setLoading] = useState(true);
+    let [translationsLoading    , setTranslationsLoading] = useState(true);
     let [music, setMusic] = useState(undefined);
     let [accounts, setAccounts] = useState({})
     let [messageCache, setMessageCache] = useState({})
     let [userCache, setUserCache] = useState({})
+    let [holiday, setHoliday] = useState("");
+
+    useEffect(() => {
+        async function loadTranslations() {
+            const languages = import.meta.glob('./langs/*.json');
+
+            await i18next
+                .use(initReactI18next)
+                .use(resourcesToBackend((language, namespace, callback) => {
+                    if (languages[`./langs/${language}.json`]) {
+                        languages[`./langs/${language}.json`]().then((lang) => callback(null, lang))
+                    } else {
+                        callback("This is not a language supported by Quarky! :cat2:", null)
+                    }
+                }))
+                .use(LanguageDetector)
+                .init({
+                    fallbackLng: 'en',
+                    debug: true
+                })
+
+            await setThatHoliday();
+            setTranslationsLoading(false);
+        }
+        async function setThatHoliday(){
+            let validHolidays = [];
+            const currentTime = new Date();
+            const currentMonth = currentTime.toLocaleString('en-US', { month: 'long' }).toLowerCase();
+            const currentDay = currentTime.toLocaleString('en-US', { weekday: 'long' }).toLowerCase();
+            const currentDate = currentTime.toLocaleString('en-US', { month: '2-digit', day: '2-digit' }).replace("/","-");;
+
+            Object.entries(holidays).forEach(([date, holiday]) => {
+                if(date === currentDay || date === currentMonth || date === currentDate) {
+                    validHolidays.push(...holiday);
+                }
+            })
+
+            setHoliday(validHolidays[Math.floor(Math.random() * validHolidays.length)]);
+        }
+        loadTranslations();
+    }, []);
     
     return (
         <AppContext.Provider value={{
-            loading, setLoading, 
+            loading, setLoading, holiday,
             nyafile, setNyafile, 
             music, setMusic, 
             accounts, setAccounts, 
@@ -76,7 +123,7 @@ export function App(props) {
             userCache, setUserCache
         }}>
             <audio src={music} autoPlay={true} loop={true}></audio>
-            {props.children}
+            {translationsLoading ? null : props.children}
         </AppContext.Provider>
     )
 }

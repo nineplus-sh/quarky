@@ -13,8 +13,17 @@
 
 .loaderText {
     padding-left: 0.5em;
+    margin-top: 1em;
+}
+.loadingMain {
+    font-size: larger;
+    margin-bottom: 0;
+}
+.loadingSubtitle {
+    font-size: smaller;
 }
 .loaderSymbol {
+    font-size: larger;
     animation: 2s rotate infinite linear;
     display: inline-block;
 }

@@ -1,0 +1,10 @@
+{
+  "monday": ["HOLIDAY_MONDAY"],
+  "thursday": ["HOLIDAY_OOTT"],
+  "sunday": ["HOLIDAY_STROGANOFF"],
+
+  "june": ["HOLIDAY_PRIDE"],
+
+  "03-07": ["HOLIDAY_BDAY_NANO"],
+  "06-06": ["HOLIDAY_BDAY_HAKASE"]
+}
