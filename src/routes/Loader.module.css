@@ -16,8 +16,11 @@
     margin-top: 1em;
 }
 .loadingMain {
-    font-size: larger;
     margin-bottom: 0;
+}
+.loadingSplashes {
+    margin-top: 0;
+    font-style: italic;
 }
 .loadingSubtitle {
     font-size: smaller;
