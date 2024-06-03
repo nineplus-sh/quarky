@@ -7,6 +7,7 @@
     "HEADER_WELCOME": "Welcome to Quarky~!",
     "HEADER_WELCOME_SUB": "Let's sign in to use it now!",
 
+    "LOGIN_EMAIL": "hakase@litdevs.org",
     "LOGIN_PASSWORD": "(password)",
     "LOGIN_SWITCH_NETWORKS": "Switch network",
     "LOGIN_SWITCHING_NETWORKS": "Switching networks...",
