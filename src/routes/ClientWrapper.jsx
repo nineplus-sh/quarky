@@ -6,7 +6,7 @@ import {AppContext} from "../contexts/AppContext.js";
 import LQ from "../util/LQ.js";
 import useWebSocket from "react-use-websocket";
 import localForage from "localforage";
-import styles from "./Client.module.css";
+import styles from "./ClientWrapper.module.css";
 import JoinQuark from "../components/_services/lightquark/nav/JoinQuark.jsx";
 import Loader from "./Loader.jsx";
 
@@ -15,7 +15,7 @@ import Loader from "./Loader.jsx";
  * @returns {JSX.Element}
  * @constructor
  */
-export default function Client() {
+export default function ClientWrapper() {
     let [avatarCache, setAvatarCache] = useState({});
     let [resolvedAvatarCache, setResolvedAvatarCache] = useState({});
     const [clientReady, setClientReady] = useState(false);
@@ -135,10 +135,6 @@ export default function Client() {
             resolvedAvatarCache, setResolvedAvatarCache
         }}>{clientReady ?
             <div className={styles.client}>
-                <div className={styles.quarkList}>
-                    <QuarkList/>
-                    <JoinQuark/>
-                </div>
                 <Outlet/>
             </div>
         : <Loader loadingString={loadingString}/>}</ClientContext.Provider>

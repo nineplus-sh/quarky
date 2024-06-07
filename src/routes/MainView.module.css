@@ -1,8 +1,3 @@
-.client {
-    display: flex;
-    height: 100vh;
-}
-
 .quarkList {
     display:flex;
     flex-direction:column;

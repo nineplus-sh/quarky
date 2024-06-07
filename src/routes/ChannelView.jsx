@@ -1,7 +1,7 @@
-import MessageInput from "./MessageInput.jsx";
-import DialogMessages from "./DialogMessages.jsx";
+import MessageInput from "../components/nav/MessageInput.jsx";
+import DialogMessages from "../components/nav/DialogMessages.jsx";
 import styles from "./ChannelView.module.css";
-import LightquarkMemberList from "../_services/lightquark/nav/LightquarkMemberList.jsx";
+import LightquarkMemberList from "../components/_services/lightquark/nav/LightquarkMemberList.jsx";
 
 export default function ChannelView() {
     return (<>

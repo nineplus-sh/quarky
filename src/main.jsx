@@ -11,9 +11,9 @@ import './index.css'
 import {AppContext} from "./contexts/AppContext.js";
 import AuthenticationNeeded from "./routes/AuthenticationNeeded.jsx";
 import Root from "./routes/Root.jsx";
-import Client from "./routes/Client.jsx";
-import QuarkView from "./components/nav/QuarkView.jsx";
-import ChannelView from "./components/nav/ChannelView.jsx";
+import ClientWrapper from "./routes/ClientWrapper.jsx";
+import QuarkView from "./routes/QuarkView.jsx";
+import ChannelView from "./routes/ChannelView.jsx";
 import * as Sentry from "@sentry/react";
 import {FlagProvider} from '@unleash/proxy-client-react';
 import NiceModal from '@ebay/nice-modal-react';
@@ -22,6 +22,7 @@ import {initReactI18next} from "react-i18next";
 import resourcesToBackend from "i18next-resources-to-backend";
 import LanguageDetector from "i18next-browser-languagedetector";
 import holidays from './util/holidays.json';
+import MainView from "./routes/MainView.jsx";
 
 Sentry.init({
     dsn: "https://901c666ed03942d560e61928448bcf68@sentry.yggdrasil.cat/5",
@@ -134,9 +135,11 @@ const router = sentryCreateBrowserRouter(
     createRoutesFromElements(
         <Route path="/" element={<Root />}>
             <Route path="/" element={<AuthenticationNeeded />}>
-                <Route path="/" element={<Client />}  >
-                    <Route path="/:quarkId" element={<QuarkView />} >
-                        <Route path="/:quarkId/:dialogId" element={<ChannelView />} />
+                <Route path="/" element={<ClientWrapper />}  >
+                    <Route path="/" element={<MainView />}>
+                        <Route path="/:quarkId" element={<QuarkView />} >
+                            <Route path="/:quarkId/:dialogId" element={<ChannelView />} />
+                        </Route>
                     </Route>
                 </Route>
             </Route>
