@@ -1,5 +1,5 @@
 import {useContext, useEffect, useState} from "react";
-import {Outlet, useNavigate, useParams} from "react-router-dom";
+import {Outlet, useLocation, useNavigate, useParams} from "react-router-dom";
 import { ClientContext } from "../contexts/ClientContext.js";
 import QuarkList from "../components/_services/lightquark/nav/QuarkList.jsx";
 import {AppContext} from "../contexts/AppContext.js";
@@ -26,7 +26,7 @@ export default function ClientWrapper() {
         setUserCache, 
         accounts, 
         setMessageCache} = useContext(AppContext)
-    const {quarkId} = useParams();
+    const {pathname} = useLocation();
     const [loadingString, setLoadingString] = useState("LOADING_WEBSOCKET");
 
     const lqSock = useWebSocket(lqSockURL, {
@@ -91,7 +91,7 @@ export default function ClientWrapper() {
     })
 
     useEffect(() => {(async () => {
-        if(!quarkId) navigate("/lq_100000000000000000000000");
+        if(pathname === "/") navigate("/lq_100000000000000000000000");
 
         if (accounts.lightquark && !lqSockURL) {
             const network = await LQ("network"); // TODO: Add NetworkOfflineModal here as well

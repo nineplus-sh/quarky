@@ -1,0 +1,19 @@
+.sidebarItem {
+    border-radius: 5px;
+    padding: 0.2em;
+    margin-right: 10px;
+    margin-top: 0.2em;
+
+    height: fit-content;
+    width: 186px;
+
+    color: var(--text-color);
+    text-decoration: none;
+}
+.sidebarItem.active {
+    background-color: var(--background-color-max);
+}
+.sidebarItem:not(.active):hover {
+    cursor: pointer;
+    background-color: var(--background-color-lesser);
+}

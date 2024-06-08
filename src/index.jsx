@@ -135,7 +135,7 @@ const router = sentryCreateBrowserRouter(
     createRoutesFromElements(
         <Route path="/" element={<Root />}>
             <Route path="/" element={<AuthenticationNeeded />}>
-                <Route path="/" element={<ClientWrapper />}  >
+                <Route path="/" element={<ClientWrapper />}>
                     <Route path="/" element={<MainView />}>
                         <Route path="/:quarkId" element={<QuarkView />} >
                             <Route path="/:quarkId/:dialogId" element={<ChannelView />} />
@@ -149,12 +149,12 @@ const router = sentryCreateBrowserRouter(
 
 ReactDOM.createRoot(document.getElementById('root')).render(
     //<React.StrictMode>
-            <FlagProvider config={unleashConfig}>
-                <App>
-                    <NiceModal.Provider>
-                        <RouterProvider router={router} />
-                    </NiceModal.Provider>
-                </App>
-            </FlagProvider>
+        <FlagProvider config={unleashConfig}>
+            <App>
+                <NiceModal.Provider>
+                    <RouterProvider router={router} />
+                </NiceModal.Provider>
+            </App>
+        </FlagProvider>
     //</React.StrictMode>,
 )

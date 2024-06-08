@@ -30,7 +30,6 @@
     "JOIN_QUARK_BODY": "Type in the quark's invite code to join it.",
 
     "CREDITS_BUTTON": "Acknowledgements",
-
     "QUARKY_NAME": "Quarky 2",
     "QUARKY_DESCRIPTION": "The world's silliest chat app.",
     "QUARKY_VERSION": "You are running version {{version}} ({{codename}})",
@@ -41,6 +40,9 @@
     "CREDITS_OSUHRDTHDFL": "osu! for sound effects and HURT RECORD for music",
     "CREDITS_OSS_LIST": "(view list)",
     "CREDITS_LEGAL_NOTICE": "2023-2024 ninePLUS. All rights reserved. Quarky™, ninePLUS™, the Quarky bubble, and the nineMARK are trademarks of ninePLUS, a Hakase brand. All other trademarks are property of their respective owners.",
+
+    "SETTINGS_USERSETTINGS": "User settings",
+    "SETTINGS_PROFILE": "Profile",
 
     "HOLIDAY_MONDAY": "Sad Monday :(",
     "HOLIDAY_OOTT": "Happy Out of Touch Tuesday!",
