@@ -39,7 +39,7 @@ export default function SettingsProfile() {
     return <>
         <div className={styles.userInfoWrap}>
             <div onClick={uploadPicture} className={styles.profilePictureWrap}>
-                <NyafileImage src={"img/upload"} className={classnames(styles.uploadIcon, {[styles.uploading]: isUploading})}/>
+                <NyafileImage src={"img/upload"} inlineSvg={true} className={classnames(styles.uploadIcon, {[styles.uploading]: isUploading})}/>
                 <ProfilePicture src={appContext.accounts.lightquark.avatarUri} px={80} doPurr={false}/>
             </div>
             <div className={styles.userNameWrap}>

@@ -17,7 +17,7 @@ export default function NyafileImage(props) {
     useEffect(() => {
         async function getDataUrl() {
             const fetchedImage = await appContext.nyafile.getAssetDataUrl(props.src);
-            if(fetchedImage.startsWith("data:image/svg")) {
+            if(fetchedImage.startsWith("data:image/svg") && props.inlineSvg) {
                 setSvg(atob(fetchedImage.replace("data:image/svg+xml;base64,", '')))
             } else {
                 setImage(fetchedImage)

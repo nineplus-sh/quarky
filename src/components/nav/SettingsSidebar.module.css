@@ -1,0 +1,19 @@
+.sidebarContents {
+    margin-right: 10px;
+    text-align: right;
+
+    max-width: 196px;
+}
+.sidebarHeader {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
+.sidebarHeaderIcon {
+    display: inline;
+    margin-left: .5em;
+}
+.sidebarHeaderIcon, .sidebarHeaderIcon svg {
+    width: 24px;
+    height: 24px;
+}
