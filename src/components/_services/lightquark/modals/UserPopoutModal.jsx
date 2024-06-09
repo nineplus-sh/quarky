@@ -7,13 +7,8 @@ import TimeAgo from "react-timeago";
 import {AppContext} from "../../../../contexts/AppContext.js";
 import {useContext} from "react";
 
-const elapse = function(value, unit, suffix, date) {
-    const now = new Date();
-    const diffSec = Math.floor((now - date) / 1000);
-    const minutes = Math.floor(diffSec / 60);
-    const seconds = diffSec % 60;
-
-    return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+const elapse = function(value, unit) {
+    return `for ${value} ${unit}${value !== 1 ? "s" : null}`
 };
 
 /**
@@ -35,7 +30,7 @@ export default NiceModal.create(({userId}) => {
                 <img src={userCache[userId].status.primaryImage} width={96}/>
                 <span className={styles.gameinfo}>
                     <b>{userCache[userId].status.primaryText}</b>
-                    {userCache[userId].status.startTime && !userCache[userId].status.endTime ? <><br/><TimeAgo date={userCache[userId].status.startTime} formatter={elapse} maxPeriod={1}/> elapsed</> : null}
+                    {userCache[userId].status.startTime && !userCache[userId].status.endTime ? <><br/><TimeAgo date={userCache[userId].status.startTime} formatter={elapse} maxPeriod={1}/></> : null}
                 </span>
             </div></> : <><p>isn't doing anything at the moment.</p></>}
         </GenericModal>

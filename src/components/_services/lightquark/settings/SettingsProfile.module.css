@@ -1,0 +1,41 @@
+.userInfoWrap {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.userNameWrap {
+    margin-left: 0.5em;
+}
+.userName {
+    font-size: x-large;
+}
+.userJoinTime {
+    font-size: smaller;
+}
+
+.uploadIcon {
+    color: var(--text-color);
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background-color: #00000073;
+    border-radius: 10px;
+    cursor: pointer;
+    display: none;
+}
+.uploadIcon svg {
+    width: 48px;
+    height: 48px;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.profilePictureWrap {
+    cursor: pointer;
+    height: 80px;
+    width: 80px;
+}
+.profilePictureWrap:hover .uploadIcon {
+    display: inline;
+}

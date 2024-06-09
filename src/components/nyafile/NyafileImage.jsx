@@ -12,16 +12,25 @@ export default function NyafileImage(props) {
     let appContext = useContext(AppContext);
     const { src, ...otherProps } = props;
     const [image, setImage] = useState("");
+    const [svg, setSvg] = useState(null);
 
     useEffect(() => {
         async function getDataUrl() {
-            setImage(await appContext.nyafile.getAssetDataUrl(props.src))
+            const fetchedImage = await appContext.nyafile.getAssetDataUrl(props.src);
+            if(fetchedImage.startsWith("data:image/svg")) {
+                setSvg(atob(fetchedImage.replace("data:image/svg+xml;base64,", '')))
+            } else {
+                setImage(fetchedImage)
+            }
         }
         getDataUrl();
-    }, []);
+    }, [appContext.nyafile, props.src]);
 
     // noinspection HtmlRequiredAltAttribute
-    return (
+    if(!svg) return (
         <img src={image} {...otherProps} />
+    )
+    return (
+        <div {...otherProps} dangerouslySetInnerHTML={{__html: svg}}/>
     )
 }

@@ -1,13 +1,10 @@
 import {useContext, useEffect, useState} from "react";
-import {Outlet, useLocation, useNavigate, useParams} from "react-router-dom";
-import { ClientContext } from "../contexts/ClientContext.js";
-import QuarkList from "../components/_services/lightquark/nav/QuarkList.jsx";
+import {Outlet, useLocation, useNavigate} from "react-router-dom";
 import {AppContext} from "../contexts/AppContext.js";
 import LQ from "../util/LQ.js";
 import useWebSocket from "react-use-websocket";
 import localForage from "localforage";
 import styles from "./ClientWrapper.module.css";
-import JoinQuark from "../components/_services/lightquark/nav/JoinQuark.jsx";
 import Loader from "./Loader.jsx";
 
 /**
@@ -16,8 +13,6 @@ import Loader from "./Loader.jsx";
  * @constructor
  */
 export default function ClientWrapper() {
-    let [avatarCache, setAvatarCache] = useState({});
-    let [resolvedAvatarCache, setResolvedAvatarCache] = useState({});
     const [clientReady, setClientReady] = useState(false);
     const [lqSockURL, setLqSockURL] = useState(null);
     const [heartbeatMessage] = useState("*gurgles*");
@@ -130,13 +125,10 @@ export default function ClientWrapper() {
     })()}, [accounts]);
 
     return (<>
-        <ClientContext.Provider value={{
-            avatarCache, setAvatarCache,
-            resolvedAvatarCache, setResolvedAvatarCache
-        }}>{clientReady ?
+        {clientReady ?
             <div className={styles.client}>
                 <Outlet/>
             </div>
-        : <Loader loadingString={loadingString}/>}</ClientContext.Provider>
+        : <Loader loadingString={loadingString}/>}
     </>)
 }
