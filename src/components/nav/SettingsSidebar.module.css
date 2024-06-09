@@ -9,11 +9,3 @@
     align-items: center;
     justify-content: right;
 }
-.sidebarHeaderIcon {
-    display: inline;
-    margin-left: .5em;
-}
-.sidebarHeaderIcon, .sidebarHeaderIcon svg {
-    width: 24px;
-    height: 24px;
-}

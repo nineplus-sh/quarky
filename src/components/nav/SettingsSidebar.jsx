@@ -9,7 +9,6 @@ export default function SettingsSidebar({area, setArea}) {
     return <div className={styles.sidebarContents}>
         <div className={styles.sidebarHeader}>
             <span>{t("SETTINGS_USERSETTINGS")}</span>
-            <NyafileImage src={"img/vukkyicon"} inlineSvg={true} className={styles.sidebarHeaderIcon}/>
         </div>
         <SidebarItem baseI18n={"SETTINGS"} area={"profile"} currentArea={area} setArea={setArea} />
     </div>
