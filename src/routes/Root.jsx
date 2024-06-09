@@ -51,6 +51,7 @@ export default function Root() {
             nyafile.queueCache("sfx/info-modal-pop-in");
             nyafile.queueCache("sfx/info-modal-pop-out");
             nyafile.queueCache("sfx/purr");
+            nyafile.queueCache("sfx/success");
 
             await nyafile.waitAllCached();
             appContext.setNyafile(nyafile);
