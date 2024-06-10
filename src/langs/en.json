@@ -43,6 +43,8 @@
 
     "SETTINGS_USERSETTINGS": "User settings",
     "SETTINGS_PROFILE": "Profile",
+    "SETTINGS_APPSETTINGS": "Quarky settings",
+    "SETTINGS_PLAYING": "Playing status",
 
     "HOLIDAY_MONDAY": "Sad Monday :(",
     "HOLIDAY_OOTT": "Happy Out of Touch Tuesday!",

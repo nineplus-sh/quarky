@@ -8,4 +8,9 @@
     display: flex;
     align-items: center;
     justify-content: right;
+
+    font-size: smaller;
+}
+.sidebarHeader:not(:first-child) {
+    margin-top: 1em;
 }

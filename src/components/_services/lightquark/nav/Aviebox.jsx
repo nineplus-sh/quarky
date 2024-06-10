@@ -10,7 +10,6 @@ import SettingsView from "../../../../routes/SettingsView.jsx";
 
 export default function Aviebox() {
     const appContext = useContext(AppContext);
-    const navigate = useNavigate();
 
     return (
         <div className={styles.aviebox}>
