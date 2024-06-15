@@ -45,6 +45,8 @@ export default function Root() {
             nyafile.queueCache("img/quarky");
             nyafile.queueCache("music/login");
             nyafile.queueCache("sfx/button-select");
+            nyafile.queueCache("sfx/checkbox-false");
+            nyafile.queueCache("sfx/checkbox-true");
             nyafile.queueCache("sfx/default-select");
             nyafile.queueCache("sfx/default-hover");
             nyafile.queueCache("sfx/error");

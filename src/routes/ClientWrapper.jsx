@@ -6,6 +6,7 @@ import useWebSocket from "react-use-websocket";
 import localForage from "localforage";
 import styles from "./ClientWrapper.module.css";
 import Loader from "./Loader.jsx";
+import {SettingsContext} from "../contexts/SettingsContext.js";
 
 /**
  * The client screen.
@@ -23,6 +24,7 @@ export default function ClientWrapper() {
         setMessageCache} = useContext(AppContext)
     const {pathname} = useLocation();
     const [loadingString, setLoadingString] = useState("LOADING_WEBSOCKET");
+    const {settings} = useContext(SettingsContext)
 
     const lqSock = useWebSocket(lqSockURL, {
         onMessage: (message) => {
@@ -93,7 +95,7 @@ export default function ClientWrapper() {
             setLqSockURL(network.raw.gateway)
         }
 
-        if(window.hiddenside && window.hiddenside.hardcoreGaming && window.hiddenside.casualGaming) {
+        if(settings["GAME_ACTIVITY"] && window.hiddenside && window.hiddenside.hardcoreGaming && window.hiddenside.casualGaming) {
             setLoadingString("LOADING_GAMES");
             const gameData = await fetch("https://gameplus.nineplus.sh/api/games").then(res => res.json());
             window.hiddenside.hardcoreGaming(gameData);

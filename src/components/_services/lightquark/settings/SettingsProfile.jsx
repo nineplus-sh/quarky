@@ -5,6 +5,7 @@ import LQ from "../../../../util/LQ.js";
 import styles from "./SettingsProfile.module.css"
 import NyafileImage from "../../../nyafile/NyafileImage.jsx";
 import classnames from "classnames";
+import {SettingsContext} from "../../../../contexts/SettingsContext.js";
 
 export default function SettingsProfile() {
     const appContext = useContext(AppContext);
@@ -39,7 +40,7 @@ export default function SettingsProfile() {
     return <>
         <div className={styles.userInfoWrap}>
             <div onClick={uploadPicture} className={styles.profilePictureWrap}>
-                <NyafileImage src={"img/upload"} inlineSvg={true} className={classnames(styles.uploadIcon, {[styles.uploading]: isUploading})}/>
+                <NyafileImage src={"img/upload"} inlinesvg="true" className={classnames(styles.uploadIcon, {[styles.uploading]: isUploading})}/>
                 <ProfilePicture src={appContext.accounts.lightquark.avatarUri} px={80} doPurr={false}/>
             </div>
             <div className={styles.userNameWrap}>

@@ -1,0 +1,17 @@
+.toggleBox {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5em;
+}
+.toggleBoxTitle {
+    margin-bottom: 0;
+}
+.toggleBoxDescription {
+    margin-top: 0;
+    font-size: smaller;
+}
+.toggleBoxToggle {
+    margin-top: 1em;
+    margin-right: 3em;
+}

@@ -1,0 +1,50 @@
+/* https://github.com/nineplus-sh/Quarky-Classic/blob/f348c600185aa6387b75d77413403a455ace3d6a/public/assets/vukkytoggle.js#L35 */
+
+.toggle {
+    background-color: var(--accent-color);
+    padding: .5rem;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-left: .5rem;
+    filter: grayscale(1);
+
+    max-width: 4em;
+    max-height: 2em;
+}
+.toggle .toggleSlider {
+    position: relative;
+    top: -0.3rem;
+    left: -2rem;
+    transform: translateY(-25%);
+    filter: grayscale(1);
+    user-select: none;
+    vertical-align: top;
+
+    max-width: 4.5em;
+}
+.toggle[aria-checked="true"] .toggleSlider {
+    animation: toggle 0s forwards; /* TODO: Make animation work, this was ported from QC and is buggy */
+}
+.toggle[aria-checked="false"] .toggleSlider {
+    animation: toggle 0s forwards reverse;
+}
+.toggle[aria-checked="true"] {
+    filter: grayscale(0);
+}
+
+@keyframes toggle {
+    0% {
+        left: -2rem;
+        transform: translateY(-25%) rotate(0deg);
+        filter: grayscale(1);
+    }
+    50% {
+        transform: translateY(-25%) rotate(180deg);
+        filter: grayscale(0.5);
+    }
+    100% {
+        left: 2rem;
+        transform: translateY(-25%) rotate(360deg);
+        filter: grayscale(0);
+    }
+}

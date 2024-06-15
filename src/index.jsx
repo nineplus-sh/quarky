@@ -9,6 +9,7 @@ import {
 } from "react-router-dom";
 import './index.css'
 import {AppContext} from "./contexts/AppContext.js";
+import {defaultSettings, SettingsContext} from "./contexts/SettingsContext.js";
 import AuthenticationNeeded from "./routes/AuthenticationNeeded.jsx";
 import Root from "./routes/Root.jsx";
 import ClientWrapper from "./routes/ClientWrapper.jsx";
@@ -23,6 +24,7 @@ import resourcesToBackend from "i18next-resources-to-backend";
 import LanguageDetector from "i18next-browser-languagedetector";
 import holidays from './util/holidays.json';
 import MainView from "./routes/MainView.jsx";
+import localForage from "localforage";
 
 Sentry.init({
     dsn: "https://901c666ed03942d560e61928448bcf68@sentry.yggdrasil.cat/5",
@@ -73,8 +75,17 @@ export function App(props) {
     let [messageCache, setMessageCache] = useState({})
     let [userCache, setUserCache] = useState({})
     let [holiday, setHoliday] = useState("");
+    let [settings, setSettings] = useState(defaultSettings)
 
     useEffect(() => {
+        async function loadConfigs() {
+            const storedSettings = await localForage.getItem("settings")
+            if(storedSettings) {
+                setSettings({...defaultSettings, ...storedSettings})
+            }
+
+            await loadTranslations();
+        }
         async function loadTranslations() {
             const languages = import.meta.glob('./langs/*.json');
 
@@ -111,7 +122,7 @@ export function App(props) {
 
             setHoliday(validHolidays[Math.floor(Math.random() * validHolidays.length)]);
         }
-        loadTranslations();
+        loadConfigs();
     }, []);
     
     return (
@@ -123,8 +134,10 @@ export function App(props) {
             messageCache, setMessageCache,
             userCache, setUserCache
         }}>
-            <audio src={music} autoPlay={true} loop={true}></audio>
-            {translationsLoading ? null : props.children}
+            <SettingsContext.Provider value={{settings, setSettings}}>
+                <audio src={music} autoPlay={true} loop={true}></audio>
+                {translationsLoading ? null : props.children}
+            </SettingsContext.Provider>
         </AppContext.Provider>
     )
 }
