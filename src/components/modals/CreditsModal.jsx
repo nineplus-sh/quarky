@@ -27,11 +27,13 @@ export default NiceModal.create(() => {
             <h2 style={{margin: 0}}>{t("CREDITS_SPECIAL_THANKS")}</h2>
             <p style={{margin: 0}}><NyafileImage src={"img/blobbie"}/> {t("CREDITS_EMILIA")}</p>
             <p style={{margin: 0}}><NyafileImage src={"img/bye-man-justthetv"}/> {t("CREDITS_BYE")}</p>
-            <p style={{margin: 0}}><NyafileImage src={"img/javascript"}/> {t("CREDITS_OSS")} <a href={"https://github.com/nineplus-sh/quarky/network/dependencies"}>{t("CREDITS_OSS_LIST")}</a></p>
+            <p style={{margin: 0}}><NyafileImage src={"img/javascript"}/> {t("CREDITS_OSS")} <a
+                href={"https://github.com/nineplus-sh/quarky/network/dependencies"}>{t("CREDITS_OSS_LIST")}</a></p>
             <p style={{margin: 0}}><NyafileImage src={"img/pixelaudio"}/> {t("CREDITS_OSUHRDTHDFL")}</p>
             <hr/>
             <p><NyafileImage src={"img/nineplus_pixel"}/> {t("CREDITS_LEGAL_NOTICE")}</p>
-            <span style={{float: "left"}}><Datsuryoku/> <NyafileImage src={"img/lightquark"}/></span>
+            <p>{t("CREDITS_LEGAL_NOTICE_TUMBLR")}</p>
+            <span style={{float: "left"}}><Datsuryoku/> <a target={"_blank"} href={"https://lightquark.network"} rel="noreferrer"><NyafileImage src={"img/lightquark"}/></a></span>
         </GenericModal>
     </>)
 })
