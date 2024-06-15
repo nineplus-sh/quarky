@@ -3,6 +3,8 @@ import {useTranslation} from "react-i18next";
 import styles from "./SettingsSidebar.module.css";
 import NyafileImage from "../nyafile/NyafileImage.jsx";
 import {version, codename} from "../../../package.json";
+import NiceModal from "@ebay/nice-modal-react";
+import CreditsModal from "../modals/CreditsModal.jsx";
 
 export default function SettingsSidebar({area, setArea}) {
     const {t} = useTranslation();
@@ -21,6 +23,8 @@ export default function SettingsSidebar({area, setArea}) {
         <SidebarItem baseI18n={"SETTINGS"} area={"chat"} currentArea={area} setArea={setArea}/>
         {window.hiddenside?.hardcoreGaming ? <SidebarItem baseI18n={"SETTINGS"} area={"playing"} currentArea={area} setArea={setArea}/> : null }
 
+        <div className={styles.separator}/>
+        <button onClick={() => NiceModal.show(CreditsModal)}>Credits</button>
         <div className={styles.separator}/>
 
         <div className={styles.version}>

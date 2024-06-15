@@ -33,7 +33,11 @@ export default NiceModal.create(() => {
             <hr/>
             <p><NyafileImage src={"img/nineplus_pixel"}/> {t("CREDITS_LEGAL_NOTICE")}</p>
             <p>{t("CREDITS_LEGAL_NOTICE_TUMBLR")}</p>
-            <span style={{float: "left"}}><Datsuryoku/> <a target={"_blank"} href={"https://lightquark.network"} rel="noreferrer"><NyafileImage src={"img/lightquark"}/></a></span>
+            <span style={{float: "left"}}>
+                <Datsuryoku/>
+                <a target={"_blank"} href={"https://lightquark.network"} rel="noreferrer"><NyafileImage src={"img/lightquark"}/></a>
+                <a target={"_blank"} href={"https://www.nineplus.sh"} rel="noreferrer"><NyafileImage src={"img/ninebutton"}/></a>
+            </span>
         </GenericModal>
     </>)
 })
