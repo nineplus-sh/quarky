@@ -7,6 +7,7 @@ import * as Sentry from "@sentry/react";
 import LQ from "../util/LQ.js";
 import localForage from "localforage";
 import {useFlag, useUnleashContext} from '@unleash/proxy-client-react';
+import {SettingsContext} from "../contexts/SettingsContext.js";
 
 /**
  * The root. Wraps later routes so that Nyafiles can be real.
@@ -15,6 +16,7 @@ import {useFlag, useUnleashContext} from '@unleash/proxy-client-react';
  */
 export default function Root() {
     let appContext = useContext(AppContext);
+    let {settings} = useContext(SettingsContext)
     const updateContext = useUnleashContext();
     const [loadingString, setLoadingString] = useState("LOADING_TRANSLATIONS");
 
@@ -34,6 +36,8 @@ export default function Root() {
                 document.documentElement.classList.remove("theme-light", "theme-dark", "theme-hotdog");
                 document.documentElement.classList.add(`theme-${e.matches ? "dark" : "light"}`);
             })
+
+            document.documentElement.classList.add(`pride-${settings.PRIDE_FLAG}`);
 
             setLoadingString("LOADING_NYAFILE");
 

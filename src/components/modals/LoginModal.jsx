@@ -22,7 +22,7 @@ export default function LoginModal({setDone}) {
     return <div className={styles.centerwrap}>
         <div className={styles.characterContainer}>
             <NyafileImage src={"img/loginheadervukky"} className={styles.planet}/>
-            <div className={styles.transRadial}/>
+            <div className={styles.prideRadial}/>
 
             <div className={styles.orbs}>
                 <span className={styles.orbwrap}><img src={"https://logo.litdevs.org/api/vukky/bg"} className={styles.orb}/></span>

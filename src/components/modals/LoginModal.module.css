@@ -21,9 +21,9 @@
     animation: 5s float ease-in-out infinite;
 }
 
-.transRadial {
-    background: repeating-conic-gradient(aqua 0deg 10deg, pink 10deg 20deg, white 20deg 30deg, pink 30deg 40deg);
-    mask-image: radial-gradient(circle, black 0%, transparent 60%);
+.prideRadial {
+    background: var(--pride-conic);
+    mask-image: radial-gradient(circle, black 20%, transparent 60%);
     mask-composite: intersect, exclude;
     max-width: 20em;
     height: 20em;

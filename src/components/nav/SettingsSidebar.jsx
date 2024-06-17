@@ -20,6 +20,7 @@ export default function SettingsSidebar({area, setArea}) {
         <div className={styles.sidebarHeader}>
             <span>{t("SETTINGS_APPSETTINGS")}</span>
         </div>
+        <SidebarItem baseI18n={"SETTINGS"} area={"appearance"} currentArea={area} setArea={setArea}/>
         <SidebarItem baseI18n={"SETTINGS"} area={"chat"} currentArea={area} setArea={setArea}/>
         {window.hiddenside?.hardcoreGaming ? <SidebarItem baseI18n={"SETTINGS"} area={"playing"} currentArea={area} setArea={setArea}/> : null }
 
