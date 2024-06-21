@@ -5,7 +5,7 @@ import LQ from "../../../../util/LQ.js";
 import {useUnleashContext} from "@unleash/proxy-client-react";
 import NiceModal from "@ebay/nice-modal-react";
 import NetworkOfflineModal from "../../../modals/NetworkOfflineModal.jsx";
-import {useTranslation} from "react-i18next";
+import {Trans, useTranslation} from "react-i18next";
 import styles from "./LightquarkLogin.module.css";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -119,7 +119,7 @@ export default function LightquarkLogin({setDone}) {
                     <input className={`${styles.prettyButton} ${styles.primaryButton}`} type="submit" disabled={isSwitching || Object.keys(networkData).length === 0} value={t(isSwitching ? "LOGIN_SIGNING_IN" : "GO")}/>
                 </form>
             </> : tab === "network" ? <>
-                <p>{t("LOGIN_SWITCH_NETWORKS_BODY", {name: networkData.name})}</p>
+                <p><Trans i18nKey={"LOGIN_SWITCH_NETWORKS_BODY"} values={{name: networkData.name}} components={[<a href={"https://youtrack.litdevs.org/articles/LQ4-A-1"} target={"_blank"} rel={"noreferrer"}/>]}></Trans></p>
                 <form onSubmit={switchNetwork} className={styles.loginForm}>
                     <input className={styles.loginInput} required disabled={isSwitching} type="text" placeholder={network} value={networkSwitch} onChange={e => setNetworkSwitch(e.target.value)}/>
                     <input className={`${styles.prettyButton} ${styles.otherButton}`} type="submit" disabled={isSwitching} value={t(isSwitching ? "LOGIN_SWITCHING_NETWORKS" : "LOGIN_SWITCH_NETWORKS")}/>

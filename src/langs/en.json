@@ -12,7 +12,7 @@
     "LOGIN_SWITCH_NETWORKS": "Switch network",
     "LOGIN_SWITCHING_NETWORKS": "Switching networks...",
     "LOGIN_SIGNING_IN": "Signing in...",
-    "LOGIN_SWITCH_NETWORKS_BODY": "If you want to connect to a different network than {{name}}, enter the link to it below. Otherwise, you should go back.",
+    "LOGIN_SWITCH_NETWORKS_BODY": "If you want to connect to a different <0>network</0> than {{name}}, enter the link to it below. Otherwise, you should go back.",
     "LOGIN_NETWORK_BYLINE": "{{domain}} ({{version}}) run by {{maintainer}}",
     "LOGIN_CREATE_ACCOUNT": "Create account",
 
@@ -50,7 +50,7 @@
     "SETTINGS_PLAYING": "Playing status",
 
     "SETTING_RICH_EMBEDS": "Embed entire websites in messages",
-    "SETTING_RICH_EMBEDS_DESC": "For some links, Quarky can embed the whole website inside the message so you don't have to open your web browser.",
+    "SETTING_RICH_EMBEDS_DESC": "For <0>some links</0>, Quarky can embed the whole website inside the message so you don't have to open your web browser.",
     "SETTING_GAME_ACTIVITY": "Share what I'm playing",
     "SETTING_GAME_ACTIVITY_DESC": "When Quarky detects you're playing a game, it'll show on your profile. We use <0>our own database</0> to detect games, so if your blorbo isn't included, please tell us! [DEVELOPER NOTE: YOU MUST HIT CTRL+R FOR YOUR CHANGE TO APPLY]",
 
