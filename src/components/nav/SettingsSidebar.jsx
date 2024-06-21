@@ -25,7 +25,8 @@ export default function SettingsSidebar({area, setArea}) {
         {window.hiddenside?.hardcoreGaming ? <SidebarItem baseI18n={"SETTINGS"} area={"playing"} currentArea={area} setArea={setArea}/> : null }
 
         <div className={styles.separator}/>
-        <button onClick={() => NiceModal.show(CreditsModal)}>Credits</button>
+        <SidebarItem baseI18n={"CREDITS"} area={"BUTTON"} onClick={() => NiceModal.show(CreditsModal)}>Credits</SidebarItem>
+        <SidebarItem baseI18n={"SUPPORT"} area={"BUTTON"} onClick={() => window.open("https://www.nineplus.sh/support.html", "_blank")}>Support</SidebarItem>
         <div className={styles.separator}/>
 
         <div className={styles.version}>
