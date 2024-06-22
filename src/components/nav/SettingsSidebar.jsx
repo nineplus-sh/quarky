@@ -3,11 +3,23 @@ import {useTranslation} from "react-i18next";
 import styles from "./SettingsSidebar.module.css";
 import NyafileImage from "../nyafile/NyafileImage.jsx";
 import {version, codename} from "../../../package.json";
-import NiceModal from "@ebay/nice-modal-react";
+import NiceModal, {useModal} from "@ebay/nice-modal-react";
 import CreditsModal from "../modals/CreditsModal.jsx";
+import localForage from "localforage";
+import {useContext} from "react";
+import {AppContext} from "../../contexts/AppContext.js";
 
 export default function SettingsSidebar({area, setArea}) {
+    const modal = useModal();
+    const appContext = useContext(AppContext);
     const {t} = useTranslation();
+
+    async function logOut() {
+        modal.remove();
+
+        await localForage.removeItem("lightquark");
+        appContext.setAccounts({});
+    }
 
     return <div className={styles.sidebarContents}>
         <div className={styles.sidebarHeader}>
@@ -27,6 +39,10 @@ export default function SettingsSidebar({area, setArea}) {
         <div className={styles.separator}/>
         <SidebarItem baseI18n={"CREDITS"} area={"BUTTON"} onClick={() => NiceModal.show(CreditsModal)}>Credits</SidebarItem>
         <SidebarItem baseI18n={"SUPPORT"} area={"BUTTON"} onClick={() => window.open("https://www.nineplus.sh/support.html", "_blank")}>Support</SidebarItem>
+        <div className={styles.separator}/>
+
+        <div className={styles.seperator}/>
+        <SidebarItem baseI18n={"SIGN"} area={"OUT"} onClick={logOut}></SidebarItem>
         <div className={styles.separator}/>
 
         <div className={styles.version}>
