@@ -6,6 +6,8 @@
     scrollbar-width: thin;
 }
 .richEmbed {
+    display: block;
+}
+.richEmbed:not([width]) {
     width: 100%;
-    border: none;
 }
