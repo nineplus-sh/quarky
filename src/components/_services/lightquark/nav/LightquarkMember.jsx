@@ -11,10 +11,10 @@ export function LightquarkMember({member}) {
     return (
         <div className={styles.member} onClick={() => NiceModal.show(UserPopoutModal, {userId: member._id})}>
             <ProfilePicture src={userCache[member._id].avatarUri} px={40}/>
-            <p className={styles.memberName}>
+            <span className={styles.memberName}>
                 {userCache[member._id].username}
-                {userCache[member._id].status ? <p className={styles.memberStatus}>⮡ {userCache[member._id].status.type} <i>{userCache[member._id].status.primaryText}</i></p> : null}
-            </p>
+                {userCache[member._id].status ? <span className={styles.memberStatus}>⮡ {userCache[member._id].status.type} <i>{userCache[member._id].status.primaryText}</i></span> : null}
+            </span>
         </div>
     )
 }

@@ -55,4 +55,9 @@ export default function RichEmbed({url}) {
     if(tweet) { // TODO: "theme" query parameter can be light or dark
         return <div className={styles.richEmbedWrap}><iframe src={`https://platform.twitter.com/embed/Tweet.html?dnt=true&id=${tweet[1]}`} ref={ourFrame} height={embedHeight} className={styles.richEmbed} /></div>
     }
+
+    let youtube = urlWrap.href.match(/https?:\/\/(?:www\.)?(?:youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]+)(?:[?&]\S*?&?t=([0-9smhdw]+))?(?:[?&]\S*)?/);
+    if(youtube) {
+        return <iframe width="853" height="244" src={`https://www.youtube-nocookie.com/embed/${youtube[1]}${youtube[2] ? `?t=${youtube[2]}` : ""}`} allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" className={styles.richEmbed}></iframe>
+    }
 }
