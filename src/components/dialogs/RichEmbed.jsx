@@ -61,13 +61,13 @@ export default function RichEmbed({url}) {
         return <iframe width="853" height="244" src={`https://www.youtube-nocookie.com/embed/${youtube[1]}${youtube[2] ? `?t=${youtube[2]}` : ""}`} allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" className={styles.richEmbed}></iframe>
     }
 
-    let lichessStudy = urlWrap.href.match(/https?:\/\/lichess\.org\/study\/(.*)\/(.*)/)
+    let lichessStudy = urlWrap.href.match(/https?:\/\/lichess\.org\/study\/([a-zA-Z0-9]{8})\/([a-zA-Z0-9]{8})(#\d+|)/)
     if (lichessStudy) {
-        return <iframe className={styles.richEmbed} width="600" height="351" src={`https://lichess.org/study/embed/${lichessStudy[1]}/${lichessStudy[2]}`}></iframe>
+        return <iframe className={styles.richEmbed} width="600" height="351" src={`https://lichess.org/study/embed/${lichessStudy[1]}/${lichessStudy[2]}?pieceSet=horsey&theme=canvas${lichessStudy[3] || ""}`}></iframe>
     }
 
     let lichessGame = urlWrap.href.match(/https?:\/\/lichess\.org\/([a-zA-Z0-9]{8})(?:\/black|\/white|)(#\d+|)/)
     if (lichessGame) {
-        return <iframe className={styles.richEmbed} width="600" height="351" src={`https://lichess.org/embed/game/${lichessGame[1]}${lichessGame[2] || ""}`}></iframe>
+        return <iframe className={styles.richEmbed} width="600" height="351" src={`https://lichess.org/embed/game/${lichessGame[1]}?pieceSet=horsey&theme=canvas${lichessGame[2] || ""}`}></iframe>
     }
 }
