@@ -5,11 +5,12 @@ module.exports = {
     'plugin:react/recommended',
     'plugin:react/jsx-runtime',
     'plugin:react-hooks/recommended',
+    'plugin:vitest-globals/recommended'
   ],
   ignorePatterns: ['dist', '.eslintrc.cjs'],
   parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
   settings: { react: { version: '18.2' } },
-  plugins: ['react-refresh'],
+  plugins: ['react-refresh', 'testing-library', 'vitest'],
   rules: {
     'react-refresh/only-export-components': [
       'warn',
@@ -19,4 +20,13 @@ module.exports = {
         "off"
     ]
   },
+  "overrides": [
+    {
+      "files": ["*.test.js", "*.test.jsx"],
+      extends: ['plugin:testing-library/react'],
+      "env": {
+        "vitest-globals/env": true
+      }
+    }
+  ]
 }

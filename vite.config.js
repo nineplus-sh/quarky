@@ -15,5 +15,10 @@ export default defineConfig({
       react(),
       basicSsl(),
       sentryVitePlugin({}),
-  ]
+  ],
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: './src/util/testup.js',
+  }
 })
