@@ -2,6 +2,7 @@ import SettingsProfile from "../_services/lightquark/settings/SettingsProfile.js
 import SettingsChat from "../settings/SettingsChat.jsx";
 import SettingsPlaying from "../settings/SettingsPlaying.jsx";
 import SettingsAppearance from "../settings/SettingsAppearance.jsx";
+import SettingsLanguage from "../settings/SettingsLanguage.jsx";
 
 export default function SettingsArea({area}) {
     if (area === "profile") {
@@ -12,5 +13,7 @@ export default function SettingsArea({area}) {
         return <SettingsPlaying/>
     } else if (area === "appearance") {
         return <SettingsAppearance/>
+    } else if (area === "language") {
+        return <SettingsLanguage/>
     }
 }

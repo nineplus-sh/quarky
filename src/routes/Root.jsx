@@ -8,6 +8,7 @@ import LQ from "../util/LQ.js";
 import localForage from "localforage";
 import {useFlag, useUnleashContext} from '@unleash/proxy-client-react';
 import {SettingsContext} from "../contexts/SettingsContext.js";
+import * as i18n from "i18next";
 
 /**
  * The root. Wraps later routes so that Nyafiles can be real.
@@ -73,6 +74,10 @@ export default function Root() {
         }
         loadNyafile();
     }, []);
+
+    useEffect(() => {
+        i18n.changeLanguage(settings.LANGUAGE)
+    }, [settings.LANGUAGE])
 
     if(appContext.loading) return <Loader loadingString={loadingString} />
 

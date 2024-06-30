@@ -48,12 +48,20 @@
     "SETTINGS_APPSETTINGS": "Quarky settings",
     "SETTINGS_APPEARANCE": "Appearance",
     "SETTINGS_CHAT": "Chat",
+    "SETTINGS_LANGUAGE": "Language",
     "SETTINGS_PLAYING": "Playing status",
 
     "SETTING_RICH_EMBEDS": "Embed entire websites in messages",
     "SETTING_RICH_EMBEDS_DESC": "For <0>some links</0>, Quarky can embed the whole website inside the message so you don't have to open your web browser.",
     "SETTING_GAME_ACTIVITY": "Share what I'm playing",
     "SETTING_GAME_ACTIVITY_DESC": "When Quarky detects you're playing a game, it'll show on your profile. We use <0>our own database</0> to detect games, so if your blorbo isn't included, please tell us! [DEVELOPER NOTE: YOU MUST HIT CTRL+R FOR YOUR CHANGE TO APPLY]",
+
+    "SETTINGS_LANGUAGE_INVITE": "You can help with translation at <0>transLIT</0>!",
+    "SETTINGS_LANGUAGE_FORMAT": "{{localname}} ({{translatedname}})",
+    "SETTING_LANGUAGE_EN": "English",
+    "SETTING_LANGUAGE_FI": "Finnish",
+    "SETTING_LANGUAGE_NB_NO": "Norwegian Bokmål",
+    "SETTING_LANGUAGE_JA": "Japanese",
 
     "SETTING_PRIDE_FLAG_DESC": "Pride flags are sometimes used in the app because they look pretty. Choose your favorite flag below.",
     "SETTING_PRIDE_FLAG_NOTE": "For now, only simple flags are supported and the radial background may look weird.",
