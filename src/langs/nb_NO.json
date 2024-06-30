@@ -63,5 +63,11 @@
     "SETTINGS_USERSETTINGS": "Brukerinnstillinger",
     "CREDITS_LEGAL_NOTICE_TUMBLR": "Denne applikasjonen bruker Tumblr sitt programmeringsgrensesnitt men er ikke godkjent eller sertifisert av Tumblr, Inc. Alle Tumblr-logoer og varemerker vist i denne applikasjonen tilhører Tumblr, Inc.",
     "SETTINGS_APPSETTINGS": "Quarky-innstillinger",
-    "SUPPORT_BUTTON": "Kundestøtte"
+    "SUPPORT_BUTTON": "Kundestøtte",
+    "SETTINGS_LANGUAGE_INVITE": "Du kan hjelpe med oversettelse på <0>transLIT</0>!",
+    "SETTINGS_LANGUAGE": "Språk",
+    "SETTING_LANGUAGE_EN": "Engelsk",
+    "SETTING_LANGUAGE_FI": "Finsk",
+    "SETTING_LANGUAGE_JA": "Japansk",
+    "SETTING_LANGUAGE_NB_NO": "Norsk bokmål"
 }
