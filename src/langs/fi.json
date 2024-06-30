@@ -1,4 +1,10 @@
 {
     "HEADER_WELCOME_SUB": "Kirjaudutaan sisään!",
-    "HEADER_WELCOME": "Tervetuloa Quarkyyn~!"
+    "HEADER_WELCOME": "Tervetuloa Quarkyyn~!",
+    "CREDITS_SPECIAL_THANKS": "Erityiskiitokset",
+    "CREDITS_BYE": "Bye ilmaisista vatsahankauksista",
+    "CREDITS_BUTTON": "Kiitokset",
+    "QUARKY_NAME": "Kvarkki 2",
+    "QUARKY_DESCRIPTION": "Maailman paras pikaviestisovellus Lightquarkille",
+    "QUARKY_VERSION": "Versio {{version}} (\"{{codename}}\")"
 }
