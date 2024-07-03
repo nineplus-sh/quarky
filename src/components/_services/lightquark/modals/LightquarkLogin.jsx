@@ -10,6 +10,7 @@ import styles from "./LightquarkLogin.module.css";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeExternalLinks from "rehype-external-links";
+import {version} from "../../../../../package.json";
 
 export default function LightquarkLogin({setDone}) {
     const appContext = useContext(AppContext);
@@ -22,7 +23,7 @@ export default function LightquarkLogin({setDone}) {
     const [networkData, setNetworkData] = useState({});
     const [tab, switchTab] = useState("login");
     const [networkSwitch, setNetworkSwitch] = useState('');
-    const [isSwitching, setSwitching] = useState(false);
+    const [isSwitching, setSwitching] = useState(true);
 
     useEffect( () => {
         async function getNetworkInfo() {
@@ -97,13 +98,18 @@ export default function LightquarkLogin({setDone}) {
     }
 
     // regarding escapeValue here: while it may seem like a hole for an XSS attack i tried and brackets are still escaped
+    if(tab === "login" && isSwitching) return(
+        <>
+            <p>{t("LOGIN_NETWORK_FETCHING")}</p>
+        </>
+    )
     return (
         <>
             <div className={styles.networkInfoArea}>
                 <div className={styles.networkInfo}>
                     <img className={styles.networkLogo} src={networkData.iconUrl}/>
                     <div className={styles.networkDetails}>
-                        <p className={styles.networkName}>{networkData.name} <button onClick={() => switchTab("network")}>{t("LOGIN_SWITCH_NETWORKS")}</button></p>
+                        <p className={styles.networkName}>{networkData.name} <button disabled={isSwitching} onClick={() => switchTab("network")}>{t("LOGIN_SWITCH_NETWORKS")}</button></p>
                         <p className={styles.networkMetadata}>{t("LOGIN_NETWORK_BYLINE", {domain: networkData.linkBase, version: networkData.version, maintainer: networkData.maintainer, interpolation: { escapeValue: false }})}</p>
                     </div>
                 </div>
