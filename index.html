@@ -5,10 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Quarky 2</title>
 
-    <link rel="preload" href="/quarky.nya" as="fetch" type="application/zip" />
+    <link rel="preload" href="/nineball.svg" as="image" />
+    <link rel="preload" href="/quarky.svg" as="image" />
+
+    <style>
+      html {
+        background-color: var(--background-color-max, #3a3a3a);
+      }
+      #superpreload {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+      }
+      #superpreload #preloadlogo {
+        max-width: 10em;
+      }
+      #superpreload #preloadtext {
+        margin-top: 1em;
+        display: block;
+        color: var(--text-color, white);
+      }
+      #superpreload #preloadtext a {
+        color: var(--text-color, white);
+      }
+    </style>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <div id="superpreload">
+        <img src="/nineball.svg" id="preloadlogo">
+        <span id="preloadtext">&copy; ninePLUS 2024<noscript><br>Please enable JavaScript to use Quarky!</noscript></span>
+      </div>
+    </div>
     <script type="module" src="/src/index.jsx"></script>
   </body>
 </html>
