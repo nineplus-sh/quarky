@@ -24,7 +24,7 @@ export default function NyafileImage(props) {
             }
         }
         getDataUrl();
-    }, [appContext.nyafile, props.src]);
+    }, [appContext.nyafile, appContext.nyafile.defaultFile, appContext.nyafile.nyaFile, props.src]);
 
     // noinspection HtmlRequiredAltAttribute
     if(!svg) return (
