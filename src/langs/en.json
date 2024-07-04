@@ -20,6 +20,8 @@
     "GO": "Go!",
     "OKAY": "Got it",
     "BACK": "Never mind",
+    "BOT": "Bot",
+    "DISCORD": "Discord",
 
     "LQ_SERVER_OUTDATED_TITLE": "This network won't work with Quarky",
     "LQ_SERVER_OUTDATED_BODY": "{{name}} is running an unsupported version of Lightquark. Please ask {{maintainer}} to update it.",
@@ -83,7 +85,7 @@
 
     "HOLIDAY_MONDAY": "Sad Monday :(",
     "HOLIDAY_OOTT": "Happy Out of Touch Tuesday!",
-    "HOLIDAY_OOTT_LINK": "https://www.tumblr.com/notlikingbestgirl/163724978577/out-of-touch",
+    "HOLIDAY_OOTT_LINK": "https://www.tumblr.com/nyakase/755061148269871104/notlikingbestgirl-out-of-touch",
     "HOLIDAY_STROGANOFF": "Happy Stroganoff Sunday!",
     "HOLIDAY_STROGANOFF_LINK": "https://www.tumblr.com/arienai/705253194822991872",
     "HOLIDAY_PRIDE": "Happy Pride Month!",
