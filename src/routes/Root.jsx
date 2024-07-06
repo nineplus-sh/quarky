@@ -43,9 +43,10 @@ export default function Root() {
             setLoadingString("LOADING_NYAFILE");
 
             const nyafile = new NyaFile();
-            await nyafile.load("/quarky.nya", true);
 
             try {
+                await nyafile.load("/quarky.nya", true);
+
                 nyafile.queueCache("img/stars");
                 nyafile.queueCache("img/quark_join");
                 nyafile.queueCache("img/quarky");
