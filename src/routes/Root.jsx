@@ -9,6 +9,8 @@ import localForage from "localforage";
 import {useFlag, useUnleashContext} from '@unleash/proxy-client-react';
 import {SettingsContext} from "../contexts/SettingsContext.js";
 import * as i18n from "i18next";
+import NiceModal from "@ebay/nice-modal-react";
+import NetworkOfflineModal from "../components/modals/NetworkOfflineModal.jsx";
 
 /**
  * The root. Wraps later routes so that Nyafiles can be real.
@@ -77,7 +79,14 @@ export default function Root() {
 
             const localConfig = await localForage.getItem("lightquark")
             if(localConfig?.token) {
-                const LQuserdata = await LQ("user/me");
+                setLoadingString("LOADING_WEBSOCKET");
+
+                let LQuserdata;
+                try {
+                    LQuserdata = await LQ("user/me");
+                } catch(e) {
+                    await NiceModal.show(NetworkOfflineModal, {name: localConfig.network.baseUrl, signOut: true});
+                }
                 appContext.setAccounts(prev => ({...prev, "lightquark": LQuserdata.response.user}))
                 updateContext({lqId: LQuserdata.response.user._id})
             }
