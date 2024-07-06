@@ -46,7 +46,7 @@ export default function RichEmbed({url}) {
         return <div className={styles.richEmbedWrap}><iframe title="Embedded SoundCloud song" className={styles.richEmbed} height={166} src={`https://w.soundcloud.com/player/?url=${urlWrap.href}&color=%23ff5500&auto_play=false&hide_related=true&show_comments=true&show_user=true&show_reposts=true&show_teaser=false`}/></div>
     }
 
-    let spotify = urlWrap.href.match(/https?:\/\/open\.spotify\.com\/track\/(\w+)/)
+    let spotify = urlWrap.href.match(/https?:\/\/(?:open|play)\.spotify\.com\/track\/(\w+)/)
     if(spotify) {
         return <div className={styles.richEmbedWrap}><iframe title="Embedded Spotify song" className={styles.richEmbed} height={80} src={`https://open.spotify.com/embed/track/${spotify[1]}`}/></div>
     }

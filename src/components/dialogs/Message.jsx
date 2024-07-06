@@ -17,7 +17,7 @@ export default function Message({children, avatar, username, content, isBot, bot
             <Linkify options={{"target": "_blank", "rel": "noreferrer noopener"}}>
                 <span className={styles.messagecontent}>
                     {edited ? <div className={styles.edited}>edited</div> : null}
-                    {children}
+                    {children || content}
                     {settings["RICH_EMBEDS"] ? linkify.find(content).map(link => <RichEmbed url={link.value}/>) : null}
                     {attachments}
                 </span>

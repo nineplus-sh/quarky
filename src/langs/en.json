@@ -113,5 +113,7 @@
 
     "ERROR_NYAFILE_FILE_MISSING_PROD": "App assets are missing. Press CTRL+SHIFT+R to try again. Contact ninePLUS if the problem persists.",
     "ERROR_NYAFILE_FILE_MISSING_DEV": "Please run src/nyafile-compiler.js to compile the Nyafile, then press CTRL+SHIFT+R.",
-    "ERROR_NYAFILE": "App assets corrupted. Please contact ninePLUS."
+    "ERROR_NYAFILE": "App assets corrupted. Please contact ninePLUS.",
+
+    "SAMPLE_USER_NAME": "Hakase"
 }

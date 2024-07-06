@@ -49,6 +49,7 @@ export default function Root() {
             try {
                 await nyafile.load("/quarky.nya", true);
 
+                nyafile.queueCache("img/hakase_pfp");
                 nyafile.queueCache("img/stars");
                 nyafile.queueCache("img/quark_join");
                 nyafile.queueCache("img/quarky");
