@@ -33,10 +33,16 @@
     clip-path: polygon(100% 0%, 0% 50%, 100% 100%);
     position: absolute;
     left: -0.9em;
-    top: 0.5em;
+    top: 0.53em;
     padding: 0.5em;
     height: 5px;
     display: inline-block;
+}
+
+.usernameArea {
+    display: flex;
+    align-items: center;
+    height: 1.35em;
 }
 
 .timestamp {
