@@ -1,7 +1,7 @@
 {
     "SIGN_OUT": "bye bai 3:",
     "OKAY": "okaay! 💕",
-    "QUARKY_NAME": "Quawky 2",
+    "QUARKY_NAME": "quawky 2",
     "QUARKY_DESCRIPTION": "silly chat app desu ^_^",
     "LOGIN_EMAIL": "sleepykitten123@nineplus.sh",
     "BACK": "um.. nvm 3:",
@@ -47,5 +47,8 @@
     "LOGIN_SIGNING_IN": "squeezing in thru dawr...",
     "LOGIN_CREATE_ACCOUNT": "turn into kitty :3",
     "DISCORD": "discord",
-    "CREDITS_BUTTON": "hawd working kitties"
+    "CREDITS_BUTTON": "hawd working kitties",
+    "JOIN_QUARK": "visit a cat cafe!",
+    "JOIN_QUARK_BODY": "keysmash the cat cafes invite code to visit it!",
+    "SAMPLE_USER_NAME": "nyakase"
 }
