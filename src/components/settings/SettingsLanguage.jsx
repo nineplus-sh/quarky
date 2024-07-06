@@ -4,7 +4,7 @@ import locallangs from "../../util/locallangs.json"
 
 export default function SettingsLanguage() {
     const languages = ["en", "fi", "nb_NO", "ja"];
-    const jokeLanguages = ["en_UWU", "ja_KANA"];
+    const jokeLanguages = ["en_UWU"];
     const {t} = useTranslation();
 
     function langmap(languages) {
