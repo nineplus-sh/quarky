@@ -45,22 +45,32 @@ export default function Root() {
             const nyafile = new NyaFile();
             await nyafile.load("/quarky.nya", true);
 
-            nyafile.queueCache("img/stars");
-            nyafile.queueCache("img/quark_join");
-            nyafile.queueCache("img/quarky");
-            nyafile.queueCache("music/login");
-            nyafile.queueCache("sfx/button-select");
-            nyafile.queueCache("sfx/checkbox-false");
-            nyafile.queueCache("sfx/checkbox-true");
-            nyafile.queueCache("sfx/default-select");
-            nyafile.queueCache("sfx/default-hover");
-            nyafile.queueCache("sfx/error");
-            nyafile.queueCache("sfx/info-modal-pop-in");
-            nyafile.queueCache("sfx/info-modal-pop-out");
-            nyafile.queueCache("sfx/purr");
-            nyafile.queueCache("sfx/success");
+            try {
+                nyafile.queueCache("img/stars");
+                nyafile.queueCache("img/quark_join");
+                nyafile.queueCache("img/quarky");
+                nyafile.queueCache("music/login");
+                nyafile.queueCache("sfx/button-select");
+                nyafile.queueCache("sfx/checkbox-false");
+                nyafile.queueCache("sfx/checkbox-true");
+                nyafile.queueCache("sfx/default-select");
+                nyafile.queueCache("sfx/default-hover");
+                nyafile.queueCache("sfx/error");
+                nyafile.queueCache("sfx/info-modal-pop-in");
+                nyafile.queueCache("sfx/info-modal-pop-out");
+                nyafile.queueCache("sfx/purr");
+                nyafile.queueCache("sfx/success");
 
-            await nyafile.waitAllCached();
+                await nyafile.waitAllCached();
+            } catch(e) {
+                if(e.message.includes("not found in default nyafile")) {
+                    setLoadingString(`ERROR_NYAFILE_FILE_MISSING_${import.meta.env.PROD ? "PROD" : "DEV"}`)
+                } else {
+                    setLoadingString("ERROR_NYAFILE");
+                }
+                return;
+            }
+
             appContext.setNyafile(nyafile);
 
             const localConfig = await localForage.getItem("lightquark")

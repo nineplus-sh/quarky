@@ -109,5 +109,9 @@
     "HOLIDAY_BDAY_SAKAMOTO": "Happy Birthday, Sakamoto!",
     "HOLIDAY_BDAY_SAKAMOTO_LINK": "https://breezewiki.com/nichijou/wiki/Sakamoto",
     "HOLIDAY_BDAY_QUARKY": "Happy Birthday, Quarky!",
-    "HOLIDAY_BDAY_NINEPLUS": "Happy Birthday, ninePLUS!"
+    "HOLIDAY_BDAY_NINEPLUS": "Happy Birthday, ninePLUS!",
+
+    "ERROR_NYAFILE_FILE_MISSING_PROD": "App assets are missing. Press CTRL+SHIFT+R to try again. Contact ninePLUS if the problem persists.",
+    "ERROR_NYAFILE_FILE_MISSING_DEV": "Please run src/nyafile-compiler.js to compile the Nyafile, then press CTRL+SHIFT+R.",
+    "ERROR_NYAFILE": "App assets corrupted. Please contact ninePLUS."
 }
