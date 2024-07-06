@@ -69,6 +69,7 @@ export default function Root() {
                 } else {
                     setLoadingString("ERROR_NYAFILE");
                 }
+                Sentry.captureException(e);
                 return;
             }
 
