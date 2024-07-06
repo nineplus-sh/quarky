@@ -1,0 +1,7 @@
+{
+    "SETTING_LANGUAGE_EN": "えいご",
+    "SETTING_LANGUAGE_FI": "フィンランドご",
+    "SETTING_LANGUAGE_JA": "にほんご（かんじ）",
+    "SETTING_LANGUAGE_JA_KANA": "にほんご（かな）",
+    "SETTINGS_LANGUAGE_FORMAT": "{{localname}}（{{translatedname}}）"
+}

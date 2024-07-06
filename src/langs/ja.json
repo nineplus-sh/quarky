@@ -1,5 +1,7 @@
 {
     "SETTING_LANGUAGE_FI": "フィンランド語",
     "SETTING_LANGUAGE_EN": "英語",
-    "SETTING_LANGUAGE_JA": "日本語"
+    "SETTING_LANGUAGE_JA": "日本語（漢字）",
+    "SETTING_LANGUAGE_JA_KANA": "日本語（仮名）",
+    "SETTINGS_LANGUAGE_FORMAT": "{{localname}}（{{translatedname}}）"
 }
