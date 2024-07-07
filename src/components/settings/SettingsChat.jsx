@@ -101,7 +101,8 @@ export default function SettingsChat() {
         "https://nyakase.tumblr.com/post/754800027756609536",
         "https://nyakase.tumblr.com/post/754968471800070144",
         "https://nyakase.tumblr.com/post/755111209679847425",
-        "https://nyakase.tumblr.com/post/755234658530279424"
+        "https://nyakase.tumblr.com/post/755234658530279424",
+        "https://nyakase.tumblr.com/post/755342885445156864"
     ];
     const sample = useMemo(() => richEmbedSamples[Math.floor(Math.random() * richEmbedSamples.length)], []);
 
