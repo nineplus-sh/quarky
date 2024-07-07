@@ -17,6 +17,7 @@ export default function LightquarkLogin({setDone}) {
     const updateContext = useUnleashContext();
     const [network, setNetwork] = useState('https://lightquark.network');
     const [oldNetwork, setOldNetwork] = useState('');
+    const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const { t } = useTranslation();
@@ -57,6 +58,25 @@ export default function LightquarkLogin({setDone}) {
         e.preventDefault();
         setOldNetwork(network);
         setNetwork(networkSwitch);
+    }
+
+    async function tokenBySignup(e) {
+        e.preventDefault();
+        setSwitching(true);
+
+        const tokens = await LQ("auth/register", "POST", {username, email, password}, true, {
+            network: {
+                baseUrl: network,
+                version: "v4"
+            }
+        })
+        if(tokens.request.success === true) {
+            finalizeLogin(tokens.response.access_token, tokens.response.refresh_token)
+        } else {
+            new Audio(appContext.nyafile.getCachedData("sfx/error")).play();
+            setTimeout(() => alert(tokens.response.message), 5);
+            setSwitching(false);
+        }
     }
 
     async function tokenByLogin(e) {
@@ -117,7 +137,7 @@ export default function LightquarkLogin({setDone}) {
             </div>
 
             {tab === "login" ? <>
-                <p>Sign into {networkData.name} below:</p>
+                <p>{t("LOGIN_SIGN_IN_FORM", {name: networkData.name})}</p>
                 <form onSubmit={tokenByLogin} className={styles.loginForm}>
                     <input className={styles.loginInput} required type="email" placeholder={t("LOGIN_EMAIL")} value={email} onChange={e => setEmail(e.target.value)} />
                     <input className={styles.loginInput} required type="password" placeholder={t("LOGIN_PASSWORD")} value={password} onChange={e => setPassword(e.target.value)} />
@@ -132,9 +152,20 @@ export default function LightquarkLogin({setDone}) {
                     <button className={`${styles.prettyButton} ${styles.primaryButton}`} type="button" disabled={isSwitching} onClick={() => switchTab("login")}>{t("BACK")}</button>
                 </form>
             </> : tab === "create" ? <>
-                <p>Account creation is not yet available.</p>
-                <form onSubmit={(e) => e.preventDefault()} className={styles.loginForm}>
-                    <button className={`${styles.prettyButton} ${styles.otherButton}`} onClick={() => switchTab("login")}>{t("BACK")}</button>
+                <p>{t("LOGIN_SIGN_UP_FORM", {name: networkData.name})}</p>
+                <form onSubmit={tokenBySignup} className={styles.loginForm}>
+                    <input className={styles.loginInput} required type="text" placeholder={t("LOGIN_USERNAME")}
+                           value={username} onChange={e => setUsername(e.target.value)}/>
+                    <input className={styles.loginInput} required type="email" placeholder={t("LOGIN_EMAIL")}
+                           value={email} onChange={e => setEmail(e.target.value)}/>
+                    <input className={styles.loginInput} required type="password" placeholder={t("LOGIN_PASSWORD")}
+                           value={password} onChange={e => setPassword(e.target.value)}/>
+
+                    <button className={`${styles.prettyButton} ${styles.otherButton}`} type="button"
+                            onClick={() => switchTab("login")}>{t("BACK")}</button>
+                    <input className={`${styles.prettyButton} ${styles.primaryButton}`} type="submit"
+                           disabled={isSwitching || Object.keys(networkData).length === 0}
+                           value={t(isSwitching ? "LOGIN_SIGNING_IN" : "GO")}/>
                 </form>
             </> : null}
         </>
