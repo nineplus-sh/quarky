@@ -4,6 +4,13 @@
     "LOADING_WEBSOCKET": "Connecting to network",
     "LOADING_GAMES": "Downloading game detection database",
 
+    "QUARKY_DESCRIPTION_FIRST_TIME": "The world's silliest chat app — developed by ninePLUS, built for the Lightquark messaging platform by 015.",
+    "FIRST_TIME_MISSION": "Quarky is on a mission to bring back fun in chat apps. I believe that you should look forward to using software the next day, instead of dreading whatever the company will do next.",
+    "FIRST_TIME_STANDOUT": "I am fully aware that many others have tried to do this, but they all fall short on the \"app\" portion. Let's do something about that. I'm not expecting to create an overnight banger, but if I inspire one person, I'll be satisfied.",
+    "FIRST_TIME_SUPPORT": "It's very unfinished right now, but you can jump in and try it. I'd love to hear about what you think and if you found something that doesn't work — you can contact me <0>here</0> or by going to Settings -> Support in the app.",
+    "FIRST_TIME_BLASTOFF": "Have some fun with Quarky!",
+    "FIRST_TIME_AUTOPLAY": "Quarky has sound, which you can't currently disable. Mute the app first if you don't want to hear it.",
+
     "HEADER_WELCOME": "Welcome to Quarky~!",
     "HEADER_WELCOME_SUB": "Let's sign in to use it now!",
 

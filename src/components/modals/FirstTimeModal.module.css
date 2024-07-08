@@ -1,0 +1,51 @@
+.firstTimeContainer {
+    display: flex;
+    gap: 1em;
+
+    align-items: center;
+}
+
+.blahBlahBlah {
+    max-width: 15em;
+    text-align: center;
+}
+
+.blahBlahDesc {
+    margin-bottom: 0;
+}
+
+.heyhey {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+
+    max-width: 15em;
+}
+
+.heyheyText {
+    font-weight: bolder;
+    font-size: larger;
+}
+
+.quarkyLogo {
+    max-width: 5em;
+}
+
+.modalContent {
+    max-width: 40em;
+}
+
+.MV {
+    flex: 0 0 auto;
+}
+
+.ultraWideButton {
+    width: 100%;
+}
+
+.autoplayWarning {
+    font-size: smaller;
+    font-style: italic;
+    text-align: center;
+    color: red;
+}

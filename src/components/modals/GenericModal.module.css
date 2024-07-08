@@ -1,0 +1,64 @@
+.genericModalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 168, 243, 0.5);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.genericModalContent {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    right: 40px;
+    bottom: 40px;
+    border: 1px solid #ccc;
+    background: #fff;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 15px;
+    outline: none;
+    padding: 20px;
+
+    max-width: 25%;
+    height: fit-content;
+    inset: unset;
+
+    transform: scaleY(0);
+    transition: transform 0.3s cubic-bezier(1.000, -0.250, 0.000, 1.250), max-height 0.3s cubic-bezier(1.000, -0.250, 0.000, 1.250);
+    scrollbar-color: var(--accent-color) #2e3035;
+    color: var(--text-color-inverted);
+}
+
+.genericModalContent::-webkit-scrollbar-thumb {
+    background: var(--accent-color);
+    border-radius: 10px;
+}
+.genericModalContent::-webkit-scrollbar {
+    background: #2e3035;
+    width: 10px;
+}
+
+.genericModalOverlay:global(.ReactModal__Overlay--after-open) {
+    opacity: 1;
+}
+
+.genericModalOverlay:global(.ReactModal__Overlay--before-close) {
+    opacity: 0;
+}
+
+.genericModalContent:global(.ReactModal__Content--after-open) {
+    transform: scaleY(1);
+}
+
+.genericModalContent:global(.ReactModal__Content--before-close) {
+    transform: scaleY(0);
+}
