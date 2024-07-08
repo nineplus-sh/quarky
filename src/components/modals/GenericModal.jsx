@@ -21,7 +21,7 @@ export default function GenericModal({classNames = [], overlayClassNames = [], c
     }, [modal.visible]);
 
     return (
-        <Modal className={classnames(styles.genericModalContent, ...classNames)} overlayClassName={classnames(styles.genericModalOverlay, ...overlayClassNames)} appElement={document.querySelector("#root")} isOpen={modal.visible} closeTimeoutMS={300} shouldCloseOnOverlayClick={allowNonEventClose} onRequestClose={() => modal.hide()}>
+        <Modal className={classnames(styles.genericModalContent, ...classNames)} overlayClassName={classnames(styles.genericModalOverlay, ...overlayClassNames)} appElement={document.querySelector("#root")} isOpen={modal.visible} closeTimeoutMS={300} shouldCloseOnOverlayClick={allowNonEventClose} onRequestClose={allowNonEventClose ? () => modal.hide() : null}>
             {children}
         </Modal>
     )

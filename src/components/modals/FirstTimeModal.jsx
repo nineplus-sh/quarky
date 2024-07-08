@@ -11,7 +11,7 @@ export default NiceModal.create(({playMusic}) => {
     const { t } = useTranslation();
 
     return (<>
-        <GenericModal modal={modal} classNames={[styles.modalContent]}>
+        <GenericModal modal={modal} classNames={[styles.modalContent]} allowNonEventClose={false}>
 
             <span className={styles.firstTimeContainer}>
                 <span className={styles.blahBlahBlah}>
@@ -23,7 +23,7 @@ export default NiceModal.create(({playMusic}) => {
                     <p className={styles.blahBlahDesc}>{t("QUARKY_DESCRIPTION_FIRST_TIME")}</p>
                 </span>
 
-                <iframe width="400" height="220" src="https://www.youtube-nocookie.com/embed/rNuMNyVInlY?start=92" frameBorder="0"
+                <iframe width="391" height="220" src="https://www.youtube-nocookie.com/embed/rNuMNyVInlY?start=92" frameBorder="0"
                         className={styles.MV} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                         referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
             </span>
