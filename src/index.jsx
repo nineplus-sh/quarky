@@ -72,11 +72,12 @@ export function App(props) {
     let [loading, setLoading] = useState(true);
     let [translationsLoading    , setTranslationsLoading] = useState(true);
     let [music, setMusic] = useState(undefined);
-    let [accounts, setAccounts] = useState({})
-    let [messageCache, setMessageCache] = useState({})
-    let [userCache, setUserCache] = useState({})
+    let [accounts, setAccounts] = useState({});
+    let [messageCache, setMessageCache] = useState({});
+    let [userCache, setUserCache] = useState({});
     let [holiday, setHoliday] = useState("");
-    let [settings, setSettings] = useState(defaultSettings)
+    let [settings, setSettings] = useState(defaultSettings);
+    let [drafts, setDrafts] = useState({});
 
     useEffect(() => {
         async function loadConfigs() {
@@ -133,7 +134,8 @@ export function App(props) {
             music, setMusic, 
             accounts, setAccounts, 
             messageCache, setMessageCache,
-            userCache, setUserCache
+            userCache, setUserCache,
+            drafts, setDrafts
         }}>
             <SettingsContext.Provider value={{settings, setSettings}}>
                 <audio src={music} autoPlay={true} loop={true}></audio>

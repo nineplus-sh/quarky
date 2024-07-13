@@ -30,5 +30,5 @@ export default function DialogMessages() {
         document.querySelector("div[class^='_messages_']").lastChild?.scrollIntoView({"behavior": "smooth"});
     }, [dialogId, appContext.messageCache])
 
-    return messages.map((message) => <LightquarkMessage message={message} key={message.id} />)
+    return messages.map((message) => <LightquarkMessage message={message} channel={dialogId} key={message.id} />)
 }

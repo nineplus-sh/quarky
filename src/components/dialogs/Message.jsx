@@ -7,7 +7,7 @@ import TimeAgo from "react-timeago";
 import {SettingsContext} from "../../contexts/SettingsContext.js";
 import {useContext} from "react";
 
-export default function Message({children, avatar, username, content, isBot, botName, isDiscord, timestamp, edited, attachments}) {
+export default function Message({children, avatar, username, content, isBot, botName, isDiscord, timestamp, edited, attachments, replyTo}) {
     const {settings} = useContext(SettingsContext)
 
     return (<div className={styles.messagewrapper}>
