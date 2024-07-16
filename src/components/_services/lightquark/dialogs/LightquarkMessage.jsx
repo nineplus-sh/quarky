@@ -16,7 +16,5 @@ export default function LightquarkMessage({message, channel}) {
 
     return <Message username={author.username} timestamp={message.timestamp} edited={message.edited} attachments={<LightquarkAttachments attachments={message.attachments}/>}
                     avatar={<ProfilePicture src={author.avatarUri} isMessage={true}/>} content={message.content} isBot={noBotAuthor.isBot} botName={botMetadata ? noBotAuthor.username : null}
-                    isDiscord={clientAttributes?.quarkcord} replyTo={replyTo}>
-        {message.content}
-    </Message>
+                    isDiscord={clientAttributes?.quarkcord} replyTo={replyTo} />
 }
