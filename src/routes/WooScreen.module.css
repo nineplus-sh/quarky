@@ -1,0 +1,19 @@
+.wrapper {
+    margin: 2em;
+    display: flex;
+    flex-direction: column;
+    word-wrap: anywhere;
+    gap: 1em;
+}
+
+.title {
+    font-size: xxx-large;
+}
+.stopped {
+    font-size: x-large;
+}
+
+.buttons {
+    display: flex;
+    gap: 0.5em;
+}

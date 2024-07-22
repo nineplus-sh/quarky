@@ -4,6 +4,13 @@
     "LOADING_WEBSOCKET": "Connecting to network",
     "LOADING_GAMES": "Downloading game detection database",
 
+    "WOOSCREEN_TITLE": "Something went wrong.",
+    "WOOSCREEN_SUB": "An issue occurred that was not handled by Quarky, so Quarky has been stopped.",
+    "WOOSCREEN_FEEDBACK_PWEASE": "The issue was automatically reported to ninePLUS, but you can provide more information. Doing so will also allow us to e-mail you with updates.",
+    "WOOSCREEN_FEEDBACK_YIPPEE": "Provide more information",
+    "WOOSCREEN_FEEDBACK_AW": "Reload Quarky now",
+    "WOOSCREEN_FEEDBACK_TITLE": "Provide more information.",
+
     "QUARKY_DESCRIPTION_FIRST_TIME": "The world's silliest chat app. Developed by ninePLUS, built for the Lightquark messaging platform by 015.",
     "FIRST_TIME_MISSION": "Quarky is on a mission to bring back fun in chat apps. I believe that you should look forward to using software the next day, instead of dreading whatever the company will do next.",
     "FIRST_TIME_STANDOUT": "I am fully aware that many others have tried to do this, but they all fall short on the \"app\" portion. Let's do something about that. I'm not expecting to create an overnight banger, but if I inspire one person, I'll be satisfied.",

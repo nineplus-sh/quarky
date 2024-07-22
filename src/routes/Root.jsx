@@ -11,6 +11,7 @@ import {SettingsContext} from "../contexts/SettingsContext.js";
 import * as i18n from "i18next";
 import NiceModal from "@ebay/nice-modal-react";
 import NetworkOfflineModal from "../components/modals/NetworkOfflineModal.jsx";
+import WooScreen from "./WooScreen.jsx";
 
 /**
  * The root. Wraps later routes so that Nyafiles can be real.
@@ -22,9 +23,6 @@ export default function Root() {
     let {settings} = useContext(SettingsContext)
     const updateContext = useUnleashContext();
     const [loadingString, setLoadingString] = useState("LOADING_TRANSLATIONS");
-
-    const hakase = useFlag("Q2_HakaseBittanBittan");
-    const mio = useFlag("Q2_MioBittanBittan");
 
     useEffect(() => {
         async function loadNyafile() {
@@ -103,11 +101,5 @@ export default function Root() {
 
     if(appContext.loading) return <Loader loadingString={loadingString} />
 
-    return <Sentry.ErrorBoundary fallback={
-        <iframe src={`https://www.youtube-nocookie.com/embed/${
-            hakase ? "5wS9lOHli0c" :
-                mio ? "mXQb0P9A2jE" :
-                    "x6LovY_DdEE"
-        }?autoplay=1&rel=0&controls=0`} style={{position: "fixed", width: "100%", height: "100%"}} frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
-    } showDialog><Outlet /></Sentry.ErrorBoundary>
+    return <Sentry.ErrorBoundary fallback={<WooScreen/>}><Outlet /></Sentry.ErrorBoundary>
 }
