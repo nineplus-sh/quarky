@@ -8,14 +8,15 @@ import {useContext} from "react";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeExternalLinks from "rehype-external-links";
+import classnames from "classnames";
 
-export default function Message({children, avatar, username, content, isBot, botName, isDiscord, timestamp, edited, attachments, replyTo}) {
+export default function Message({children, avatar, username, content, isBot, botName, isDiscord, timestamp, edited, attachments, replyTo, isContinuation}) {
     const {settings} = useContext(SettingsContext)
 
-    return (<div className={styles.messagewrapper}>
-        {avatar}
+    return (<div className={classnames(styles.messagewrapper, {[styles.messagefollowup]: isContinuation})}>
+        {isContinuation ? null : avatar}
         <span className={styles.message}>
-            <span className={styles.usernameArea}><b>{username}</b> {isBot ? <BotTag name={botName} isDiscord={isDiscord} /> : ""} <TimeAgo className={styles.timestamp} date={timestamp} /></span>
+            {isContinuation ? null : <span className={styles.usernameArea}><b>{username}</b> {isBot ? <BotTag name={botName} isDiscord={isDiscord} /> : ""} <TimeAgo className={styles.timestamp} date={timestamp} /></span>}
 
             <span className={styles.messagecontent}>
                 {edited ? <div className={styles.edited}>edited</div> : null}

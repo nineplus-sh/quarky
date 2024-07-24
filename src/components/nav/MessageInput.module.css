@@ -1,0 +1,7 @@
+.messageForm {
+    height: 5vh;
+    display: flex;
+}
+.messageBox {
+    width: 100%;
+}

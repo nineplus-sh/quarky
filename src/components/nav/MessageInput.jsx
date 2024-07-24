@@ -1,12 +1,13 @@
 import {useParams} from "react-router-dom";
 import {useState} from "react";
 import LQ from "../../util/LQ.js";
+import styles from "./MessageInput.module.css"
 
 export default function MessageInput() {
     let { dialogId } = useParams();
     let [message, setMessage] = useState("");
 
-    return (<form onSubmit={async (e) => {
+    return (<form className={styles.messageForm} onSubmit={async (e) => {
         e.preventDefault();
         let wantedMessage = message;
         setMessage("");
@@ -17,7 +18,8 @@ export default function MessageInput() {
         await LQ(`channel/${dialogId}/messages`, "POST", formData)
         setMessage("")
     }}>
-        <input type={"text"} value={message} onInput={(e) => setMessage(e.target.value)} />
-        <input type={"submit"} />
+        <button type="button" disabled>Games</button>
+        <input type={"text"} value={message} onInput={(e) => setMessage(e.target.value)} className={styles.messageBox} />
+        <button type="button">GIFs</button>
     </form>)
 }

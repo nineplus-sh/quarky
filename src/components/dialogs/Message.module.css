@@ -5,6 +5,20 @@
     max-width: 90%;
 }
 
+.messagefollowup .message {
+    margin-left: 64px;
+}
+
+.messagefollowup .messagecontent {
+    margin-top: 0;
+}
+
+.messagefollowup .messagecontent:not(.NUHUH)::before {
+    top: -0.5em;
+    left: -0.45em;
+    transform: rotateZ(42deg);
+}
+
 .message {
     display: flex;
     flex-direction: column;
@@ -26,7 +40,7 @@
     white-space: pre-wrap;
 }
 
-.messagecontent::before {
+.messagecontent:not(.NUHUH)::before {
     content: "";
     background: var(--background-color-lesser);
 
@@ -43,6 +57,7 @@
     display: flex;
     align-items: center;
     height: 1.35em;
+    gap: 4px;
 }
 
 .timestamp {
