@@ -24,6 +24,7 @@ import LanguageDetector from "i18next-browser-languagedetector";
 import holidays from './util/holidays.json';
 import MainView from "./routes/MainView.jsx";
 import localForage from "localforage";
+import LQ from "./util/LQ.js";
 
 Sentry.init({
     dsn: "https://901c666ed03942d560e61928448bcf68@sentry.yggdrasil.cat/5",
@@ -125,7 +126,20 @@ export function App(props) {
         }
         loadConfigs();
     }, []);
-    
+
+    async function saveSettings(toBeWritten, cloud = true) {
+        setSettings({...settings, ...toBeWritten});
+        localForage.setItem("settings", {...settings, ...toBeWritten});
+
+        if(accounts.lightquark && cloud) {
+            Object.entries(toBeWritten).forEach(([key, value]) => {
+                LQ(`user/me/preferences/quarky/${key}`, "POST", {
+                    value: typeof value === "object" ? JSON.stringify(value) === {} ? null : JSON.stringify(value) : value
+                })
+            })
+        }
+    }
+
     return (
         <AppContext.Provider value={{
             loading, setLoading, holiday,
@@ -135,7 +149,7 @@ export function App(props) {
             messageCache, setMessageCache,
             userCache, setUserCache,
             drafts, setDrafts,
-            settings, setSettings
+            settings, setSettings, saveSettings
         }}>
             <audio src={music} autoPlay={true} loop={true}></audio>
             {translationsLoading ? null : props.children}

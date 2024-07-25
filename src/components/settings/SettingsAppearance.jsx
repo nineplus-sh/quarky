@@ -8,16 +8,13 @@ import localForage from "localforage";
 import {AppContext} from "../../contexts/AppContext.js";
 
 export default function SettingsAppearance() {
-    const {settings, setSettings} = useContext(AppContext);
+    const {settings, saveSettings} = useContext(AppContext);
     const {t} = useTranslation();
 
     async function transition(flag) {
-        setSettings({...settings, "PRIDE_FLAG": flag});
         document.documentElement.classList.remove(...availableFlags.map(flag => `pride-${flag}`)); // TODO: Make less clunky
         document.documentElement.classList.add(`pride-${flag}`);
-
-        const oldForage = await localForage.getItem("settings")
-        await localForage.setItem("settings", {...oldForage, "PRIDE_FLAG": flag});
+        saveSettings({"PRIDE_FLAG": flag});
     }
     return <>
         <div className={styles.prideSwitcher}>

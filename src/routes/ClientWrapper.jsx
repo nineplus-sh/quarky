@@ -1,6 +1,6 @@
 import {useContext, useEffect, useState} from "react";
 import {Outlet, useLocation, useNavigate} from "react-router-dom";
-import {AppContext} from "../contexts/AppContext.js";
+import {AppContext, defaultSettings} from "../contexts/AppContext.js";
 import LQ from "../util/LQ.js";
 import useWebSocket from "react-use-websocket";
 import localForage from "localforage";
@@ -21,7 +21,7 @@ export default function ClientWrapper() {
         setUserCache, 
         accounts, 
         setMessageCache,
-        settings} = useContext(AppContext)
+        settings, saveSettings} = useContext(AppContext)
     const {pathname} = useLocation();
     const [loadingString, setLoadingString] = useState("LOADING_WEBSOCKET");
 
@@ -73,6 +73,14 @@ export default function ClientWrapper() {
                         return structuredClone(p);
                     });
                     break;
+                case "preferenceUpdate":
+                    if(eventData.preference.namespace !== "quarky") return;
+                    saveSettings({[eventData.preference.key]:
+                            typeof defaultSettings[eventData.preference.key] === "object" ?
+                                JSON.parse(eventData.preference.value) :
+                                    eventData.preference.value
+                    }, false)
+                    break;
                 default:
                     //console.log("Well.. THAT just happened!", message.data)
             }
@@ -93,6 +101,16 @@ export default function ClientWrapper() {
             const network = await LQ("network"); // TODO: Add NetworkOfflineModal here as well
             setLqSockURL(network.raw.gateway)
         }
+
+        setLoadingString("LOADING_SETTINGS");
+        const grabbedSettings = (await LQ("user/me/preferences/quarky")).response.preferences;
+        Object.entries(grabbedSettings).forEach(([key, value]) => {
+            key = key.toUpperCase();
+            if(typeof defaultSettings[key] === "object") value = JSON.parse(value);
+            if(settings[key] !== value) saveSettings({
+                [key]: value
+            }, false)
+        })
 
         if(settings["GAME_ACTIVITY"] && window.hiddenside && window.hiddenside.hardcoreGaming && window.hiddenside.casualGaming) {
             setLoadingString("LOADING_GAMES");

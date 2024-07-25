@@ -4,7 +4,8 @@ export const defaultSettings = {
     "RICH_EMBEDS": true,
     "UWUSPEAK": false,
     "GAME_ACTIVITY": true,
-    "PRIDE_FLAG": "trans"
+    "PRIDE_FLAG": "trans",
+    "DRAFTS": {}
 }
 
 /**
