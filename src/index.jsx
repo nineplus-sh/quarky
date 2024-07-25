@@ -8,8 +8,7 @@ import {
     useNavigationType
 } from "react-router-dom";
 import './index.css'
-import {AppContext} from "./contexts/AppContext.js";
-import {defaultSettings, SettingsContext} from "./contexts/SettingsContext.js";
+import {AppContext, defaultSettings} from "./contexts/AppContext.js";
 import AuthenticationNeeded from "./routes/AuthenticationNeeded.jsx";
 import Root from "./routes/Root.jsx";
 import ClientWrapper from "./routes/ClientWrapper.jsx";
@@ -135,12 +134,11 @@ export function App(props) {
             accounts, setAccounts, 
             messageCache, setMessageCache,
             userCache, setUserCache,
-            drafts, setDrafts
+            drafts, setDrafts,
+            settings, setSettings
         }}>
-            <SettingsContext.Provider value={{settings, setSettings}}>
-                <audio src={music} autoPlay={true} loop={true}></audio>
-                {translationsLoading ? null : props.children}
-            </SettingsContext.Provider>
+            <audio src={music} autoPlay={true} loop={true}></audio>
+            {translationsLoading ? null : props.children}
         </AppContext.Provider>
     )
 }

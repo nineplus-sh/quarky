@@ -1,15 +1,14 @@
 import styles from "./SettingsAppearance.module.css";
 import loginStyles from "../modals/LoginModal.module.css"
-import {SettingsContext} from "../../contexts/SettingsContext.js";
 import {useContext, useState} from "react";
 import {useTranslation} from "react-i18next";
 import NyafileImage from "../nyafile/NyafileImage.jsx";
 import classnames from "classnames";
 import localForage from "localforage";
+import {AppContext} from "../../contexts/AppContext.js";
 
 export default function SettingsAppearance() {
-    const {settings, setSettings} = useContext(SettingsContext);
-    const [scrollDelta, setScrollDelta] = useState(0);
+    const {settings, setSettings} = useContext(AppContext);
     const {t} = useTranslation();
 
     async function transition(flag) {

@@ -6,7 +6,6 @@ import useWebSocket from "react-use-websocket";
 import localForage from "localforage";
 import styles from "./ClientWrapper.module.css";
 import Loader from "./Loader.jsx";
-import {SettingsContext} from "../contexts/SettingsContext.js";
 
 /**
  * The client screen.
@@ -21,10 +20,10 @@ export default function ClientWrapper() {
     const {userCache, 
         setUserCache, 
         accounts, 
-        setMessageCache} = useContext(AppContext)
+        setMessageCache,
+        settings} = useContext(AppContext)
     const {pathname} = useLocation();
     const [loadingString, setLoadingString] = useState("LOADING_WEBSOCKET");
-    const {settings} = useContext(SettingsContext)
 
     const lqSock = useWebSocket(lqSockURL, {
         onMessage: (message) => {

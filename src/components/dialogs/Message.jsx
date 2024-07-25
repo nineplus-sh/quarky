@@ -2,16 +2,16 @@ import styles from "./Message.module.css";
 import * as linkify from "linkifyjs";
 import RichEmbed, {badLinks} from "./RichEmbed.jsx";
 import BotTag from "./BotTag.jsx";
-import TimeAgo from "react-timeago";
-import {SettingsContext} from "../../contexts/SettingsContext.js";
+import TimeAgo from "react-timeago"
 import {useContext} from "react";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeExternalLinks from "rehype-external-links";
 import classnames from "classnames";
+import {AppContext} from "../../contexts/AppContext.js";
 
 export default function Message({children, avatar, username, content, isBot, botName, isDiscord, timestamp, edited, attachments, replyTo, isContinuation}) {
-    const {settings} = useContext(SettingsContext)
+    const {settings} = useContext(AppContext)
 
     return (<div className={classnames(styles.messagewrapper, {[styles.messagefollowup]: isContinuation})}>
         {isContinuation ? null : avatar}

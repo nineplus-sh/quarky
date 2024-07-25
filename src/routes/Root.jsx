@@ -7,7 +7,6 @@ import * as Sentry from "@sentry/react";
 import LQ from "../util/LQ.js";
 import localForage from "localforage";
 import {useFlag, useUnleashContext} from '@unleash/proxy-client-react';
-import {SettingsContext} from "../contexts/SettingsContext.js";
 import * as i18n from "i18next";
 import NiceModal from "@ebay/nice-modal-react";
 import NetworkOfflineModal from "../components/modals/NetworkOfflineModal.jsx";
@@ -20,7 +19,6 @@ import WooScreen from "./WooScreen.jsx";
  */
 export default function Root() {
     let appContext = useContext(AppContext);
-    let {settings} = useContext(SettingsContext)
     const updateContext = useUnleashContext();
     const [loadingString, setLoadingString] = useState("LOADING_TRANSLATIONS");
 
@@ -38,7 +36,7 @@ export default function Root() {
                 document.documentElement.classList.add(`theme-${e.matches ? "dark" : "light"}`);
             })
 
-            document.documentElement.classList.add(`pride-${settings.PRIDE_FLAG}`);
+            document.documentElement.classList.add(`pride-${appContext.settings.PRIDE_FLAG}`);
 
             setLoadingString("LOADING_NYAFILE");
 
@@ -96,8 +94,8 @@ export default function Root() {
     }, []);
 
     useEffect(() => {
-        i18n.changeLanguage(settings.LANGUAGE)
-    }, [settings.LANGUAGE])
+        i18n.changeLanguage(appContext.settings.LANGUAGE)
+    }, [appContext.settings.LANGUAGE])
 
     if(appContext.loading) return <Loader loadingString={loadingString} />
 

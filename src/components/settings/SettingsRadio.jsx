@@ -3,12 +3,12 @@ import {useTranslation} from "react-i18next";
 import styles from "./SettingsRadio.module.css";
 import localForage from "localforage";
 import {useContext} from "react";
-import {SettingsContext} from "../../contexts/SettingsContext.js";
 import classnames from "classnames";
+import {AppContext} from "../../contexts/AppContext.js";
 
 export default function SettingsRadio({setting, icon, externalIcon, value, text}) {
     const {t} = useTranslation();
-    const {settings, setSettings} = useContext(SettingsContext);
+    const {settings, setSettings} = useContext(AppContext);
 
     async function changeSetting() {
         setSettings({...settings, [setting]: value});

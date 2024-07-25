@@ -1,17 +1,17 @@
 import {createContext} from "react";
 
-
-/*type AppContextType = {
-    loading: boolean,
-    setLoading: Dispatch<SetStateAction<boolean>>,
-    nyafile: JSZipObject,
-    setNyafile: Dispatch<SetStateAction<JSZipObject>>
-}*/
+export const defaultSettings = {
+    "RICH_EMBEDS": true,
+    "UWUSPEAK": false,
+    "GAME_ACTIVITY": true,
+    "PRIDE_FLAG": "trans"
+}
 
 /**
  * The app context.
  */
 export const AppContext = createContext({
     /** @type {import("@litdevs/nyalib").default} **/
-    nyafile: null
+    nyafile: null,
+    settings: defaultSettings
 });

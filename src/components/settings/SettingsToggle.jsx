@@ -1,13 +1,11 @@
 import {useContext} from "react";
-import {SettingsContext} from "../../contexts/SettingsContext.js";
 import NyafileImage from "../nyafile/NyafileImage.jsx";
 import styles from "./SettingsToggle.module.css"
 import localForage from "localforage";
 import {AppContext} from "../../contexts/AppContext.js";
 
 export default function SettingsToggle({setting}) {
-    const {settings, setSettings} = useContext(SettingsContext);
-    const {nyafile} = useContext(AppContext);
+    const {settings, setSettings, nyafile} = useContext(AppContext);
 
     async function changeSetting() {
         setSettings({...settings, [setting]: !settings[setting]});

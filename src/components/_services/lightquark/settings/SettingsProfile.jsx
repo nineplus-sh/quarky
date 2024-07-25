@@ -5,7 +5,6 @@ import LQ from "../../../../util/LQ.js";
 import styles from "./SettingsProfile.module.css"
 import NyafileImage from "../../../nyafile/NyafileImage.jsx";
 import classnames from "classnames";
-import {SettingsContext} from "../../../../contexts/SettingsContext.js";
 
 export default function SettingsProfile() {
     const appContext = useContext(AppContext);

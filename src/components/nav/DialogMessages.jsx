@@ -38,7 +38,7 @@ export default function DialogMessages() {
 
             const botMetadata = message.specialAttributes?.find(attr => attr.type === "botMessage");
             const prevBotMetadata = prevMessage.specialAttributes?.find(attr => attr.type === "botMessage");
-            const irregularData = (botMetadata && !prevBotMetadata) || (!botMetadata && prevBotMetadata);
+            const irregularData = !!botMetadata !== !!prevBotMetadata;
             if(irregularData) {
                 sameAuthor = false;
             } else if(botMetadata && prevBotMetadata) {
