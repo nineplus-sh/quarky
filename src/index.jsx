@@ -134,7 +134,7 @@ export function App(props) {
         if(accounts.lightquark && cloud) {
             Object.entries(toBeWritten).forEach(([key, value]) => {
                 LQ(`user/me/preferences/quarky/${key}`, "POST", {
-                    value: typeof value === "object" ? JSON.stringify(value) === {} ? null : JSON.stringify(value) : value
+                    value: typeof value === "object" ? Object.values(value).filter(vvalue => vvalue !== undefined).length === 0 ? null : JSON.stringify(value) : value
                 })
             })
         }
