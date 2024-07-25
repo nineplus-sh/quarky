@@ -33,12 +33,18 @@ export default function DialogMessages() {
     return messages.map((message, index) => {
         let sameAuthor = false;
         if(index > 0){
-            let botMetadata = message.specialAttributes?.find(attr => attr.type === "botMessage");
-            let prevBotMetadata = messages[index-1].specialAttributes?.find(attr => attr.type === "botMessage");
-            if(botMetadata && prevBotMetadata) {
+            const prevMessage = messages[index-1];
+            const literalSameAuthor = prevMessage.author._id === message.author._id;
+
+            const botMetadata = message.specialAttributes?.find(attr => attr.type === "botMessage");
+            const prevBotMetadata = prevMessage.specialAttributes?.find(attr => attr.type === "botMessage");
+            const irregularData = (botMetadata && !prevBotMetadata) || (!botMetadata && prevBotMetadata);
+            if(irregularData) {
+                sameAuthor = false;
+            } else if(botMetadata && prevBotMetadata) {
                 sameAuthor = botMetadata.username === prevBotMetadata.username;
             } else {
-                sameAuthor = messages[index-1].author._id === message.author._id;
+                sameAuthor = literalSameAuthor;
             }
         }
         return <LightquarkMessage message={message} channel={dialogId} isContinuation={sameAuthor} key={message.id} />
