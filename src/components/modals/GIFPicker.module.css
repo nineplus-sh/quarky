@@ -1,0 +1,23 @@
+.gifpickwrap {
+    background-color: var(--background-color-lesser);
+    width: 25vw;
+    height: 50vh;
+
+    padding: 1em;
+    overflow-y: scroll;
+}
+
+.searchArea {
+    display: flex;
+    margin-bottom: 0.5em;
+    gap: 1em;
+}
+.searchbar {
+    flex-grow: 2;
+}
+
+.gifs img {
+    cursor: pointer;
+    border-radius: 5px;
+    width: 100%;
+}

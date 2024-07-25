@@ -10,7 +10,7 @@ export default function LightquarkMessage({message, channel, isContinuation}) {
 
     const {userCache, messageCache} = useContext(AppContext);
     const replyId = message.specialAttributes?.find(attr => attr.type === "reply")?.replyTo;
-    const replyTo = replyId ? messageCache[channel].find(m => m._id === replyId) : null;
+    const replyTo = replyId ? messageCache[channel]?.find(m => m._id === replyId) : null;
     const noBotAuthor = userCache[message.author._id] || message.author;
     const author = botMetadata || noBotAuthor;
 

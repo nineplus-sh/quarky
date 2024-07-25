@@ -1,8 +1,13 @@
 import {useEffect, useRef, useState} from "react";
 import styles from "./RichEmbed.module.css";
+import attachStyles from "../_services/lightquark/dialogs/LightquarkAttachments.module.css";
+
+let tenor = /https?:\/\/tenor\.com\/view\/[a-z-]*(\d*)/
+export let badLinks = /https?:\/\/tenor\.com\/view\/[a-z-]*\d*/g
 
 export default function RichEmbed({url}) {
     const [embedHeight, setEmbedHeight] = useState(0);
+    const [imageSource, setImageSource] = useState(null);
     const ourFrame = useRef(null);
     useEffect(() => {
         const iframeEventHandler = (estrogen) => {
@@ -21,7 +26,18 @@ export default function RichEmbed({url}) {
             }
         }
 
-        window.addEventListener('message', iframeEventHandler)
+        async function getTenor() {
+            if(!url.startsWith('http')) return;
+            const urlWrap = new URL(url);
+            const tenorID = urlWrap.href.match(tenor)
+            if(tenorID) {
+                const results = await fetch(`https://tenor.googleapis.com/v2/posts?ids=${tenorID[1]}&key=${import.meta.env.VITE_TENOR}&media_filter=gif`).then(res => res.json())
+                setImageSource(results.results[0].media_formats.gif.url);
+            }
+        }
+
+        window.addEventListener('message', iframeEventHandler);getTenor();
+
         return () => window.removeEventListener('message', iframeEventHandler)
     }, [])
 
@@ -69,5 +85,9 @@ export default function RichEmbed({url}) {
     let lichessGame = urlWrap.href.match(/https?:\/\/lichess\.org\/([a-zA-Z0-9]{8})(\/black|\/white|)(#\d+|)/)
     if (lichessGame) {
         return <iframe className={styles.richEmbed} title="Embedded Lichess game" width="600" height="351" src={`https://lichess.org/embed/game/${lichessGame[1]}${lichessGame[2]}?pieceSet=horsey&theme=canvas${lichessGame[3] || ""}`}></iframe>
+    }
+
+    if (imageSource) {
+        return <div className={attachStyles.attachment}><img src={imageSource} className={styles.richEmbed}/></div>
     }
 }
