@@ -76,9 +76,11 @@ export default function ClientWrapper() {
                 case "preferenceUpdate":
                     if(eventData.preference.namespace !== "quarky") return;
                     saveSettings({[eventData.preference.key]:
-                            typeof defaultSettings[eventData.preference.key] === "object" ?
-                                JSON.parse(eventData.preference.value) :
-                                    eventData.preference.value
+                            eventData.preference.value ?
+                                typeof defaultSettings[eventData.preference.key] === "object" ?
+                                    JSON.parse(eventData.preference.value) :
+                                        eventData.preference.value
+                            : defaultSettings[eventData.preference.key]
                     }, false)
                     break;
                 default:

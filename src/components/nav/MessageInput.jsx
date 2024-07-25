@@ -34,6 +34,7 @@ export default function MessageInput() {
         if(typingTimeout) clearTimeout(typingTimeout);
         setTypingTimeout(setTimeout(() => {
             if(message === settings.DRAFTS[dialogId]?.content) return;
+            if(message === "" && !settings.DRAFTS[dialogId]) return;
             saveSettings({
                 DRAFTS: {
                     ...settings.DRAFTS,
