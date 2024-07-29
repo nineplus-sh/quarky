@@ -34,7 +34,7 @@ export default NiceModal.create(() =>{
                     <p style={{marginTop: 0}}>{t("JOIN_QUARK_BODY")}</p>
 
                     <form onSubmit={(e) => joinQuark(e)}><fieldset disabled={isJoining}>
-                            <input type={"text"} placeholder={"litdevs"} onChange={e => setInviteCode(e.target.value)}/>
+                            <input type={"text"} required placeholder={"litdevs"} value={inviteCode} onChange={e => setInviteCode(e.target.value)}/>
                             <input type={"submit"}/>
                     </fieldset></form>
                 </div>

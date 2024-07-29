@@ -4,8 +4,10 @@ import LQ from "../../util/LQ.js";
 import styles from "./MessageInput.module.css"
 import {autoUpdate, useClick, useFloating, useInteractions} from "@floating-ui/react";
 import GIFPicker from "../modals/GIFPicker.jsx";
-import NiceModal from "@ebay/nice-modal-react";
 import {AppContext} from "../../contexts/AppContext.js";
+import NiceModal from "@ebay/nice-modal-react";
+import GameModal from "../modals/GameModal.jsx";
+import GameLaunchModal from "../modals/GameLaunchModal.jsx";
 
 export default function MessageInput() {
     let { dialogId } = useParams();
@@ -52,7 +54,10 @@ export default function MessageInput() {
         setMessage("");
 
         const formData = new FormData();
-        formData.append("payload", JSON.stringify({content: wantedMessage}));
+        formData.append("payload", JSON.stringify({
+            ...(settings.DRAFTS[dialogId] || {}),
+            content: wantedMessage,
+        }));
 
         await LQ(`channel/${dialogId}/messages`, "POST", formData)
         setMessage("")
@@ -63,7 +68,7 @@ export default function MessageInput() {
             }
         })
     }}>
-        <button type="button" disabled>Games</button>
+        <button type="button" onClick={() => NiceModal.show(GameLaunchModal, {arena: {id: dialogId}})}>Games</button>
         <input type={"text"} value={message} onInput={(e) => setMessage(e.target.value)} className={styles.messageBox} />
         <button type="button" ref={gifFloat.refs.setReference} {...gifInteractions.getReferenceProps()}>GIFs</button>
 

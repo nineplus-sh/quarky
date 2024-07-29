@@ -1,0 +1,13 @@
+.gameModal {
+    padding: 0;
+    max-width: fit-content;
+    border-radius: 0;
+}
+
+.gameModalDefault {
+    max-width: 80vw;
+}
+.gameModalDefault iframe {
+    width: 80vw;
+    height: 80vh;
+}

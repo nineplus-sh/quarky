@@ -6,7 +6,7 @@ import LQ from "../../util/LQ.js";
 
 export default function DialogMessages() {
     const appContext = useContext(AppContext);
-    let { dialogId } = useParams();
+    let { quarkId, dialogId } = useParams();
     const [messages, setMessages] = useState([])
 
     useEffect(() => {
@@ -47,6 +47,6 @@ export default function DialogMessages() {
                 sameAuthor = literalSameAuthor;
             }
         }
-        return <LightquarkMessage message={message} channel={dialogId} isContinuation={sameAuthor} key={message.id} />
+        return <LightquarkMessage message={message} channel={dialogId} quark={quarkId.split("lq_")[1]} isContinuation={sameAuthor} key={message.id} />
     })
 }

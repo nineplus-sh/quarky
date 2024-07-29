@@ -1,5 +1,6 @@
 {
   "monday": ["HOLIDAY_MONDAY"],
+  "tuesday": ["HOLIDAY_TUMMY"],
   "wednesday": ["HOLIDAY_WURMPLE"],
   "thursday": ["HOLIDAY_OOTT"],
   "sunday": ["HOLIDAY_STROGANOFF"],
@@ -26,6 +27,7 @@
   "08-08": ["HOLIDAY_CAT_INTERNATIONAL"],
   "08-30": ["HOLIDAY_BDAY_HAZEL"],
   "09-09": ["HOLIDAY_CIRNO"],
+  "11-07": ["HOLIDAY_KLADDKAKA"],
   "11-11": ["HOLIDAY_POCKY"],
   "12-03": ["HOLIDAY_BDAY_QUARKY"]
 }

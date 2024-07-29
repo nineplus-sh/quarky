@@ -10,7 +10,7 @@ import rehypeExternalLinks from "rehype-external-links";
 import classnames from "classnames";
 import {AppContext} from "../../contexts/AppContext.js";
 
-export default function Message({children, avatar, username, content, isBot, botName, isDiscord, timestamp, edited, attachments, replyTo, isContinuation}) {
+export default function Message({children, avatar, username, content, isBot, botName, isDiscord, timestamp, edited, attachments, replyTo, isContinuation, game}) {
     const {settings} = useContext(AppContext)
 
     return (<div className={classnames(styles.messagewrapper, {[styles.messagefollowup]: isContinuation})}>
@@ -25,6 +25,7 @@ export default function Message({children, avatar, username, content, isBot, bot
                 </Markdown>
                 {settings["RICH_EMBEDS"] ? linkify.find(content).map(link => <RichEmbed url={link.value}/>) : null}
                 {attachments}
+                {game}
             </span>
         </span>
     </div>)

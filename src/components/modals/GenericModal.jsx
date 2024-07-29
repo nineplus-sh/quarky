@@ -9,7 +9,7 @@ import classnames from "classnames";
  * @returns {JSX.Element}
  * @constructor
  */
-export default function GenericModal({classNames = [], overlayClassNames = [], children, modal, allowNonEventClose = true}) {
+export default function GenericModal({classNames = "", overlayClassNames = "", children, modal, allowNonEventClose = true}) {
     const appContext = useContext(AppContext);
     const firstUpdate = useRef(true)
 
@@ -21,7 +21,7 @@ export default function GenericModal({classNames = [], overlayClassNames = [], c
     }, [modal.visible]);
 
     return (
-        <Modal className={classnames(styles.genericModalContent, ...classNames)} overlayClassName={classnames(styles.genericModalOverlay, ...overlayClassNames)} appElement={document.querySelector("#root")} isOpen={modal.visible} closeTimeoutMS={300} shouldCloseOnOverlayClick={allowNonEventClose} onRequestClose={allowNonEventClose ? () => modal.hide() : null}>
+        <Modal className={classnames(styles.genericModalContent, classNames)} overlayClassName={classnames(styles.genericModalOverlay, overlayClassNames)} appElement={document.querySelector("#root")} isOpen={modal.visible} closeTimeoutMS={300} shouldCloseOnOverlayClick={allowNonEventClose} onRequestClose={allowNonEventClose ? () => modal.hide() : null}>
             {children}
         </Modal>
     )
