@@ -5,7 +5,7 @@
   ],
   "rewrites": [
     { "source": "/(.*)", "destination": "/" }
-  ]
+  ],
   "headers": [{
     "source": "/(.*)",
     "headers": [{
