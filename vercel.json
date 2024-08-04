@@ -11,7 +11,7 @@
       "value": "https://www.nineplus.sh/legal/tdm.json"
     }, {
       "key": "tdm-reservation",
-      "value": 1
+      "value": "1"
     }, {
       "key": "x-robots-tag",
       "value": "noai"
