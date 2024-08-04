@@ -7,7 +7,7 @@
   "headers": [{
     "source": "/(.*)",
     "headers": [{
-      "key": "tdm-policy"
+      "key": "tdm-policy",
       "value": "https://www.nineplus.sh/legal/tdm.json"
     }, {
       "key": "tdm-reservation",
