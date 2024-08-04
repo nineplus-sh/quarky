@@ -1,8 +1,8 @@
 {
-  "routes": [
-    { "src": "/.well-known/tdmrep.json", "dest": "https://nineplus.sh/.well-known/tdmrep.json", "status": 200 },
-    { "src": "/robots.txt", "dest": "https://www.nineplus.sh/robots.txt", "status": 200 },
-    { "src": "/[^.]+", "dest": "/", "status": 200 }
+  "redirects": [
+    { "source": "/.well-known/tdmrep.json", "destination": "https://nineplus.sh/.well-known/tdmrep.json" },
+    { "source": "/robots.txt", "destination": "https://www.nineplus.sh/robots.txt" },
+    { "source": "/[^.]+", "destination": "/" }
   ],
   "headers": [{
     "source": "/(.*)",
