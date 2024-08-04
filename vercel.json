@@ -1,3 +1,20 @@
 {
-  "routes": [{ "src": "/[^.]+", "dest": "/", "status": 200 }]
+  "routes": [
+    { "src": "/.well-known/tdmrep.json", "dest": "https://nineplus.sh/.well-known/tdmrep.json", "status": 200 }
+    { "src": "/robots.txt", "dest": "https://www.nineplus.sh/robots.txt", "status": 200 }
+    { "src": "/[^.]+", "dest": "/", "status": 200 }
+  ]
+  "headers": [{
+    "source": "/(.*)",
+    "headers": [{
+      "key": "tdm-policy"
+      "value": "https://www.nineplus.sh/legal/tdm.json",
+    }, {
+      "key": "tdm-reservation",
+      "value": 1
+    }, {
+      "key": "x-robots-tag",
+      "value": "noai"
+    }]
+  }]
 }
