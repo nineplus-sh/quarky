@@ -1,7 +1,7 @@
 {
   "redirects": [
     { "source": "/.well-known/tdmrep.json", "destination": "https://nineplus.sh/.well-known/tdmrep.json" },
-    { "source": "/robots.txt", "destination": "https://www.nineplus.sh/robots.txt" },
+    { "source": "/robots.txt", "destination": "https://www.nineplus.sh/robots.txt" }
   ],
   "rewrites": [
     { "source": "/(.*)", "destination": "/" }
