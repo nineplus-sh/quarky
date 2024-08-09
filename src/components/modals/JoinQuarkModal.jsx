@@ -30,7 +30,7 @@ export default NiceModal.create(() =>{
         e.preventDefault();
         setIsJoining(true);
 
-        await LQ("quark", "POST", {name: createName, code: createCode});
+        await LQ("quark", "POST", {name: createName, ...(createCode && { invite: createCode })});
         modal.hide();
     }
 
@@ -58,7 +58,7 @@ export default NiceModal.create(() =>{
                             <fieldset disabled={isJoining}>
                                 <input type={"text"} required placeholder={"Quark name"} value={createName}
                                        onChange={e => setCreateName(e.target.value)}/>
-                                <input type={"text"} required placeholder={"Invite code"} value={createCode}
+                                <input type={"text"} placeholder={"Invite code (optional)"} value={createCode}
                                        onChange={e => setCreateCode(e.target.value)}/>
                                 <input type={"submit"}/>
                             </fieldset>
