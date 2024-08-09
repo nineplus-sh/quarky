@@ -1,5 +1,9 @@
-import {Link} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
+import classnames from "classnames";
+import styles from "./LightquarkChannel.module.css";
 
 export default function LightquarkChannel({channel, quarkId}) {
-    return <div><Link to={`/lq_${quarkId}/${channel._id}`}>{channel.name}</Link></div>
+    const {dialogId} = useParams();
+
+    return <Link to={`/lq_${quarkId}/${channel._id}`} className={classnames(styles.channel, {[styles.active]: channel._id === dialogId})}>{channel.name}</Link>
 }
