@@ -51,6 +51,9 @@
 
     "JOIN_QUARK": "Join a quark!",
     "JOIN_QUARK_BODY": "Type in the quark's invite code to join it.",
+    "LEAVE_QUARK": "Leave",
+    "LEAVE_QUARK_CONFIRM": "Are you sure you want to leave {{name}}?",
+    "MANAGE_QUARK": "Manage",
 
     "SUPPORT_BUTTON": "Support",
     "CREDITS_BUTTON": "Acknowledgements",

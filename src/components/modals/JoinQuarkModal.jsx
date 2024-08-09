@@ -22,7 +22,8 @@ export default NiceModal.create(() =>{
         e.preventDefault();
         setIsJoining(true);
 
-        await LQ(`quark/${inviteCode}/join`, "POST", {"invite": inviteCode});
+        const join = await LQ(`quark/${inviteCode}/join`, "POST", {"invite": inviteCode});
+        console.log(join)
         modal.hide();
     }
 
