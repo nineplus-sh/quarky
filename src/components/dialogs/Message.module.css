@@ -40,7 +40,15 @@
     white-space: pre-wrap;
 }
 
-.messagecontent:not(.NUHUH)::before {
+.messagediting .messagecontent {
+    background-color: transparent;
+    outline: 2px var(--background-color-lesser) dashed;
+}
+.messagediting .messagecontent::before {
+    background-color: transparent;
+}
+
+.messagecontent::before {
     content: "";
     background: var(--background-color-lesser);
 
