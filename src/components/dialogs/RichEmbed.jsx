@@ -3,7 +3,8 @@ import styles from "./RichEmbed.module.css";
 import attachStyles from "../_services/lightquark/dialogs/LightquarkAttachments.module.css";
 
 let tenor = /https?:\/\/tenor\.com\/view\/[a-z-]*(\d*)/
-export let badLinks = /https?:\/\/tenor\.com\/view\/[a-z-]*\d*/g
+export let badLinks = /(?:https?:\/\/tenor\.com\/view\/[a-z-]*\d*|https?:\/\/(?:huh\.nya\.tf|wanderers\.cloud)\/file\/.+)/g
+export let imageHosts = /https?:\/\/(?:huh\.nya\.tf|wanderers\.cloud)\/file\/.+/;
 
 export default function RichEmbed({url}) {
     const [embedHeight, setEmbedHeight] = useState(0);
@@ -44,6 +45,8 @@ export default function RichEmbed({url}) {
     if(!url.startsWith('http')) return;
 
     const urlWrap = new URL(url);
+
+    if(urlWrap.href.match(imageHosts) && imageSource === null) setImageSource(urlWrap.href);
 
     let tumblr;
     if(!tumblr) tumblr = urlWrap.href.match(/https?:\/\/([\w-]+)\.tumblr\.com\/post\/(\d+)/);

@@ -27,7 +27,7 @@ export default function MessageInput() {
     const gifInteractions = useInteractions([gifClick]);
 
     useEffect(() => {
-        if (settings.DRAFTS[dialogId]) setMessage(settings.DRAFTS[dialogId].content);
+        if (settings.DRAFTS[dialogId] && message === "") setMessage(settings.DRAFTS[dialogId].content);
     }, [dialogId, settings.DRAFTS]);
     useEffect(() => {
         if (!settings.DRAFTS[dialogId]) setMessage("");
@@ -70,8 +70,7 @@ export default function MessageInput() {
     }}>
         <button type="button" onClick={() => NiceModal.show(GameLaunchModal, {arena: {id: dialogId}})}>Games</button>
         <input type={"text"} value={message} onInput={(e) => setMessage(e.target.value)} className={styles.messageBox} />
-        <button type="button" ref={gifFloat.refs.setReference} {...gifInteractions.getReferenceProps()}>GIFs</button>
-
+        <button type="button" ref={gifFloat.refs.setReference} {...gifInteractions.getReferenceProps()}>GIFs</button>p
         {gifOpen ? <GIFPicker floatRef={gifFloat.refs.setFloating} floatStyles={gifFloat.floatingStyles} floatProps={gifInteractions.getFloatingProps()} setOpen={setGifOpen}/> : null}
     </form>)
 }
