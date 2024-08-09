@@ -17,13 +17,22 @@ export default NiceModal.create(() =>{
     const [tab, switchTab] = useState("join");
     const [createName, setCreateName] = useState("");
     const [createCode, setCreateCode] = useState("");
+    const {quarkCache, setQuarkCache, quarkList, setQuarkList} = useContext(AppContext);
 
     async function joinQuark(e) {
         e.preventDefault();
         setIsJoining(true);
 
         const join = await LQ(`quark/${inviteCode}/join`, "POST", {"invite": inviteCode});
-        console.log(join)
+        if(join.statusCode === 200) {
+            setQuarkCache({
+                ...quarkCache,
+                [join.response.quark._id]: join.response.quark
+            })
+            setQuarkList([...quarkList, join.response.quark._id])
+        } else {
+            alert("Failed to join the quark.")
+        }
         modal.hide();
     }
 
@@ -31,7 +40,16 @@ export default NiceModal.create(() =>{
         e.preventDefault();
         setIsJoining(true);
 
-        await LQ("quark", "POST", {name: createName, ...(createCode && { invite: createCode })});
+        const created = await LQ("quark", "POST", {name: createName, ...(createCode && { invite: createCode })});
+        if(created.statusCode === 201) {
+            setQuarkCache({
+                ...quarkCache,
+                [created.response.quark._id]: created.response.quark
+            })
+            setQuarkList([...quarkList, created.response.quark._id])
+        } else {
+            alert("Failed to create the quark.")
+        }
         modal.hide();
     }
 
