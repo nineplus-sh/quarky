@@ -4,6 +4,7 @@
     "LOADING_WEBSOCKET": "Connecting to network",
     "LOADING_GAMES": "Downloading game detection database",
     "LOADING_SETTINGS": "Updating settings",
+    "LOADING_QUARKS": "Quarking quarks",
 
     "WOOSCREEN_TITLE": "Something went wrong.",
     "WOOSCREEN_SUB": "An issue occurred that was not handled by Quarky, so Quarky has been stopped.",

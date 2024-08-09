@@ -1,16 +1,8 @@
 import Quark from "./Quark.jsx";
-import {useEffect, useState} from "react";
-import LQ from "../../../../util/LQ.js";
+import {useContext, useEffect, useState} from "react";
+import {AppContext} from "../../../../contexts/AppContext.js";
 
 export default function QuarkList() {
-    const [quarks, setQuarks] = useState([])
-
-    useEffect(() => {
-        (async () => {
-            const LQquarks = (await LQ("quark")).response.quarks;
-            setQuarks(LQquarks)
-        })()
-    }, [])
-
-    return quarks.map((quark) => <Quark quark={quark} key={quark._id}/>)
+    const {quarkList, quarkCache} = useContext(AppContext);
+    return quarkList.map((quarkId) => <Quark quark={quarkCache[quarkId]} key={quarkId}/>)
 }

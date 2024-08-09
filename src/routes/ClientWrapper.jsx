@@ -17,11 +17,11 @@ export default function ClientWrapper() {
     const [lqSockURL, setLqSockURL] = useState(null);
     const [heartbeatMessage] = useState("*gurgles*");
     const navigate = useNavigate();
-    const {userCache, 
-        setUserCache, 
+    const {userCache, setUserCache,
         accounts, 
         setMessageCache,
-        settings, saveSettings} = useContext(AppContext)
+        settings, saveSettings,
+        setQuarkCache, setQuarkList} = useContext(AppContext)
     const {pathname} = useLocation();
     const [loadingString, setLoadingString] = useState("LOADING_WEBSOCKET");
 
@@ -113,6 +113,11 @@ export default function ClientWrapper() {
                 [key]: value
             }, false)
         })
+
+        setLoadingString("LOADING_QUARKS");
+        const urQuarkList = (await LQ("quark")).response.quarks;
+        setQuarkCache(Object.fromEntries(urQuarkList.map(quark => [quark._id, quark])));
+        setQuarkList(urQuarkList.map(quark => quark._id));
 
         if(settings["GAME_ACTIVITY"] && window.hiddenside && window.hiddenside.hardcoreGaming && window.hiddenside.casualGaming) {
             setLoadingString("LOADING_GAMES");

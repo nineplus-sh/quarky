@@ -78,6 +78,8 @@ export function App(props) {
     let [holiday, setHoliday] = useState("");
     let [settings, setSettings] = useState(defaultSettings);
     let [drafts, setDrafts] = useState({});
+    let [quarkCache, setQuarkCache] = useState({});
+    let [quarkList, setQuarkList] = useState([]);
 
     useEffect(() => {
         async function loadConfigs() {
@@ -149,7 +151,8 @@ export function App(props) {
             messageCache, setMessageCache,
             userCache, setUserCache,
             drafts, setDrafts,
-            settings, setSettings, saveSettings
+            settings, setSettings, saveSettings,
+            quarkCache, setQuarkCache, quarkList, setQuarkList
         }}>
             <audio src={music} autoPlay={true} loop={true}></audio>
             {translationsLoading ? null : props.children}
