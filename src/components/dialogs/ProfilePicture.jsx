@@ -1,5 +1,5 @@
 import styles from "./ProfilePicture.module.css"
-import {AppContext} from "../contexts/AppContext.js";
+import {AppContext} from "../../contexts/AppContext.js";
 import {useContext, useEffect, useState} from "react";
 import classnames from "classnames";
 

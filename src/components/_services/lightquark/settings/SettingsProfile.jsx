@@ -1,4 +1,4 @@
-import ProfilePicture from "../../../ProfilePicture.jsx";
+import ProfilePicture from "../../../dialogs/ProfilePicture.jsx";
 import {useContext, useState} from "react";
 import {AppContext} from "../../../../contexts/AppContext.js";
 import LQ from "../../../../util/LQ.js";

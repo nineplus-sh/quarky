@@ -1,6 +1,6 @@
 import SettingsToggleBox from "./SettingsToggleBox.jsx";
 import Message from "../dialogs/Message.jsx";
-import ProfilePicture from "../ProfilePicture.jsx";
+import ProfilePicture from "../dialogs/ProfilePicture.jsx";
 import {useContext, useMemo} from "react";
 import {AppContext} from "../../contexts/AppContext.js";
 import {useTranslation} from "react-i18next";

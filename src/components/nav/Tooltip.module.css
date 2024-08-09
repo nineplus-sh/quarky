@@ -1,0 +1,16 @@
+.tooltip {
+    padding: 0.5em;
+    background-color: var(--accent-color);
+    border-radius: 5px;
+
+    animation: tooltipShow 0.5s;
+}
+
+@keyframes tooltipShow {
+    from {
+        transform: rotateX(0deg) scale(0);
+    }
+    to {
+        transform: rotateX(360deg) scale(1);
+    }
+}

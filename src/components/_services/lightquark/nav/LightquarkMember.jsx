@@ -1,4 +1,4 @@
-import ProfilePicture from "../../../ProfilePicture.jsx";
+import ProfilePicture from "../../../dialogs/ProfilePicture.jsx";
 import styles from "./LightquarkMember.module.css";
 import {useContext} from "react";
 import NiceModal from "@ebay/nice-modal-react";

@@ -1,7 +1,7 @@
 import GenericModal from "../../../modals/GenericModal.jsx";
 import {useTranslation} from "react-i18next";
 import NiceModal, {useModal} from "@ebay/nice-modal-react";
-import ProfilePicture from "../../../ProfilePicture.jsx";
+import ProfilePicture from "../../../dialogs/ProfilePicture.jsx";
 import styles from "./UserPopoutModal.module.css";
 import TimeAgo from "react-timeago";
 import {AppContext} from "../../../../contexts/AppContext.js";
