@@ -10,6 +10,6 @@ export default function LightquarkChannelList() {
     const {quarkId} = useParams();
 
     return <div className={styles.channelList}>
-        {quarkCache[quarkId]?.channels.map((channel) => <LightquarkChannel channel={channel} quarkId={quarkId.split("lq_")[1]} key={channel._id} />)}
+        {quarkCache[quarkId.split("lq_")[1]]?.channels.map((channel) => <LightquarkChannel channel={channel} quarkId={quarkId.split("lq_")[1]} key={channel._id} />)}
     </div>
 }
