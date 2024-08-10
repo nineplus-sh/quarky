@@ -88,6 +88,10 @@
     "SETTING_GAME_ACTIVITY": "Share what I'm playing",
     "SETTING_GAME_ACTIVITY_DESC": "When Quarky detects you're playing a game, it'll show on your profile. We use <0>our own database</0> to detect games, so if your blorbo isn't included, please tell us! [DEVELOPER NOTE: YOU MUST HIT CTRL+R FOR YOUR CHANGE TO APPLY]",
     "SUGGEST_GAME": "Suggest a game",
+    "SUGGEST_GAME_MODAL": "This is a list of programs running on your computer. If your game is running, you can click on it here to suggest it.",
+    "SUGGEST_GAME_MODAL_WARNING": "ninePLUS sees the same data as you for the submitted game, which can contain sensitive information.",
+    "SUGGEST_GAME_BUTTON": "Suggest this game",
+    "SUGGEST_GAME_SUGGESTING": "Suggesting...",
 
     "SETTINGS_LANGUAGE_INVITE": "You can help with translation at <0>transLIT</0>!",
     "SETTINGS_LANGUAGE_FORMAT": "{{localname}} ({{translatedname}})",

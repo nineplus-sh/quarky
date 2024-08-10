@@ -3,4 +3,30 @@
     overflow-y: scroll;
     overflow-x: hidden;
     text-wrap: nowrap;
+    scrollbar-width: thin;
+
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+
+    margin-bottom: 5px;
+}
+
+.privacyRisk {
+    color: red;
+    font-size: smaller;
+}
+.game {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+}
+.game:hover {
+    background-color: lightgray;
+}
+.game.selected {
+    background-color: var(--accent-color)
+}
+.game .cmd {
+    font-size: smaller;
 }
