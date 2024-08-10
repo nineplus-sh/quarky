@@ -1,5 +1,5 @@
 import GenericModal from "./GenericModal.jsx";
-import {useTranslation} from "react-i18next";
+import {Trans, useTranslation} from "react-i18next";
 import NiceModal, {useModal} from "@ebay/nice-modal-react";
 import localForage from "localforage";
 import {useContext, useState} from "react";
@@ -65,26 +65,32 @@ export default NiceModal.create(() =>{
                         <p style={{marginTop: 0}}>{t("JOIN_QUARK_BODY")}</p>
 
                         <form onSubmit={(e) => joinQuark(e)}><fieldset disabled={isJoining}>
-                                <input type={"text"} required placeholder={"litdevs"} value={inviteCode} onChange={e => setInviteCode(e.target.value)}/>
+                                <input type={"text"} required placeholder={t("JOIN_QUARK_CODE")} value={inviteCode} onChange={e => setInviteCode(e.target.value)}/>
                                 <input type={"submit"}/>
                         </fieldset></form>
 
-                        <p style={{marginBottom: 0}}>or <button onClick={() => switchTab("create")}>create a quark</button></p>
+                        <p style={{marginBottom: 0}}>
+                            <Trans i18nKey="JOIN_QUARK_CREATE" components={[<button
+                                onClick={() => switchTab("create")}/>]}/>
+                        </p>
                     </> : tab === "create" ? <>
-                        <h2 style={{marginTop: 0}}>Create a quark!</h2>
+                        <h2 style={{marginTop: 0}}>{t("CREATE_QUARK")}</h2>
 
                         <form onSubmit={(e) => createQuark(e)}>
                             <fieldset disabled={isJoining}>
-                                <input type={"text"} required placeholder={"Quark name"} value={createName}
+                                <input type={"text"} required placeholder={t("CREATE_QUARK_NAME")} value={createName}
                                        onChange={e => setCreateName(e.target.value)}/>
-                                <input type={"text"} placeholder={"Invite code (optional)"} value={createCode}
+                                <input type={"text"} placeholder={t("CREATE_QUARK_CODE")} value={createCode}
                                        onChange={e => setCreateCode(e.target.value)}/>
                                 <input type={"submit"}/>
                             </fieldset>
                         </form>
 
-                        <p style={{marginBottom: 0}}>or <button onClick={() => switchTab("join")}>join a quark</button></p>
-                    </> : <p>Something went wrong.</p>}
+                        <p style={{marginBottom: 0}}>
+                            <Trans i18nKey="CREATE_QUARK_JOIN" components={[<button
+                                onClick={() => switchTab("join")}/>]}/>
+                        </p>
+                    </> : <p>{t("WOOSCREEN_TITLE")}</p>}
                 </div>
             </div>
         </GenericModal>

@@ -51,6 +51,12 @@
 
     "JOIN_QUARK": "Join a quark!",
     "JOIN_QUARK_BODY": "Type in the quark's invite code to join it.",
+    "JOIN_QUARK_CODE": "litdevs",
+    "JOIN_QUARK_CREATE": "or <0>create a quark</0>",
+    "CREATE_QUARK": "Create a quark!",
+    "CREATE_QUARK_NAME": "Quark name",
+    "CREATE_QUARK_CODE": "Invite code (optional)",
+    "CREATE_QUARK_JOIN": "or <0>join a quark</0>",
     "LEAVE_QUARK": "Leave",
     "LEAVE_QUARK_CONFIRM": "Are you sure you want to leave {{name}}?",
     "MANAGE_QUARK": "Manage",
