@@ -1,5 +1,5 @@
 import {useParams} from "react-router-dom";
-import {useContext, useEffect, useState} from "react";
+import {useContext, useEffect, useRef, useState} from "react";
 import LQ from "../../util/LQ.js";
 import styles from "./MessageInput.module.css"
 import {autoUpdate, useClick, useFloating, useInteractions} from "@floating-ui/react";
@@ -14,6 +14,8 @@ export default function MessageInput() {
     let [message, setMessage] = useState("");
     const {settings, saveSettings} = useContext(AppContext);
     const [typingTimeout, setTypingTimeout] = useState(null);
+    const [isSending, setSending] = useState(false);
+    const messageBox = useRef(null);
 
     const [gifOpen, setGifOpen] = useState(false);
     const gifFloat = useFloating({
@@ -50,8 +52,12 @@ export default function MessageInput() {
 
     return (<form className={styles.messageForm} onSubmit={async (e) => {
         e.preventDefault();
+        setSending(true);
         let wantedMessage = message;
-        setMessage("");
+        if(typingTimeout) {
+            clearTimeout(typingTimeout);
+            setTypingTimeout(null);
+        }
 
         const formData = new FormData();
         formData.append("payload", JSON.stringify({
@@ -67,10 +73,12 @@ export default function MessageInput() {
                 [dialogId]: undefined
             }
         })
+        setSending(false);
+        messageBox.current?.focus();
     }}>
         <button type="button" onClick={() => NiceModal.show(GameLaunchModal, {arena: {id: dialogId}})}>Games</button>
-        <input type={"text"} value={message} onInput={(e) => setMessage(e.target.value)} className={styles.messageBox} />
-        <button type="button" ref={gifFloat.refs.setReference} {...gifInteractions.getReferenceProps()}>GIFs</button>p
+        <input type={"text"} ref={messageBox} disabled={isSending} value={message} onInput={(e) => setMessage(e.target.value)} className={styles.messageBox} />
+        <button type="button" ref={gifFloat.refs.setReference} {...gifInteractions.getReferenceProps()}>GIFs</button>
         {gifOpen ? <GIFPicker floatRef={gifFloat.refs.setFloating} floatStyles={gifFloat.floatingStyles} floatProps={gifInteractions.getFloatingProps()} setOpen={setGifOpen}/> : null}
     </form>)
 }
