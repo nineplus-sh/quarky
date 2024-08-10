@@ -28,10 +28,13 @@ export default NiceModal.create(() =>{
         setSubmitting(true);
         await fetch("https://gameplus.nineplus.sh/api/suggest", {
             method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
             body: JSON.stringify({
                 executable: selectedProcess.cmd.split(" ")[0],
                 arguments: selectedProcess.cmd.split(" ").slice(1).join(" "),
-                platform: window.hiddenside.platform,
+                platform: window.hiddenside.platform
             })
         })
         modal.hide();
