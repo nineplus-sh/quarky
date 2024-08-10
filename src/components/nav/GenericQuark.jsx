@@ -3,7 +3,15 @@ import styles from "./GenericQuark.module.css";
 import {useContext, useState} from "react";
 import classnames from "classnames";
 import {AppContext} from "../../contexts/AppContext.js";
-import {autoUpdate, useClick, useFloating, useHover, useInteractions} from "@floating-ui/react";
+import {
+    autoUpdate,
+    useClick,
+    useClientPoint,
+    useFloating,
+    useHover,
+    useInteractions,
+    useTransitionStyles
+} from "@floating-ui/react";
 import Tooltip from "./Tooltip.jsx";
 
 export default function GenericQuark({link, icon, name}) {
@@ -19,7 +27,24 @@ export default function GenericQuark({link, icon, name}) {
         onOpenChange: setTooltipOpen
     });
     const tooltipHover = useHover(tooltipFloat.context);
-    const tooltipInteractions = useInteractions([tooltipHover]);
+    const clientPoint = useClientPoint(tooltipFloat.context, {
+        axis: "y"
+    });
+    const transStyles = useTransitionStyles(tooltipFloat.context, {
+        duration: 350,
+        initial: {
+            transform: "scale(0)",
+        },
+        open: {
+            transformOrigin: "center left",
+            transform: "scale(1) rotateX(360deg)"
+        },
+        close: {
+            transformOrigin: "center left",
+            transform: "scale(0) rotateX(0deg)"
+        },
+    });
+    const tooltipInteractions = useInteractions([tooltipHover, clientPoint]);
 
     return <><span className={classnames(styles.quark, {[styles.stretch]: isStretching})}  onAnimationEnd={() => stretchIt(false)} onClick={() => {
         stretchIt(false);
@@ -30,6 +55,6 @@ export default function GenericQuark({link, icon, name}) {
     }} onMouseEnter={() => new Audio(appContext.nyafile.getCachedData("sfx/default-hover")).play()}>
         <img src={icon} width={64} height={64} className={styles.icon} ref={tooltipFloat.refs.setReference}/>
     </span>
-        {tooltipOpen ? <Tooltip floatRef={tooltipFloat.refs.setFloating} floatStyles={tooltipFloat.floatingStyles} floatProps={tooltipInteractions.getFloatingProps()}>{name}</Tooltip> : null}
+        {transStyles.isMounted ? <Tooltip floatRef={tooltipFloat.refs.setFloating} floatStyles={tooltipFloat.floatingStyles} transStyles={transStyles.styles} floatProps={tooltipInteractions.getFloatingProps()}>{name}</Tooltip> : null}
     </>
 }
