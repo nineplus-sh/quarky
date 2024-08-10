@@ -10,6 +10,7 @@ import rehypeExternalLinks from "rehype-external-links";
 import classnames from "classnames";
 import {AppContext} from "../../contexts/AppContext.js";
 import ProfilePicture from "./ProfilePicture.jsx";
+import remarkQuarkyEmotes from "../../util/remark-quarky-emotes/index.js";
 
 export default function Message({children, avatarUri, username, content, isBot, botName, isDiscord, timestamp, edited, attachments, replyTo, isContinuation, game, editFunction}) {
     const {settings} = useContext(AppContext)
@@ -36,7 +37,7 @@ export default function Message({children, avatarUri, username, content, isBot, 
             <span className={styles.messagecontent} onDoubleClick={() => {if(editFunction){setEditing(true)}}}>
                 {isEditing ? <textarea value={editText} disabled={isSaving} onKeyDown={(e) => checkEditKey(e)} onChange={(e) => setEditText(e.target.value)}/> : <>
                     {edited ? <div className={styles.edited}>edited</div> : null}
-                    <Markdown components={{p: "span"}} remarkPlugins={[remarkGfm]} rehypePlugins={[[rehypeExternalLinks, {"target": "_blank", "rel": ["noreferrer", "noopener", "nofollow"]}]]}>
+                    <Markdown components={{p: "span"}} remarkPlugins={[remarkGfm, remarkQuarkyEmotes]} rehypePlugins={[[rehypeExternalLinks, {"target": "_blank", "rel": ["noreferrer", "noopener", "nofollow"]}]]}>
                         {settings["RICH_EMBEDS"] ? content.replaceAll(badLinks, "") : content}
                     </Markdown>
                     {settings["RICH_EMBEDS"] ? linkify.find(content).map(link => <RichEmbed url={link.value}/>) : null}
