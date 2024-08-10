@@ -9,6 +9,7 @@ import { fileURLToPath } from 'url';
 import os from "node:os";
 import * as path from "node:path";
 const __dirname = fileURLToPath(dirname(import.meta.url));
+const gamePLUS = new Worker(path.join(__dirname, 'gameplus.js'));
 
 const hazel = "https://roald.hakase.life";
 let gameDatabase = null;
@@ -62,17 +63,18 @@ const createWindow = () => {
             :  'https://quarky.nineplus.sh'
     );
 
-    const gamePLUS = new Worker(path.join(__dirname, 'gameplus.js'));
-    gamePLUS.on('message', (games) => {
-        win.webContents.send("detected-games", games);
+    gamePLUS.on('message', (message) => {
+        if(message.type === "detectedGames") win.webContents.send("detected-games", message.data);
+        if(message.type === "allProcesses") win.webContents.send("detected-processes", message.data);
     })
     setInterval(function() {
         if(!gameDatabase) return;
-        gamePLUS.postMessage(gameDatabase);
+        gamePLUS.postMessage({type: "database", data: gameDatabase});
     }, 1000)
 }
 
 app.whenReady().then(() => {
     ipcMain.on('game-database-update', (event, database) => gameDatabase = database);
+    ipcMain.on('get-all-processes', () => gamePLUS.postMessage({type: "feedProcesses"}));
     createWindow()
 })

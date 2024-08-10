@@ -1,0 +1,6 @@
+.gameList {
+    max-height: 50vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    text-wrap: nowrap;
+}

@@ -78,6 +78,13 @@ async function gameCheck(database) {
      */
 }
 
-parentPort.on('message', async (database) => {
-    parentPort.postMessage(await gameCheck(database));
+parentPort.on('message', async (message) => {
+    if(message.type === "database") parentPort.postMessage({
+        type: "detectedGames",
+        data: await gameCheck(message.data)
+    });
+    if(message.type === "feedProcesses") parentPort.postMessage({
+        type: "allProcesses",
+        data: await getProcesses()
+    })
 })
