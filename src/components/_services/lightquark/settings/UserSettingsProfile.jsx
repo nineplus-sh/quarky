@@ -2,11 +2,11 @@ import ProfilePicture from "../../../dialogs/ProfilePicture.jsx";
 import {useContext, useState} from "react";
 import {AppContext} from "../../../../contexts/AppContext.js";
 import LQ from "../../../../util/LQ.js";
-import styles from "./SettingsProfile.module.css"
+import styles from "./UserSettingsProfile.module.css"
 import NyafileImage from "../../../nyafile/NyafileImage.jsx";
 import classnames from "classnames";
 
-export default function SettingsProfile() {
+export default function UserSettingsProfile() {
     const appContext = useContext(AppContext);
     const [isUploading, setUploading] = useState(false);
 

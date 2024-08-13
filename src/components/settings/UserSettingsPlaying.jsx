@@ -3,7 +3,7 @@ import {useTranslation} from "react-i18next";
 import NiceModal from "@ebay/nice-modal-react";
 import GamePLUSuggestModal from "../modals/GamePLUSuggestModal.jsx";
 
-export default function SettingsPlaying() {
+export default function UserSettingsPlaying() {
     const {t} = useTranslation();
     return <>
         <SettingsToggleBox setting={"GAME_ACTIVITY"} trans={[<a href={"https://gameplus.nineplus.sh/games"} target={"_blank"} rel={"noreferrer"}/>]}/>

@@ -5,7 +5,7 @@ import {useContext, useMemo} from "react";
 import {AppContext} from "../../contexts/AppContext.js";
 import {useTranslation} from "react-i18next";
 
-export default function SettingsChat() {
+export default function UserSettingsChat() {
     const appContext = useContext(AppContext);
     const {t} = useTranslation();
     const richEmbedSamples = [

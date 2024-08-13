@@ -2,7 +2,7 @@ import SettingsRadio from "./SettingsRadio.jsx";
 import {Trans, useTranslation} from "react-i18next";
 import locallangs from "../../util/locallangs.json"
 
-export default function SettingsLanguage() {
+export default function UserSettingsLanguage() {
     const languages = ["en", "fi", "nb_NO", "ja"];
     const jokeLanguages = ["en_UWU", "ja_KANA"];
     const {t} = useTranslation();

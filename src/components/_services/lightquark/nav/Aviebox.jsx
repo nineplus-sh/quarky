@@ -7,6 +7,8 @@ import {useNavigate} from "react-router-dom";
 import NiceModal from "@ebay/nice-modal-react";
 import JoinQuarkModal from "../../../modals/JoinQuarkModal.jsx";
 import SettingsView from "../../../../routes/SettingsView.jsx";
+import UserSettingsSidebar from "../../../nav/UserSettingsSidebar.jsx";
+import UserSettingsArea from "../../../nav/UserSettingsArea.jsx";
 
 export default function Aviebox() {
     const appContext = useContext(AppContext);
@@ -15,7 +17,7 @@ export default function Aviebox() {
         <div className={styles.aviebox}>
             <ProfilePicture src={appContext.accounts.lightquark.avatarUri} px={32}/>
             <p className={styles.name}>{appContext.accounts.lightquark.username}</p>
-            <button className={styles.settings} onClick={() => NiceModal.show(SettingsView)}>Settings</button>
+            <button className={styles.settings} onClick={() => NiceModal.show(SettingsView, {Sidebar: UserSettingsSidebar, Area: UserSettingsArea})}>Settings</button>
         </div>
     );
 }

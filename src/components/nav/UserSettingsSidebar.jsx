@@ -1,6 +1,6 @@
 import SidebarItem from "./SidebarItem.jsx";
 import {useTranslation} from "react-i18next";
-import styles from "./SettingsSidebar.module.css";
+import styles from "./UserSettingsSidebar.css";
 import NyafileImage from "../nyafile/NyafileImage.jsx";
 import {version, codename} from "../../../package.json";
 import NiceModal, {useModal} from "@ebay/nice-modal-react";
@@ -9,7 +9,7 @@ import localForage from "localforage";
 import {useContext} from "react";
 import {AppContext} from "../../contexts/AppContext.js";
 
-export default function SettingsSidebar({area, setArea}) {
+export default function UserSettingsSidebar({area, setArea}) {
     const modal = useModal();
     const appContext = useContext(AppContext);
     const {t} = useTranslation();

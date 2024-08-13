@@ -1,13 +1,12 @@
-import styles from "./SettingsAppearance.module.css";
+import styles from "./UserSettingsAppearance.module.css";
 import loginStyles from "../modals/LoginModal.module.css"
-import {useContext, useState} from "react";
+import {useContext} from "react";
 import {useTranslation} from "react-i18next";
 import NyafileImage from "../nyafile/NyafileImage.jsx";
 import classnames from "classnames";
-import localForage from "localforage";
 import {AppContext} from "../../contexts/AppContext.js";
 
-export default function SettingsAppearance() {
+export default function UserSettingsAppearance() {
     const {settings, saveSettings} = useContext(AppContext);
     const {t} = useTranslation();
 
