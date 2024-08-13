@@ -1,6 +1,6 @@
 import SidebarItem from "./SidebarItem.jsx";
 import {useTranslation} from "react-i18next";
-import styles from "./UserSettingsSidebar.css";
+import styles from "./UserSettingsSidebar.module.css";
 import NyafileImage from "../nyafile/NyafileImage.jsx";
 import {version, codename} from "../../../package.json";
 import NiceModal, {useModal} from "@ebay/nice-modal-react";
