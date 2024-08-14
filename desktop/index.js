@@ -8,6 +8,7 @@ import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 import os from "node:os";
 import * as path from "node:path";
+import installExtension, {REACT_DEVELOPER_TOOLS, REDUX_DEVTOOLS} from "@tomjs/electron-devtools-installer";
 const __dirname = fileURLToPath(dirname(import.meta.url));
 const gamePLUS = new Worker(path.join(__dirname, 'gameplus.js'));
 
@@ -55,6 +56,8 @@ const createWindow = () => {
         setInterval(() => {
             autoUpdater.checkForUpdates();
         }, 60000)
+    } else {
+        installExtension([REACT_DEVELOPER_TOOLS, REDUX_DEVTOOLS])
     }
 
     win.loadURL(
