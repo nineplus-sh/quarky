@@ -108,7 +108,7 @@ export default function UserSettingsChat() {
 
     return <>
         <SettingsToggleBox setting={"RICH_EMBEDS"} trans={[<a href={"https://youtrack.litdevs.org/articles/q2-A-1"} target={"_blank"} rel={"noreferrer"}/>]}/>
-        <Message username={t("SAMPLE_USER_NAME")} avatar={<ProfilePicture isMessage={true} src={appContext.nyafile.getCachedData("img/hakase_pfp")}/>}
+        <Message username={t("SAMPLE_USER_NAME")} avatarUri={appContext.nyafile.getCachedData("img/hakase_pfp")}
                  content={`${t("SAMPLE_USER_MESSAGE_RICH_EMBEDS", {link: null})}${sample}`} />
     </>
 }

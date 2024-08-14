@@ -4,6 +4,10 @@ import {useContext} from "react";
 import styles from "./QuarkHeader.module.css"
 import {useTranslation} from "react-i18next";
 import LQ from "../../../../util/LQ.js";
+import NiceModal from "@ebay/nice-modal-react";
+import SettingsView from "../../../../routes/SettingsView.jsx";
+import QuarkSettingsSidebar from "../settings/QuarkSettingsSidebar.jsx";
+import QuarkSettingsArea from "../settings/QuarkSettingsArea.jsx";
 
 export default function QuarkHeader() {
     const {quarkCache, quarkList, setQuarkList, accounts} = useContext(AppContext);
@@ -30,7 +34,7 @@ export default function QuarkHeader() {
         <span>{quark?.name}</span>
         {quarkId === "lq_100000000000000000000000" ? null :
             quark?.owners.includes(accounts.lightquark._id) ?
-            <button disabled>{t("MANAGE_QUARK")}</button> :
+            <button onClick={() => NiceModal.show(SettingsView, {data:{quarkId:quark._id},Sidebar:QuarkSettingsSidebar,Area:QuarkSettingsArea,defaultArea:"overview"})}>{t("MANAGE_QUARK")}</button> :
             <button onClick={() => leaveQuark()}>{t("LEAVE_QUARK")}</button>}
     </div>
 }

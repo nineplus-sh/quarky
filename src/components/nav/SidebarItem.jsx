@@ -1,13 +1,21 @@
-import {Link, useParams} from "react-router-dom";
 import {useTranslation} from "react-i18next";
 import styles from "./SidebarItem.module.css"
 import classnames from "classnames";
-import NyafileImage from "../nyafile/NyafileImage.jsx";
+import {AppContext} from "../../contexts/AppContext.js";
+import {useContext} from "react";
 
 export default function SidebarItem({baseI18n, area, setArea, currentArea, onClick}) {
+    const {nyafile} = useContext(AppContext);
     const {t} = useTranslation();
 
-    return <div onClick={() => onClick ? onClick() : setArea(area)} className={classnames(styles.sidebarItem, {[styles.active]: currentArea === area})}>
+    function setAreaSound(area) {
+        if(currentArea === area) return;
+        new Audio(nyafile.getCachedData("sfx/button-sidebar-select")).play();
+        setArea(area);
+    }
+
+    return <div onClick={() => onClick ? onClick() : setAreaSound(area)} className={classnames(styles.sidebarItem, {[styles.active]: currentArea === area})}
+                onMouseOver={() => new Audio(nyafile.getCachedData("sfx/button-sidebar-hover")).play()}>
         <span>{t(`${baseI18n.toUpperCase()}_${area.toUpperCase()}`)}</span>
     </div>
 }

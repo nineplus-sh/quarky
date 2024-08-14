@@ -162,7 +162,7 @@ export function App(props) {
 
 /* The router. In the words of Emilia, it routes. Wow... */
 const sentryCreateBrowserRouter = Sentry.wrapCreateBrowserRouter(createBrowserRouter);
-const router = sentryCreateBrowserRouter(
+export const router = sentryCreateBrowserRouter(
     createRoutesFromElements(
         <Route path="/" element={<Root />}>
             <Route path="/" element={<AuthenticationNeeded />}>

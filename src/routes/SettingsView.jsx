@@ -5,9 +5,9 @@ import classnames from "classnames";
 import {AppContext} from "../contexts/AppContext.js";
 import Modal from "react-modal";
 
-export default NiceModal.create(({Sidebar, Area}) => {
+export default NiceModal.create(({Sidebar, Area, defaultArea, data}) => {
     const modal = useModal();
-    const [area, setArea] = useState("profile")
+    const [area, setArea] = useState(defaultArea)
     const firstUpdate = useRef(true);
     let appContext = useContext(AppContext);
 
@@ -25,11 +25,11 @@ export default NiceModal.create(({Sidebar, Area}) => {
     }} appElement={document.querySelector("#root")} isOpen={modal.visible} closeTimeoutMS={200} shouldCloseOnOverlayClick={false} onRequestClose={() => modal.hide()}>
         <div className={classnames(styles.settingsPopout, {[styles.fadeIn]: modal.visible, [styles.fadeOut]: !modal.visible})}>
             <div className={styles.settingsSidebar}>
-                <Sidebar area={area} setArea={setArea}/>
+                <Sidebar area={area} setArea={setArea} data={data}/>
             </div>
             <div className={styles.settingsAreaWrap}>
                 <div className={styles.settingsArea}>
-                    <Area area={area}/>
+                    <Area area={area} data={data}/>
                 </div>
                 <button onClick={() => {modal.hide()}}>Close</button>
             </div>

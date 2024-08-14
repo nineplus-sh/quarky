@@ -17,7 +17,7 @@ export default function Aviebox() {
         <div className={styles.aviebox}>
             <ProfilePicture src={appContext.accounts.lightquark.avatarUri} px={32}/>
             <p className={styles.name}>{appContext.accounts.lightquark.username}</p>
-            <button className={styles.settings} onClick={() => NiceModal.show(SettingsView, {Sidebar: UserSettingsSidebar, Area: UserSettingsArea})}>Settings</button>
+            <button className={styles.settings} onClick={() => NiceModal.show(SettingsView, {Sidebar: UserSettingsSidebar, Area: UserSettingsArea,defaultArea:"profile"})}>Settings</button>
         </div>
     );
 }

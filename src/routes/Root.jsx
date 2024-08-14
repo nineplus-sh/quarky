@@ -50,11 +50,17 @@ export default function Root() {
                 nyafile.queueCache("img/quark_join");
                 nyafile.queueCache("img/quarky");
                 nyafile.queueCache("music/login");
+                nyafile.queueCache("sfx/button-hover");
                 nyafile.queueCache("sfx/button-select");
+                nyafile.queueCache("sfx/button-sidebar-hover");
+                nyafile.queueCache("sfx/button-sidebar-select");
                 nyafile.queueCache("sfx/checkbox-false");
                 nyafile.queueCache("sfx/checkbox-true");
                 nyafile.queueCache("sfx/default-select");
                 nyafile.queueCache("sfx/default-hover");
+                nyafile.queueCache("sfx/dialog-cancel-select");
+                nyafile.queueCache("sfx/dialog-dangerous-select");
+                nyafile.queueCache("sfx/dialog-pop-in");
                 nyafile.queueCache("sfx/error");
                 nyafile.queueCache("sfx/info-modal-pop-in");
                 nyafile.queueCache("sfx/info-modal-pop-out");
@@ -82,7 +88,7 @@ export default function Root() {
                 try {
                     LQuserdata = await LQ("user/me");
                 } catch(e) {
-                    await NiceModal.show(NetworkOfflineModal, {name: localConfig.network.baseUrl, signOut: true});
+                    await NiceModal.show(NetworkOfflineModal, {name: localConfig.network.baseUrl,   signOut: true});
                 }
                 appContext.setAccounts(prev => ({...prev, "lightquark": LQuserdata.response.user}))
                 updateContext({lqId: LQuserdata.response.user._id})

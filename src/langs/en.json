@@ -59,6 +59,8 @@
     "CREATE_QUARK_JOIN": "or <0>join a quark</0>",
     "LEAVE_QUARK": "Leave",
     "LEAVE_QUARK_CONFIRM": "Are you sure you want to leave {{name}}?",
+    "QUARK_SETTINGS_DELETE": "Delete quark",
+    "DELETE_QUARK_CONFIRM": "YOU ARE ABOUT TO DELETE {{name}}! It'll be gone forever!",
     "MANAGE_QUARK": "Manage",
 
     "SUPPORT_BUTTON": "Support",
@@ -82,6 +84,7 @@
     "SETTINGS_CHAT": "Chat",
     "SETTINGS_LANGUAGE": "Language",
     "SETTINGS_PLAYING": "Playing status",
+    "QUARK_SETTINGS_OVERVIEW": "Overview",
 
     "SETTING_RICH_EMBEDS": "Embed entire websites in messages",
     "SETTING_RICH_EMBEDS_DESC": "For <0>some links</0>, Quarky can embed the whole website inside the message so you don't have to open your web browser.",

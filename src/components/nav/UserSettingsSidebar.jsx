@@ -43,7 +43,7 @@ export default function UserSettingsSidebar({area, setArea}) {
         <div className={styles.separator}/>
 
         <div className={styles.seperator}/>
-        <SidebarItem baseI18n={"SIGN"} area={"OUT"} onClick={logOut}></SidebarItem>
+        <SidebarItem baseI18n={"SIGN"} area={"OUT"} onClick={logOut}/>
         <div className={styles.separator}/>
 
         <div className={styles.version}>
