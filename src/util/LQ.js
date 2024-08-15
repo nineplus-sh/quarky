@@ -28,7 +28,7 @@ export default async function LQ (apiMethod, httpMethod = "GET", body = undefine
             }
         }
         if (!skipAuth) headers.Authorization = `Bearer ${localConfig.token}`;
-        let apiRequest = await fetch(`${localConfig.network.baseUrl}/${localConfig.network.version}/${apiMethod}${httpMethod === "GET" && body ? "?" + new URLSearchParams(body) : ""}`, {
+        let apiRequest = await fetch(`${localConfig.network.baseUrl}/v4/${apiMethod}${httpMethod === "GET" && body ? "?" + new URLSearchParams(body) : ""}`, {
             method: httpMethod,
             headers,
             body: requestBody

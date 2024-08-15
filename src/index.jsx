@@ -25,6 +25,10 @@ import holidays from './util/holidays.json';
 import MainView from "./routes/MainView.jsx";
 import localForage from "localforage";
 import LQ from "./util/LQ.js";
+import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
+import axios from "axios";
+import {version} from "../package.json";
+import createAuthRefreshInterceptor from "axios-auth-refresh";
 
 Sentry.init({
     dsn: "https://901c666ed03942d560e61928448bcf68@sentry.yggdrasil.cat/5",
@@ -80,6 +84,7 @@ export function App(props) {
     let [drafts, setDrafts] = useState({});
     let [quarkCache, setQuarkCache] = useState({});
     let [quarkList, setQuarkList] = useState([]);
+    let [apiKeys, setApiKeys] = useState({});
 
     useEffect(() => {
         async function loadConfigs() {
@@ -142,6 +147,37 @@ export function App(props) {
         }
     }
 
+    const axiosClient = axios.create({
+        baseURL: apiKeys.baseURL + "/v4/",
+        headers: {
+            ...(apiKeys.accessToken ? { Authorization: `Bearer ${apiKeys.accessToken}` } : {}),
+            "lq-agent": `Quarky/${version}`
+        }
+    })
+    createAuthRefreshInterceptor(axiosClient, async function() {
+        return axiosClient.post("auth/refresh",
+            {accessToken: apiKeys.accessToken, refreshToken: apiKeys.refreshToken}, {skipAuthRefresh: true})
+            .then(async (response) => {
+                setApiKeys({...apiKeys, accessToken: response.accessToken})
+                await localForage.setItem("lightquark", {
+                    network: {
+                        baseUrl: apiKeys.baseURL
+                    },
+                    token: response.accessToken,
+                    refreshToken: apiKeys.refreshToken
+                });
+            })
+    })
+    const queryClient = new QueryClient({
+        defaultOptions: {
+            queries: {
+                queryFn: async ({queryKey}) => {
+                    return (await axiosClient.get(queryKey[0])).data.response
+                }
+            }
+        }
+    });
+
     return (
         <AppContext.Provider value={{
             loading, setLoading, holiday,
@@ -152,10 +188,13 @@ export function App(props) {
             userCache, setUserCache,
             drafts, setDrafts,
             settings, setSettings, saveSettings,
+            apiKeys, setApiKeys,
             quarkCache, setQuarkCache, quarkList, setQuarkList
         }}>
-            <audio src={music} autoPlay={true} loop={true}></audio>
-            {translationsLoading ? null : props.children}
+            <QueryClientProvider client={queryClient}>
+                <audio src={music} autoPlay={true} loop={true}></audio>
+                {translationsLoading ? null : props.children}
+            </QueryClientProvider>
         </AppContext.Provider>
     )
 }

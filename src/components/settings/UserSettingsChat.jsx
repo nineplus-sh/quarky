@@ -38,6 +38,8 @@ export default function UserSettingsChat() {
 
         "https://www.youtube.com/watch?v=hJWSBBQ04XI",
 
+        "https://twitter.com/girlpoisoner/status/1823413661626720680",
+
         "https://nyakase.tumblr.com/post/726753957782896641",
         "https://nyakase.tumblr.com/post/727779780105256960",
         "https://nyakase.tumblr.com/post/731348628802830336",

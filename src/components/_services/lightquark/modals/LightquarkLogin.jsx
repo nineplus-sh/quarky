@@ -110,6 +110,11 @@ export default function LightquarkLogin({setDone}) {
 
         const userInfos = (await LQ("user/me")).response.user;
         await updateContext({lqId: userInfos._id})
+        appContext.setApiKeys({
+            baseURL: network,
+            accessToken: accessToken,
+            refreshToken: refreshToken
+        })
         appContext.setAccounts(prev => ({...prev, "lightquark": userInfos}));
 
         localStorage.setItem("USER_AUTHED", "bet");

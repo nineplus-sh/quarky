@@ -90,6 +90,11 @@ export default function Root() {
                 } catch(e) {
                     await NiceModal.show(NetworkOfflineModal, {name: localConfig.network.baseUrl,   signOut: true});
                 }
+                appContext.setApiKeys({
+                    baseURL: localConfig.network.baseUrl,
+                    accessToken: localConfig.token,
+                    refreshToken: localConfig.refreshToken
+                })
                 appContext.setAccounts(prev => ({...prev, "lightquark": LQuserdata.response.user}))
                 updateContext({lqId: LQuserdata.response.user._id})
             }

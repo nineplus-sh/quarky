@@ -15,7 +15,7 @@ export default function SidebarItem({baseI18n, area, setArea, currentArea, onCli
     }
 
     return <div onClick={() => onClick ? onClick() : setAreaSound(area)} className={classnames(styles.sidebarItem, {[styles.active]: currentArea === area})}
-                onMouseOver={() => new Audio(nyafile.getCachedData("sfx/button-sidebar-hover")).play()}>
+                onMouseEnter={() => new Audio(nyafile.getCachedData("sfx/button-sidebar-hover")).play()}>
         <span>{t(`${baseI18n.toUpperCase()}_${area.toUpperCase()}`)}</span>
     </div>
 }
