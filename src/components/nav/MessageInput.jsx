@@ -8,6 +8,8 @@ import {AppContext} from "../../contexts/AppContext.js";
 import NiceModal from "@ebay/nice-modal-react";
 import GameModal from "../modals/GameModal.jsx";
 import GameLaunchModal from "../modals/GameLaunchModal.jsx";
+import mergeRefs from "merge-refs";
+import LightquarkEmoteSearch from "../_services/lightquark/dialogs/LightquarkEmoteSearch.jsx";
 
 export default function MessageInput() {
     let { dialogId } = useParams();
@@ -27,6 +29,14 @@ export default function MessageInput() {
     });
     const gifClick = useClick(gifFloat.context);
     const gifInteractions = useInteractions([gifClick]);
+    const [emoteSearchOpen, setEmoteSearchOpen] = useState(false);
+    const emoteSearchFloat = useFloating({
+        placement: "top-start",
+        strategy: "fixed",
+        whileElementsMounted: autoUpdate,
+        open: emoteSearchOpen,
+        onOpenChange: setEmoteSearchOpen
+    });
 
     useEffect(() => {
         if (settings.DRAFTS[dialogId] && message === "") setMessage(settings.DRAFTS[dialogId].content);
@@ -48,10 +58,14 @@ export default function MessageInput() {
                 }
             })
         }, 5000));
+
+        setEmoteSearchOpen(/:\w{2,}$/.test(message));
     }, [message]);
 
     return (<form className={styles.messageForm} onSubmit={async (e) => {
         e.preventDefault();
+        if(emoteSearchOpen) return;
+
         setSending(true);
         let wantedMessage = message;
         if(typingTimeout) {
@@ -77,8 +91,12 @@ export default function MessageInput() {
         messageBox.current?.focus();
     }}>
         <button type="button" onClick={() => NiceModal.show(GameLaunchModal, {arena: {id: dialogId}})}>Games</button>
-        <input type={"text"} ref={messageBox} disabled={isSending} value={message} onInput={(e) => setMessage(e.target.value)} className={styles.messageBox} />
+        <input type={"text"} ref={mergeRefs(messageBox, emoteSearchFloat.refs.setReference)} disabled={isSending} value={message} onInput={(e) => setMessage(e.target.value)} className={styles.messageBox} />
         <button type="button" ref={gifFloat.refs.setReference} {...gifInteractions.getReferenceProps()}>GIFs</button>
         {gifOpen ? <GIFPicker floatRef={gifFloat.refs.setFloating} floatStyles={gifFloat.floatingStyles} floatProps={gifInteractions.getFloatingProps()} setOpen={setGifOpen}/> : null}
+        {emoteSearchOpen ? <LightquarkEmoteSearch message={message} setMessage={(message) => {
+            setMessage(message);
+            setEmoteSearchOpen(false);
+        }} floatRef={emoteSearchFloat.refs.setFloating} floatStyles={emoteSearchFloat.floatingStyles}/> : null}
     </form>)
 }

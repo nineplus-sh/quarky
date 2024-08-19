@@ -1,0 +1,18 @@
+.emoteSearchWrap {
+    background-color: var(--background-color-lesser);
+    display: flex;
+    flex-direction: column-reverse;
+    max-height: 50vh;
+    overflow-y: auto;
+    gap: 5px;
+}
+.emote {
+    height: 24px;
+    min-width: 24px;
+}
+.emoteWrap {
+    padding: 0.2em;
+}
+.emoteWrap:hover {
+    background-color: var(--background-color-less);
+}
