@@ -50,7 +50,6 @@ export default function MessageInput() {
     })
     const oldKeyDown = emoteSearchNavigation.reference.onKeyDown;
     emoteSearchNavigation.reference.onKeyDown = function(event) {
-        if(document.activeElement?.tagName === "input") return;
         if(event.key === "ArrowUp") {
             event.key = "ArrowDown";
         } else if (event.key === "ArrowDown") {
