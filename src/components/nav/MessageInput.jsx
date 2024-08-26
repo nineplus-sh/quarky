@@ -50,6 +50,7 @@ export default function MessageInput() {
     })
     const oldKeyDown = emoteSearchNavigation.reference.onKeyDown;
     emoteSearchNavigation.reference.onKeyDown = function(event) {
+        if(document.activeElement?.tagName === "input") return;
         if(event.key === "ArrowUp") {
             event.key = "ArrowDown";
         } else if (event.key === "ArrowDown") {
@@ -59,6 +60,15 @@ export default function MessageInput() {
     }
     const emoteSearchInteractions = useInteractions([emoteSearchNavigation]);
 
+    function keysmashOutsideHandler(event) {
+        if(document.activeElement?.tagName.toLowerCase() === "input") return;
+        if(event.key === "Tab") return;
+        messageBox.current?.focus();
+    }
+    useEffect(() => {
+        document.addEventListener("keydown", keysmashOutsideHandler);
+        return () => document.removeEventListener('keydown', keysmashOutsideHandler);
+    }, []);
     useEffect(() => {
         if (settings.DRAFTS[dialogId] && message === "") setMessage(settings.DRAFTS[dialogId].content);
     }, [dialogId, settings.DRAFTS]);
@@ -109,7 +119,9 @@ export default function MessageInput() {
             }
         })
         setSending(false);
-        messageBox.current?.focus();
+        setTimeout(function() {
+            messageBox.current?.focus();
+        }, 100);
     }}>
         <button type="button" onClick={() => NiceModal.show(GameLaunchModal, {arena: {id: dialogId}})}>Games</button>
         <input type={"text"} ref={mergeRefs(messageBox, emoteSearchFloat.refs.setReference)} disabled={isSending} value={message} onInput={(e) => setMessage(e.target.value)} className={styles.messageBox} {...emoteSearchInteractions.getReferenceProps()}/>
