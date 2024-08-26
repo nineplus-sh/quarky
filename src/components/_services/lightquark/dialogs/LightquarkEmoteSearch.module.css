@@ -5,6 +5,8 @@
     max-height: 50vh;
     overflow-y: auto;
     gap: 5px;
+
+    scrollbar-width: thin;
 }
 .emote {
     max-height: 48px;

@@ -18,22 +18,29 @@ export default function LightquarkEmoteSearch({message, setMessage, floatRef, fl
         return () => document.removeEventListener('keydown', enterHandler);
     }, [activeIndex]);
 
-    if(isLoading || !search) return null;
-    const fuse = new Fuse(data?.emotes.flatMap(q => q.emotes), {keys: ['name'], threshold: 0.1});
+    if(isLoading) return <div className={styles.emoteSearchWrap} ref={floatRef} style={floatStyles} {...floatProps}>
+        <div className={styles.emoteWrap} aria-hidden={true}> (╭ರ_•́)</div></div>;
 
-    return <div className={styles.emoteSearchWrap} ref={floatRef} style={floatStyles} {...floatProps}>
-        {fuse.search(search[1], {limit: 50}).map((emote, index) =>
-            <LightquarkEmote key={emote.item._id} tabIndex={activeIndex === index ? -1 : 0} myRef={(node) => {
+    if(!search) return null;
+    const fuse = new Fuse(data?.emotes.flatMap(q => q.emotes), {keys: ['name'], threshold: 0.1});
+    const result = fuse.search(search[1], {limit: 50});
+
+    if(result.length === 0) return <div className={styles.emoteSearchWrap} ref={floatRef} style={floatStyles} {...floatProps}>
+        <div className={styles.emoteWrap} aria-hidden={true}>¯\_(ツ)_/¯</div></div>;
+
+    return <div className={styles.emoteSearchWrap} aria-label="listbox" ref={floatRef} style={floatStyles} {...floatProps}>
+        {result.map((emote, index) =>
+            <LightquarkEmote key={emote.item._id} selected={activeIndex === index} myRef={(node) => {
                 listRef.current[index] = node;
             }} emoteProps={itemProps} emote={emote.item} onClick={() => setMessage(message.replace(search[0], `<${emote.item.name}:${emote.item._id}>`))}/>
         )}
     </div>
 }
 
-export function LightquarkEmote({emote, tabIndex, myRef, emoteProps, onClick}) {
+export function LightquarkEmote({emote, selected, myRef, emoteProps, onClick}) {
     const {data, isLoading} = useQuark(emote.quark);
 
-    return <div className={styles.emoteWrap} id={emote._id} tabIndex={tabIndex} ref={myRef} {...emoteProps} onClick={onClick}>
+    return <div className={styles.emoteWrap} id={emote._id} aria-selected={selected} tabIndex={selected ? -1 : 0} ref={myRef} {...emoteProps} onClick={onClick}>
         <img className={styles.emote} src={emote.imageUri}/>
         <span className={styles.emoteMetadata}>
             <span className={styles.emoteName}>:{emote.name}:</span>

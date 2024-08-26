@@ -6,7 +6,6 @@ import {autoUpdate, useClick, useFloating, useInteractions, useListNavigation} f
 import GIFPicker from "../modals/GIFPicker.jsx";
 import {AppContext} from "../../contexts/AppContext.js";
 import NiceModal from "@ebay/nice-modal-react";
-import GameModal from "../modals/GameModal.jsx";
 import GameLaunchModal from "../modals/GameLaunchModal.jsx";
 import mergeRefs from "merge-refs";
 import LightquarkEmoteSearch from "../_services/lightquark/dialogs/LightquarkEmoteSearch.jsx";
@@ -118,7 +117,9 @@ export default function MessageInput() {
         {gifOpen ? <GIFPicker floatRef={gifFloat.refs.setFloating} floatStyles={gifFloat.floatingStyles} floatProps={gifInteractions.getFloatingProps()} setOpen={setGifOpen}/> : null}
         {emoteSearchOpen ? <LightquarkEmoteSearch message={message} setMessage={(message) => {
             setMessage(message);
-            setEmoteSearchOpen(false);
+            setTimeout(function() {
+                setEmoteSearchOpen(false);
+            }, 100)
         }} floatRef={emoteSearchFloat.refs.setFloating} floatStyles={emoteSearchFloat.floatingStyles} floatProps={emoteSearchInteractions.getFloatingProps()} activeIndex={emoteSearchActiveIndex} listRef={emoteSearchListRef} itemProps={emoteSearchInteractions.getItemProps()} virtualItemRef={emoteSearchVirtRef}/> : null}
     </form>)
 }
