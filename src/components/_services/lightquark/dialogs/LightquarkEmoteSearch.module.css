@@ -7,8 +7,8 @@
     gap: 5px;
 }
 .emote {
-    height: 24px;
-    min-width: 24px;
+    max-height: 48px;
+    min-width: 16px;
 }
 .emoteWrap {
     display: flex;
@@ -16,7 +16,7 @@
     padding: 0.2em;
     gap: 0.5em;
 }
-.emoteWrap[tabindex="0"] {
+.emoteWrap[tabindex="-1"] {
     background-color: var(--background-color-less);
 }
 .emoteMetadata {

@@ -38,12 +38,26 @@ export default function MessageInput() {
         onOpenChange: setEmoteSearchOpen
     });
     const emoteSearchListRef = useRef([]);
+    const emoteSearchVirtRef = useRef(null);
     const [emoteSearchActiveIndex, setEmoteSearchActiveIndex] = useState(null);
     const emoteSearchNavigation = useListNavigation(emoteSearchFloat.context, {
         listRef: emoteSearchListRef,
+        virtualItemRef: emoteSearchVirtRef,
         activeIndex: emoteSearchActiveIndex,
-        onNavigate: setEmoteSearchActiveIndex
+        onNavigate: setEmoteSearchActiveIndex,
+        virtual: true,
+        focusItemOnOpen: true,
+        loop: true
     })
+    const oldKeyDown = emoteSearchNavigation.reference.onKeyDown;
+    emoteSearchNavigation.reference.onKeyDown = function(event) {
+        if(event.key === "ArrowUp") {
+            event.key = "ArrowDown";
+        } else if (event.key === "ArrowDown") {
+            event.key = "ArrowUp";
+        }
+        oldKeyDown(event);
+    }
     const emoteSearchInteractions = useInteractions([emoteSearchNavigation]);
 
     useEffect(() => {
@@ -105,6 +119,6 @@ export default function MessageInput() {
         {emoteSearchOpen ? <LightquarkEmoteSearch message={message} setMessage={(message) => {
             setMessage(message);
             setEmoteSearchOpen(false);
-        }} floatRef={emoteSearchFloat.refs.setFloating} floatStyles={emoteSearchFloat.floatingStyles} floatProps={emoteSearchInteractions.getFloatingProps()} activeIndex={emoteSearchActiveIndex} listRef={emoteSearchListRef} itemProps={emoteSearchInteractions.getItemProps()}/> : null}
+        }} floatRef={emoteSearchFloat.refs.setFloating} floatStyles={emoteSearchFloat.floatingStyles} floatProps={emoteSearchInteractions.getFloatingProps()} activeIndex={emoteSearchActiveIndex} listRef={emoteSearchListRef} itemProps={emoteSearchInteractions.getItemProps()} virtualItemRef={emoteSearchVirtRef}/> : null}
     </form>)
 }
