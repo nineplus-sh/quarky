@@ -2,7 +2,7 @@ import {useParams} from "react-router-dom";
 import {useContext, useEffect, useRef, useState} from "react";
 import LQ from "../../util/LQ.js";
 import styles from "./MessageInput.module.css"
-import {autoUpdate, useClick, useFloating, useInteractions} from "@floating-ui/react";
+import {autoUpdate, useClick, useFloating, useInteractions, useListNavigation} from "@floating-ui/react";
 import GIFPicker from "../modals/GIFPicker.jsx";
 import {AppContext} from "../../contexts/AppContext.js";
 import NiceModal from "@ebay/nice-modal-react";
@@ -37,6 +37,14 @@ export default function MessageInput() {
         open: emoteSearchOpen,
         onOpenChange: setEmoteSearchOpen
     });
+    const emoteSearchListRef = useRef([]);
+    const [emoteSearchActiveIndex, setEmoteSearchActiveIndex] = useState(null);
+    const emoteSearchNavigation = useListNavigation(emoteSearchFloat.context, {
+        listRef: emoteSearchListRef,
+        activeIndex: emoteSearchActiveIndex,
+        onNavigate: setEmoteSearchActiveIndex
+    })
+    const emoteSearchInteractions = useInteractions([emoteSearchNavigation]);
 
     useEffect(() => {
         if (settings.DRAFTS[dialogId] && message === "") setMessage(settings.DRAFTS[dialogId].content);
@@ -91,12 +99,12 @@ export default function MessageInput() {
         messageBox.current?.focus();
     }}>
         <button type="button" onClick={() => NiceModal.show(GameLaunchModal, {arena: {id: dialogId}})}>Games</button>
-        <input type={"text"} ref={mergeRefs(messageBox, emoteSearchFloat.refs.setReference)} disabled={isSending} value={message} onInput={(e) => setMessage(e.target.value)} className={styles.messageBox} />
+        <input type={"text"} ref={mergeRefs(messageBox, emoteSearchFloat.refs.setReference)} disabled={isSending} value={message} onInput={(e) => setMessage(e.target.value)} className={styles.messageBox} {...emoteSearchInteractions.getReferenceProps()}/>
         <button type="button" ref={gifFloat.refs.setReference} {...gifInteractions.getReferenceProps()}>GIFs</button>
         {gifOpen ? <GIFPicker floatRef={gifFloat.refs.setFloating} floatStyles={gifFloat.floatingStyles} floatProps={gifInteractions.getFloatingProps()} setOpen={setGifOpen}/> : null}
         {emoteSearchOpen ? <LightquarkEmoteSearch message={message} setMessage={(message) => {
             setMessage(message);
             setEmoteSearchOpen(false);
-        }} floatRef={emoteSearchFloat.refs.setFloating} floatStyles={emoteSearchFloat.floatingStyles}/> : null}
+        }} floatRef={emoteSearchFloat.refs.setFloating} floatStyles={emoteSearchFloat.floatingStyles} floatProps={emoteSearchInteractions.getFloatingProps()} activeIndex={emoteSearchActiveIndex} listRef={emoteSearchListRef} itemProps={emoteSearchInteractions.getItemProps()}/> : null}
     </form>)
 }

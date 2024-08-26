@@ -11,7 +11,6 @@ import classnames from "classnames";
 import {AppContext} from "../../contexts/AppContext.js";
 import ProfilePicture from "./ProfilePicture.jsx";
 import remarkQuarkyEmotes from "../../util/remark-quarky-emotes/index.js";
-import Datsuryoku from "../Datsuryoku.jsx";
 import dedupe from "../../util/dedupe.js";
 
 export default function Message({children, avatarUri, username, content, isBot, botName, isDiscord, timestamp, edited, attachments, replyTo, isContinuation, game, editFunction}) {

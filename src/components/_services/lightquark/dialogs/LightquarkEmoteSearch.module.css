@@ -11,8 +11,23 @@
     min-width: 24px;
 }
 .emoteWrap {
+    display: flex;
+    align-items: center;
     padding: 0.2em;
+    gap: 0.5em;
 }
-.emoteWrap:hover {
+.emoteWrap[tabindex="0"] {
     background-color: var(--background-color-less);
+}
+.emoteMetadata {
+    display: flex;
+    flex-direction: column;
+}
+.emoteQuark {
+    font-size: smaller;
+    font-style: italic;
+
+    display: flex;
+    gap: 2px;
+    align-items: center;
 }
