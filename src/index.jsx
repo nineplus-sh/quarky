@@ -150,10 +150,15 @@ export function App(props) {
     const axiosClient = axios.create({
         baseURL: apiKeys.baseURL + "/v4/",
         headers: {
-            ...(apiKeys.accessToken ? { Authorization: `Bearer ${apiKeys.accessToken}` } : {}),
             "lq-agent": `Quarky/${version}`
         }
     })
+    axiosClient.interceptors.request.use(config => {
+        if (apiKeys.accessToken) {
+            config.headers.Authorization = `Bearer ${apiKeys.accessToken}`;
+        }
+        return config;
+    });
     createAuthRefreshInterceptor(axiosClient, async function() {
         return axiosClient.post("auth/refresh",
             {accessToken: apiKeys.accessToken, refreshToken: apiKeys.refreshToken}, {skipAuthRefresh: true})
@@ -173,7 +178,8 @@ export function App(props) {
             queries: {
                 queryFn: async ({queryKey}) => {
                     return (await axiosClient.get(queryKey[0])).data.response
-                }
+                },
+                retry: false,
             }
         }
     });
