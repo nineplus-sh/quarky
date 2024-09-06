@@ -2,10 +2,12 @@ import {useQuery} from "@tanstack/react-query";
 import styles from "./LightquarkEmoteSearch.module.css"
 import Fuse from "fuse.js";
 import useQuark from "../../../../util/useQuark.js";
-import {useEffect} from "react";
+import {useContext, useEffect} from "react";
+import {AppContext} from "../../../../contexts/AppContext.js";
 
 export default function LightquarkEmoteSearch({message, setMessage, floatRef, floatStyles, floatProps, activeIndex, listRef, itemProps}) {
     const { data, isLoading } = useQuery({queryKey: ['emoji']});
+    const {nyafile} = useContext(AppContext);
     const search = message.match(/:(\w{2,})$/);
 
     function enterHandler(event) {
@@ -14,6 +16,7 @@ export default function LightquarkEmoteSearch({message, setMessage, floatRef, fl
         }
     }
     useEffect(() => {
+        if(activeIndex !== null) new Audio(nyafile.getCachedData("sfx/button-sidebar-hover")).play();
         document.addEventListener("keydown", enterHandler);
         return () => document.removeEventListener('keydown', enterHandler);
     }, [activeIndex]);

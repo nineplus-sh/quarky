@@ -8,14 +8,17 @@ export default function SidebarItem({baseI18n, area, setArea, currentArea, onCli
     const {nyafile} = useContext(AppContext);
     const {t} = useTranslation();
 
-    function setAreaSound(area) {
+    function setAreaWithSound(area) {
         if(currentArea === area) return;
         new Audio(nyafile.getCachedData("sfx/button-sidebar-select")).play();
         setArea(area);
     }
 
-    return <div onClick={() => onClick ? onClick() : setAreaSound(area)} className={classnames(styles.sidebarItem, {[styles.active]: currentArea === area})}
-                onMouseEnter={() => new Audio(nyafile.getCachedData("sfx/button-sidebar-hover")).play()}>
+    return <div onClick={() => onClick ? onClick() : setAreaWithSound(area)} className={classnames(styles.sidebarItem, {[styles.active]: currentArea === area})}
+                onMouseEnter={() => {
+                    if(currentArea===area) return;
+                    new Audio(nyafile.getCachedData("sfx/button-sidebar-hover")).play();
+                }}>
         <span>{t(`${baseI18n.toUpperCase()}_${area.toUpperCase()}`)}</span>
     </div>
 }

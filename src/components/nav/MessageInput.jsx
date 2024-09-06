@@ -13,7 +13,7 @@ import LightquarkEmoteSearch from "../_services/lightquark/dialogs/LightquarkEmo
 export default function MessageInput() {
     let { dialogId } = useParams();
     let [message, setMessage] = useState("");
-    const {settings, saveSettings} = useContext(AppContext);
+    const {settings, saveSettings, nyafile} = useContext(AppContext);
     const [typingTimeout, setTypingTimeout] = useState(null);
     const [isSending, setSending] = useState(false);
     const messageBox = useRef(null);
@@ -128,6 +128,7 @@ export default function MessageInput() {
         {gifOpen ? <GIFPicker floatRef={gifFloat.refs.setFloating} floatStyles={gifFloat.floatingStyles} floatProps={gifInteractions.getFloatingProps()} setOpen={setGifOpen}/> : null}
         {emoteSearchOpen ? <LightquarkEmoteSearch message={message} setMessage={(message) => {
             setMessage(message);
+            new Audio(nyafile.getCachedData("sfx/button-sidebar-select")).play();
             setTimeout(function() {
                 setEmoteSearchOpen(false);
             }, 100)
