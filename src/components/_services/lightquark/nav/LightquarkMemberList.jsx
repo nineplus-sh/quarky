@@ -19,12 +19,15 @@ export default function LightquarkMemberList() {
                     return p;
                 })
             })
-            setMembers(members.response.users)
+            setMembers(members.response.users);
         })()
     }, [dialogId])
 
     return <>
-        <p className={styles.memberHeader}>Members</p>
-        {members.map((member) => <LightquarkMember member={member} key={member._id} />)}
+        <p className={styles.memberHeader}>{members.length} members</p>
+        {members
+            .sort((a, b) => a.username.toLowerCase().localeCompare(b.username.toLowerCase()))
+            .map((member) => <LightquarkMember member={member} key={member._id} />)
+        }
     </>
 }

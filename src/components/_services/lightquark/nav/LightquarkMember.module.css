@@ -4,7 +4,7 @@
 
     align-items: center;
     cursor: pointer;
-    border-radius: 15px;
+    border-radius: 15px 0 0 15px;
 }
 .member:hover {
     background-color: var(--background-color-lesser);

@@ -1,6 +1,5 @@
 import Header from "../components/nav/Header.jsx";
 import SpaceBackground from "../components/backgrounds/fullsize/SpaceBackground.jsx";
-import changeMusic from "../components/nyafile/NyafileChangeMusic.js";
 import {Outlet} from "react-router-dom";
 import {AppContext} from "../contexts/AppContext.js";
 import {useContext, useEffect, useState, useRef} from "react";
