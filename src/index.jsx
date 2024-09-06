@@ -75,7 +75,6 @@ export function App(props) {
     let [nyafile, setNyafile] = useState(null);
     let [loading, setLoading] = useState(true);
     let [translationsLoading    , setTranslationsLoading] = useState(true);
-    let [music, setMusic] = useState(undefined);
     let [accounts, setAccounts] = useState({});
     let [messageCache, setMessageCache] = useState({});
     let [userCache, setUserCache] = useState({});
@@ -187,8 +186,7 @@ export function App(props) {
     return (
         <AppContext.Provider value={{
             loading, setLoading, holiday,
-            nyafile, setNyafile, 
-            music, setMusic, 
+            nyafile, setNyafile,
             accounts, setAccounts, 
             messageCache, setMessageCache,
             userCache, setUserCache,
@@ -198,7 +196,6 @@ export function App(props) {
             quarkCache, setQuarkCache, quarkList, setQuarkList
         }}>
             <QueryClientProvider client={queryClient}>
-                <audio src={music} autoPlay={true} loop={true}></audio>
                 {translationsLoading ? null : props.children}
             </QueryClientProvider>
         </AppContext.Provider>

@@ -8,8 +8,13 @@ export default function UserSettingsLanguage() {
     const {t} = useTranslation();
 
     function langmap(languages) {
-        return languages.map(language => <SettingsRadio setting={"LANGUAGE"} value={language} key={language} externalIcon={`https://translit.litdevs.org/widget/quarky/quarky/${language}/88x31-grey.png`}
-                                                 text={t("SETTINGS_LANGUAGE_FORMAT", {localname: locallangs[language], translatedname: t(`SETTING_LANGUAGE_${language.toUpperCase()}`)})}/>)
+        return languages.map(language => <SettingsRadio setting={"LANGUAGE"} value={language} key={language}
+                                                        externalIcon={`https://translit.litdevs.org/widget/quarky/quarky/${language}/88x31-grey.png`}
+                                                        text={locallangs[language] === t(`SETTING_LANGUAGE_${language.toUpperCase()}`) ?
+                                                            locallangs[language] :
+                                                            t("SETTINGS_LANGUAGE_FORMAT", {
+                                                                localname: locallangs[language], translatedname: t(`SETTING_LANGUAGE_${language.toUpperCase()}`)
+                                                            })}/>)
     }
 
     return <>
