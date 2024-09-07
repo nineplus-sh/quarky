@@ -5,8 +5,8 @@ import LightquarkChannel from "./LightquarkChannel.jsx";
 import styles from "./LightquarkChannelList.module.css";
 import {AppContext} from "../../../../contexts/AppContext.js";
 
-export default function LightquarkChannelList({quark}) {
+export default function LightquarkChannelList({quark, demo}) {
     return <div className={styles.channelList}>
-        {quark.channels.map((channel) => <LightquarkChannel channel={channel} quarkId={quark._id} key={channel._id} />)}
+        {quark.channels.map((channel) => <LightquarkChannel demo={demo} channel={channel} quarkId={quark._id} key={channel._id} />)}
     </div>
 }

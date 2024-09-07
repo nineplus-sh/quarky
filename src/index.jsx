@@ -208,7 +208,8 @@ const sentryCreateBrowserRouter = Sentry.wrapCreateBrowserRouter(createBrowserRo
 export const router = sentryCreateBrowserRouter(
     createRoutesFromElements(
         <Route path="/" element={<Root />}>
-            <Route path="/demo" element={<DemoView />}/>
+            <Route path="/demo/:quarkId?/:channelId?" element={<DemoView />} />
+
             <Route path="/" element={<AuthenticationNeeded />}>
                 <Route path="/" element={<ClientWrapper />}>
                     <Route path="/" element={<MainView />}>
