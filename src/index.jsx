@@ -29,6 +29,7 @@ import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
 import axios from "axios";
 import {version} from "../package.json";
 import createAuthRefreshInterceptor from "axios-auth-refresh";
+import DemoView from "./routes/DemoView.jsx";
 
 Sentry.init({
     dsn: "https://901c666ed03942d560e61928448bcf68@sentry.yggdrasil.cat/5",
@@ -207,6 +208,7 @@ const sentryCreateBrowserRouter = Sentry.wrapCreateBrowserRouter(createBrowserRo
 export const router = sentryCreateBrowserRouter(
     createRoutesFromElements(
         <Route path="/" element={<Root />}>
+            <Route path="/demo" element={<DemoView />}/>
             <Route path="/" element={<AuthenticationNeeded />}>
                 <Route path="/" element={<ClientWrapper />}>
                     <Route path="/" element={<MainView />}>

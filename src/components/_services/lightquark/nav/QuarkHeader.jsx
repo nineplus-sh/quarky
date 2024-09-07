@@ -9,13 +9,12 @@ import SettingsView from "../../../../routes/SettingsView.jsx";
 import QuarkSettingsSidebar from "../settings/QuarkSettingsSidebar.jsx";
 import QuarkSettingsArea from "../settings/QuarkSettingsArea.jsx";
 
-export default function QuarkHeader() {
-    const {quarkCache, quarkList, setQuarkList, accounts} = useContext(AppContext);
+export default function QuarkHeader({quark, interaction = true}) {
+    const {quarkList, setQuarkList, accounts} = useContext(AppContext);
     const {quarkId} = useParams();
     const {t} = useTranslation();
     const navigate = useNavigate();
 
-    const quark = quarkCache[quarkId.split("lq_")[1]];
     async function leaveQuark() {
         if(confirm(t("LEAVE_QUARK_CONFIRM", {name: quark?.name}))) {
             navigate("/lq_100000000000000000000000");
@@ -32,7 +31,7 @@ export default function QuarkHeader() {
 
     return <div className={styles.header}>
         <span>{quark?.name}</span>
-        {quarkId === "lq_100000000000000000000000" ? null :
+        {interaction === false || quarkId === "lq_100000000000000000000000" ? null :
             quark?.owners.includes(accounts.lightquark._id) ?
             <button onClick={() => NiceModal.show(SettingsView, {data:{quarkId:quark._id},Sidebar:QuarkSettingsSidebar,Area:QuarkSettingsArea,defaultArea:"overview"})}>{t("MANAGE_QUARK")}</button> :
             <button onClick={() => leaveQuark()}>{t("LEAVE_QUARK")}</button>}
