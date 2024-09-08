@@ -11,6 +11,8 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
+    background: var(--background-color-less);
 }
 
 .channelListWrap > div[class*="_channelList_"] {
@@ -22,4 +24,8 @@
     flex-direction: row;
     flex-grow: 1;
     background-color: var(--background-color-max);
+}
+
+.avieboxWrap {
+    margin-top: auto;
 }

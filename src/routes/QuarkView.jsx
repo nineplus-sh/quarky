@@ -18,7 +18,9 @@ export default function QuarkView() {
                 {isLoading ? null : <><QuarkHeader quark={data}/>
                 <LightquarkChannelList quark={data}/></>}
 
-                <Aviebox user={accounts.lightquark}/>
+                <div className={styles.avieboxWrap}>
+                    <Aviebox user={accounts.lightquark}/>
+                </div>
             </div>
             <Outlet/>
         </div>

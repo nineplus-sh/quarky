@@ -46,7 +46,7 @@ export default function SettingsID({quarkId}) {
 
     return <div className={styles.userInfoWrap}>
         <div onClick={uploadPicture} className={styles.profilePictureWrap}>
-            <NyafileImage src={"img/upload"} inlinesvg="true"
+            <NyafileImage src={"img/upload"} inlinesvg={"true"}
                           className={classnames(styles.uploadIcon, {[styles.uploading]: isUploading})}/>
             <ProfilePicture src={targetAvatar} px={80} doPurr={false}/>
         </div>

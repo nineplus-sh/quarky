@@ -14,7 +14,14 @@ export default defineConfig({
   plugins: [
       react(),
       basicSsl(),
-      sentryVitePlugin({}),
+      sentryVitePlugin({
+          bundleSizeOptimizations: {
+              excludeDebugStatements: true,
+              excludeReplayIframe: true,
+              excludeReplayShadowDom: true
+          },
+          reactComponentAnnotation: { enabled: true }
+      }),
   ],
   test: {
     globals: true,

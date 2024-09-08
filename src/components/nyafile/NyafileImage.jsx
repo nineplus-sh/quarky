@@ -4,33 +4,33 @@ import {AppContext} from "../../contexts/AppContext.js";
 /**
  * A wrapper for <img> that allows specifying a Nyafile path in the src instead.
  * TODO: Fix this. Not ported. Bad.
+ * @param src - The path to the image in the Nyafile.
  * @param props - The props of the component to pass down to the <img>, provided by React.
  * @returns {JSX.Element} - The <img> tag with the image from the Nyafile as the src.
  * @constructor
  */
-export default function NyafileImage(props) {
+export default function NyafileImage({src, inlinesvg, ...props}) {
     let appContext = useContext(AppContext);
-    const { src, ...otherProps } = props;
     const [image, setImage] = useState("");
     const [svg, setSvg] = useState(null);
 
     useEffect(() => {
         async function getDataUrl() {
-            const fetchedImage = await appContext.nyafile.getAssetDataUrl(props.src);
-            if(fetchedImage.startsWith("data:image/svg") && props.inlinesvg) {
+            const fetchedImage = await appContext.nyafile.getAssetDataUrl(src);
+            if(fetchedImage.startsWith("data:image/svg") && inlinesvg) {
                 setSvg(atob(fetchedImage.replace("data:image/svg+xml;base64,", '')))
             } else {
                 setImage(fetchedImage)
             }
         }
         getDataUrl();
-    }, [appContext.nyafile, appContext.nyafile.defaultFile, appContext.nyafile.nyaFile, props.src]);
+    }, [appContext.nyafile, appContext.nyafile.defaultFile, appContext.nyafile.nyaFile, src]);
 
     // noinspection HtmlRequiredAltAttribute
     if(!svg) return (
-        <img src={image} {...otherProps} />
+        <img {...props} src={image} />
     )
     return (
-        <div {...otherProps} dangerouslySetInnerHTML={{__html: svg}}/>
+        <div {...props} dangerouslySetInnerHTML={{__html: svg}}/>
     )
 }
