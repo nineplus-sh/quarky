@@ -223,14 +223,15 @@ export const router = sentryCreateBrowserRouter(
     )
 )
 
+const ProfiledApp = Sentry.withProfiler(App);
 ReactDOM.createRoot(document.getElementById('root')).render(
     //<React.StrictMode>
         <FlagProvider config={unleashConfig}>
-            <App>
+            <ProfiledApp>
                 <NiceModal.Provider>
                     <RouterProvider router={router} />
                 </NiceModal.Provider>
-            </App>
+            </ProfiledApp>
         </FlagProvider>
     //</React.StrictMode>,
 )
