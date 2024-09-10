@@ -6,13 +6,13 @@ import LightquarkAttachments from "./LightquarkAttachments.jsx";
 import GameInvite from "../../../dialogs/GameInvite.jsx";
 import LQ from "../../../../util/LQ.js";
 
-export default function LightquarkMessage({message, channel, quark, isContinuation}) {
+export default function LightquarkMessage({message, channel, quark, isContinuation, isAuthored}) {
     const botMetadata = message.specialAttributes?.find(attr => attr.type === "botMessage");
     const clientAttributes = message.specialAttributes?.find(attr => attr.type === "clientAttributes");
     let gameData;
     if(clientAttributes?.game) gameData = JSON.parse(clientAttributes?.game);
 
-    const {userCache, messageCache, accounts} = useContext(AppContext);
+    const {userCache, messageCache} = useContext(AppContext);
     const replyId = message.specialAttributes?.find(attr => attr.type === "reply")?.replyTo;
     const replyTo = replyId ? messageCache[channel]?.find(m => m._id === replyId) : null;
     const noBotAuthor = userCache[message.author._id] || message.author;
@@ -27,5 +27,5 @@ export default function LightquarkMessage({message, channel, quark, isContinuati
     return <Message username={author.username} timestamp={message.timestamp} edited={message.edited} attachments={<LightquarkAttachments attachments={message.attachments}/>}
                     avatarUri={author.avatarUri} content={message.content} isBot={noBotAuthor.isBot} botName={botMetadata ? noBotAuthor.username : null}
                     isDiscord={clientAttributes?.quarkcord} replyTo={replyTo} isContinuation={isContinuation} game={gameData ? <GameInvite name={gameData.name} score={gameData.score} url={gameData.url} opponent={{name: author.username, avatar: author.avatarUri, score: gameData.score}} arena={{id: quark}}/> : null}
-                    editFunction={accounts.lightquark._id === author._id ? async (content) => await editMessage(content) : undefined}/>
+                    editFunction={isAuthored ? async (content) => await editMessage(content) : undefined}/>
 }

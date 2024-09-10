@@ -1,24 +1,13 @@
 import LightquarkLogin from "../_services/lightquark/modals/LightquarkLogin.jsx";
-import {AppContext} from "../../contexts/AppContext.js";
-import {useContext, useEffect, useState} from "react";
-import {t} from "i18next";
 import styles from "./LoginModal.module.css"
 import NyafileImage from "../nyafile/NyafileImage.jsx";
 
 /**
  * The login modal of the authentication needed screen.
- * This shit is absolutely not a modal but I don't know what to call it so it's a modal
  * @returns {JSX.Element}
  * @constructor
  */
-export default function LoginModal({setDone}) {
-    const appContext = useContext(AppContext);
-    const [service, setService] = useState("");
-
-    useEffect(() => {
-        if(appContext.accounts[service]) setService("")
-    }, [appContext.accounts]);
-
+export default function LoginModal() {
     return <div className={styles.centerwrap}>
         <div className={styles.characterContainer}>
             <NyafileImage src={"img/loginheadervukky"} className={styles.planet}/>
@@ -34,7 +23,7 @@ export default function LoginModal({setDone}) {
         </div>
 
         <div className={styles.login}>
-            <LightquarkLogin setDone={setDone}/>
+            <LightquarkLogin/>
         </div>
     </div>
 }

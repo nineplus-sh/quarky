@@ -12,7 +12,7 @@ export default NiceModal.create(({ name, maintainer, signOut }) =>{
 
     async function logOut() {
         await localForage.removeItem("lightquark");
-        appContext.setAccounts({});
+        appContext.setApiKeys({});
         modal.hide();
     }
 

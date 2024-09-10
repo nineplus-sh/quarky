@@ -30,6 +30,7 @@ import axios from "axios";
 import {version} from "../package.json";
 import createAuthRefreshInterceptor from "axios-auth-refresh";
 import DemoView from "./routes/DemoView.jsx";
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 
 Sentry.init({
     dsn: "https://901c666ed03942d560e61928448bcf68@sentry.yggdrasil.cat/5",
@@ -76,7 +77,6 @@ export function App(props) {
     let [nyafile, setNyafile] = useState(null);
     let [loading, setLoading] = useState(true);
     let [translationsLoading    , setTranslationsLoading] = useState(true);
-    let [accounts, setAccounts] = useState({});
     let [messageCache, setMessageCache] = useState({});
     let [userCache, setUserCache] = useState({});
     let [holiday, setHoliday] = useState("");
@@ -138,7 +138,7 @@ export function App(props) {
         setSettings({...settings, ...toBeWritten});
         localForage.setItem("settings", {...settings, ...toBeWritten});
 
-        if(accounts.lightquark && cloud) {
+        if(cloud && apiKeys.accessToken) {
             Object.entries(toBeWritten).forEach(([key, value]) => {
                 LQ(`user/me/preferences/quarky/${key}`, "POST", {
                     value: typeof value === "object" ? Object.values(value).filter(vvalue => vvalue !== undefined).length === 0 ? null : JSON.stringify(value) : value
@@ -147,6 +147,7 @@ export function App(props) {
         }
     }
 
+    window.localForage = localForage
     const axiosClient = axios.create({
         baseURL: apiKeys.baseURL + "/v4/",
         headers: {
@@ -180,7 +181,7 @@ export function App(props) {
                     return (await axiosClient.get(queryKey[0])).data.response
                 },
                 retry: false,
-            }
+            },
         }
     });
 
@@ -188,7 +189,6 @@ export function App(props) {
         <AppContext.Provider value={{
             loading, setLoading, holiday,
             nyafile, setNyafile,
-            accounts, setAccounts, 
             messageCache, setMessageCache,
             userCache, setUserCache,
             drafts, setDrafts,
@@ -228,6 +228,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     //<React.StrictMode>
         <FlagProvider config={unleashConfig}>
             <ProfiledApp>
+                <ReactQueryDevtools initialIsOpen={false} />
                 <NiceModal.Provider>
                     <RouterProvider router={router} />
                 </NiceModal.Provider>

@@ -6,6 +6,7 @@ import useWebSocket from "react-use-websocket";
 import localForage from "localforage";
 import styles from "./ClientWrapper.module.css";
 import Loader from "./Loader.jsx";
+import useMe from "../components/_services/lightquark/hooks/useMe.js";
 
 /**
  * The client screen.
@@ -18,7 +19,6 @@ export default function ClientWrapper() {
     const [heartbeatMessage] = useState("*gurgles*");
     const navigate = useNavigate();
     const {userCache, setUserCache,
-        accounts, 
         setMessageCache,
         settings, saveSettings,
         setQuarkCache, setQuarkList} = useContext(AppContext)
@@ -99,7 +99,7 @@ export default function ClientWrapper() {
     useEffect(() => {(async () => {
         if(pathname === "/") navigate("/lq_100000000000000000000000");
 
-        if (accounts.lightquark && !lqSockURL) {
+        if (!lqSockURL) {
             const network = await LQ("network"); // TODO: Add NetworkOfflineModal here as well
             setLqSockURL(network.raw.gateway)
         }
@@ -147,7 +147,7 @@ export default function ClientWrapper() {
         }
 
         setClientReady(true);
-    })()}, [accounts]);
+    })()}, []);
 
     return (<>
         {clientReady ?

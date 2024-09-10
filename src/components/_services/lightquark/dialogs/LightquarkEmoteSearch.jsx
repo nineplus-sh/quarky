@@ -1,7 +1,7 @@
 import {useQuery} from "@tanstack/react-query";
 import styles from "./LightquarkEmoteSearch.module.css"
 import Fuse from "fuse.js";
-import useQuark from "../../../../util/useQuark.js";
+import useQuark from "../hooks/useQuark.js";
 import {useContext, useEffect} from "react";
 import {AppContext} from "../../../../contexts/AppContext.js";
 

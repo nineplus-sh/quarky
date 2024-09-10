@@ -8,12 +8,15 @@ import NiceModal from "@ebay/nice-modal-react";
 import SettingsView from "../../../../routes/SettingsView.jsx";
 import QuarkSettingsSidebar from "../settings/QuarkSettingsSidebar.jsx";
 import QuarkSettingsArea from "../settings/QuarkSettingsArea.jsx";
+import useMe from "../hooks/useMe.js";
 
 export default function QuarkHeader({quark, interaction = true}) {
-    const {quarkList, setQuarkList, accounts} = useContext(AppContext);
+    const {quarkList, setQuarkList} = useContext(AppContext);
     const {quarkId} = useParams();
     const {t} = useTranslation();
     const navigate = useNavigate();
+
+    const {data: userData, isLoading} = useMe();
 
     async function leaveQuark() {
         if(confirm(t("LEAVE_QUARK_CONFIRM", {name: quark?.name}))) {
@@ -29,10 +32,11 @@ export default function QuarkHeader({quark, interaction = true}) {
         }
     }
 
+    if(isLoading) return null;
     return <div className={styles.header}>
         <span>{quark?.name}</span>
         {interaction === false || quarkId === "lq_100000000000000000000000" ? null :
-            quark?.owners.includes(accounts.lightquark._id) ?
+            quark?.owners.includes(userData._id) ?
             <button onClick={() => NiceModal.show(SettingsView, {data:{quarkId:quark._id},Sidebar:QuarkSettingsSidebar,Area:QuarkSettingsArea,defaultArea:"overview"})}>{t("MANAGE_QUARK")}</button> :
             <button onClick={() => leaveQuark()}>{t("LEAVE_QUARK")}</button>}
     </div>

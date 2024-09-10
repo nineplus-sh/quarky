@@ -11,7 +11,7 @@ import mergeRefs from "merge-refs";
 import LightquarkEmoteSearch from "../_services/lightquark/dialogs/LightquarkEmoteSearch.jsx";
 
 export default function MessageInput() {
-    let { dialogId } = useParams();
+    let { quarkId, dialogId } = useParams();
     let [message, setMessage] = useState("");
     const {settings, saveSettings, nyafile} = useContext(AppContext);
     const [typingTimeout, setTypingTimeout] = useState(null);
@@ -122,7 +122,7 @@ export default function MessageInput() {
             messageBox.current?.focus();
         }, 100);
     }}>
-        <button type="button" onClick={() => NiceModal.show(GameLaunchModal, {arena: {id: dialogId}})}>Games</button>
+        <button type="button" onClick={() => NiceModal.show(GameLaunchModal, {quarkId: quarkId.split("lq_")[1]})}>Games</button>
         <input type={"text"} ref={mergeRefs(messageBox, emoteSearchFloat.refs.setReference)} disabled={isSending} value={message} onInput={(e) => setMessage(e.target.value)} className={styles.messageBox} {...emoteSearchInteractions.getReferenceProps()}/>
         <button type="button" ref={gifFloat.refs.setReference} {...gifInteractions.getReferenceProps()}>GIFs</button>
         {gifOpen ? <GIFPicker floatRef={gifFloat.refs.setFloating} floatStyles={gifFloat.floatingStyles} floatProps={gifInteractions.getFloatingProps()} setOpen={setGifOpen}/> : null}

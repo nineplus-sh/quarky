@@ -4,13 +4,19 @@ import {useContext, useEffect, useRef, useState} from "react";
 import {AppContext} from "../../contexts/AppContext.js";
 import styles from "./GameModal.module.css"
 import classnames from "classnames";
+import useMe from "../_services/lightquark/hooks/useMe.js";
+import useQuark from "../_services/lightquark/hooks/useQuark.js";
 
-export default NiceModal.create(({ gameLink, arena, opponent }) =>{
+export default NiceModal.create(({ gameLink, quarkId, opponent }) =>{
     const modal = useModal();
     const ourFrame = useRef(null);
     const [frameHeight, setFrameHeight] = useState(null);
     const [frameWidth, setFrameWidth] = useState(null);
-    const {accounts, settings, saveSettings} = useContext(AppContext);
+    const {settings, saveSettings} = useContext(AppContext);
+
+    const {data: userData, isLoading: isMeLoading} = useMe();
+    const {data: quarkData, isLoading: isQuarkLoading} = useQuark(quarkId);
+    const isLoading = isMeLoading || isQuarkLoading;
 
     useEffect(() => {
         const iframeEventHandler = (estrogen) => {
@@ -44,14 +50,18 @@ export default NiceModal.create(({ gameLink, arena, opponent }) =>{
         ourFrame.current.contentWindow.postMessage({
             type: "gameStage",
             player: {
-                name: accounts.lightquark.username,
-                avatar: accounts.lightquark.avatarUri
+                name: userData.username,
+                avatar: userData.avatarUri
             },
             opponent: opponent,
-            arena: arena
+            arena: {
+                name: quarkData.name,
+                avatar: quarkData.iconUri
+            }
         }, "*")
     }
 
+    if(isLoading) return null;
     return <GenericModal modal={modal} classNames={classnames(styles.gameModal, {[styles.gameModalDefault]: frameWidth === null})}>
         <iframe src={gameLink} ref={ourFrame} width={frameWidth} height={frameHeight} onLoad={feedData} frameBorder={0}/>
     </GenericModal>;

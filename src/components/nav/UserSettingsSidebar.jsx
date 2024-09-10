@@ -18,7 +18,7 @@ export default function UserSettingsSidebar({area, setArea}) {
         modal.remove();
 
         await localForage.removeItem("lightquark");
-        appContext.setAccounts({});
+        appContext.setApiKeys({});
     }
 
     return <div className={styles.sidebarContents}>

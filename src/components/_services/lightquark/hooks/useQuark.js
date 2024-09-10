@@ -1,4 +1,4 @@
-import {useQuery, useQueryClient} from "@tanstack/react-query";
+import {useMutation, useQuery, useQueryClient} from "@tanstack/react-query";
 
 export default function useQuark(id, options) {
     const queryClient = useQueryClient();

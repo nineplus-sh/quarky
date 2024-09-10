@@ -12,7 +12,7 @@ import remarkGfm from "remark-gfm";
 import rehypeExternalLinks from "rehype-external-links";
 import {version} from "../../../../../package.json";
 
-export default function LightquarkLogin({setDone}) {
+export default function LightquarkLogin() {
     const appContext = useContext(AppContext);
     const updateContext = useUnleashContext();
     const [network, setNetwork] = useState('https://lightquark.network');
@@ -108,18 +108,11 @@ export default function LightquarkLogin({setDone}) {
             refreshToken: refreshToken
         })
 
-        const userInfos = (await LQ("user/me")).response.user;
-        await updateContext({lqId: userInfos._id})
         appContext.setApiKeys({
             baseURL: network,
             accessToken: accessToken,
             refreshToken: refreshToken
         })
-        appContext.setAccounts(prev => ({...prev, "lightquark": userInfos}));
-
-        localStorage.setItem("USER_AUTHED", "bet");
-        setSwitching(false);
-        setDone(true);
     }
 
     // regarding escapeValue here: while it may seem like a hole for an XSS attack i tried and brackets are still escaped
