@@ -17,6 +17,9 @@
     }, {
       "key": "x-robots-tag",
       "value": "noai"
+    }, {
+      "key": "document-policy",
+      "value": "js-profiling"
     }]
   }]
 }
