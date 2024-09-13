@@ -1,5 +1,4 @@
 import Message from "../../../dialogs/Message.jsx";
-import ProfilePicture from "../../../dialogs/ProfilePicture.jsx";
 import {useContext} from "react";
 import {AppContext} from "../../../../contexts/AppContext.js";
 import LightquarkAttachments from "./LightquarkAttachments.jsx";

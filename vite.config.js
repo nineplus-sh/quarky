@@ -21,7 +21,7 @@ export default defineConfig({
               excludeReplayShadowDom: true
           },
           reactComponentAnnotation: { enabled: true }
-      }),
+      })
   ],
   test: {
     globals: true,

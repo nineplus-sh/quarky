@@ -147,7 +147,6 @@ export function App(props) {
         }
     }
 
-    window.localForage = localForage
     const axiosClient = axios.create({
         baseURL: apiKeys.baseURL + "/v4/",
         headers: {

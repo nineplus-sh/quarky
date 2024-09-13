@@ -4,12 +4,8 @@ import {useContext, useEffect, useState} from "react";
 import Loader from "./Loader.jsx";
 import NyaFile from "@litdevs/nyalib";
 import * as Sentry from "@sentry/react";
-import LQ from "../util/LQ.js";
 import localForage from "localforage";
-import {useFlag, useUnleashContext} from '@unleash/proxy-client-react';
 import * as i18n from "i18next";
-import NiceModal from "@ebay/nice-modal-react";
-import NetworkOfflineModal from "../components/modals/NetworkOfflineModal.jsx";
 import WooScreen from "./WooScreen.jsx";
 
 /**
@@ -19,7 +15,6 @@ import WooScreen from "./WooScreen.jsx";
  */
 export default function Root() {
     let appContext = useContext(AppContext);
-    const updateContext = useUnleashContext();
     const [loadingString, setLoadingString] = useState("LOADING_TRANSLATIONS");
 
     useEffect(() => {

@@ -3,7 +3,6 @@ import styles from "../../../nav/UserSettingsSidebar.module.css";
 import LQ from "../../../../util/LQ.js";
 import {useContext} from "react";
 import {AppContext} from "../../../../contexts/AppContext.js";
-import {useNavigate} from "react-router-dom";
 import {router} from "../../../../index.jsx";
 import {useTranslation} from "react-i18next";
 import {useModal} from "@ebay/nice-modal-react";

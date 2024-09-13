@@ -6,7 +6,6 @@ import useWebSocket from "react-use-websocket";
 import localForage from "localforage";
 import styles from "./ClientWrapper.module.css";
 import Loader from "./Loader.jsx";
-import useMe from "../components/_services/lightquark/hooks/useMe.js";
 
 /**
  * The client screen.

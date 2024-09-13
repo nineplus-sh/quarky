@@ -5,7 +5,7 @@ import GameModal from "./GameModal.jsx";
 
 export default NiceModal.create(({quarkId}) =>{
     const modal = useModal();
-    let [url, setUrl] = useState(null);
+    let [url, setUrl] = useState("");
 
     return <GenericModal modal={modal}>
         <p>Enter the URL to the game you want to test.</p>

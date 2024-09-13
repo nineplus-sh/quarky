@@ -175,5 +175,22 @@
     "ERROR_NYAFILE": "App assets corrupted. Please contact ninePLUS.",
 
     "SAMPLE_USER_NAME": "Hakase",
-    "SAMPLE_USER_MESSAGE_RICH_EMBEDS": "Check it out {{link}}"
+    "SAMPLE_USER_MESSAGE_RICH_EMBEDS": "Check it out {{link}}",
+
+    "DEMO_CHARACTER_HAKASE": "Hakase",
+    "DEMO_CHARACTER_SOCIALDALEK": "SocialDalek",
+
+    "DEMO_CONVERSATION_INTRO_1": "Hey, welcome to Quarky!",
+    "DEMO_CONVERSATION_INTRO_2": "Well, not really, this is a demo. But you can play around in it (features are limited).",
+    "DEMO_CONVERSATION_INTRO_3": "To show you what a chat is like, here are some fake conversations, while supplies last.",
+    "DEMO_CONVERSATION_OVER_1": "You ran out of conversations. You can look for more conversations in a different channel, or download Quarky now to have your own!",
+    "DEMO_CONVERSATION_FULLY_OVER_1": "You completely ran out of conversations. You should probably download Quarky.",
+
+    "DEMO_CONVERSATION_AUSSIE_INTERNET_1": "Aussie Internet moment",
+    "DEMO_CONVERSATION_AUSSIE_INTERNET_2": "None of the images are loading on Discord, and messages n things are struggling hard",
+    "DEMO_CONVERSATION_AUSSIE_INTERNET_3": "Im nibbling your internet yum yum yum",
+    "DEMO_CONVERSATION_AUSSIE_INTERNET_4": "Catgirl caught wreaking havoc on the Australian Internet",
+    "DEMO_CONVERSATION_AUSSIE_INTERNET_5": "What do you have to say for yourself, ma'am?",
+    "DEMO_CONVERSATION_AUSSIE_INTERNET_6": "Burp",
+    "DEMO_CONVERSATION_AUSSIE_INTERNET_7": "Truly a menace......"
 }

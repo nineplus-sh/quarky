@@ -2,7 +2,6 @@ import {useContext, useEffect, useState} from "react";
 import {AppContext} from "../../../../contexts/AppContext.js";
 import localForage from "localforage";
 import LQ from "../../../../util/LQ.js";
-import {useUnleashContext} from "@unleash/proxy-client-react";
 import NiceModal from "@ebay/nice-modal-react";
 import NetworkOfflineModal from "../../../modals/NetworkOfflineModal.jsx";
 import {Trans, useTranslation} from "react-i18next";
@@ -10,11 +9,9 @@ import styles from "./LightquarkLogin.module.css";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeExternalLinks from "rehype-external-links";
-import {version} from "../../../../../package.json";
 
 export default function LightquarkLogin() {
     const appContext = useContext(AppContext);
-    const updateContext = useUnleashContext();
     const [network, setNetwork] = useState('https://lightquark.network');
     const [oldNetwork, setOldNetwork] = useState('');
     const [username, setUsername] = useState('');

@@ -1,8 +1,6 @@
-import {useContext, useEffect, useLayoutEffect, useState} from "react";
-import {AppContext} from "../../contexts/AppContext.js";
+import {useLayoutEffect} from "react";
 import {useParams} from "react-router-dom";
 import LightquarkMessage from "../_services/lightquark/dialogs/LightquarkMessage.jsx";
-import LQ from "../../util/LQ.js";
 import useMe from "../_services/lightquark/hooks/useMe.js";
 
 export default function DialogMessages({messages}) {

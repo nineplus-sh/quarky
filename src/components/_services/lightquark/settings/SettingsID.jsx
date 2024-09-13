@@ -19,6 +19,8 @@ export default function SettingsID({quarkId}) {
 
     const target = quarkId ? quarkData : meData;
     const targetLoading = quarkId ? isQuarkLoading : isMeLoading;
+    if(targetLoading) return null;
+
     const targetName = quarkId ? target.name : target.username;
     const targetAvatar = quarkId ? target.iconUri : target.avatarUri;
 
@@ -52,7 +54,6 @@ export default function SettingsID({quarkId}) {
         input.click();
     }
 
-    if(targetLoading) return null;
     return <div className={styles.userInfoWrap}>
         <div onClick={uploadPicture} className={styles.profilePictureWrap}>
             <NyafileImage src={"img/upload"} inlinesvg={"true"}

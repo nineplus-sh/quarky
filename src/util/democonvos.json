@@ -1,0 +1,33 @@
+{
+  "9phq_lobby": [
+    {
+      "_id": "aussie_internet",
+      "messages": [
+        {
+          "character": "socialdalek",
+          "attachments": [
+            {"type": "image/png", "url": "/demo_assets/attachments/aussie_internet.png"}
+          ]
+        },
+        {
+          "character": "socialdalek"
+        },
+        {
+          "character": "hakase"
+        },
+        {
+          "character": "socialdalek"
+        },
+        {
+          "character": "socialdalek"
+        },
+        {
+          "character": "hakase"
+        },
+        {
+          "character": "socialdalek"
+        }
+      ]
+    }
+  ]
+}

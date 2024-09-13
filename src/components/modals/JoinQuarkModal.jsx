@@ -1,7 +1,6 @@
 import GenericModal from "./GenericModal.jsx";
 import {Trans, useTranslation} from "react-i18next";
 import NiceModal, {useModal} from "@ebay/nice-modal-react";
-import localForage from "localforage";
 import {useContext, useState} from "react";
 import {AppContext} from "../../contexts/AppContext.js";
 import NyafileImage from "../nyafile/NyafileImage.jsx";
