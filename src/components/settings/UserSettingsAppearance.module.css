@@ -6,7 +6,7 @@
     align-items: center;
 }
 .pridePreviewLinear {
-    background: var(--pride-linear);
+    background: linear-gradient(var(--pride-linear));
     width: 5.5em;
     height: 3em;
 }

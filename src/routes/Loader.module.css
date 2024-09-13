@@ -45,12 +45,12 @@
     height: 2.5em;
     transform: scaleY(-1) perspective(250px) rotate3d(-1, 0, 0, 65deg);
 
-    border-image: var(--pride-linear) 1;
+    border-image: linear-gradient(to top, var(--pride-linear)) 1;
     border-width: 10px;
     border-style: solid;
 }
 .loadingBarStretcher {
-    background: var(--pride-linear);
+    background: linear-gradient(to top, var(--pride-linear));
     height: 100%;
     transition: all 500ms;
 }
