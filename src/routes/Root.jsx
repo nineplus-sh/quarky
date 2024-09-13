@@ -8,6 +8,7 @@ import localForage from "localforage";
 import * as i18n from "i18next";
 import WooScreen from "./WooScreen.jsx";
 import axios from "axios";
+import prettyBytes from "pretty-bytes";
 
 /**
  * The root. Wraps later routes so that Nyafiles can be real.
@@ -18,6 +19,7 @@ export default function Root() {
     let appContext = useContext(AppContext);
     const [loadingString, setLoadingString] = useState("LOADING_TRANSLATIONS");
     const [loadingPercentage, setLoadingPercentage] = useState(null);
+    const [loadingPercentageText, setLoadingPercentageText] = useState("");
 
     useEffect(() => {
         async function loadNyafile() {
@@ -43,6 +45,7 @@ export default function Root() {
                 const nyafileBlob = await axios.get("/quarky.nya", {
                     onDownloadProgress: progressEvent => {
                         setLoadingPercentage(progressEvent.loaded / progressEvent.total * 100);
+                        setLoadingPercentageText(`${prettyBytes(progressEvent.loaded)}/${prettyBytes(progressEvent.total)}`)
                     },
                     responseType: "blob"
                 })
@@ -95,7 +98,7 @@ export default function Root() {
                 })
             }
 
-            appContext.setLoading(false);
+            //appContext.setLoading(false);
         }
         loadNyafile();
     }, []);
@@ -104,7 +107,7 @@ export default function Root() {
         i18n.changeLanguage(appContext.settings.LANGUAGE)
     }, [appContext.settings.LANGUAGE])
 
-    if(appContext.loading) return <Loader loadingString={loadingString} progress={loadingPercentage} />
+    if(appContext.loading) return <Loader loadingString={loadingString} progress={loadingPercentage} progressString={loadingPercentageText}/>
 
     return <Sentry.ErrorBoundary fallback={<WooScreen/>}><Outlet /></Sentry.ErrorBoundary>
 }

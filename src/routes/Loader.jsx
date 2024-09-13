@@ -10,7 +10,7 @@ import NyafileImage from "../components/nyafile/NyafileImage.jsx";
  * @returns {JSX.Element}
  * @constructor
  */
-export default function Loader({loadingString, progress}) {
+export default function Loader({loadingString, progress, progressString}) {
     const { t } = useTranslation();
     const { nyafile, holiday } = useContext(AppContext);
     console.log(nyafile?.assetCache?.logo)
@@ -30,6 +30,10 @@ export default function Loader({loadingString, progress}) {
 
                     <div className={styles.loadingBar}>
                         <div className={styles.loadingBarStretcher} style={{width: `${progress}%`}}></div>
+                    </div>
+
+                    <div className={styles.loadingBarText}>
+                        {progressString}
                     </div>
                 </div>
             </> : null}

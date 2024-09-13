@@ -60,7 +60,10 @@
 .loadingBarImage {
     position: absolute;
     z-index: 1;
-    bottom: 1em;
+    bottom: 2em;
     transform: translateX(-40px);
     transition: all 500ms;
+}
+.loadingBarText {
+    font-size: small;
 }
