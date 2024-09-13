@@ -67,3 +67,30 @@
 .loadingBarText {
     font-size: small;
 }
+
+.pippiless .loadingBar {
+    animation: loadingBarThrowsPippi 1s forwards;
+}
+.pippiless .loadingBarImage {
+    animation: pippiFalls 0.5s forwards ease-in;
+}
+@keyframes pippiFalls {
+    0% {
+        transform: translateX(-40px);
+    }
+    100% {
+        transform: translateX(0px) translateY(200px) rotateZ(25deg);
+        opacity: 0;
+    }
+}
+@keyframes loadingBarThrowsPippi {
+    0% {
+        transform: scaleY(-1) perspective(250px) rotate3d(-1, 0, 0, 65deg);
+    }
+    50% {
+        transform: scaleY(-1) perspective(250px) rotate3d(-1, 0, 0, 35deg);
+    }
+    100% {
+        transform: scaleY(-1) perspective(250px) rotate3d(-1, 0, 0, 65deg);
+    }
+}
