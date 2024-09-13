@@ -98,7 +98,7 @@ export default function Root() {
                 })
             }
 
-            //appContext.setLoading(false);
+            appContext.setLoading(false);
         }
         loadNyafile();
     }, []);
