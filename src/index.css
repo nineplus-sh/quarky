@@ -75,8 +75,8 @@ FACT NUMBER OOONE: Did you know that Quarky has a secret Hotdog theme that is ne
   --pride-linear: #D52D00 0% 20%, #FF9A56 20% 40%, white 40% 60%, #D162A4 60% 80%, #A30262 80% 100%;
 }
 .pride-trans {
-  --pride-conic: repeating-conic-gradient(aqua 0deg 10deg, pink 10deg 20deg, white 20deg 30deg, pink 30deg 40deg);
-  --pride-linear: aqua 0% 20%, pink 20% 40%, white 40% 60%, pink 60% 80%, aqua 80% 100%;
+  --pride-conic: repeating-conic-gradient(#5BCEFA 0deg 10deg, #F5A9B8 10deg 20deg, white 20deg 30deg, #F5A9B8 30deg 40deg);
+  --pride-linear: #5BCEFA 0% 20%, #F5A9B8 20% 40%, white 40% 60%, #F5A9B8 60% 80%, #5BCEFA 80% 100%;
 }
 /* 6 stripes */
 .pride-rainbow {
