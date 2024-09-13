@@ -7,6 +7,7 @@ import * as Sentry from "@sentry/react";
 import localForage from "localforage";
 import * as i18n from "i18next";
 import WooScreen from "./WooScreen.jsx";
+import axios from "axios";
 
 /**
  * The root. Wraps later routes so that Nyafiles can be real.
@@ -16,6 +17,7 @@ import WooScreen from "./WooScreen.jsx";
 export default function Root() {
     let appContext = useContext(AppContext);
     const [loadingString, setLoadingString] = useState("LOADING_TRANSLATIONS");
+    const [loadingPercentage, setLoadingPercentage] = useState(null);
 
     useEffect(() => {
         async function loadNyafile() {
@@ -38,7 +40,13 @@ export default function Root() {
             const nyafile = new NyaFile();
 
             try {
-                await nyafile.load("/quarky.nya", true);
+                const nyafileBlob = await axios.get("/quarky.nya", {
+                    onDownloadProgress: progressEvent => {
+                        setLoadingPercentage(progressEvent.loaded / progressEvent.total * 100);
+                    },
+                    responseType: "blob"
+                })
+                await nyafile.load(nyafileBlob.data, true);
 
                 nyafile.queueCache("img/hakase_pfp");
                 nyafile.queueCache("img/stars");
@@ -64,6 +72,7 @@ export default function Root() {
 
                 await nyafile.waitAllCached();
             } catch(e) {
+                console.log(e)
                 if(e.message.includes("not found in default nyafile")) {
                     setLoadingString(`ERROR_NYAFILE_FILE_MISSING_${import.meta.env.PROD ? "PROD" : "DEV"}`)
                 } else {
@@ -95,7 +104,7 @@ export default function Root() {
         i18n.changeLanguage(appContext.settings.LANGUAGE)
     }, [appContext.settings.LANGUAGE])
 
-    if(appContext.loading) return <Loader loadingString={loadingString} />
+    if(appContext.loading) return <Loader loadingString={loadingString} progress={loadingPercentage} />
 
     return <Sentry.ErrorBoundary fallback={<WooScreen/>}><Outlet /></Sentry.ErrorBoundary>
 }

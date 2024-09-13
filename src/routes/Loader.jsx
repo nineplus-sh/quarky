@@ -10,18 +10,29 @@ import NyafileImage from "../components/nyafile/NyafileImage.jsx";
  * @returns {JSX.Element}
  * @constructor
  */
-export default function Loader({loadingString}) {
+export default function Loader({loadingString, progress}) {
     const { t } = useTranslation();
     const { nyafile, holiday } = useContext(AppContext);
+    console.log(nyafile?.assetCache?.logo)
 
     return (<div id="superpreload">
-        {nyafile ? <NyafileImage src={"logo"} id="preloadlogo"/> : <img src="/quarky.svg" id="preloadlogo"/>}
+        <img src="/quarky.svg" id="preloadlogo"/>
         <span id="preloadtext">
             {t(loadingString)}
             <br/>
             <i>{t(`${holiday}_LINK`) !== `${holiday}_LINK` ?
                 <a target={"_blank"} rel={"noreferrer noopener"} href={t(`${holiday}_LINK`)}>{t(holiday)}</a>
                 : t(holiday)}</i>
+            {progress ? <><br/>
+                <div className={styles.loadingBarWrapper}>
+                    <img className={styles.loadingBarImage} style={{left: `${progress}%`}}
+                         src={"/loading.gif"}/>
+
+                    <div className={styles.loadingBar}>
+                        <div className={styles.loadingBarStretcher} style={{width: `${progress}%`}}></div>
+                    </div>
+                </div>
+            </> : null}
         </span>
     </div>)
 }

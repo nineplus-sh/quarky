@@ -3,6 +3,8 @@
   "tuesday": ["HOLIDAY_TUMMY"],
   "wednesday": ["HOLIDAY_WURMPLE"],
   "thursday": ["HOLIDAY_OOTT"],
+  "friday": ["HOLIDAY_WEEKEND"],
+  "saturday": ["HOLIDAY_CATURDAY"],
   "sunday": ["HOLIDAY_STROGANOFF"],
 
   "june": ["HOLIDAY_PRIDE"],

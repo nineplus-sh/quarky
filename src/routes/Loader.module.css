@@ -38,3 +38,29 @@
         transform: rotate(360deg);
     }
 }
+
+.loadingBar {
+    background-color: transparent;
+    width: 25em;
+    height: 2.5em;
+    transform: scaleY(-1) perspective(250px) rotate3d(-1, 0, 0, 65deg);
+
+    border-image: var(--pride-linear) 1;
+    border-width: 10px;
+    border-style: solid;
+}
+.loadingBarStretcher {
+    background: var(--pride-linear);
+    height: 100%;
+    transition: all 500ms;
+}
+.loadingBarWrapper {
+    position: relative;
+}
+.loadingBarImage {
+    position: absolute;
+    z-index: 1;
+    bottom: 1em;
+    transform: translateX(-40px);
+    transition: all 500ms;
+}
