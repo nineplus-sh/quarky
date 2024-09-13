@@ -8,7 +8,7 @@ import localForage from "localforage";
 import * as i18n from "i18next";
 import WooScreen from "./WooScreen.jsx";
 import axios from "axios";
-import prettyBytes from "pretty-bytes";
+import byteSize from "byte-size";
 
 /**
  * The root. Wraps later routes so that Nyafiles can be real.
@@ -45,7 +45,7 @@ export default function Root() {
                 const nyafileBlob = await axios.get("/quarky.nya", {
                     onDownloadProgress: progressEvent => {
                         setLoadingPercentage(progressEvent.loaded / progressEvent.total * 100);
-                        setLoadingPercentageText(`${prettyBytes(progressEvent.loaded)}/${prettyBytes(progressEvent.total)}`)
+                        setLoadingPercentageText(`${byteSize(progressEvent.loaded, {units: 'iec'})}/${byteSize(progressEvent.total, {units: 'iec'})}`)
                     },
                     responseType: "blob"
                 })
