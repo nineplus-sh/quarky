@@ -41,7 +41,7 @@
 
 .loadingBar {
     background-color: transparent;
-    width: 25em;
+    width: min(25em, 75vw);
     height: 2.5em;
     transform: scaleY(-1) perspective(250px) rotate3d(-1, 0, 0, 65deg);
 
