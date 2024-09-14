@@ -5,7 +5,6 @@ import {useContext, useEffect, useRef, useState} from "react";
 import {AppContext} from "../contexts/AppContext.js";
 import NyafileImage from "../components/nyafile/NyafileImage.jsx";
 import classnames from "classnames";
-import seededRandom from "../util/seededRandom.js";
 
 /**
  * The loading screen.
