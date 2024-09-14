@@ -9,16 +9,7 @@ export default defineConfig({
     port: 2009
   },
   build: {
-      sourcemap: true,
-      rollupOptions: {
-          output: {
-              manualChunks: {
-                  react: ["react", "react-dom", "react-router-dom"],
-                  nyalib: ["@litdevs/nyalib", "jszip"],
-                  sentry: ["@sentry/react"]
-              }
-          }
-      }
+      sourcemap: true
   },
   plugins: [
       react(),
@@ -31,7 +22,7 @@ export default defineConfig({
           },
           reactComponentAnnotation: { enabled: true },
           sourcemaps: {
-              filesToDeleteAfterUpload: "*.js.map"
+              filesToDeleteAfterUpload: "**/*.js.map"
           }
       })
   ],
