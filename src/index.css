@@ -93,12 +93,12 @@ FACT NUMBER OOONE: Did you know that Quarky has a secret Hotdog theme that is ne
   --pride-linear: #D52D00 0% 14.29%, #EF7627 14.29% 28.58%, #FF9A56 28.58% 42.87%, white 42.87% 57.16%, #D162A4 57.16% 71.45%, #B55690 71.45% 85.74%, #A30262 85.74% 100%;
 }
 .pride-transfem {
-  --pride-conic: repeating-conic-gradient(aqua 0deg 10deg, #fee1ed 10deg 20deg, #ffb5d7 20deg 30deg, #fe8dbf 30deg 40deg, #ffb5d7 40deg 50deg, #fee1ed 50deg 60deg);
-  --pride-linear: aqua 0% 14.29%, #fee1ed 14.29% 28.58%, #ffb5d7 28.58% 42.87%, #fe8dbf 42.87% 57.16%, #ffb5d7 57.16% 71.45%, #fee1ed 71.45% 85.74%, aqua 85.74% 100%;
+  --pride-conic: repeating-conic-gradient(#5BCEFA 0deg 10deg, #fee1ed 10deg 20deg, #ffb5d7 20deg 30deg, #fe8dbf 30deg 40deg, #ffb5d7 40deg 50deg, #fee1ed 50deg 60deg);
+  --pride-linear: #5BCEFA 0% 14.29%, #fee1ed 14.29% 28.58%, #ffb5d7 28.58% 42.87%, #fe8dbf 42.87% 57.16%, #ffb5d7 57.16% 71.45%, #fee1ed 71.45% 85.74%, #5BCEFA 85.74% 100%;
 }
 .pride-transmasc {
-  --pride-conic: repeating-conic-gradient(hotpink 0deg 10deg, #cdf5fe 10deg 20deg, #9aebff 20deg 30deg, #74dfff 30deg 40deg, #9aebff 40deg 50deg, #cdf5fe 50deg 60deg);
-  --pride-linear: hotpink 0% 14.29%, #cdf5fe 14.29% 28.58%, #9aebff 28.58% 42.87%, #74dfff 42.87% 57.16%, #9aebff 57.16% 71.45%, #cdf5fe 71.45% 85.74%, hotpink 85.74% 100%;
+  --pride-conic: repeating-conic-gradient(#FF8ABD 0deg 10deg, #cdf5fe 10deg 20deg, #9aebff 20deg 30deg, #74dfff 30deg 40deg, #9aebff 40deg 50deg, #cdf5fe 50deg 60deg);
+  --pride-linear: #FF8ABD 0% 14.29%, #cdf5fe 14.29% 28.58%, #9aebff 28.58% 42.87%, #74dfff 42.87% 57.16%, #9aebff 57.16% 71.45%, #cdf5fe 71.45% 85.74%, #FF8ABD 85.74% 100%;
 }
 /* misc. */
 .pride-bisexual {
