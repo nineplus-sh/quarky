@@ -6,6 +6,7 @@ import useWebSocket from "react-use-websocket";
 import localForage from "localforage";
 import styles from "./ClientWrapper.module.css";
 import Loader from "./Loader.jsx";
+import useGateway from "../components/_services/lightquark/hooks/useGateway.js";
 
 /**
  * The client screen.
@@ -14,93 +15,22 @@ import Loader from "./Loader.jsx";
  */
 export default function ClientWrapper() {
     const [clientReady, setClientReady] = useState(false);
-    const [lqSockURL, setLqSockURL] = useState(null);
-    const [heartbeatMessage] = useState("*gurgles*");
     const navigate = useNavigate();
-    const {userCache, setUserCache,
-        setMessageCache,
+    const {apiKeys, setApiKeys,
         settings, saveSettings,
         setQuarkCache, setQuarkList} = useContext(AppContext)
     const {pathname} = useLocation();
     const [loadingString, setLoadingString] = useState("LOADING_WEBSOCKET");
 
-    const lqSock = useWebSocket(lqSockURL, {
-        onMessage: (message) => {
-            const eventData = JSON.parse(message.data);
-            switch(eventData.event) {
-                case "messageCreate":
-                    setMessageCache(p => {
-                        if(!p[eventData.channelId]) p[eventData.channelId] = [];
-                        p[eventData.channelId].push(eventData.message)
-                        return structuredClone(p);
-                    });
-                    break;
-                case "userUpdate":
-                    if (!userCache[eventData.user._id]) {
-                        setUserCache(p => {
-                            p[eventData.user._id] = eventData.user;
-                            return p;
-                        })
-                    } else {
-                        setUserCache(p => {
-                            let status = p[eventData.user._id]?.status
-                            p[eventData.user._id] = eventData.user;
-                            p[eventData.user._id].status = status;
-                            return structuredClone(p);
-                        })
-                    }
-                    break;
-                case "statusUpdate":
-                    setUserCache(p => {
-                        p[eventData.user._id] = eventData.user;
-                        return structuredClone(p);
-                    })
-                    break;
-                case "messageUpdate":
-                    setMessageCache(p => {
-                        if(!p[eventData.channelId]) {
-                            p[eventData.channelId] = [];
-                            p[eventData.channelId].push(eventData.message);
-                        } else {
-                            const old = p[eventData.channelId].findIndex((message) => eventData.message._id === message._id);
-                            if(old) {
-                                p[eventData.channelId][old] = eventData.message;
-                            } else {
-                                p[eventData.channelId].push(eventData.message);
-                            }
-                        }
-                        return structuredClone(p);
-                    });
-                    break;
-                case "preferenceUpdate":
-                    if(eventData.preference.namespace !== "quarky") return;
-                    saveSettings({[eventData.preference.key]:
-                            eventData.preference.value ?
-                                typeof defaultSettings[eventData.preference.key] === "object" ?
-                                    JSON.parse(eventData.preference.value) :
-                                        eventData.preference.value
-                            : defaultSettings[eventData.preference.key]
-                    }, false)
-                    break;
-                default:
-                    //console.log("Well.. THAT just happened!", message.data)
-            }
-        },
-        onOpen: async () => {
-            lqSock.sendJsonMessage({event: "authenticate", "token": (await localForage.getItem("lightquark")).token});
-        },
-        heartbeat: { // Send heartbeat to gateway every 15 seconds
-            message: JSON.stringify({event: "heartbeat", message: heartbeatMessage}),
-            interval: 15000
-        }
-    })
+    const firstGateway = useGateway(apiKeys.gatewayURL, !!apiKeys.gatewayURL)
+    //const secondGateway = useGateway(apiKeys.gatewayURL, !!apiKeys.gatewayURL)
 
     useEffect(() => {(async () => {
         if(pathname === "/") navigate("/lq_100000000000000000000000");
 
-        if (!lqSockURL) {
-            const network = await LQ("network"); // TODO: Add NetworkOfflineModal here as well
-            setLqSockURL(network.raw.gateway)
+        if (!apiKeys.gatewayURL) {
+            const network = await fetch(`${apiKeys.baseURL}/v4/network`).then(res => res.json());
+            setApiKeys({...apiKeys, baseURL: network.baseUrl, gatewayURL: network.gateway})
         }
 
         setLoadingString("LOADING_SETTINGS");

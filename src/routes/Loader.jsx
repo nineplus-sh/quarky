@@ -22,13 +22,16 @@ export default function Loader({loadingString, progress, progressString}) {
 
     function eyeMover(event) {
         if(!quarkyLogo.current) return;
+        const eyeLayer = quarkyLogo.current.contentDocument.querySelector("#eyelayer")
+        if(!eyeLayer) return;
+
         const rect = quarkyLogo.current.getBoundingClientRect();
         const rectX = rect.left + (rect.width / 2);
         const rectY = rect.top + (rect.height / 2);
         const calcX = (event.clientX - rectX) / 80;
         const calcY = (event.clientY - rectY) / 80;
 
-        quarkyLogo.current.contentDocument.querySelector("#eyelayer").style.transform = `
+        eyeLayer.style.transform = `
             translateX(${Math.max(-7, Math.min(7, calcX))}px) 
             translateY(${Math.max(-5, Math.min(5, calcY))}px)
         `

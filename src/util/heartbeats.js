@@ -1,0 +1,25 @@
+/* https://vocadb.net/S/8395 */
+export const heartbeats = [
+    "So that I wouldn't forget these shapeless feelings,",
+    "I erased the preset layout to make space for myself.",
+    "Catching hold of the phrase I found myself humming,",
+    "I attach the secret words of my heart and launch them into the sky.",
+    "The things I want to tell you, the things I want to send to you,",
+    "Those many points become a line, and echo far into the distance.",
+    "The words I want to tell you, the sounds I want to send to you,",
+    "Those countless lines become a loop, connecting everything, no matter where you are...~",
+    "The clear, pure-white light reminds me of you, the way your voice shines through the gaps in my outstretched hand.",
+    "Taking the rhythm that my fingertips tapped out on their own, I attach every one of my words and launch them into the sky.",
+    "The things I want to tell you, the things I want to send to you,",
+    "Those many points become a line, and shoot through to the other side of the world.",
+    "The words I want to tell you, the sounds I want to send to you,",
+    "Those countless lines become a loop, connecting everything, no matter where you are...~",
+    "Just playing my tune and never doubting the days that never changed,",
+    "I thought of the morning as something that someone would give to me.",
+    "Believe in the sound for one more instant, and it will shake the landscape to its core.",
+    "Tell me about the world that belongs to you and no one else.",
+    "The things you want to tell us, the things you want to send to us,",
+    "Those many points become a line, and echo far into the distance.",
+    "The words you want to tell us, the sounds you want to send to us,",
+    "Those countless lines become a loop, connecting everything, no matter where you are...~"
+]

@@ -92,6 +92,7 @@ export default function Root() {
                 setLoadingString("LOADING_WEBSOCKET");
 
                 appContext.setApiKeys({
+                    ...appContext.apiKeys,
                     baseURL: localConfig.network.baseUrl,
                     accessToken: localConfig.token,
                     refreshToken: localConfig.refreshToken

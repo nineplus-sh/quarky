@@ -106,6 +106,7 @@ export default function LightquarkLogin() {
         })
 
         appContext.setApiKeys({
+            ...appContext.apiKeys,
             baseURL: network,
             accessToken: accessToken,
             refreshToken: refreshToken

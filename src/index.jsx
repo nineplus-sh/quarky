@@ -149,15 +149,17 @@ export function App(props) {
         }
     }
 
-    const axiosClient = axios.create({
-        baseURL: apiKeys.baseURL + "/v4/",
+    const [axiosClient] = useState(() => axios.create({
         headers: {
             "lq-agent": `Quarky/${version}`
         }
-    })
+    }))
     axiosClient.interceptors.request.use(config => {
         if (apiKeys.accessToken) {
             config.headers.Authorization = `Bearer ${apiKeys.accessToken}`;
+        }
+        if(apiKeys.baseURL) {
+            config.baseURL = apiKeys.baseURL + "/v4/"
         }
         return config;
     });
@@ -175,16 +177,17 @@ export function App(props) {
                 });
             })
     })
-    const queryClient = new QueryClient({
+    const [queryClient] = useState(() => new QueryClient({
         defaultOptions: {
             queries: {
                 queryFn: async ({queryKey}) => {
                     return (await axiosClient.get(queryKey[0])).data.response
                 },
                 retry: false,
+                staleTime: Infinity
             },
         }
-    });
+    }));
 
     return (
         <AppContext.Provider value={{
