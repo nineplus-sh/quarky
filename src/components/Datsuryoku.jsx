@@ -5,7 +5,6 @@ import NyafileImage from "./nyafile/NyafileImage.jsx";
  * 「日常に疲れたとき脱力する為のバナー」
  * 「脱力に乾杯という方は、使いたければご自由に持ってって貼ってくだされ。」
  * @returns {JSX.Element}
- * @constructor
  */
 export default function Datsuryoku() {
     const useDirectLink = useFlag('Q2_DatsuryokuLink');

@@ -8,7 +8,7 @@ import jsdoc from 'eslint-plugin-jsdoc';
 export default [
     { ignores: ['dist'] },
     {
-        files: ['desktop/**.{js,jsx}'],
+        files: ['desktop/**/*.{js,jsx}'],
         languageOptions: {
             globals: globals.node
         },
