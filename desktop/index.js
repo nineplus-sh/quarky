@@ -3,7 +3,7 @@ import electron_squirrel_startup from "electron-squirrel-startup/index.js";
 import { Worker } from "worker_threads";
 if (electron_squirrel_startup) app.quit();
 
-import isDev from 'electron-is-dev/index.js';
+import isDev from 'electron-is-dev';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 import os from "node:os";
