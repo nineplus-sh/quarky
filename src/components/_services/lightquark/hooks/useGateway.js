@@ -40,10 +40,6 @@ export default function useGateway(url, enabled) {
                 event: "authenticate", "token": apiKeys.accessToken,
                 ...(apiKeys.gatekeeperSession ? { gatekeeperSession: apiKeys.gatekeeperSession } : {})
             });
-
-            // eslint-disable-next-line no-unused-vars
-            const { gatekeeperSession, ...rest } = apiKeys;
-            setApiKeys(rest);
         },
         heartbeat: {
             message: () => {

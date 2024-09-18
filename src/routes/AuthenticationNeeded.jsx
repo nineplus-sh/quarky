@@ -27,19 +27,15 @@ export default function AuthenticationNeeded() {
     }, [playMusic])
     const { t } = useTranslation();
 
-    const {data, isLoading} = useMe();
-    const needsAuth = !isLoading && data == null;
-
     useEffect(() => {
-        if(needsAuth && !firstTime) {
+        if(!appContext.apiKeys.accessToken && !firstTime) {
             NiceModal.show(FirstTimeModal, {playMusic: setPlayMusic});
         } else {
             setPlayMusic(true);
         }
     }, []);
 
-    if(isLoading) return <Loader loadingString={"LOADING_WEBSOCKET"} />;
-    if(needsAuth) {
+    if(!appContext.apiKeys.accessToken) {
         return (<>
             <audio src={appContext.nyafile.getCachedData("music/login")} loop={true} ref={musicTag}/>
 
