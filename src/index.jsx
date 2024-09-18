@@ -37,16 +37,15 @@ Sentry.init({
 
     //tunnel: "https://quarky.skin/diagtun",
     environment: import.meta.env.MODE || "development",
+    transport: Sentry.makeBrowserOfflineTransport(Sentry.makeFetchTransport),
 
     integrations: [
-        Sentry.browserTracingIntegration({
-            routingInstrumentation: Sentry.reactRouterV6Instrumentation(
-                useEffect,
-                useLocation,
-                useNavigationType,
-                createRoutesFromElements,
-                matchRoutes
-            )
+        Sentry.reactRouterV6BrowserTracingIntegration({
+            useEffect,
+            useLocation,
+            useNavigationType,
+            createRoutesFromElements,
+            matchRoutes
         }),
         Sentry.replayIntegration({
             useCompression: false

@@ -56,6 +56,9 @@ export default function Root() {
                 nyafile.queueCache("img/quark_join");
                 nyafile.queueCache("img/quarky");
                 nyafile.queueCache("music/login");
+                nyafile.queueCache("sfx/crossfade");
+                nyafile.queueCache("sfx/purr");
+
                 nyafile.queueCache("sfx/button-hover");
                 nyafile.queueCache("sfx/button-select");
                 nyafile.queueCache("sfx/button-sidebar-hover");
@@ -85,12 +88,12 @@ export default function Root() {
                 return;
             }
 
+            setLoadingPercentage(0);
+
             appContext.setNyafile(nyafile);
 
             const localConfig = await localForage.getItem("lightquark")
             if(localConfig?.token) {
-                setLoadingString("LOADING_WEBSOCKET");
-
                 appContext.setApiKeys({
                     ...appContext.apiKeys,
                     baseURL: localConfig.network.baseUrl,

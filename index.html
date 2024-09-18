@@ -14,10 +14,17 @@
     <link rel="preload" href="/fall.mp3" as="audio" />
 
     <style>
-      html {
-        background-color: var(--background-color-max, #3a3a3a);
+      body {
+        margin: 0;
       }
       #superpreload {
+        background-color: var(--background-color-max, #3a3a3a);
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        z-index: 999;
+      }
+      #preloadwrap {
         position: fixed;
         top: 50%;
         left: 50%;
@@ -28,17 +35,17 @@
         flex-direction: column;
         align-items: center;
       }
-      #superpreload #preloadlogo {
+      #preloadwrap #preloadlogo {
         max-width: 10em;
         pointer-events: none;
         user-select: none;
       }
-      #superpreload #preloadtext {
+      #preloadwrap #preloadtext {
         margin-top: 1em;
         display: block;
         color: var(--text-color, white);
       }
-      #superpreload #preloadtext a {
+      #preloadwrap #preloadtext a {
         color: var(--text-color, white);
       }
     </style>
@@ -46,8 +53,10 @@
   <body>
     <div id="root">
       <div id="superpreload">
-        <img src="/nineball.svg" id="preloadlogo">
-        <span id="preloadtext">&copy; ninePLUS 2024<noscript><br>Please enable JavaScript to use Quarky!</noscript></span>
+        <div id="preloadwrap">
+          <img src="/nineball.svg" id="preloadlogo">
+          <span id="preloadtext">&copy; ninePLUS 2024<noscript><br>Please enable JavaScript to use Quarky!</noscript></span>
+        </div>
       </div>
     </div>
     <script type="module" src="/src/index.jsx"></script>

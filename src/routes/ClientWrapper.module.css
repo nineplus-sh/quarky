@@ -1,4 +1,13 @@
+html {
+    background-color: var(--background-color-max);
+}
 .client {
     display: flex;
     height: 100vh;
+
+    animation: fadeIn 1s forwards cubic-bezier(1,-0.25,0,1.25);
+}
+@keyframes fadeIn {
+    from {opacity: 0}
+    to {opacity: 1}
 }

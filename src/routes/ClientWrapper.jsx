@@ -7,6 +7,7 @@ import localForage from "localforage";
 import styles from "./ClientWrapper.module.css";
 import Loader from "./Loader.jsx";
 import useGateway from "../components/_services/lightquark/hooks/useGateway.js";
+import {WebSocketContext} from "../contexts/WebSocketContext.js";
 
 /**
  * The client screen.
@@ -18,7 +19,7 @@ export default function ClientWrapper() {
     const navigate = useNavigate();
     const {apiKeys, setApiKeys,
         settings, saveSettings,
-        setQuarkCache, setQuarkList} = useContext(AppContext)
+        setQuarkCache, setQuarkList, nyafile} = useContext(AppContext)
     const {pathname} = useLocation();
     const [loadingString, setLoadingString] = useState("LOADING_WEBSOCKET");
 
@@ -49,7 +50,6 @@ export default function ClientWrapper() {
         setQuarkList(urQuarkList.map(quark => quark._id));
 
         if(settings["GAME_ACTIVITY"] && window.hiddenside && window.hiddenside.hardcoreGaming && window.hiddenside.casualGaming) {
-            setLoadingString("LOADING_GAMES");
             fetch("https://gameplus.nineplus.sh/api/games").then(res => res.json()).then(gameData => window.hiddenside.hardcoreGaming(gameData))
 
             // Not using state here since the value is only used inside this effect
@@ -76,13 +76,15 @@ export default function ClientWrapper() {
         }
 
         setClientReady(true);
+        new Audio(nyafile.getCachedData("sfx/crossfade")).play();
     })()}, []);
 
-    return (<>
-        {clientReady ?
+    return (<WebSocketContext.Provider value={firstGateway}>
+        {clientReady ? <>
+            <Loader loadingString={loadingString} crossfade={true}/>
             <div className={styles.client}>
                 <Outlet/>
             </div>
-        : <Loader loadingString={loadingString}/>}
-    </>)
+        </> : <Loader loadingString={loadingString}/>}
+    </WebSocketContext.Provider>)
 }
