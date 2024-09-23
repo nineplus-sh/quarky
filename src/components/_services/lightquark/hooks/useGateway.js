@@ -1,5 +1,5 @@
 import useWebSocket from "react-use-websocket";
-import {useContext, useRef} from "react";
+import {useContext, useRef, useState} from "react";
 import {AppContext} from "../../../../contexts/AppContext.js";
 import pingWebSocket from "../../../../util/pingWebSocket.js";
 import {heartbeats} from "../../../../util/heartbeats.js";
@@ -7,11 +7,15 @@ import {heartbeats} from "../../../../util/heartbeats.js";
 export default function useGateway(url, enabled) {
     const {apiKeys, setApiKeys} = useContext(AppContext);
     const heartbeat = useRef(-1);
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
 
     const gatewaySocket = useWebSocket(url, {
         onMessage: async (message) => {
             const eventData = JSON.parse(message.data);
             switch(eventData.event) {
+                case "authenticate":
+                    setIsAuthenticated(true);
+                    break;
                 case "gatekeeperMeasure": {
                     setApiKeys({...apiKeys, gatekeeperSession: eventData.sessionId})
 
@@ -36,10 +40,14 @@ export default function useGateway(url, enabled) {
             }
         },
         onOpen: async () => {
+            setIsAuthenticated(false);
             gatewaySocket.sendJsonMessage({
                 event: "authenticate", "token": apiKeys.accessToken,
                 ...(apiKeys.gatekeeperSession ? { gatekeeperSession: apiKeys.gatekeeperSession } : {})
             });
+        },
+        onClose: async () => {
+            setIsAuthenticated(false);
         },
         heartbeat: {
             message: () => {
@@ -52,5 +60,8 @@ export default function useGateway(url, enabled) {
         }
     }, enabled)
 
-    return gatewaySocket;
+    return {
+        gatewaySocket,
+        isAuthenticated
+    };
 }

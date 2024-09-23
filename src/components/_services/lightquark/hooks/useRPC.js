@@ -1,0 +1,106 @@
+import {WebSocketContext} from "../../../../contexts/WebSocketContext.js";
+import {useContext, useEffect, useMemo, useRef} from "react";
+import {v4 as uuidv4} from "uuid";
+import {AppContext} from "../../../../contexts/AppContext.js";
+import localForage from "localforage";
+import useOnceWhen from "../../../../util/useOnceWhen.js";
+
+export let renewPromise = null;
+
+/**
+ * Hits on the gateway asking to perform an HTTP request.
+ * FormData requests are not supported.
+ */
+export default function useRPC() {
+    const {socket} = useContext(WebSocketContext);
+    const {apiKeys, setApiKeys} = useContext(AppContext);
+    const uuid = useMemo(() => uuidv4(), [])
+    const refreshUuid = useMemo(() => uuidv4(), [])
+    const promiseRef = useRef(null);
+    const messageRef = useRef(null);
+    const refreshRef = useRef(null);
+    const messageUnsent = useRef(true);
+
+    useEffect(() => {
+        console.log(messageRef.current, messageUnsent.current, socket?.readyState)
+        if(!socket || !socket.lastMessage || !messageRef.current) return;
+        console.log(messageRef.current, messageUnsent.current, socket.readyState)
+        if(messageUnsent.current && socket.readyState === WebSocket.OPEN) {
+            socket.sendJsonMessage(messageRef.current)
+            messageUnsent.current = false;
+            return;
+        }
+
+        const eventData = JSON.parse(socket.lastMessage.data)
+        if(eventData.event === "rpc" && eventData.state === uuid) {
+            if(eventData.body.request.status_code === 401) {
+                if(renewPromise) {
+                    renewPromise.then(() => socket.sendJsonMessage(messageRef.current))
+                    return;
+                }
+
+                renewPromise = new Promise((resolve, reject) => {refreshRef.current={resolve,reject}})
+                socket.sendJsonMessage({
+                    event: "rpc",
+                    state: refreshUuid,
+                    token: "If anyone sees this I would really like if you rubbed my tummy",
+
+                    route: "/v4/auth/refresh",
+                    method: "POST",
+                    body: {
+                        accessToken: apiKeys.accessToken,
+                        refreshToken: apiKeys.refreshToken
+                    }
+                })
+            } else {
+                promiseRef.current.resolve(eventData.body.response)
+            }
+        } else if(eventData.event === "rpc" && eventData.state === refreshUuid) {
+            if(eventData.body.request.success) {
+                localForage.setItem("lightquark", {
+                    network: {
+                        baseUrl: apiKeys.baseURL
+                    },
+                    token: eventData.body.response.accessToken,
+                    refreshToken: apiKeys.refreshToken
+                }).then(() => {
+                    setApiKeys({...apiKeys, accessToken: eventData.body.response.accessToken})
+                    renewPromise = null;
+                    refreshRef.current.resolve();
+                    refreshRef.current = null;
+
+                    messageRef.current.token = eventData.body.response.accessToken;
+                    socket.sendJsonMessage(messageRef.current)
+                })
+            } else {
+                promiseRef.current.reject(eventData.body.response);
+                localForage.removeItem("lightquark").then(() => setApiKeys({}))
+            }
+        }
+    }, [socket, socket?.lastMessage, socket?.readyState]);
+
+    console.log(!!messageRef.current, socket)
+    useOnceWhen(socket?.isAuthenticated, true, () => socket.sendJsonMessage(messageRef.current), !!messageRef.current)
+
+    return async (data) => {
+        if(renewPromise) await renewPromise;
+
+        return new Promise((resolve, reject) => {
+            promiseRef.current = { resolve, reject }
+            let messageToSend = {
+                event: "rpc",
+                state: uuid,
+                token: apiKeys.accessToken
+            }
+            if(typeof data === "string") {
+                messageToSend.route = "/v4/" + data;
+                messageToSend.method = "GET"
+            } else {
+                messageToSend = {...messageToSend, ...data}
+                messageToSend.route = "/v4/" + messageToSend.route;
+            }
+            messageRef.current = messageToSend
+            console.log(messageToSend)
+        })
+    }
+}

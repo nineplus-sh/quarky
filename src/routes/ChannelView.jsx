@@ -6,38 +6,23 @@ import {useContext, useEffect, useState} from "react";
 import LQ from "../util/LQ.js";
 import {AppContext} from "../contexts/AppContext.js";
 import {useParams} from "react-router-dom";
+import useChannelMembers from "../components/_services/lightquark/hooks/useChannelMembers.js";
+import useChannelMessages from "../components/_services/lightquark/hooks/useChannelMessages.js";
 
 export default function ChannelView() {
-    const [messages, setMessages] = useState([]);
-    const appContext = useContext(AppContext);
     const {dialogId} = useParams();
-
-    useEffect(() => {
-        (async () => {
-            if(!appContext.messageCache[dialogId]) {
-                const _messages = (await LQ(`channel/${dialogId}/messages`)).response.messages
-
-                appContext.setMessageCache(previousValue => {
-                    previousValue = { ...previousValue }
-                    previousValue[dialogId] = _messages;
-                    return previousValue;
-                });
-            }
-        })()
-    }, [dialogId])
-
-    useEffect(() => {
-        if(!appContext.messageCache[dialogId]) return setMessages([]);
-        setMessages(appContext.messageCache[dialogId].sort((a, b) => a.timestamp - b.timestamp))
-    }, [dialogId, appContext.messageCache])
+    const {data: members, isLoading: isMembersLoading} = useChannelMembers(dialogId);
+    const {data: messages, isLoading: isMessagesLoading} = useChannelMessages(dialogId);
 
     return (<>
         <div className={styles.messageArea}>
-            <div className={styles.messages}><DialogMessages messages={messages}/></div>
+            <div className={styles.messages}>
+                {isMessagesLoading ? null : <DialogMessages messages={messages?.pages.flat(1)}/>}
+            </div>
             <MessageInput/>
         </div>
         <div className={styles.memberList}>
-            <LightquarkMemberList/>
+            {isMembersLoading ? null : <LightquarkMemberList members={members}/>}
         </div>
     </>)
 }

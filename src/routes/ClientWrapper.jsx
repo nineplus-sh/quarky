@@ -2,12 +2,12 @@ import {useContext, useEffect, useState} from "react";
 import {Outlet, useLocation, useNavigate} from "react-router-dom";
 import {AppContext, defaultSettings} from "../contexts/AppContext.js";
 import LQ from "../util/LQ.js";
-import useWebSocket from "react-use-websocket";
-import localForage from "localforage";
 import styles from "./ClientWrapper.module.css";
 import Loader from "./Loader.jsx";
 import useGateway from "../components/_services/lightquark/hooks/useGateway.js";
 import {WebSocketContext} from "../contexts/WebSocketContext.js";
+import useRPC from "../components/_services/lightquark/hooks/useRPC.js";
+import useOnceWhen from "../util/useOnceWhen.js";
 
 /**
  * The client screen.
@@ -17,11 +17,12 @@ import {WebSocketContext} from "../contexts/WebSocketContext.js";
 export default function ClientWrapper() {
     const [clientReady, setClientReady] = useState(false);
     const navigate = useNavigate();
-    const {apiKeys, setApiKeys,
-        settings, saveSettings,
-        setQuarkCache, setQuarkList, nyafile} = useContext(AppContext)
+    const {apiKeys, setApiKeys, settings,
+        saveSettings, nyafile, refreshOverHTTP} = useContext(AppContext)
+    const {setSocket} = useContext(WebSocketContext);
     const {pathname} = useLocation();
     const [loadingString, setLoadingString] = useState("LOADING_WEBSOCKET");
+    const apiCall = useRPC();
 
     const firstGateway = useGateway(apiKeys.gatewayURL, !!apiKeys.gatewayURL)
     //const secondGateway = useGateway(apiKeys.gatewayURL, !!apiKeys.gatewayURL)
@@ -29,13 +30,18 @@ export default function ClientWrapper() {
     useEffect(() => {(async () => {
         if(pathname === "/") navigate("/lq_100000000000000000000000");
 
+        await refreshOverHTTP();
+
         if (!apiKeys.gatewayURL) {
             const network = await fetch(`${apiKeys.baseURL}/v4/network`).then(res => res.json());
-            setApiKeys({...apiKeys, baseURL: network.baseUrl, gatewayURL: network.gateway})
+            setApiKeys(prevApiKeys => {return {...prevApiKeys, baseURL: network.baseUrl, gatewayURL: network.gateway}});
+            setSocket(firstGateway);
         }
+    })()}, []);
 
+    useOnceWhen(firstGateway.isAuthenticated, true, async () => {
         setLoadingString("LOADING_SETTINGS");
-        const grabbedSettings = (await LQ("user/me/preferences/quarky")).response.preferences;
+        const grabbedSettings = (await apiCall("user/me/preferences/quarky")).preferences;
         Object.entries(grabbedSettings).forEach(([key, value]) => {
             key = key.toUpperCase();
             if(typeof defaultSettings[key] === "object") value = JSON.parse(value);
@@ -44,16 +50,11 @@ export default function ClientWrapper() {
             }, false)
         })
 
-        setLoadingString("LOADING_QUARKS");
-        const urQuarkList = (await LQ("quark")).response.quarks;
-        setQuarkCache(Object.fromEntries(urQuarkList.map(quark => [quark._id, quark])));
-        setQuarkList(urQuarkList.map(quark => quark._id));
-
         if(settings["GAME_ACTIVITY"] && window.hiddenside && window.hiddenside.hardcoreGaming && window.hiddenside.casualGaming) {
             fetch("https://gameplus.nineplus.sh/api/games").then(res => res.json()).then(gameData => window.hiddenside.hardcoreGaming(gameData))
 
             // Not using state here since the value is only used inside this effect
-            // A state would not update since no new render 
+            // A state would not update since no new render
             let currentGameId = "BLELELELE"
             window.hiddenside.casualGaming((games) => {
                 if(games.length !== 0 && games[0]._id !== currentGameId) {
@@ -77,14 +78,14 @@ export default function ClientWrapper() {
 
         setClientReady(true);
         new Audio(nyafile.getCachedData("sfx/crossfade")).play();
-    })()}, []);
+    })
 
-    return (<WebSocketContext.Provider value={firstGateway}>
+    return (<>
         {clientReady ? <>
             <Loader loadingString={loadingString} crossfade={true}/>
             <div className={styles.client}>
                 <Outlet/>
             </div>
         </> : <Loader loadingString={loadingString}/>}
-    </WebSocketContext.Provider>)
+    </>)
 }

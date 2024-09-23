@@ -15,7 +15,6 @@ import ClientWrapper from "./routes/ClientWrapper.jsx";
 import QuarkView from "./routes/QuarkView.jsx";
 import ChannelView from "./routes/ChannelView.jsx";
 import * as Sentry from "@sentry/react";
-import {FlagProvider} from '@unleash/proxy-client-react';
 import NiceModal from '@ebay/nice-modal-react';
 import i18next from "i18next";
 import {initReactI18next} from "react-i18next";
@@ -31,6 +30,8 @@ import {version} from "../package.json";
 import createAuthRefreshInterceptor from "axios-auth-refresh";
 import DemoView from "./routes/DemoView.jsx";
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+import {renewPromise} from "./components/_services/lightquark/hooks/useRPC.js";
+import {WebSocketContext} from "./contexts/WebSocketContext.js";
 
 Sentry.init({
     dsn: "https://901c666ed03942d560e61928448bcf68@sentry.yggdrasil.cat/5",
@@ -63,13 +64,6 @@ Sentry.init({
     enabled: import.meta.env.MODE === "production"
 });
 
-const unleashConfig = {
-    url: "https://feature-gacha.litdevs.org/api/frontend", // Your front-end API URL or the Unleash proxy's URL (https://<proxy-url>/proxy)
-    clientKey: import.meta.env.MODE === "production" ? "default:production.da748f8d265a85d1b487cd21ab7ead43596aaeb8f7b3f5a70f606457" : "default:development.1166a6d9ad3507ff9e5df9e0ee2a308a449da96f191909e97f00f2f2", // A client-side API token OR one of your proxy's designated client keys (previously known as proxy secrets)
-    refreshInterval: 15, // How often (in seconds) the client should poll the proxy for updates
-    appName: 'quarky2', // The name of your application. It's only used for identifying your application
-};
-
 /**
  * Wraps the route provider in an App, mainly so the app context can be real.
  * @param props - The props of the component, provided by React.
@@ -86,8 +80,8 @@ export function App(props) {
     let [settings, setSettings] = useState(defaultSettings);
     let [drafts, setDrafts] = useState({});
     let [quarkCache, setQuarkCache] = useState({});
-    let [quarkList, setQuarkList] = useState([]);
     let [apiKeys, setApiKeys] = useState({});
+    let [socket, setSocket] = useState(null);
 
     useEffect(() => {
         async function loadConfigs() {
@@ -156,6 +150,7 @@ export function App(props) {
         }
     }))
     axiosClient.interceptors.request.use(config => {
+        console.log(apiKeys)
         if (apiKeys.accessToken) {
             config.headers.Authorization = `Bearer ${apiKeys.accessToken}`;
         }
@@ -164,19 +159,28 @@ export function App(props) {
         }
         return config;
     });
-    createAuthRefreshInterceptor(axiosClient, async function() {
+    async function refreshOverHTTP() {
         return axiosClient.post("auth/refresh",
             {accessToken: apiKeys.accessToken, refreshToken: apiKeys.refreshToken}, {skipAuthRefresh: true})
             .then(async (response) => {
-                setApiKeys({...apiKeys, accessToken: response.accessToken})
+                setApiKeys(prevApiKeys => {return {...prevApiKeys, accessToken: response.data.response.accessToken}})
                 await localForage.setItem("lightquark", {
                     network: {
                         baseUrl: apiKeys.baseURL
                     },
-                    token: response.accessToken,
+                    token: response.data.response.accessToken,
                     refreshToken: apiKeys.refreshToken
                 });
+                return response.data.response.accessToken
             })
+            .catch(async () => {
+                await localForage.removeItem("lightquark");
+                setApiKeys({});
+            })
+    }
+    createAuthRefreshInterceptor(axiosClient, async function() {
+        if(renewPromise) return renewPromise;
+        return refreshOverHTTP()
     })
     const [queryClient] = useState(() => new QueryClient({
         defaultOptions: {
@@ -199,11 +203,14 @@ export function App(props) {
             drafts, setDrafts,
             settings, setSettings, saveSettings,
             apiKeys, setApiKeys,
-            quarkCache, setQuarkCache, quarkList, setQuarkList
+            quarkCache, setQuarkCache,
+            refreshOverHTTP
         }}>
-            <QueryClientProvider client={queryClient}>
-                {translationsLoading ? null : props.children}
-            </QueryClientProvider>
+            <WebSocketContext.Provider value={{socket, setSocket}}>
+                <QueryClientProvider client={queryClient}>
+                    {translationsLoading ? null : props.children}
+                </QueryClientProvider>
+            </WebSocketContext.Provider>
         </AppContext.Provider>
     )
 }
@@ -231,13 +238,11 @@ export const router = sentryCreateBrowserRouter(
 const ProfiledApp = Sentry.withProfiler(App);
 ReactDOM.createRoot(document.getElementById('root')).render(
     //<React.StrictMode>
-        <FlagProvider config={unleashConfig}>
-            <ProfiledApp>
-                <ReactQueryDevtools initialIsOpen={false} />
-                <NiceModal.Provider>
-                    <RouterProvider router={router} />
-                </NiceModal.Provider>
-            </ProfiledApp>
-        </FlagProvider>
+        <ProfiledApp>
+            <ReactQueryDevtools initialIsOpen={false} />
+            <NiceModal.Provider>
+                <RouterProvider router={router} />
+            </NiceModal.Provider>
+        </ProfiledApp>
     //</React.StrictMode>,
 )

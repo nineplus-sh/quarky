@@ -1,4 +1,3 @@
-import { useFlag } from '@unleash/proxy-client-react';
 import NyafileImage from "./nyafile/NyafileImage.jsx";
 
 /**
@@ -7,8 +6,7 @@ import NyafileImage from "./nyafile/NyafileImage.jsx";
  * @returns {JSX.Element}
  */
 export default function Datsuryoku() {
-    const useDirectLink = useFlag('Q2_DatsuryokuLink');
-    return <a target={"_blank"} href={useDirectLink ? "http://stormypetrel.sakura.ne.jp/daturyoku.htm" : "https://web.archive.org/web/20231119170958/http://stormypetrel.sakura.ne.jp/daturyoku.htm"} rel="noreferrer">
+    return <a target={"_blank"} href="http://stormypetrel.sakura.ne.jp/daturyoku.htm" rel="noreferrer">
         <NyafileImage src={"img/daturyok"} />
     </a>
 }
