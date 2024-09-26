@@ -94,12 +94,12 @@ export default function Root() {
 
             const localConfig = await localForage.getItem("lightquark")
             if(localConfig?.token) {
-                appContext.setApiKeys({
-                    ...appContext.apiKeys,
+                appContext.setApiKeys(prevApiKeys => ({
+                    ...prevApiKeys,
                     baseURL: localConfig.network.baseUrl,
                     accessToken: localConfig.token,
                     refreshToken: localConfig.refreshToken
-                })
+                }))
             }
 
             appContext.setLoading(false);

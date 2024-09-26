@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react'
+import {useCallback, useEffect, useMemo, useRef, useState} from 'react'
 import ReactDOM from 'react-dom/client'
 import {
     createBrowserRouter,
@@ -144,26 +144,19 @@ export function App(props) {
         }
     }
 
-    const [axiosClient] = useState(() => axios.create({
+    const axiosClient = useMemo(() => axios.create({
         headers: {
-            "lq-agent": `Quarky/${version}`
-        }
-    }))
-    axiosClient.interceptors.request.use(config => {
-        console.log(apiKeys)
-        if (apiKeys.accessToken) {
-            config.headers.Authorization = `Bearer ${apiKeys.accessToken}`;
-        }
-        if(apiKeys.baseURL) {
-            config.baseURL = apiKeys.baseURL + "/v4/"
-        }
-        return config;
-    });
+            "lq-agent": `Quarky/${version}`,
+            "authorization": `Bearer ${apiKeys.accessToken}`
+        },
+        baseURL: `${apiKeys.baseURL}/v4`
+    }), [apiKeys.accessToken, apiKeys.baseURL]);
+
     async function refreshOverHTTP() {
         return axiosClient.post("auth/refresh",
             {accessToken: apiKeys.accessToken, refreshToken: apiKeys.refreshToken}, {skipAuthRefresh: true})
             .then(async (response) => {
-                setApiKeys(prevApiKeys => {return {...prevApiKeys, accessToken: response.data.response.accessToken}})
+                await setApiKeys(prevApiKeys => ({...prevApiKeys, accessToken: response.data.response.accessToken}))
                 await localForage.setItem("lightquark", {
                     network: {
                         baseUrl: apiKeys.baseURL
@@ -182,7 +175,7 @@ export function App(props) {
         if(renewPromise) return renewPromise;
         return refreshOverHTTP()
     })
-    const [queryClient] = useState(() => new QueryClient({
+    const queryClient = useMemo(() => new QueryClient({
         defaultOptions: {
             queries: {
                 queryFn: async ({queryKey}) => {
@@ -192,7 +185,7 @@ export function App(props) {
                 staleTime: Infinity
             },
         }
-    }));
+    }), [axiosClient]);
 
     return (
         <AppContext.Provider value={{

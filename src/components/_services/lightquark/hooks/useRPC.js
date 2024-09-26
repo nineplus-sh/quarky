@@ -22,9 +22,9 @@ export default function useRPC() {
     const messageUnsent = useRef(true);
 
     useEffect(() => {
-        console.log(messageRef.current, messageUnsent.current, socket?.readyState)
+        console.log(socket)
         if(!socket || !socket.lastMessage || !messageRef.current) return;
-        console.log(messageRef.current, messageUnsent.current, socket.readyState)
+        console.log(socket)
         if(messageUnsent.current && socket.readyState === WebSocket.OPEN) {
             socket.sendJsonMessage(messageRef.current)
             messageUnsent.current = false;
@@ -64,7 +64,7 @@ export default function useRPC() {
                     token: eventData.body.response.accessToken,
                     refreshToken: apiKeys.refreshToken
                 }).then(() => {
-                    setApiKeys({...apiKeys, accessToken: eventData.body.response.accessToken})
+                    setApiKeys(prevApiKeys => ({...prevApiKeys, accessToken: eventData.body.response.accessToken}))
                     renewPromise = null;
                     refreshRef.current.resolve();
                     refreshRef.current = null;

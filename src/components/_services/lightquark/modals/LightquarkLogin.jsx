@@ -105,12 +105,12 @@ export default function LightquarkLogin() {
             refreshToken: refreshToken
         })
 
-        appContext.setApiKeys({
-            ...appContext.apiKeys,
+        appContext.setApiKeys(prevApiKeys => ({
+            ...prevApiKeys,
             baseURL: network,
             accessToken: accessToken,
             refreshToken: refreshToken
-        })
+        }))
     }
 
     // regarding escapeValue here: while it may seem like a hole for an XSS attack i tried and brackets are still escaped

@@ -34,14 +34,19 @@ export default function ClientWrapper() {
 
         if (!apiKeys.gatewayURL) {
             const network = await fetch(`${apiKeys.baseURL}/v4/network`).then(res => res.json());
-            setApiKeys(prevApiKeys => {return {...prevApiKeys, baseURL: network.baseUrl, gatewayURL: network.gateway}});
+            setApiKeys(prevApiKeys => ({...prevApiKeys, baseURL: network.baseUrl, gatewayURL: network.gateway}));
             setSocket(firstGateway);
         }
     })()}, []);
 
+    useEffect(() => {
+        if (firstGateway) setSocket(firstGateway);
+    }, [firstGateway, setSocket]);
+
     useOnceWhen(firstGateway.isAuthenticated, true, async () => {
         setLoadingString("LOADING_SETTINGS");
         const grabbedSettings = (await apiCall("user/me/preferences/quarky")).preferences;
+        console.log(grabbedSettings)
         Object.entries(grabbedSettings).forEach(([key, value]) => {
             key = key.toUpperCase();
             if(typeof defaultSettings[key] === "object") value = JSON.parse(value);

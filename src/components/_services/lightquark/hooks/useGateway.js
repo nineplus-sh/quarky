@@ -1,5 +1,5 @@
 import useWebSocket from "react-use-websocket";
-import {useContext, useRef, useState} from "react";
+import {useContext, useEffect, useMemo, useRef, useState} from "react";
 import {AppContext} from "../../../../contexts/AppContext.js";
 import pingWebSocket from "../../../../util/pingWebSocket.js";
 import {heartbeats} from "../../../../util/heartbeats.js";
@@ -17,7 +17,7 @@ export default function useGateway(url, enabled) {
                     setIsAuthenticated(true);
                     break;
                 case "gatekeeperMeasure": {
-                    setApiKeys({...apiKeys, gatekeeperSession: eventData.sessionId})
+                    setApiKeys(prevApiKeys => ({...prevApiKeys, gatekeeperSession: eventData.sessionId}))
 
                     const finalMeasurement = {"event": "gatekeeperMeasure", "gateways": [], "appServers": []};
                     for (const appServer of eventData.appServers) {
@@ -35,7 +35,7 @@ export default function useGateway(url, enabled) {
                     break;
                 }
                 case "gatekeeperSelection":
-                    setApiKeys({...apiKeys, baseURL: eventData.appServer, gatewayURL: eventData.gateway});
+                    setApiKeys(prevApiKeys => ({...prevApiKeys, baseURL: eventData.appServer, gatewayURL: eventData.gateway}));
                     break;
             }
         },
@@ -60,8 +60,8 @@ export default function useGateway(url, enabled) {
         }
     }, enabled)
 
-    return {
-        gatewaySocket,
-        isAuthenticated
-    };
+    return useMemo(() => ({
+        ...gatewaySocket,
+        isAuthenticated,
+    }), [gatewaySocket.lastMessage, gatewaySocket.readyState, isAuthenticated]);
 }
