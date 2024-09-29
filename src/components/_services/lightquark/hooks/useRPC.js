@@ -1,5 +1,5 @@
 import {WebSocketContext} from "../../../../contexts/WebSocketContext.js";
-import {useContext, useEffect, useMemo, useRef} from "react";
+import {useContext, useEffect, useMemo, useRef, useState} from "react";
 import {v4 as uuidv4} from "uuid";
 import {AppContext} from "../../../../contexts/AppContext.js";
 import localForage from "localforage";
@@ -19,20 +19,14 @@ export default function useRPC() {
     const promiseRef = useRef(null);
     const messageRef = useRef(null);
     const refreshRef = useRef(null);
-    const messageUnsent = useRef(true);
+    const [messageUnsent, setMessageUnsent] = useState(true);
 
     useEffect(() => {
-        console.log(socket)
         if(!socket || !socket.lastMessage || !messageRef.current) return;
-        console.log(socket)
-        if(messageUnsent.current && socket.readyState === WebSocket.OPEN) {
-            socket.sendJsonMessage(messageRef.current)
-            messageUnsent.current = false;
-            return;
-        }
 
         const eventData = JSON.parse(socket.lastMessage.data)
         if(eventData.event === "rpc" && eventData.state === uuid) {
+            console.warn(messageRef.current.route, "gets", eventData)
             if(eventData.body.request.status_code === 401) {
                 if(renewPromise) {
                     renewPromise.then(() => socket.sendJsonMessage(messageRef.current))
@@ -79,13 +73,18 @@ export default function useRPC() {
         }
     }, [socket, socket?.lastMessage, socket?.readyState]);
 
-    console.log(!!messageRef.current, socket)
-    useOnceWhen(socket?.isAuthenticated, true, () => socket.sendJsonMessage(messageRef.current), !!messageRef.current)
+    useOnceWhen(socket?.isAuthenticated, true, () => {
+        if(messageUnsent) {
+            setMessageUnsent(false);
+            socket.sendJsonMessage(messageRef.current)
+        }
+    }, !!messageRef.current)
 
     return async (data) => {
         if(renewPromise) await renewPromise;
 
         return new Promise((resolve, reject) => {
+            setMessageUnsent(true);
             promiseRef.current = { resolve, reject }
             let messageToSend = {
                 event: "rpc",
@@ -100,7 +99,10 @@ export default function useRPC() {
                 messageToSend.route = "/v4/" + messageToSend.route;
             }
             messageRef.current = messageToSend
-            console.log(messageToSend)
+            if(socket?.isAuthenticated) {
+                setMessageUnsent(false);
+                socket.sendJsonMessage(messageRef.current);
+            }
         })
     }
 }

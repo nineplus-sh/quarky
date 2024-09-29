@@ -14,6 +14,7 @@ export default function useGateway(url, enabled) {
             const eventData = JSON.parse(message.data);
             switch(eventData.event) {
                 case "authenticate":
+                    console.warn("USEGATEWAY authed")
                     setIsAuthenticated(true);
                     break;
                 case "gatekeeperMeasure": {
@@ -41,12 +42,14 @@ export default function useGateway(url, enabled) {
         },
         onOpen: async () => {
             setIsAuthenticated(false);
+            console.warn("USEGATEWAY OPENED")
             gatewaySocket.sendJsonMessage({
                 event: "authenticate", "token": apiKeys.accessToken,
                 ...(apiKeys.gatekeeperSession ? { gatekeeperSession: apiKeys.gatekeeperSession } : {})
             });
         },
         onClose: async () => {
+            console.warn("USEGATEWAY DEAUTHENTICATION")
             setIsAuthenticated(false);
         },
         heartbeat: {
@@ -60,8 +63,12 @@ export default function useGateway(url, enabled) {
         }
     }, enabled)
 
+    useEffect(() => {
+        console.warn("Wow look at this kawaii message;", gatewaySocket.lastJsonMessage)
+    }, [gatewaySocket.lastJsonMessage]);
+
     return useMemo(() => ({
         ...gatewaySocket,
         isAuthenticated,
-    }), [gatewaySocket.lastMessage, gatewaySocket.readyState, isAuthenticated]);
+    }), [url, gatewaySocket.lastMessage, gatewaySocket.readyState, isAuthenticated]);
 }

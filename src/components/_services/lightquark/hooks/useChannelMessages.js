@@ -1,17 +1,23 @@
 import useRPC from "./useRPC.js";
-import {useInfiniteQuery} from "@tanstack/react-query";
+import {useInfiniteQuery, useQueryClient} from "@tanstack/react-query";
 
 export default function useChannelMessages(id, options) {
     const apiCall = useRPC();
+    const queryClient = useQueryClient();
 
     return useInfiniteQuery({
         queryFn: async ({pageParam}) => {
-            const data = await apiCall(`channel/${id}/messages`)
+            const route = pageParam ?
+                `channel/${id}/messages?${pageParam.direction === "backward" ?
+                    "before" : "after"}Timestamp=${pageParam.timestamp}`
+                : `channel/${id}/messages`
+
+            const data = await apiCall(route)
             return data.messages;
         },
         queryKey: [`channel/${id}`, `channel/${id}/messages`],
-        getFirstPageParam: (firstPage) => firstPage[firstPage.length-1].timestamp,
-        getNextPageParam: (lastPage) => lastPage?.[0].timestamp,
+        getPreviousPageParam: (firstPage) => ({timestamp: firstPage[firstPage.length-1].timestamp, direction: "backward"}),
+        getNextPageParam: (lastPage) => ({timestamp: lastPage[0].timestamp, direction: "forward"}),
         ...options
     });
 }

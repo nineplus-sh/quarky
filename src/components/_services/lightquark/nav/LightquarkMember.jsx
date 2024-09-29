@@ -7,7 +7,7 @@ import {AppContext} from "../../../../contexts/AppContext.js";
 
 export function LightquarkMember({member}) {
     return (
-        <div className={styles.member} onClick={() => NiceModal.show(UserPopoutModal, {userId: member._id})}>
+        <div className={styles.member} onClick={() => NiceModal.show(UserPopoutModal, {user: member})}>
             <ProfilePicture src={member.avatarUri} px={40}/>
             <span className={styles.memberName}>
                 {member.username}

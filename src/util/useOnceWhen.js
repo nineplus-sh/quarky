@@ -9,5 +9,5 @@ export default function useOnceWhen(variable, value, callback, enabled) {
             hasRun.current = true;
             callback();
         }
-    }, [variable]);
+    }, [variable, enabled]);
 }

@@ -8,6 +8,7 @@ import useGateway from "../components/_services/lightquark/hooks/useGateway.js";
 import {WebSocketContext} from "../contexts/WebSocketContext.js";
 import useRPC from "../components/_services/lightquark/hooks/useRPC.js";
 import useOnceWhen from "../util/useOnceWhen.js";
+import {flushSync} from "react-dom";
 
 /**
  * The client screen.
@@ -40,7 +41,13 @@ export default function ClientWrapper() {
     })()}, []);
 
     useEffect(() => {
-        if (firstGateway) setSocket(firstGateway);
+        if (firstGateway) {
+            setTimeout(() => {
+                flushSync(() => {
+                    setSocket(firstGateway);
+                });
+            }, 0);
+        }
     }, [firstGateway, setSocket]);
 
     useOnceWhen(firstGateway.isAuthenticated, true, async () => {

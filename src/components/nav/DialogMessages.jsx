@@ -7,10 +7,6 @@ export default function DialogMessages({messages}) {
     let { quarkId, dialogId } = useParams();
     const {data: userData, isLoading} = useMe();
 
-    useLayoutEffect(() => {
-        document.querySelector("div[class^='_messages_']").lastChild?.scrollIntoView({"behavior": "smooth"});
-    }, [messages]);
-
     if(isLoading) return null;
     return messages.map((message, index) => {
         let sameAuthor = false;

@@ -175,17 +175,14 @@ export function App(props) {
         if(renewPromise) return renewPromise;
         return refreshOverHTTP()
     })
-    const queryClient = useMemo(() => new QueryClient({
+    const [queryClient] = useState(new QueryClient({
         defaultOptions: {
             queries: {
-                queryFn: async ({queryKey}) => {
-                    return (await axiosClient.get(queryKey[0])).data.response
-                },
                 retry: false,
                 staleTime: Infinity
             },
         }
-    }), [axiosClient]);
+    }))
 
     return (
         <AppContext.Provider value={{
