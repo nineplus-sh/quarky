@@ -77,7 +77,7 @@ export default function RichEmbed({url}) {
 
     let youtube = urlWrap.href.match(/https?:\/\/(?:www\.)?(?:youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]+)(?:[?&]\S*?&?t=([0-9smhdw]+))?(?:[?&]\S*)?/);
     if(youtube) {
-        return <iframe width="400" height="225" src={`https://www.youtube-nocookie.com/embed/${youtube[1]}${youtube[2] ? `?t=${youtube[2]}` : ""}`} title="Embedded YouTube video" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" className={styles.richEmbed}></iframe>
+        return <iframe width="400" height="225" src={`https://www.youtube.com/embed/${youtube[1]}${youtube[2] ? `?t=${youtube[2]}` : ""}`} title="Embedded YouTube video" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" className={styles.richEmbed}></iframe>
     }
 
     let lichessStudy = urlWrap.href.match(/https?:\/\/lichess\.org\/study\/([a-zA-Z0-9]{8})\/([a-zA-Z0-9]{8})(#\d+|)/)

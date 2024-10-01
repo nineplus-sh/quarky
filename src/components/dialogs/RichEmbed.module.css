@@ -1,12 +1,13 @@
 .wrapblr {
     max-height: 30vh;
     max-width: 542px;
-    overflow-y: scroll;
+    overflow-y: auto;
     overflow-x: hidden;
     scrollbar-width: thin;
 }
 .richEmbed {
     display: block;
+    border: none;
 }
 .richEmbed:not([width]) {
     width: 100%;

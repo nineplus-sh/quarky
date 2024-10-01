@@ -14,6 +14,7 @@ const gamePLUS = new Worker(path.join(__dirname, 'gameplus.js'));
 
 const hazel = "https://roald.hakase.life";
 let gameDatabase = null;
+const tumblrRegex = /https:\/\/www\.tumblr\.com(?:\/reblog\/(\w+)\/\d+\/[a-zA-Z0-9-]+\?source=embed|\/(\w+)\/\d+(?:\/[a-zA-Z0-9-]+|)\?source=embed&action=like)/
 
 if (isDev) {
     app.commandLine.appendSwitch('ignore-certificate-errors')
@@ -46,10 +47,53 @@ const createWindow = () => {
     })
 
     win.webContents.setWindowOpenHandler(({ url }) => {
-        shell.openExternal(url);
-        return { action: 'deny' };
+        const logins = [
+            "https://accounts.spotify.com/login",
+            "https://www.tumblr.com/login",
+            "https://accounts.google.com/ServiceLogin?service=youtube&continue=https://www.youtube.com/signin?action_handle_signin=true"
+        ]
+        if(logins.includes(url) || tumblrRegex.test(url)) {
+            return { action: 'allow' }
+        } else {
+            shell.openExternal(url);
+            return { action: 'deny' };
+        }
     });
-    win.setMenuBarVisibility(false)
+    win.webContents.on('did-create-window', (childWindow) => {
+        childWindow.setSize(500,600);
+        childWindow.setMenuBarVisibility(false);
+
+        const successes = [
+            "https://www.tumblr.com/dashboard",
+            "https://www.youtube.com/"
+        ]
+        childWindow.webContents.on('did-start-navigation', (event, newUrl) => {
+            console.log("DSN", newUrl)
+            if (successes.includes(newUrl)) {
+                childWindow.close();
+            }
+        });
+        childWindow.webContents.on('did-navigate', (event, newUrl) => {
+            console.log("DN", newUrl)
+            if (successes.includes(newUrl)) {
+                childWindow.close();
+                dialog.showMessageBox({message: "Signed in successfully!"})
+            }
+        });
+        childWindow.webContents.on('will-prevent-unload', event => {
+            childWindow.destroy();
+        })
+        childWindow.webContents.on('did-finish-load', () => {
+            const currentURL = childWindow.webContents.getURL();
+            const rebloggingFrom = currentURL.match(tumblrRegex);
+            console.log(rebloggingFrom)
+            if(rebloggingFrom) {
+                childWindow.setTitle(`Tumblr: Reblogging from ${rebloggingFrom[1] || rebloggingFrom[2]}`);
+                childWindow.setIcon(nativeImage.createFromPath(__dirname + `/resources/tumblr.png`))
+            }
+        });
+    });
+    win.setMenuBarVisibility(false);
 
     if (!isDev) {
         autoUpdater.checkForUpdates();

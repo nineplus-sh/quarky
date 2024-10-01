@@ -1,0 +1,17 @@
+.enhancementList {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.enhancementUpsell {
+    display: flex;
+    justify-content: space-between;
+}
+.enhancementUpsellTitle {
+    display: flex;
+    gap: 0.5rem;
+}
+.enhancementUpsellTitle svg {
+    width: 22px;
+    height: 22px;
+}

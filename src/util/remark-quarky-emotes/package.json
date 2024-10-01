@@ -1,8 +1,0 @@
-{
-  "name": "remark-quarky-emotes",
-  "type": "module",
-  "dependencies": {
-    "mdast-util-find-and-replace": "^3.0.1",
-    "unist-builder": "^4.0.0"
-  }
-}

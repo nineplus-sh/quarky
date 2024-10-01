@@ -4,9 +4,17 @@ import Fuse from "fuse.js";
 import useQuark from "../hooks/useQuark.js";
 import {useContext, useEffect} from "react";
 import {AppContext} from "../../../../contexts/AppContext.js";
+import useRPC from "../hooks/useRPC.js";
 
 export default function LightquarkEmoteSearch({message, setMessage, floatRef, floatStyles, floatProps, activeIndex, listRef, itemProps}) {
-    const { data, isLoading } = useQuery({queryKey: ['emoji']});
+    const apiCall = useRPC();
+    const { data, isLoading } = useQuery({
+        queryKey: ['emoji'],
+        queryFn: async function () {
+            const data = await apiCall("emoji")
+            return data.emotes;
+        }
+    });
     const {nyafile} = useContext(AppContext);
     const search = message.match(/:(\w{2,})$/);
 
@@ -25,7 +33,7 @@ export default function LightquarkEmoteSearch({message, setMessage, floatRef, fl
         <div className={styles.emoteWrap} aria-hidden={true}> (╭ರ_•́)</div></div>;
 
     if(!search) return null;
-    const fuse = new Fuse(data?.emotes.flatMap(q => q.emotes), {keys: ['name'], threshold: 0.1});
+    const fuse = new Fuse(data?.flatMap(q => q.emotes), {keys: ['name'], threshold: 0.1});
     const result = fuse.search(search[1], {limit: 50});
 
     if(result.length === 0) return <div className={styles.emoteSearchWrap} ref={floatRef} style={floatStyles} {...floatProps}>

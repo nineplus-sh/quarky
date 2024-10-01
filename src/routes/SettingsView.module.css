@@ -23,6 +23,10 @@
     max-width: 727px;
 }
 
+.settingsArea hr {
+    border: 1px dashed var(--background-color-lesser)
+}
+
 .settingsSidebar {
     display: flex;
     flex: 1 0 196px;
@@ -35,4 +39,5 @@
     align-items: flex-start;
     flex: 1 1 800px;
     background-color: var(--background-color-max);
+    overflow-y: auto;
 }

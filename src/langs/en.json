@@ -88,6 +88,12 @@
 
     "SETTING_RICH_EMBEDS": "Embed entire websites in messages",
     "SETTING_RICH_EMBEDS_DESC": "For <0>some links</0>, Quarky can embed the whole website inside the message so you don't have to open your web browser.",
+    "SETTING_RICH_EMBEDS_ENHANCEMENTS": "Some rich embeds on the desktop app can be further enhanced by signing into the respective services. This is NOT required. ninePLUS will not be able to access your accounts.",
+    "SETTING_RICH_EMBEDS_ENHANCEMENT_SPOTIFY": "Listen to full songs in previews",
+    "SETTING_RICH_EMBEDS_ENHANCEMENT_TUMBLR": "Open reblog windows in a popup instead of your browser",
+    "SETTING_RICH_EMBEDS_ENHANCEMENT_YOUTUBE": "Add videos to Watch Later, and block ads (with YouTube Premium)",
+    "SIGN_IN": "Sign in",
+
     "SETTING_GAME_ACTIVITY": "Share what I'm playing",
     "SETTING_GAME_ACTIVITY_DESC": "When Quarky detects you're playing a game, it'll show on your profile. We use <0>our own database</0> to detect games, so if your blorbo isn't included, please tell us! [DEVELOPER NOTE: YOU MUST HIT CTRL+R FOR YOUR CHANGE TO APPLY]",
     "SUGGEST_GAME": "Suggest a game",
@@ -175,6 +181,8 @@
     "ERROR_NYAFILE_FILE_MISSING_PROD": "App assets are missing. Press CTRL+SHIFT+R to try again. Contact ninePLUS if the problem persists.",
     "ERROR_NYAFILE_FILE_MISSING_DEV": "Please run src/nyafile-compiler.js to compile the Nyafile, then press CTRL+SHIFT+R.",
     "ERROR_NYAFILE": "App assets corrupted. Please contact ninePLUS.",
+
+    "FETCHING_PREVIOUS_MESSAGES": "Oops, you caught me! I'm still getting messages...",
 
     "SAMPLE_USER_NAME": "Hakase",
     "SAMPLE_USER_MESSAGE_RICH_EMBEDS": "Check it out {{link}}",
