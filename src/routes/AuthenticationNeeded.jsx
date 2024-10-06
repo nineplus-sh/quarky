@@ -9,6 +9,7 @@ import NiceModal from "@ebay/nice-modal-react";
 import FirstTimeModal from "../components/modals/FirstTimeModal.jsx";
 import useMe from "../components/_services/lightquark/hooks/useMe.js";
 import Loader from "./Loader.jsx";
+import DevBuildBanner from "../components/modals/DevBuildBanner.jsx";
 
 /**
  * The authentication needed ("login") screen.
@@ -37,6 +38,7 @@ export default function AuthenticationNeeded() {
 
     if(!appContext.apiKeys.accessToken) {
         return (<>
+            {import.meta.env.VITE_VERCEL_ENV === "preview" ? <DevBuildBanner/> : null}
             <audio src={appContext.nyafile.getCachedData("music/login")} loop={true} ref={musicTag}/>
 
             <SpaceBackground />

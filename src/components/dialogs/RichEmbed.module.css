@@ -8,6 +8,7 @@
 .richEmbed {
     display: block;
     border: none;
+    overflow-y: auto;
 }
 .richEmbed:not([width]) {
     width: 100%;

@@ -89,7 +89,7 @@
     "SETTING_RICH_EMBEDS": "Embed entire websites in messages",
     "SETTING_RICH_EMBEDS_DESC": "For <0>some links</0>, Quarky can embed the whole website inside the message so you don't have to open your web browser.",
     "SETTING_RICH_EMBEDS_ENHANCEMENTS": "Some rich embeds on the desktop app can be further enhanced by signing into the respective services. This is NOT required. ninePLUS will not be able to access your accounts.",
-    "SETTING_RICH_EMBEDS_ENHANCEMENT_SPOTIFY": "Listen to full songs in previews",
+    "SETTING_RICH_EMBEDS_ENHANCEMENT_SPOTIFY": "Listen to the entire song instead of 30 seconds",
     "SETTING_RICH_EMBEDS_ENHANCEMENT_TUMBLR": "Open reblog windows in a popup instead of your browser",
     "SETTING_RICH_EMBEDS_ENHANCEMENT_YOUTUBE": "Add videos to Watch Later, and block ads (with YouTube Premium)",
     "SIGN_IN": "Sign in",

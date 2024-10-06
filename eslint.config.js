@@ -4,6 +4,10 @@ import react from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
 import reactRefresh from 'eslint-plugin-react-refresh';
 import jsdoc from 'eslint-plugin-jsdoc';
+import testingLibrary from 'eslint-plugin-testing-library';
+import vitest from 'eslint-plugin-vitest';
+import vitestGlobals from 'eslint-plugin-vitest-globals';
+import reactCompiler from 'eslint-plugin-react-compiler';
 
 export default [
     { ignores: ['dist'] },
@@ -33,6 +37,7 @@ export default [
             react,
             'react-hooks': reactHooks,
             'react-refresh': reactRefresh,
+            reactCompiler
         },
         rules: {
             ...js.configs.recommended.rules,
@@ -46,7 +51,19 @@ export default [
                 'warn',
                 { allowConstantExport: true },
             ],
-            'react/prop-types': 'off'
+            'react/prop-types': 'off',
+            "reactCompiler/react-compiler": 'warn'
         },
     },
+    {
+        files: ['src/**/*.test.{js,jsx}'],
+        plugins: {
+            vitest,
+            vitestGlobals
+        },
+        rules: {
+            ...vitest.configs.recommended.rules,
+        },
+        ...testingLibrary.configs['flat/react']
+    }
 ]

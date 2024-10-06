@@ -42,6 +42,7 @@ export default function UserSettingsChat() {
 
         "https://twitter.com/girlpoisoner/status/1823413661626720680",
         "https://twitter.com/paxiti/status/1117105167998967808",
+        "https://twitter.com/kyoroniki/status/1788795663230312488",
 
         "https://nyakase.tumblr.com/post/726753957782896641",
         "https://nyakase.tumblr.com/post/727779780105256960",
