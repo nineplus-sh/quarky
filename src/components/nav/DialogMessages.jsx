@@ -1,14 +1,15 @@
-import {useLayoutEffect} from "react";
+import {useEffect, useLayoutEffect, useRef} from "react";
 import {useParams} from "react-router-dom";
 import LightquarkMessage from "../_services/lightquark/dialogs/LightquarkMessage.jsx";
 import useMe from "../_services/lightquark/hooks/useMe.js";
+import {Virtuoso} from "react-virtuoso";
 
-export default function DialogMessages({messages}) {
+export default function DialogMessages({messages, moreMessages}) {
     let { quarkId, dialogId } = useParams();
     const {data: userData, isLoading} = useMe();
 
     if(isLoading) return null;
-    return messages.map((message, index) => {
+    return <Virtuoso data={messages} itemContent={(index, message) => {
         let sameAuthor = false;
         if(index > 0){
             const prevMessage = messages[index-1];
@@ -26,5 +27,5 @@ export default function DialogMessages({messages}) {
             }
         }
         return <LightquarkMessage message={message} channel={dialogId} quark={quarkId.split("lq_")[1]} isContinuation={sameAuthor} isAuthored={message.author._id === userData._id} key={message.id} />
-    })
+    }} startReached={moreMessages} initialTopMostItemIndex={messages.length-1} followOutput={"smooth"} onScroll={(event) => console.log(event.target.scrollTop)}/>
 }

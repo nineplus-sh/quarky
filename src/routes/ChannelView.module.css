@@ -24,9 +24,6 @@
 .messages {
     width: 100%;
     height: 95vh;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    overflow-wrap: anywhere;
 
     scrollbar-width: thin;
     scrollbar-color: var(--accent-color) white;

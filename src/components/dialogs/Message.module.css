@@ -83,3 +83,11 @@
     right: -2.7em;
     top: -0.4em;
 }
+
+.messagewrapper .interactions {
+    display: none;
+}
+.messagewrapper:hover .interactions {
+    display: flex;
+    gap: 0.25em;
+}

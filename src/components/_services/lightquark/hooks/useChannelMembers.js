@@ -9,7 +9,7 @@ export default function useChannelMembers(id, options = {}) {
             const data = await apiCall(`channel/${id}/members`)
             return data.users;
         },
-        queryKey: [`channel/${id}`, `channel/${id}/members`],
+        queryKey: [`channel/${id}`, `members`],
         ...options
     });
 }

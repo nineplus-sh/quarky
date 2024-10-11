@@ -61,6 +61,7 @@ export default function MessageInput() {
 
     function keysmashOutsideHandler(event) {
         if(document.activeElement?.tagName.toLowerCase() === "input") return;
+        if(document.activeElement?.tagName.toLowerCase() === "textarea") return;
         if(event.key === "Tab") return;
         messageBox.current?.focus();
     }

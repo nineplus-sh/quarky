@@ -1,4 +1,4 @@
-import {useCallback, useEffect, useMemo, useRef, useState} from 'react'
+import {lazy, useCallback, useEffect, useMemo, useRef, useState} from 'react'
 import ReactDOM from 'react-dom/client'
 import {
     createBrowserRouter,
@@ -226,10 +226,17 @@ export const router = sentryCreateBrowserRouter(
 )
 
 const ProfiledApp = Sentry.withProfiler(App);
+const ReactQueryDevtoolsProduction = lazy(() =>
+    import('@tanstack/react-query-devtools/production').then((d) => ({
+        default: d.ReactQueryDevtools,
+    })),
+)
+
 ReactDOM.createRoot(document.getElementById('root')).render(
     //<React.StrictMode>
         <ProfiledApp>
             <ReactQueryDevtools initialIsOpen={false} />
+            {import.meta.env.VITE_VERCEL_ENV === "preview" ? <ReactQueryDevtoolsProduction/> : null}
             <NiceModal.Provider>
                 <RouterProvider router={router} />
             </NiceModal.Provider>
