@@ -8,8 +8,23 @@ export default function DialogMessages({messages, moreMessages}) {
     let { quarkId, dialogId } = useParams();
     const {data: userData, isLoading} = useMe();
 
+    const oldLength = useRef(null);
+    const firstMessageId = useRef(null);
+    const virtuoso = useRef(null);
+    useEffect(() => {
+        if(!virtuoso.current) return;
+
+        console.log(oldLength.current, firstMessageId.current, messages.length, messages[0]._id)
+        console.log(virtuoso.current.scrollTop)
+        if(oldLength.current < messages.length && firstMessageId.current !== messages[0]._id) {
+            virtuoso.current.scrollToIndex(oldLength.current - 1);
+        }
+        oldLength.current = messages.length;
+        firstMessageId.current = messages[0]._id;
+    }, [messages]);
+
     if(isLoading) return null;
-    return <Virtuoso data={messages} itemContent={(index, message) => {
+    return <Virtuoso ref={virtuoso} data={messages} itemContent={(index, message) => {
         let sameAuthor = false;
         if(index > 0){
             const prevMessage = messages[index-1];
@@ -27,5 +42,5 @@ export default function DialogMessages({messages, moreMessages}) {
             }
         }
         return <LightquarkMessage message={message} channel={dialogId} quark={quarkId.split("lq_")[1]} isContinuation={sameAuthor} isAuthored={message.author._id === userData._id} key={message.id} />
-    }} startReached={moreMessages} initialTopMostItemIndex={messages.length-1} followOutput={"smooth"} onScroll={(event) => console.log(event.target.scrollTop)}/>
+    }} startReached={moreMessages} initialTopMostItemIndex={messages.length-1} followOutput={"smooth"} logLevel={0} increaseViewportBy={200}/>
 }

@@ -34,6 +34,7 @@ export default function RichEmbed({url}) {
             if(tenorID) {
                 const results = await fetch(`https://tenor.googleapis.com/v2/posts?ids=${tenorID[1]}&key=${import.meta.env.VITE_TENOR}&media_filter=gif`).then(res => res.json())
                 setImageSource(results.results[0].media_formats.gif.url);
+                setEmbedHeight(results.results[0].media_formats.gif.dims[1]);
             }
         }
 
@@ -91,6 +92,6 @@ export default function RichEmbed({url}) {
     }
 
     if (imageSource) {
-        return <div className={attachStyles.attachment}><img src={imageSource} className={styles.richEmbed}/></div>
+        return <div className={attachStyles.attachment}><img src={imageSource} height={embedHeight} className={styles.richEmbed}/></div>
     }
 }

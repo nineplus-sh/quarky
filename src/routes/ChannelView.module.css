@@ -22,9 +22,30 @@
 }
 
 .messages {
-    width: 100%;
-    height: 95vh;
-
+    flex-grow: 1;
     scrollbar-width: thin;
     scrollbar-color: var(--accent-color) white;
+}
+
+.channelView {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    max-height: 100vh;
+}
+.channelContents {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+}
+.channelTopbar {
+    display: flex;
+    gap: 0.5em;
+    padding: 0.5em;
+    background: var(--background-color-less);
+}
+.channelName {
+    font-style: italic;
+    padding-right: 0.5em;
+    border-right: 2px solid grey;
 }
