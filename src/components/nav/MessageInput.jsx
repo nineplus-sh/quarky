@@ -75,7 +75,7 @@ export default function MessageInput() {
         if (!settings.DRAFTS[dialogId]) setMessage("");
     }, [dialogId]);
     useEffect(() => {
-        if(typingTimeout) clearTimeout(typingTimeout);
+        /*if(typingTimeout) clearTimeout(typingTimeout);
         setTypingTimeout(setTimeout(() => {
             if(message === settings.DRAFTS[dialogId]?.content) return;
             if(message === "" && !settings.DRAFTS[dialogId]) return;
@@ -87,7 +87,7 @@ export default function MessageInput() {
                     }
                 }
             })
-        }, 5000));
+        }, 5000));*/
 
         setEmoteSearchOpen(/:\w{2,}$/.test(message));
     }, [message]);
