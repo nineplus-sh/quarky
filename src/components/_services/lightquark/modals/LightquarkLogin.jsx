@@ -136,7 +136,6 @@ export default function LightquarkLogin() {
                 <form onSubmit={tokenByLogin} className={styles.loginForm}>
                     <input className={styles.loginInput} required type="email" placeholder={t("LOGIN_EMAIL")} value={email} onChange={e => setEmail(e.target.value)} />
                     <input className={styles.loginInput} required type="password" placeholder={t("LOGIN_PASSWORD")} value={password} onChange={e => setPassword(e.target.value)} />
-                    <button className={`${styles.prettyButton} ${styles.otherButton}`} type="button" disabled={isSwitching} onClick={() => switchTab("create")}>{t("LOGIN_CREATE_ACCOUNT")}</button>
                     <input className={`${styles.prettyButton} ${styles.primaryButton}`} type="submit" disabled={isSwitching || Object.keys(networkData).length === 0} value={t(isSwitching ? "LOGIN_SIGNING_IN" : "GO")}/>
                 </form>
             </> : tab === "network" ? <>
