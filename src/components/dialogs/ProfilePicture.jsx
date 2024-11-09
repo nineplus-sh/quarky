@@ -14,5 +14,5 @@ export default function ProfilePicture({src, px = 64, isMessage = false, doPurr 
         isHovered && doPurr ? purr?.play() : purr?.pause();
     }, [isHovered]);
 
-    return <img src={src} width={px} height={px} className={classnames(styles.pfp, {[styles.petting]: doPurr && isHovered, [styles.message]: isMessage})} onMouseOver={() => setIsHovered(true)} onMouseOut={() => setIsHovered(false)}/>
+    return <img src={`${src}?size=${px}`} width={px} height={px} className={classnames(styles.pfp, {[styles.petting]: doPurr && isHovered, [styles.message]: isMessage})} onMouseOver={() => setIsHovered(true)} onMouseOut={() => setIsHovered(false)}/>
 }
