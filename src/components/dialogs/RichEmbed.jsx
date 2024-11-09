@@ -7,7 +7,7 @@ export let badLinks = /(?:https?:\/\/tenor\.com\/view\/[a-z-]*\d*|https?:\/\/(?:
 export let imageHosts = /https?:\/\/(?:huh\.nya\.tf|wanderers\.cloud)\/file\/.+/;
 
 export default function RichEmbed({url}) {
-    const [embedHeight, setEmbedHeight] = useState(0);
+    const [embedHeight, setEmbedHeight] = useState(null);
     const [imageSource, setImageSource] = useState(null);
     const ourFrame = useRef(null);
     useEffect(() => {

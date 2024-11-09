@@ -71,3 +71,60 @@
     background-color: var(--other-button-shadow);
     box-shadow: 0 3px var(--other-button-active-shadow);
 }
+
+.routes {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.route {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    cursor: pointer;
+    padding: 0.5em;
+}
+.route img {
+    width: auto;
+    height: auto;
+    align-self: center;
+}
+.route:hover {
+    transform: translateY(-5px)
+}
+.routeSplitter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: stretch;
+    gap: 0.5em;
+    font-size: smaller;
+}
+.routeSplitter::before, .routeSplitter::after {
+    display: block;
+    content: " ";
+    background-color: var(--darkest-accent-color);
+    flex-grow: 1;
+    width: 2px;
+    height: auto;
+}
+
+.formHeader {
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+    margin-bottom: 0.5em;
+
+    justify-content: space-between;
+    align-items: stretch;
+}
+.microLogo {
+    width: 1.5em;
+    height: 1.5em;
+    border-radius: 5px;
+}
+.formHeaderText {
+    display: flex;
+    gap: 0.25em;
+    align-items: center;
+}

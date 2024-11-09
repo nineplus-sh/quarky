@@ -7,6 +7,7 @@ import {useTranslation} from "react-i18next";
 import NyafileImage from "../nyafile/NyafileImage.jsx";
 import styles from "./UserSettingsChat.module.css"
 import richEmbedSamples from "../../util/richEmbedSamples.js";
+import Button from "../nav/Button.jsx";
 
 export default function UserSettingsChat() {
     const appContext = useContext(AppContext);
@@ -37,8 +38,8 @@ export function RichEmbedEnhancement({service, url, width}) {
             <span> {t(`SETTING_RICH_EMBEDS_ENHANCEMENT_${service.toUpperCase()}`)}</span>
         </span>
 
-        <button onClick={() => window.open(url, "_blank", "popup=true,width=500")}>
+        <Button onClick={() => window.open(url, "_blank", "popup=true,width=500")}>
             {t("SIGN_IN")}
-        </button>
+        </Button>
     </div>
 }

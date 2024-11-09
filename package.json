@@ -76,7 +76,7 @@
     "@vitejs/plugin-react-swc": "^3.7.0",
     "archiver": "^7.0.1",
     "concurrently": "^9.0.1",
-    "electron": "^32.1.0",
+    "electron": "^33.0.2",
     "eslint": "^9.10.0",
     "eslint-plugin-jest-dom": "^5.4.0",
     "eslint-plugin-jsdoc": "^50.2.3",

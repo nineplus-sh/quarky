@@ -6,8 +6,10 @@ import NiceModal from "@ebay/nice-modal-react";
 import NetworkOfflineModal from "../../../modals/NetworkOfflineModal.jsx";
 import {Trans, useTranslation} from "react-i18next";
 import styles from "./LightquarkLogin.module.css";
+import NyafileImage from "../../../nyafile/NyafileImage.jsx";
+import Button from "../../../nav/Button.jsx";
 
-export default function LightquarkLogin() {
+export default function LightquarkLogin({crossfade}) {
     const appContext = useContext(AppContext);
     const [network, setNetwork] = useState('https://lightquark.network');
     const [oldNetwork, setOldNetwork] = useState('');
@@ -16,7 +18,11 @@ export default function LightquarkLogin() {
     const [password, setPassword] = useState('');
     const { t } = useTranslation();
     const [networkData, setNetworkData] = useState({});
-    const [tab, switchTab] = useState("login");
+    const [tab, _switchTab] = useState("splash");
+    async function switchTab(tab) {
+        await crossfade();
+        _switchTab(tab);
+    }
     const [networkSwitch, setNetworkSwitch] = useState('');
     const [isSwitching, setSwitching] = useState(true);
 
@@ -33,11 +39,11 @@ export default function LightquarkLogin() {
                     }
                 })
 
+                await switchTab("splash");
                 setOldNetwork(network);
                 setNetworkData(NETWORKdata.raw);
                 setNetworkSwitch("");
                 setSwitching(false);
-                if(tab === "network") switchTab("login");
             } catch(e) {
                 NiceModal.show(NetworkOfflineModal, {name: network});
                 setNetworkSwitch("");
@@ -111,14 +117,20 @@ export default function LightquarkLogin() {
     }
 
     // regarding escapeValue here: while it may seem like a hole for an XSS attack i tried and brackets are still escaped
-    if(tab === "login" && isSwitching) return(
+    if(tab === "splash" && isSwitching) return(
         <>
             <p>{t("LOGIN_NETWORK_FETCHING")}</p>
         </>
     )
+    function MicroNetworkHeader({string, back}) {
+        return <div className={styles.formHeader}>
+            <span className={styles.formHeaderText}><img src={networkData.iconUrl} className={styles.microLogo}/> {t(string, {name: networkData.name})}</span>
+            {back ? <Button onClick={back}>{t("BACK")}</Button> : null}
+        </div>
+    }
     return (
         <>
-            <div className={styles.networkInfoArea}>
+            {tab === "splash" || tab === "network" ? <div className={styles.networkInfoArea}>
                 <div className={styles.networkInfo}>
                     <img className={styles.networkLogo} src={networkData.iconUrl}/>
                     <div className={styles.networkDetails}>
@@ -127,24 +139,39 @@ export default function LightquarkLogin() {
                     </div>
                 </div>
                 <p className={styles.networkDescription}>{networkData.description}</p>
-            </div>
+            </div> : null}
 
-            {tab === "login" ? <>
-                <p>{t("LOGIN_SIGN_IN_FORM", {name: networkData.name})}</p>
+            {tab === "splash" ? <div className={styles.routes}>
+                <div style={{display:"none"}} role={"button"} aria-label={t("LOGIN_CREATE_ACCOUNT")} onClick={() => switchTab("create")} className={styles.route}>
+                    <NyafileImage src={"img/create_user"}/>
+                    <span>{t("LOGIN_CREATE_ACCOUNT")}</span>
+                </div>
+                <div style={{display:"none"}} className={styles.routeSplitter}>{t("OR")}</div>
+                <div style={{width:"100%"}} role={"button"} aria-label={t("SIGN_IN")} onClick={() => switchTab("login")} className={styles.route}>
+                    <NyafileImage src={"img/sign_in"}/>
+                    <span>{t("SIGN_IN")}</span>
+                </div>
+            </div> : tab === "login" ? <>
+                <MicroNetworkHeader string={"LOGIN_SIGN_IN_FORM"} back={() => switchTab("splash")}/>
+
                 <form onSubmit={tokenByLogin} className={styles.loginForm}>
                     <input className={styles.loginInput} required type="email" placeholder={t("LOGIN_EMAIL")} value={email} onChange={e => setEmail(e.target.value)} />
                     <input className={styles.loginInput} required type="password" placeholder={t("LOGIN_PASSWORD")} value={password} onChange={e => setPassword(e.target.value)} />
                     <input className={`${styles.prettyButton} ${styles.primaryButton}`} type="submit" disabled={isSwitching || Object.keys(networkData).length === 0} value={t(isSwitching ? "LOGIN_SIGNING_IN" : "GO")}/>
                 </form>
             </> : tab === "network" ? <>
-                <p><Trans i18nKey={"LOGIN_SWITCH_NETWORKS_BODY"} values={{name: networkData.name}} components={[<a href={"https://youtrack.litdevs.org/articles/LQ4-A-1"} target={"_blank"} rel={"noreferrer"}/>]}></Trans></p>
+                <div className={styles.formHeader}>
+                    <Trans i18nKey={"LOGIN_SWITCH_NETWORKS_BODY"} values={{name: networkData.name}} components={[<a href={"https://youtrack.litdevs.org/articles/LQ4-A-1"} target={"_blank"} rel={"noreferrer"}/>]}></Trans>
+                </div>
+
                 <form onSubmit={switchNetwork} className={styles.loginForm}>
                     <input className={styles.loginInput} required disabled={isSwitching} type="text" placeholder={network} value={networkSwitch} onChange={e => setNetworkSwitch(e.target.value)}/>
                     <input className={`${styles.prettyButton} ${styles.otherButton}`} type="submit" disabled={isSwitching} value={t(isSwitching ? "LOGIN_SWITCHING_NETWORKS" : "LOGIN_SWITCH_NETWORKS")}/>
-                    <button className={`${styles.prettyButton} ${styles.primaryButton}`} type="button" disabled={isSwitching} onClick={() => switchTab("login")}>{t("BACK")}</button>
+                    <button className={`${styles.prettyButton} ${styles.primaryButton}`} type="button" disabled={isSwitching} onClick={() => switchTab("splash")}>{t("BACK")}</button>
                 </form>
             </> : tab === "create" ? <>
-                <p>{t("LOGIN_SIGN_UP_FORM", {name: networkData.name})}</p>
+                <MicroNetworkHeader string={"LOGIN_SIGN_UP_FORM"} back={() => switchTab("splash")}/>
+
                 <form onSubmit={tokenBySignup} className={styles.loginForm}>
                     <input className={styles.loginInput} required type="text" placeholder={t("LOGIN_USERNAME")}
                            value={username} onChange={e => setUsername(e.target.value)}/>
@@ -153,8 +180,6 @@ export default function LightquarkLogin() {
                     <input className={styles.loginInput} required type="password" placeholder={t("LOGIN_PASSWORD")}
                            value={password} onChange={e => setPassword(e.target.value)}/>
 
-                    <button className={`${styles.prettyButton} ${styles.otherButton}`} type="button"
-                            onClick={() => switchTab("login")}>{t("BACK")}</button>
                     <input className={`${styles.prettyButton} ${styles.primaryButton}`} type="submit"
                            disabled={isSwitching || Object.keys(networkData).length === 0}
                            value={t(isSwitching ? "LOGIN_SIGNING_IN" : "GO")}/>

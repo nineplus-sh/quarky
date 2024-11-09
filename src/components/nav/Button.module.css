@@ -1,0 +1,35 @@
+.prettyButton {
+    border-radius: 10px;
+    border: none;
+
+    background-color: var(--other-button-color);
+    color: black;
+    box-shadow: 0 3px var(--other-button-shadow);
+
+    transform: translateY(-2px);
+
+    cursor: pointer;
+}
+.prettyButton.puffy {
+    padding: 0.5em;
+}
+.prettyButton[disabled], .prettyButton:not([disabled]):hover:active {
+    background-color: var(--other-button-shadow);
+    box-shadow: 0 2px var(--other-button-active-shadow);
+}
+
+.prettyButton:not([disabled]):hover {
+    transform: translateY(-4px);
+}
+.prettyButton:not([disabled]):hover:active {
+    transform: translateY(-2px);
+}
+
+.prettyButton.primary {
+    background-color: var(--primary-button-color);
+    box-shadow: 0 3px var(--primary-button-shadow);
+}
+.prettyButton.primary[disabled], .prettyButton.primary:not([disabled]):hover:active {
+    background-color: var(--primary-button-shadow);
+    box-shadow: 0 2px var(--primary-button-active-shadow);
+}

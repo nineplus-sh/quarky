@@ -2,7 +2,7 @@
     width: 15.5em;
     overflow-x: hidden;
     max-height: 100vh;
-    overflow-y: scroll;
+    overflow-y: auto;
 
     flex: none;
     scrollbar-width: thin;

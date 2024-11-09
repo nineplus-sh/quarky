@@ -25,6 +25,10 @@ const richEmbedSamples = [
     "https://play.spotify.com/track/7t7yqLwd9NfZD3meOZRme8",
     "https://play.spotify.com/track/2OPLRv0hXGCFMo3jTTkPVs",
     "https://play.spotify.com/track/4HbZmSjGcglZX7UgEokLki",
+    "https://play.spotify.com/track/2h0pEi1l32inCs6xu2ZO6d",
+    "https://play.spotify.com/track/7nGL6svEPOUJofkyVqXnRm",
+    "https://play.spotify.com/track/0E8VeBqiC4oD46hwDto7HD",
+    "https://play.spotify.com/track/76Yx4feEnLzKHEvpkfO49L",
 
     "https://www.youtube.com/watch?v=hJWSBBQ04XI",
     "https://www.youtube.com/watch?v=6h84rfCaGyY",

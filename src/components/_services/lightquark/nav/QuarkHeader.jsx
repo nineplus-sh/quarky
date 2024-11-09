@@ -9,6 +9,7 @@ import SettingsView from "../../../../routes/SettingsView.jsx";
 import QuarkSettingsSidebar from "../settings/QuarkSettingsSidebar.jsx";
 import QuarkSettingsArea from "../settings/QuarkSettingsArea.jsx";
 import useMe from "../hooks/useMe.js";
+import Button from "../../../nav/Button.jsx";
 
 export default function QuarkHeader({quark, interaction = true}) {
     const {quarkList, setQuarkList} = useContext(AppContext);
@@ -37,7 +38,7 @@ export default function QuarkHeader({quark, interaction = true}) {
         <span>{quark?.name}</span>
         {interaction === false || quarkId === "lq_100000000000000000000000" ? null :
             quark?.owners.includes(userData._id) ?
-            <button onClick={() => NiceModal.show(SettingsView, {data:{quarkId:quark._id},Sidebar:QuarkSettingsSidebar,Area:QuarkSettingsArea,defaultArea:"overview"})}>{t("MANAGE_QUARK")}</button> :
-            <button onClick={() => leaveQuark()}>{t("LEAVE_QUARK")}</button>}
+            <Button onClick={() => NiceModal.show(SettingsView, {data:{quarkId:quark._id},Sidebar:QuarkSettingsSidebar,Area:QuarkSettingsArea,defaultArea:"overview"})}>{t("MANAGE_QUARK")}</Button> :
+            <Button onClick={() => leaveQuark()}>{t("LEAVE_QUARK")}</Button>}
     </div>
 }

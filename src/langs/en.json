@@ -34,8 +34,8 @@
     "LOGIN_NETWORK_BYLINE": "{{domain}} ({{version}}) run by {{maintainer}}",
     "LOGIN_CREATE_ACCOUNT": "Create account",
 
-    "LOGIN_SIGN_IN_FORM": "Sign into {{name}} below:",
-    "LOGIN_SIGN_UP_FORM": "Create a {{name}} account below:",
+    "LOGIN_SIGN_IN_FORM": "Sign into {{name}}",
+    "LOGIN_SIGN_UP_FORM": "Join {{name}}",
 
     "GO": "Go!",
     "OKAY": "Got it",

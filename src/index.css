@@ -3,6 +3,8 @@ body {
   font-family: system-ui;
 }
 
+
+
 /* GENERAL APP COLORS */
 :root {
   --accent-color: #00A8F3;
@@ -13,8 +15,8 @@ body {
   --primary-button-shadow: var(--darker-accent-color);
   --primary-button-active-shadow: var(--darkest-accent-color);
   --other-button-color: #eee;
-  --other-button-shadow: #ddd;
-  --other-button-active-shadow: #aaa;
+  --other-button-shadow: #bbb;
+  --other-button-active-shadow: #777;
 
   --text-color: white;
   --text-color-inverted: black;
