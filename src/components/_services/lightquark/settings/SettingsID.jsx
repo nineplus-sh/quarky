@@ -13,10 +13,11 @@ import useRPC from "../hooks/useRPC.js";
 export default function SettingsID({quarkId}) {
     const appContext = useContext(AppContext);
     const queryClient = useQueryClient();
-    const [isUploading, setUploading] = useState(false);
+    const [isUploadingState, setUploading] = useState(false);
 
     const {data: quarkData, isLoading: isQuarkLoading} = useQuark(quarkId, {enabled: !!quarkId});
     const {data: meData, isLoading: isMeLoading} = useMe({enabled: !quarkId});
+    const isUploading = isUploadingState || isMeLoading;
     const apiCall = useRPC();
 
     const target = quarkId ? quarkData : meData;
