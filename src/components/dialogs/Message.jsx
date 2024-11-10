@@ -8,6 +8,7 @@ import classnames from "classnames";
 import {AppContext} from "../../contexts/AppContext.js";
 import ProfilePicture from "./ProfilePicture.jsx";
 import dedupe from "../../util/dedupe.js";
+import Button from "../nav/Button.jsx";
 
 export default function Message({children, avatarUri, username, content, isBot, botName, isDiscord, timestamp, edited, attachments, replyTo, isContinuation, game, editFunction, deleteFunction}) {
     const {settings} = useContext(AppContext)
@@ -36,15 +37,15 @@ export default function Message({children, avatarUri, username, content, isBot, 
                 <TimeAgo className={styles.timestamp} date={timestamp} />
 
                 <span className={styles.interactions}>
-                    {editFunction ? <button disabled={isDeleting || isEditing} onClick={() => setEditing(true)}>edit</button> : null}
-                    {deleteFunction ? <button disabled={isDeleting} onClick={() => {
+                    {editFunction ? <Button disabled={isDeleting || isEditing} onClick={() => setEditing(true)}>edit</Button> : null}
+                    {deleteFunction ? <Button disabled={isDeleting} onClick={() => {
                         setDeleting(true);
                         deleteFunction();
-                    }}>delete</button> : null}
+                    }}>delete</Button> : null}
                 </span>
             </span>}
 
-            <span className={styles.messagecontent} onDoubleClick={() => {if(editFunction){setEditing(true)}}}>
+            <span className={styles.messagecontent}>
                 {isEditing ? <textarea autoFocus={true} value={editText} disabled={isSaving} onKeyDown={(e) => checkEditKey(e)} onChange={(e ) => setEditText(e.target.value)}/> : <>
                     {edited ? <div className={styles.edited}>edited</div> : null}
 
