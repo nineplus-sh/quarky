@@ -8,6 +8,7 @@ import LQ from "../../../../util/LQ.js";
 import useQuark from "../hooks/useQuark.js";
 import useMe from "../hooks/useMe.js";
 import {useQueryClient} from "@tanstack/react-query";
+import useRPC from "../hooks/useRPC.js";
 
 export default function SettingsID({quarkId}) {
     const appContext = useContext(AppContext);
@@ -16,6 +17,7 @@ export default function SettingsID({quarkId}) {
 
     const {data: quarkData, isLoading: isQuarkLoading} = useQuark(quarkId, {enabled: !!quarkId});
     const {data: meData, isLoading: isMeLoading} = useMe({enabled: !quarkId});
+    const apiCall = useRPC();
 
     const target = quarkId ? quarkData : meData;
     const targetLoading = quarkId ? isQuarkLoading : isMeLoading;
@@ -56,7 +58,10 @@ export default function SettingsID({quarkId}) {
 
     async function resetAvatar() {
         setUploading(true);
-        await LQ("user/me/avatar", "DELETE");
+        await apiCall({
+            route: "user/me/avatar",
+            method: "DELETE"
+        });
         queryClient.invalidateQueries({queryKey: ["user/me"]});
         setUploading(false);
     }
@@ -72,5 +77,5 @@ export default function SettingsID({quarkId}) {
             <div className={styles.userJoinTime}>Born {new Date(parseInt(
                 target._id.substring(0, 8), 16) * 1000).toLocaleDateString()}</div>
         </div>
-    </div><div><button onClick={resetAvatar}>reset avatar</button></div></>;
+    </div>{quarkId ? null : <div><button onClick={resetAvatar}>reset avatar</button></div>}</>;
 }
