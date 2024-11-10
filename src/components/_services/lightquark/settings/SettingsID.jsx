@@ -54,7 +54,14 @@ export default function SettingsID({quarkId}) {
         input.click();
     }
 
-    return <div className={styles.userInfoWrap}>
+    async function resetAvatar() {
+        setUploading(true);
+        await LQ("user/me/avatar", "DELETE");
+        queryClient.invalidateQueries({queryKey: ["user/me"]});
+        setUploading(false);
+    }
+
+    return <><div className={styles.userInfoWrap}>
         <div onClick={uploadPicture} className={styles.profilePictureWrap}>
             <NyafileImage src={"img/upload"} inlinesvg={"true"}
                           className={classnames(styles.uploadIcon, {[styles.uploading]: isUploading})}/>
@@ -65,5 +72,5 @@ export default function SettingsID({quarkId}) {
             <div className={styles.userJoinTime}>Born {new Date(parseInt(
                 target._id.substring(0, 8), 16) * 1000).toLocaleDateString()}</div>
         </div>
-    </div>;
+    </div><div><button onClick={resetAvatar}>reset avatar</button></div></>;
 }
