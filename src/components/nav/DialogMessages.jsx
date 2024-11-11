@@ -13,6 +13,7 @@ export default function DialogMessages({messages, moreMessages}) {
     const virtuoso = useRef(null);
     useEffect(() => {
         if(!virtuoso.current) return;
+        if(!messages?.[0]?._id) return;
 
         console.log(oldLength.current, firstMessageId.current, messages.length, messages[0]._id)
         console.log(virtuoso.current.scrollTop)
@@ -41,6 +42,6 @@ export default function DialogMessages({messages, moreMessages}) {
                 sameAuthor = literalSameAuthor;
             }
         }
-        return <LightquarkMessage message={message} channel={dialogId} quark={quarkId.split("lq_")[1]} isContinuation={sameAuthor} isAuthored={message.author._id === userData._id} key={message.id} />
+        return <LightquarkMessage message={message} channel={dialogId} quark={quarkId.split("lq_")[1]} isContinuation={sameAuthor} isAuthored={message.author._id === userData._id} key={message._id} />
     }} startReached={moreMessages} initialTopMostItemIndex={messages.length-1} followOutput={"smooth"} logLevel={0} increaseViewportBy={200}/>
 }

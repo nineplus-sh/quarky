@@ -14,7 +14,7 @@ export default function Aviebox({user, interaction = true}) {
                 <p className={styles.name}>{user.username}</p>
             </span>
             {interaction === false ? null : <span>
-                <Button className={styles.settings} onClick={() => NiceModal.show(SettingsView, {Sidebar: UserSettingsSidebar, Area: UserSettingsArea,defaultArea:"profile"})}>Settings</Button>
+                <Button puffy className={styles.settings} onClick={() => NiceModal.show(SettingsView, {Sidebar: UserSettingsSidebar, Area: UserSettingsArea,defaultArea:"profile"})}>Settings</Button>
             </span>}
         </div>
     );
