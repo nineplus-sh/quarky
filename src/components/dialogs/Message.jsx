@@ -31,19 +31,20 @@ export default function Message({children, avatarUri, username, content, isBot, 
     return (<div className={classnames(styles.messagewrapper, {[styles.messagefollowup]: isContinuation, [styles.messagediting]: isEditing})}>
         {isContinuation ? null : <ProfilePicture src={avatarUri} isMessage={!isEditing}/>}
         <span className={styles.message}>
-            {isContinuation ? null : <span className={styles.usernameArea}>
-                <b>{username}</b>
+            <span className={styles.usernameArea}>
+                {isContinuation ? null : <><b>{username}</b>
                 {isBot ? <BotTag name={botName} isDiscord={isDiscord} /> : ""}
-                <TimeAgo className={styles.timestamp} date={timestamp} />
+                <TimeAgo className={styles.timestamp} date={timestamp} /></>}
 
                 <span className={styles.interactions}>
-                    {editFunction ? <Button disabled={isDeleting || isEditing} onClick={() => setEditing(true)}>edit</Button> : null}
-                    {deleteFunction ? <Button disabled={isDeleting} onClick={() => {
+                    {editFunction ? <Button disabled={isDeleting} onClick={() => setEditing(!isEditing)}>{isEditing ? "cancel" : "edit"}</Button> : null}
+                    {editFunction && isEditing ? <Button onClick={() => checkEditKey({key: "Enter"})}>save</Button> : null}
+                    {deleteFunction && !isEditing ? <Button disabled={isDeleting} onClick={() => {
                         setDeleting(true);
                         deleteFunction();
                     }}>delete</Button> : null}
                 </span>
-            </span>}
+            </span>
 
             <span className={styles.messagecontent}>
                 {isEditing ? <textarea autoFocus={true} value={editText} disabled={isSaving} onKeyDown={(e) => checkEditKey(e)} onChange={(e ) => setEditText(e.target.value)}/> : <>

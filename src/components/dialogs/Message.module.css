@@ -33,6 +33,7 @@
     width: fit-content;
 
     white-space: pre-wrap;
+    word-break: break-all;
 }
 
 .messagediting .messagecontent {
@@ -76,8 +77,11 @@
 
     position: absolute;
     font-size: 0.7em;
-    right: -2.7em;
-    top: -0.4em;
+    right: -1em;
+    top: -0.2em;
+
+    user-select: none;
+    transform: rotate(5deg);
 }
 
 .messagewrapper .interactions {
@@ -86,4 +90,10 @@
 .messagewrapper:hover .interactions {
     display: flex;
     gap: 0.25em;
+}
+
+.messagefollowup .message {
+    flex-direction: row-reverse;
+    align-items: flex-end;
+    gap: 0.5em;
 }

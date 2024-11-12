@@ -15,8 +15,8 @@ export default function DialogMessages({messages, moreMessages}) {
         if(!virtuoso.current) return;
         if(!messages?.[0]?._id) return;
 
-        console.log(oldLength.current, firstMessageId.current, messages.length, messages[0]._id)
-        console.log(virtuoso.current.scrollTop)
+        /*console.log(oldLength.current, firstMessageId.current, messages.length, messages[0]._id)
+        console.log(virtuoso.current.scrollTop)*/
         if(oldLength.current < messages.length && firstMessageId.current !== messages[0]._id) {
             virtuoso.current.scrollToIndex(oldLength.current - 1);
         }
@@ -43,5 +43,5 @@ export default function DialogMessages({messages, moreMessages}) {
             }
         }
         return <LightquarkMessage message={message} channel={dialogId} quark={quarkId.split("lq_")[1]} isContinuation={sameAuthor} isAuthored={message.author._id === userData._id} key={message._id} />
-    }} startReached={moreMessages} initialTopMostItemIndex={messages.length-1} followOutput={"smooth"} logLevel={0} increaseViewportBy={200}/>
+    }} startReached={moreMessages} initialTopMostItemIndex={messages.length-1} followOutput={"smooth"}/>
 }
