@@ -51,6 +51,8 @@ export default function Root() {
                 })
                 await nyafile.load(nyafileBlob.data, true);
 
+                setLoadingPercentage(0);
+
                 nyafile.queueCache("img/hakase_pfp");
                 nyafile.queueCache("img/stars");
                 nyafile.queueCache("img/quark_join");
@@ -86,9 +88,9 @@ export default function Root() {
                 }
                 Sentry.captureException(e);
                 return;
+            } finally {
+                setLoadingPercentage(0);
             }
-
-            setLoadingPercentage(0);
 
             appContext.setNyafile(nyafile);
 

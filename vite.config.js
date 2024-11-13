@@ -12,7 +12,13 @@ export default defineConfig({
       sourcemap: true
   },
   plugins: [
-      react(),
+      react({
+          babel: {
+              plugins: [
+                  ["babel-plugin-react-compiler", {target: "18"}]
+              ]
+          }
+      }),
       basicSsl(),
       sentryVitePlugin({
           bundleSizeOptimizations: {

@@ -12,6 +12,7 @@ export default function ProfilePicture({src, px = 64, isMessage = false, doPurr 
     const [isHovered, setIsHovered] = useState(false);
     useEffect(() => {
         isHovered && doPurr ? purr?.play() : purr?.pause();
+        return () => purr?.pause();
     }, [isHovered]);
 
     return <img src={`${src}?size=${px}`} width={px} height={px} className={classnames(styles.pfp, {[styles.petting]: doPurr && isHovered, [styles.message]: isMessage})} onMouseOver={() => setIsHovered(true)} onMouseOut={() => setIsHovered(false)}/>
