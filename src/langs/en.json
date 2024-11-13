@@ -36,10 +36,13 @@
 
     "LOGIN_SIGN_IN_FORM": "Sign into {{name}}",
     "LOGIN_SIGN_UP_FORM": "Join {{name}}",
+    "LOGIN_SIGN_UP_CODE": "Code sent to {{email}}, it expires in 15 minutes.",
+    "LOGIN_SIGN_UP_CODE_OPEN": "Open my inbox",
 
     "GO": "Go!",
     "OKAY": "Got it",
     "BACK": "Never mind",
+    "CANCEL": "Cancel",
     "BOT": "Bot",
     "DISCORD": "Discord",
 

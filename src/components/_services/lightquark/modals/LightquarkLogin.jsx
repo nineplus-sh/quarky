@@ -25,6 +25,7 @@ export default function LightquarkLogin({crossfade}) {
     }
     const [networkSwitch, setNetworkSwitch] = useState('');
     const [isSwitching, setSwitching] = useState(true);
+    const [code, setCode] = useState(null);
 
     useEffect( () => {
         async function getNetworkInfo() {
@@ -60,11 +61,31 @@ export default function LightquarkLogin({crossfade}) {
         setNetwork(networkSwitch);
     }
 
-    async function tokenBySignup(e) {
+    async function requestCode(e) {
         e.preventDefault();
         setSwitching(true);
 
         const tokens = await LQ("auth/register", "POST", {username, email, password}, true, {
+            network: {
+                baseUrl: network,
+                version: "v4"
+            }
+        })
+        if(tokens.request.success === true) {
+            switchTab("confirm");
+            setSwitching(false);
+        } else {
+            new Audio(appContext.nyafile.getCachedData("sfx/error")).play();
+            setTimeout(() => alert(tokens.response.message), 5);
+            setSwitching(false);
+        }
+    }
+
+    async function tokenBySignupCode(e) {
+        e.preventDefault();
+        setSwitching(true);
+
+        const tokens = await LQ("auth/register/confirm", "POST", {email, code}, true, {
             network: {
                 baseUrl: network,
                 version: "v4"
@@ -122,10 +143,10 @@ export default function LightquarkLogin({crossfade}) {
             <p>{t("LOGIN_NETWORK_FETCHING")}</p>
         </>
     )
-    function MicroNetworkHeader({string, back}) {
+    function MicroNetworkHeader({string, back, backString}) {
         return <div className={styles.formHeader}>
             <span className={styles.formHeaderText}><img src={networkData.iconUrl} className={styles.microLogo}/> {t(string, {name: networkData.name})}</span>
-            {back ? <Button onClick={back}>{t("BACK")}</Button> : null}
+            {back ? <Button onClick={back}>{t(backString || "BACK")}</Button> : null}
         </div>
     }
     return (
@@ -142,12 +163,12 @@ export default function LightquarkLogin({crossfade}) {
             </div> : null}
 
             {tab === "splash" ? <div className={styles.routes}>
-                <div style={{display:"none"}} role={"button"} aria-label={t("LOGIN_CREATE_ACCOUNT")} onClick={() => switchTab("create")} className={styles.route}>
+                <div role={"button"} aria-label={t("LOGIN_CREATE_ACCOUNT")} onClick={() => switchTab("create")} className={styles.route}>
                     <NyafileImage src={"img/create_user"}/>
                     <span>{t("LOGIN_CREATE_ACCOUNT")}</span>
                 </div>
-                <div style={{display:"none"}} className={styles.routeSplitter}>{t("OR")}</div>
-                <div style={{width:"100%"}} role={"button"} aria-label={t("SIGN_IN")} onClick={() => switchTab("login")} className={styles.route}>
+                <div className={styles.routeSplitter}>{t("OR")}</div>
+                <div role={"button"} aria-label={t("SIGN_IN")} onClick={() => switchTab("login")} className={styles.route}>
                     <NyafileImage src={"img/sign_in"}/>
                     <span>{t("SIGN_IN")}</span>
                 </div>
@@ -172,13 +193,26 @@ export default function LightquarkLogin({crossfade}) {
             </> : tab === "create" ? <>
                 <MicroNetworkHeader string={"LOGIN_SIGN_UP_FORM"} back={() => switchTab("splash")}/>
 
-                <form onSubmit={tokenBySignup} className={styles.loginForm}>
+                <form onSubmit={requestCode} className={styles.loginForm}>
                     <input className={styles.loginInput} required type="text" placeholder={t("LOGIN_USERNAME")}
                            value={username} onChange={e => setUsername(e.target.value)}/>
                     <input className={styles.loginInput} required type="email" placeholder={t("LOGIN_EMAIL")}
                            value={email} onChange={e => setEmail(e.target.value)}/>
                     <input className={styles.loginInput} required type="password" placeholder={t("LOGIN_PASSWORD")}
                            value={password} onChange={e => setPassword(e.target.value)}/>
+
+                    <input className={`${styles.prettyButton} ${styles.primaryButton}`} type="submit"
+                           disabled={isSwitching || Object.keys(networkData).length === 0}
+                           value={t(isSwitching ? "LOGIN_SIGNING_IN" : "GO")}/>
+                </form>
+            </> : tab === "confirm" ? <>
+                <MicroNetworkHeader string={"LOGIN_SIGN_UP_FORM"} back={() => switchTab("create")} backString={"CANCEL"}/>
+
+                <span>{t("LOGIN_SIGN_UP_CODE", {email})}</span>
+
+                <form onSubmit={tokenBySignupCode} className={styles.loginForm}>
+                    <input className={styles.loginInput} required type="number" placeholder={t("LOGIN_USERNAME")}
+                           value={code} onChange={e => setCode(e.target.value)}/>
 
                     <input className={`${styles.prettyButton} ${styles.primaryButton}`} type="submit"
                            disabled={isSwitching || Object.keys(networkData).length === 0}
