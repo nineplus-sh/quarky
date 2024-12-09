@@ -47,6 +47,7 @@ export default function LightquarkLogin({crossfade}) {
                 setSwitching(false);
             } catch(e) {
                 NiceModal.show(NetworkOfflineModal, {name: network});
+                console.error(e);
                 setNetworkSwitch("");
                 setSwitching(false);
                 setNetwork(oldNetwork);

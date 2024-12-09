@@ -106,7 +106,9 @@ const richEmbedSamples = [
     "https://nyakase.tumblr.com/post/763321940462141440",
     "https://nyakase.tumblr.com/post/763506892856262656",
     "https://nyakase.tumblr.com/post/763701151965249536",
-    "https://nyakase.tumblr.com/post/766888229701124096"
+    "https://nyakase.tumblr.com/post/766888229701124096",
+    "https://nyakase.tumblr.com/post/769334330797490176",
+    "https://nyakase.tumblr.com/post/769395820951945216"
 ]
 
 export default richEmbedSamples;
