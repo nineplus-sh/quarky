@@ -44,9 +44,9 @@ export default function SmoothResize({autoCrossfade = true, children, wrapperPro
         }
     }
 
-    return <div {...wrapperProps} style={{...size, ...wrapperProps.style}}>
+    return <div {...wrapperProps} style={{...size, ...wrapperProps?.style}}>
         {decorators}
-        <div ref={ref} style={{width: "fit-content", position: "absolute", ...childProps.style}}>
+        <div ref={ref} style={{width: "fit-content", position: "absolute", ...childProps?.style}}>
             <CrossfadeContext.Provider value={crossfade}>
                 {children}
             </CrossfadeContext.Provider>
