@@ -8,8 +8,9 @@ import {Trans, useTranslation} from "react-i18next";
 import styles from "./LightquarkLogin.module.css";
 import NyafileImage from "../../../nyafile/NyafileImage.jsx";
 import Button from "../../../nav/Button.jsx";
+import {useCrossfade} from "../../../../hooks/useCrossfade.js";
 
-export default function LightquarkLogin({crossfade}) {
+export default function LightquarkLogin() {
     const appContext = useContext(AppContext);
     const [network, setNetwork] = useState('https://lightquark.network');
     const [oldNetwork, setOldNetwork] = useState('');
@@ -26,6 +27,7 @@ export default function LightquarkLogin({crossfade}) {
     const [networkSwitch, setNetworkSwitch] = useState('');
     const [isSwitching, setSwitching] = useState(true);
     const [code, setCode] = useState(null);
+    const crossfade = useCrossfade();
 
     useEffect( () => {
         async function getNetworkInfo() {
