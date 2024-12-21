@@ -66,6 +66,8 @@
     "DELETE_QUARK_CONFIRM": "YOU ARE ABOUT TO DELETE {{name}}! It'll be gone forever!",
     "MANAGE_QUARK": "Manage",
 
+    "CREATE_CHANNEL": "create channel...",
+
     "SUPPORT_BUTTON": "Support",
     "CREDITS_BUTTON": "Acknowledgements",
     "QUARKY_NAME": "Quarky 2",

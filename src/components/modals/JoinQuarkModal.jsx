@@ -7,47 +7,26 @@ import NyafileImage from "../nyafile/NyafileImage.jsx";
 
 import styles from "./JoinQuarkModal.module.css";
 import LQ from "../../util/LQ.js";
+import useQuarkJoin from "../_services/lightquark/hooks/useQuarkJoin.js";
+import {useNavigate} from "react-router-dom";
+import useQuarkCreate from "../_services/lightquark/hooks/useQuarkCreate.js";
 
 export default NiceModal.create(() =>{
     const modal = useModal();
     const { t } = useTranslation();
     const [inviteCode, setInviteCode] = useState("");
-    const [isJoining, setIsJoining] = useState(false);
     const [tab, switchTab] = useState("join");
     const [createName, setCreateName] = useState("");
     const [createCode, setCreateCode] = useState("");
-    const {quarkCache, setQuarkCache, quarkList, setQuarkList} = useContext(AppContext);
+    const quarkJoin = useQuarkJoin();
+    const quarkCreate = useQuarkCreate();
 
-    async function joinQuark(e) {
+    async function handleCall(e, create){
         e.preventDefault();
-        setIsJoining(true);
-
-        const join = await LQ(`quark/${inviteCode}/join`, "POST", {"invite": inviteCode});
-        if(join.statusCode === 200) {
-            setQuarkCache({
-                ...quarkCache,
-                [join.response.quark._id]: join.response.quark
-            })
-            setQuarkList([...quarkList, join.response.quark._id])
+        if(create) {
+            await quarkCreate.mutateAsync(createName, createCode);
         } else {
-            alert("Failed to join the quark.")
-        }
-        modal.hide();
-    }
-
-    async function createQuark(e) {
-        e.preventDefault();
-        setIsJoining(true);
-
-        const created = await LQ("quark", "POST", {name: createName, ...(createCode && { invite: createCode })});
-        if(created.statusCode === 201) {
-            setQuarkCache({
-                ...quarkCache,
-                [created.response.quark._id]: created.response.quark
-            })
-            setQuarkList([...quarkList, created.response.quark._id])
-        } else {
-            alert("Failed to create the quark.")
+            await quarkJoin.mutateAsync(inviteCode);
         }
         modal.hide();
     }
@@ -63,7 +42,7 @@ export default NiceModal.create(() =>{
                         <h2 style={{margin: 0}}>{t("JOIN_QUARK")}</h2>
                         <p style={{marginTop: 0}}>{t("JOIN_QUARK_BODY")}</p>
 
-                        <form onSubmit={(e) => joinQuark(e)}><fieldset disabled={isJoining}>
+                        <form onSubmit={(e) => handleCall(e,false)}><fieldset disabled={quarkJoin.isPending}>
                                 <input type={"text"} required placeholder={t("JOIN_QUARK_CODE")} value={inviteCode} onChange={e => setInviteCode(e.target.value)}/>
                                 <input type={"submit"}/>
                         </fieldset></form>
@@ -75,8 +54,8 @@ export default NiceModal.create(() =>{
                     </> : tab === "create" ? <>
                         <h2 style={{marginTop: 0}}>{t("CREATE_QUARK")}</h2>
 
-                        <form onSubmit={(e) => createQuark(e)}>
-                            <fieldset disabled={isJoining}>
+                        <form onSubmit={(e) => handleCall(e,true)}>
+                            <fieldset disabled={false}>
                                 <input type={"text"} required placeholder={t("CREATE_QUARK_NAME")} value={createName}
                                        onChange={e => setCreateName(e.target.value)}/>
                                 <input type={"text"} placeholder={t("CREATE_QUARK_CODE")} value={createCode}

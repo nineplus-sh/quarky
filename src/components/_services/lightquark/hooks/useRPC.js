@@ -46,8 +46,12 @@ export default function useRPC() {
                         refreshToken: apiKeys.refreshToken
                     }
                 })
-            } else {
+            } else if(eventData.body.request.success) {
                 promiseRef.current[eventData.state].resolve(eventData.body.response);
+                delete promiseRef.current[eventData.state];
+                delete messageRef.current[eventData.state];
+            } else {
+                promiseRef.current[eventData.state].reject(eventData.body);
                 delete promiseRef.current[eventData.state];
                 delete messageRef.current[eventData.state];
             }
@@ -97,6 +101,7 @@ export default function useRPC() {
             } else {
                 messageToSend = {...messageToSend, ...data}
                 messageToSend.route = "/v4/" + messageToSend.route;
+                if(!messageToSend.method) messageToSend.method = "POST";
             }
 
             messageRef.current[uuid] = messageToSend;

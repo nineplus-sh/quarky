@@ -11,7 +11,6 @@ export default function useQuark(id, options = {}) {
             return data.quark;
         },
         queryKey: [`quark/${id}`],
-        initialData: () => queryClient.getQueryData(["quark"])?.quarks.find(quark => quark._id === id),
         ...options
     });
 }

@@ -1,9 +1,8 @@
 .channel {
     color: var(--text-color);
     text-decoration: none;
-}
+    cursor: pointer;
 
-.channel {
     display: block;
     padding: 0.5em;
 }
@@ -13,4 +12,9 @@
 }
 .channel:not(.active):hover {
     background-color: var(--background-color-lesser);
+}
+
+.channel.slim {
+    font-size: smaller;
+    font-style: italic;
 }

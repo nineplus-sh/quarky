@@ -6,6 +6,7 @@ import {useQuery} from "@tanstack/react-query";
 import {useTranslation} from "react-i18next";
 import GenericQuark from "../components/nav/GenericQuark.jsx";
 import useQuarkList from "../components/_services/lightquark/hooks/useQuarkList.js";
+import Quark from "../components/_services/lightquark/nav/Quark.jsx";
 
 export default function MainView() {
     const { data, isLoading } = useQuarkList();
@@ -13,9 +14,9 @@ export default function MainView() {
 
     return <>
         <div className={styles.quarkList}>
-            {isLoading ? <GenericQuark name={t("LOADING_QUARKS")}/> : <QuarkList list={data}/>}
+            {isLoading ? <GenericQuark name={t("LOADING_QUARKS")}/> : data.map(id => <Quark id={id} key={id}/>)}
             <JoinQuark/>
         </div>
-        <Outlet/>
+        {isLoading ? null : <Outlet/>}
     </>
 }
