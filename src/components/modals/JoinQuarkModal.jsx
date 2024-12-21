@@ -10,6 +10,7 @@ import LQ from "../../util/LQ.js";
 import useQuarkJoin from "../_services/lightquark/hooks/useQuarkJoin.js";
 import {useNavigate} from "react-router-dom";
 import useQuarkCreate from "../_services/lightquark/hooks/useQuarkCreate.js";
+import {router} from "../../index.jsx";
 
 export default NiceModal.create(() =>{
     const modal = useModal();
@@ -23,11 +24,14 @@ export default NiceModal.create(() =>{
 
     async function handleCall(e, create){
         e.preventDefault();
+        let quark;
         if(create) {
-            await quarkCreate.mutateAsync(createName, createCode);
+            quark = await quarkCreate.mutateAsync(createName, createCode);
         } else {
-            await quarkJoin.mutateAsync(inviteCode);
+            quark = await quarkJoin.mutateAsync(inviteCode);
         }
+        console.log(quark)
+        router.navigate(`/lq_${quark._id}`);
         modal.hide();
     }
 
@@ -45,6 +49,7 @@ export default NiceModal.create(() =>{
                         <form onSubmit={(e) => handleCall(e,false)}><fieldset disabled={quarkJoin.isPending}>
                                 <input type={"text"} required placeholder={t("JOIN_QUARK_CODE")} value={inviteCode} onChange={e => setInviteCode(e.target.value)}/>
                                 <input type={"submit"}/>
+                            {quarkJoin.isError ? <span><br/>{quarkJoin.error.response.message}</span> : null}
                         </fieldset></form>
 
                         <p style={{marginBottom: 0}}>

@@ -33,3 +33,14 @@
     background-color: var(--primary-button-shadow);
     box-shadow: 0 2px var(--primary-button-active-shadow);
 }
+
+.prettyButton.destructive {
+    color: white;
+    font-weight: bold;
+    background-color: red;
+    box-shadow: 0 3px #b60000;
+}
+.prettyButton.destructive[disabled], .prettyButton.destructive:not([disabled]):hover:active {
+    background-color: #b60000;
+    box-shadow: 0 3px #830000;
+}

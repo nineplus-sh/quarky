@@ -3,7 +3,7 @@ import {AppContext} from "../../contexts/AppContext.js";
 import {useContext, useEffect, useState} from "react";
 import classnames from "classnames";
 
-export default function ProfilePicture({src, px = 64, isMessage = false, doPurr = true}) {
+export default function ProfilePicture({src, px = 64, isMessage = false, doPurr = true, ...props}) {
     const appContext = useContext(AppContext)
 
     const [purr] = useState(doPurr ? new Audio(appContext.nyafile.getCachedData("sfx/purr")) : null)
@@ -15,5 +15,5 @@ export default function ProfilePicture({src, px = 64, isMessage = false, doPurr 
         return () => purr?.pause();
     }, [isHovered]);
 
-    return <img src={`${src}?size=${px}`} width={px} height={px} className={classnames(styles.pfp, {[styles.petting]: doPurr && isHovered, [styles.message]: isMessage})} onMouseOver={() => setIsHovered(true)} onMouseOut={() => setIsHovered(false)}/>
+    return <img {...props} src={`${src}?size=${px}`} width={px} height={px} className={classnames(props.className, styles.pfp, {[styles.petting]: doPurr && isHovered, [styles.message]: isMessage})} onMouseOver={() => setIsHovered(true)} onMouseOut={() => setIsHovered(false)}/>
 }

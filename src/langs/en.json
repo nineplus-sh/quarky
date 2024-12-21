@@ -43,6 +43,7 @@
     "OKAY": "Got it",
     "BACK": "Never mind",
     "CANCEL": "Cancel",
+    "DONT_CARE": "Yeah, whatever",
     "BOT": "Bot",
     "DISCORD": "Discord",
 
@@ -63,7 +64,9 @@
     "LEAVE_QUARK": "Leave",
     "LEAVE_QUARK_CONFIRM": "Are you sure you want to leave {{name}}?",
     "QUARK_SETTINGS_DELETE": "Delete quark",
-    "DELETE_QUARK_CONFIRM": "YOU ARE ABOUT TO DELETE {{name}}! It'll be gone forever!",
+    "DELETE_QUARK_TITLE": "Are you really sure?",
+    "DELETE_QUARK_BODY": "Your lovely quark {{name}} will BLOW UP FOREVER and never come back.",
+    "DELETE_QUARK_CONFIRM": "Last chance. Cancel now, or {{name}} will really be deleted!",
     "MANAGE_QUARK": "Manage",
 
     "CREATE_CHANNEL": "create channel...",

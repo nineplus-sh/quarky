@@ -6,15 +6,16 @@ export default function useQuarkJoin() {
     const queryClient = useQueryClient();
 
     return useMutation({
-        mutationFn: (code) => {
-            return apiCall({
+        mutationFn: async (code) => {
+            const res = await apiCall({
                 route: `quark/${code}/join`,
                 method: "POST"
             })
+            return res.quark;
         },
         onSuccess: (data) => {
-            queryClient.setQueryData([`quark/${data.quark._id}`], data.quark)
-            queryClient.setQueryData([`quarks`], (prevData) => [...prevData, data.quark._id])
+            queryClient.setQueryData([`quark/${data._id}`], data)
+            queryClient.setQueryData([`quarks`], (prevData) => [...prevData, data._id])
         }
     })
 }

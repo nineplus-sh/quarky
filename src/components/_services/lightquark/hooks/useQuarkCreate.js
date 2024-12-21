@@ -6,8 +6,8 @@ export default function useQuarkCreate() {
     const queryClient = useQueryClient();
 
     return useMutation({
-        mutationFn: (name, code) => {
-            return apiCall({
+        mutationFn: async (name, code) => {
+            const res = await apiCall({
                 route: `quark`,
                 method: "POST",
                 body: {
@@ -15,10 +15,11 @@ export default function useQuarkCreate() {
                     ...(code && { invite: code })
                 }
             })
+            return res.quark;
         },
         onSuccess: (data) => {
-            queryClient.setQueryData([`quark/${data.quark._id}`], data.quark)
-            queryClient.setQueryData([`quarks`], (prevData) => [...prevData, data.quark._id])
+            queryClient.setQueryData([`quark/${data._id}`], data.quark)
+            queryClient.setQueryData([`quarks`], (prevData) => [...prevData, data._id])
         }
     })
 }

@@ -1,0 +1,95 @@
+/* loads of BS here */
+.eoeGraphic {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.quark {
+    transform: rotate(-90deg);
+    mask-image: linear-gradient(to left, black 0%, transparent 90%);
+}
+
+.cutter {
+    background-color: var(--background-color-lesser);
+    height: 60px;
+    width: 90%;
+    mask-image: linear-gradient(to bottom, black 0%, transparent 140%);
+    border-top: 20px solid var(--background-color-min);
+    transform: translateY(-35px) scaleY(-2) perspective(250px) rotate3d(-1, 0, 0, 65deg);
+    z-index: 2;
+}
+
+.channels {
+    position: absolute;
+    bottom: 65px;
+    display: flex;
+    width: 95%;
+}
+.channels div {
+    transform: rotate(90deg);
+    background-color: var(--background-color-lesser);
+    position: relative;
+    width: 250px;
+    mask-image: linear-gradient(to right, black 30%, transparent 60%);
+}
+
+.charas {
+    display: flex;
+    position: absolute;
+    margin-top: 75px;
+    z-index: 3;
+    gap: 5em;
+}
+
+.members {
+    position: absolute;
+    top: -64px;
+}
+.members img {
+    position: relative;
+    animation: fall 0.5s ease-in forwards;
+    z-index: 2;
+}
+@keyframes fall {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    80% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(280px);
+        opacity: 0;
+    }
+}
+
+/* BS over */
+
+.terminate {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.massive {
+    font-size: xx-large;
+    font-weight: bold;
+    margin: 0;
+}
+.w3shake:active {animation: w3shake 0.5s infinite;}
+@keyframes w3shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+}

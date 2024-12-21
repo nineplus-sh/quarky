@@ -6,10 +6,11 @@ import {AppContext} from "../../../../contexts/AppContext.js";
 import {router} from "../../../../index.jsx";
 import {useTranslation} from "react-i18next";
 import {useModal} from "@ebay/nice-modal-react";
+import useQuark from "../hooks/useQuark.js";
 
 export default function QuarkSettingsSidebar({area, setArea, data}) {
-    const {nyafile, quarkCache, quarkList, setQuarkList} = useContext(AppContext);
-    const quark = quarkCache[data.quarkId];
+    const {nyafile} = useContext(AppContext);
+    const {data: quark, isLoading} = useQuark(data.quarkId);
     const {t} = useTranslation();
     const modal = useModal();
 
@@ -35,9 +36,10 @@ export default function QuarkSettingsSidebar({area, setArea, data}) {
         }, 20)
     }
 
+    if (isLoading) return null;
     return <div className={styles.sidebarContents}>
         <SidebarItem baseI18n={"QUARK_SETTINGS"} area={"overview"} currentArea={area} setArea={setArea}/>
         <div className={styles.separator}/>
-        <SidebarItem baseI18n={"QUARK_SETTINGS"} area={"DELETE"} onClick={deleteQuark}/>
+        <SidebarItem baseI18n={"QUARK_SETTINGS"} area={"delete"} currentArea={area} setArea={setArea}/>
     </div>
 }
