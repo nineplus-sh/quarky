@@ -8,6 +8,7 @@ import {useQueryClient} from "@tanstack/react-query";
 import messageCreateHandler from "../events/messageCreate.js";
 import messageDeleteHandler from "../events/messageDelete.js";
 import messageUpdateHandler from "../events/messageUpdate.js";
+import quarkUpdateHandler from "../events/quarkUpdate.js";
 
 export default function useGateway(url, enabled) {
     const {apiKeys, setApiKeys} = useContext(AppContext);
@@ -38,6 +39,10 @@ export default function useGateway(url, enabled) {
                     break;
                 case "messageDelete":
                     messageDeleteHandler(eventData, queryClient);
+                    break;
+
+                case "quarkUpdate":
+                    quarkUpdateHandler(eventData, queryClient);
                     break;
             }
         },

@@ -194,7 +194,7 @@ export function App(props) {
             settings, setSettings, saveSettings,
             apiKeys, setApiKeys,
             quarkCache, setQuarkCache,
-            refreshOverHTTP
+            axiosClient, refreshOverHTTP
         }}>
             <WebSocketContext.Provider value={{socket, setSocket}}>
                 <QueryClientProvider client={queryClient}>

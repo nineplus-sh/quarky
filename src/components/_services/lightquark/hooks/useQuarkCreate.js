@@ -6,7 +6,7 @@ export default function useQuarkCreate() {
     const queryClient = useQueryClient();
 
     return useMutation({
-        mutationFn: async (name, code) => {
+        mutationFn: async ({name, code}) => {
             const res = await apiCall({
                 route: `quark`,
                 method: "POST",

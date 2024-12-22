@@ -26,7 +26,7 @@ export default NiceModal.create(() =>{
         e.preventDefault();
         let quark;
         if(create) {
-            quark = await quarkCreate.mutateAsync(createName, createCode);
+            quark = await quarkCreate.mutateAsync({name: createName, code: createCode});
         } else {
             quark = await quarkJoin.mutateAsync(inviteCode);
         }

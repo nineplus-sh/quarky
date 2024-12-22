@@ -47,6 +47,16 @@
 .uploadIcon.uploading {
     cursor: default;
 }
+.uploadBar {
+    position: absolute;
+    width: 70px;
+    height: 70px;
+
+    border: 5px solid;
+    border-image: linear-gradient(var(--pride-linear)) 1;
+    clip-path: inset(0 0 0 50%);
+    transition: clip-path 0.2s ease;
+}
 
 @keyframes stretchcenter {
     0% {
