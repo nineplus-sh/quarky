@@ -18,7 +18,7 @@ export default function QuarkSettingsDelete({quarkId}) {
     const {t} = useTranslation();
     const [deaths, setDeaths] = useState([]);
     const {data: quark, isLoading} = useQuark(quarkId);
-    const {data: channelMembers, isLoading: isMembersLoading} = useChannelMembers(quark.channels[0]._id, {enabled: !isLoading && quark.channels.length !== 0});
+    const {data: channelMembers, isLoading: isMembersLoading} = useChannelMembers(quark.channels[0]?._id, {enabled: !isLoading && quark.channels.length !== 0});
     const eoeWrap = useRef(null);
     const quarkDelete = useQuarkDelete();
 
