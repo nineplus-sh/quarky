@@ -9,6 +9,9 @@ import {AppContext} from "../../contexts/AppContext.js";
 import ProfilePicture from "./ProfilePicture.jsx";
 import dedupe from "../../util/dedupe.js";
 import Button from "../nav/Button.jsx";
+import Markdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import rehypeExternalLinks from "rehype-external-links";
 
 export default function Message({children, avatarUri, username, content, isBot, botName, isDiscord, timestamp, edited, attachments, replyTo, isContinuation, game, editFunction, deleteFunction}) {
     const {settings} = useContext(AppContext)
@@ -50,7 +53,9 @@ export default function Message({children, avatarUri, username, content, isBot, 
                 {isEditing ? <textarea autoFocus={true} value={editText} disabled={isSaving} onKeyDown={(e) => checkEditKey(e)} onChange={(e ) => setEditText(e.target.value)}/> : <>
                     {edited ? <div className={styles.edited}>edited</div> : null}
 
-                    {settings["RICH_EMBEDS"] ? content.replaceAll(badLinks, "") : content}
+                    <Markdown components={{p: "span"}} remarkPlugins={[remarkGfm]} rehypePlugins={[[rehypeExternalLinks, {"target": "_blank", "rel": ["noreferrer", "noopener", "nofollow"]}]]}>
+                        {settings["RICH_EMBEDS"] ? content.replaceAll(badLinks, "") : content}
+                    </Markdown>
 
                     {settings["RICH_EMBEDS"] ? dedupe(linkify.find(content), "href").map(link => <RichEmbed key={link.href} url={link.href}/>) : null}
                     {attachments}

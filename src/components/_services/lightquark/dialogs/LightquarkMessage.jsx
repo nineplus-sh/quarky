@@ -1,12 +1,12 @@
 import Message from "../../../dialogs/Message.jsx";
-import {useContext} from "react";
+import {memo, useContext} from "react";
 import {AppContext} from "../../../../contexts/AppContext.js";
 import LightquarkAttachments from "./LightquarkAttachments.jsx";
 import GameInvite from "../../../dialogs/GameInvite.jsx";
 import LQ from "../../../../util/LQ.js";
 import useRPC from "../hooks/useRPC.js";
 
-export default function LightquarkMessage({message, channel, quark, isContinuation, isAuthored}) {
+export default memo(function LightquarkMessage({message, channel, quark, isContinuation, isAuthored}) {
     const apiCall = useRPC();
 
     const botMetadata = message.specialAttributes?.find(attr => attr.type === "botMessage");
@@ -36,4 +36,4 @@ export default function LightquarkMessage({message, channel, quark, isContinuati
                             method: "DELETE"
                         })
                     } : undefined}/>
-}
+})

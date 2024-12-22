@@ -9,6 +9,9 @@ import styles from "./LightquarkLogin.module.css";
 import NyafileImage from "../../../nyafile/NyafileImage.jsx";
 import Button from "../../../nav/Button.jsx";
 import {useCrossfade} from "../../../../hooks/useCrossfade.js";
+import Markdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import rehypeExternalLinks from "rehype-external-links";
 
 export default function LightquarkLogin() {
     const appContext = useContext(AppContext);
@@ -162,7 +165,7 @@ export default function LightquarkLogin() {
                         <p className={styles.networkMetadata}>{t("LOGIN_NETWORK_BYLINE", {domain: networkData.linkBase, version: networkData.version, maintainer: networkData.maintainer, interpolation: { escapeValue: false }})}</p>
                     </div>
                 </div>
-                <p className={styles.networkDescription}>{networkData.description}</p>
+                <Markdown className={styles.networkDescription} remarkPlugins={[remarkGfm]} rehypePlugins={[[rehypeExternalLinks, {"target": "_blank", "rel": ["noreferrer", "noopener", "nofollow"]}]]}>{networkData.description}</Markdown>
             </div> : null}
 
             {tab === "splash" ? <div className={styles.routes}>

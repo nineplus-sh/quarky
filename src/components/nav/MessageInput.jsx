@@ -126,7 +126,7 @@ export default function MessageInput() {
     }}>
         <Button onClick={() => NiceModal.show(GameLaunchModal, {quarkId: quarkId.split("lq_")[1]})}>Games</Button>
         <input type={"text"} ref={mergeRefs(messageBox, emoteSearchFloat.refs.setReference)} disabled={isSending} value={message} onInput={(e) => setMessage(e.target.value)} className={styles.messageBox} {...emoteSearchInteractions.getReferenceProps()}/>
-        <Button dumbRef={gifFloat.refs.setReference} {...gifInteractions.getReferenceProps()}>GIFs</Button>
+        <Button ref={gifFloat.refs.setReference} {...gifInteractions.getReferenceProps()}>GIFs</Button>
         {gifOpen ? <GIFPicker floatRef={gifFloat.refs.setFloating} floatStyles={gifFloat.floatingStyles} floatProps={gifInteractions.getFloatingProps()} setOpen={setGifOpen}/> : null}
         {emoteSearchOpen ? <LightquarkEmoteSearch message={message} setMessage={(message) => {
             setMessage(message);
