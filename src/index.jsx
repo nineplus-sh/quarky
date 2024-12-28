@@ -106,8 +106,7 @@ export function App(props) {
                 }))
                 .use(LanguageDetector)
                 .init({
-                    fallbackLng: 'en',
-                    debug: true
+                    fallbackLng: 'en'
                 })
 
             await setThatHoliday();
