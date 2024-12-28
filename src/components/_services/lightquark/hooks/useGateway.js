@@ -75,11 +75,6 @@ export default function useGateway(url, enabled) {
     }, enabled)
 
     useEffect(() => {
-        console.warn("Wow look at this kawaii message;", gatewaySocket.lastJsonMessage)
-    }, [gatewaySocket.lastJsonMessage]);
-
-    useEffect(() => {
-        console.log(isBusy, desiredKeys, "BLAH!!!")
         if(!isBusy && desiredKeys !== null) {
             setApiKeys(prevApiKeys => ({...prevApiKeys, ...desiredKeys}));
             setDesiredKeys(null);

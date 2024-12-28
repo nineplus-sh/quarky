@@ -25,7 +25,6 @@ export default function useRPC() {
 
         const eventData = JSON.parse(socket.lastMessage.data)
         if(eventData.event === "rpc" && promiseRef.current[eventData.state]) {
-            console.warn(messageRef.current[eventData.state].route, "gets", eventData.body.response)
             if(eventData.body.request.status_code === 401) {
                 if(renewPromise && !isRefreshing.current) {
                     renewPromise.then(() => socket.sendJsonMessage(messageRef.current[eventData.state]))

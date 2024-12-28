@@ -7,7 +7,6 @@ import {AppContext} from "../../../../contexts/AppContext.js";
 import useRPC from "../hooks/useRPC.js";
 
 export default function LightquarkEmoteSearch({message, setMessage, search, results, activeIndex, listRef, itemProps, ...props}) {
-    console.log(props)
     if(!results) return null;
     if(results.length === 0) return <div className={styles.emoteSearchWrap} {...props}>
         <div className={styles.emoteWrap} aria-hidden={true}>¯\_(ツ)_/¯</div></div>;
