@@ -4,7 +4,7 @@ import {AppContext} from "../../../../contexts/AppContext.js";
 import pingWebSocket from "../../../../util/pingWebSocket.js";
 import {heartbeats} from "../../../../util/heartbeats.js";
 import gatekeeperMeasureHandler from "../events/gatekeeperMeasure.js";
-import {useQueryClient} from "@tanstack/react-query";
+import {useIsFetching, useIsMutating, useQueryClient} from "@tanstack/react-query";
 import messageCreateHandler from "../events/messageCreate.js";
 import messageDeleteHandler from "../events/messageDelete.js";
 import messageUpdateHandler from "../events/messageUpdate.js";
@@ -13,8 +13,13 @@ import quarkUpdateHandler from "../events/quarkUpdate.js";
 export default function useGateway(url, enabled) {
     const {apiKeys, setApiKeys} = useContext(AppContext);
     const heartbeat = useRef(-1);
+    const [desiredKeys, setDesiredKeys] = useState(null);
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const queryClient = useQueryClient();
+
+    const isFetching = useIsFetching();
+    const isMutating = useIsMutating();
+    const isBusy = (isFetching+isMutating) > 0;
 
     const gatewaySocket = useWebSocket(url, {
         onMessage: async (message) => {
@@ -28,7 +33,7 @@ export default function useGateway(url, enabled) {
                     break;
                 }
                 case "gatekeeperSelection":
-                    setApiKeys(prevApiKeys => ({...prevApiKeys, baseURL: eventData.appServer, gatewayURL: eventData.gateway}));
+                    setDesiredKeys({baseURL: eventData.appServer, gatewayURL: eventData.gateway});
                     break;
 
                 case "messageCreate":
@@ -72,6 +77,14 @@ export default function useGateway(url, enabled) {
     useEffect(() => {
         console.warn("Wow look at this kawaii message;", gatewaySocket.lastJsonMessage)
     }, [gatewaySocket.lastJsonMessage]);
+
+    useEffect(() => {
+        console.log(isBusy, desiredKeys, "BLAH!!!")
+        if(!isBusy && desiredKeys !== null) {
+            setApiKeys(prevApiKeys => ({...prevApiKeys, ...desiredKeys}));
+            setDesiredKeys(null);
+        }
+    }, [isBusy, desiredKeys]);
 
     return useMemo(() => ({
         ...gatewaySocket,

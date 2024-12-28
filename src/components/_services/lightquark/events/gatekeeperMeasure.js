@@ -8,11 +8,11 @@ export default async function gatekeeperMeasureHandler(eventData, setApiKeys, ga
         let startTime = performance.now();
         await fetch(`${appServer.baseUrl}/v4/ping`);
         let requestTime = performance.now() - startTime;
-        finalMeasurement.appServers.push({instanceId: appServer.instanceId, latency: requestTime})
+        finalMeasurement.appServers.push({instanceId: appServer.instanceId, latency: requestTime+999999})
     }
     for (const gateway of eventData.gateways) {
         const requestTime = await pingWebSocket(gateway.gateway);
-        finalMeasurement.gateways.push({instanceId: gateway.instanceId, latency: requestTime})
+        finalMeasurement.gateways.push({instanceId: gateway.instanceId, latency: requestTime+999999})
     }
 
     gatewaySocket.sendJsonMessage(finalMeasurement);

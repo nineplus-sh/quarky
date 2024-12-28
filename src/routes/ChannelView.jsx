@@ -8,6 +8,7 @@ import useChannelMembers from "../components/_services/lightquark/hooks/useChann
 import useChannelMessages from "../components/_services/lightquark/hooks/useChannelMessages.js";
 import {useTranslation} from "react-i18next";
 import useChannel from "../components/_services/lightquark/hooks/useChannel.js";
+import WhatsNew from "../components/nav/WhatsNew.jsx";
 
 export default function ChannelView() {
     const {dialogId} = useParams();
@@ -23,6 +24,7 @@ export default function ChannelView() {
                 <b className={styles.channelName}>{channel.name}</b>
                 <span className={styles.channelDesc}>{channel.description}</span>
             </>}
+            <span style={{marginLeft: "auto"}}><WhatsNew/></span>
         </div>
         <div className={styles.channelContents}>
             <div className={styles.messageArea}>
