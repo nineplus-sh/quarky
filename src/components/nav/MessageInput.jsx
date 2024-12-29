@@ -45,7 +45,6 @@ export default function MessageInput() {
 
     return (<form className={styles.messageForm} onSubmit={async (e) => {
         e.preventDefault();
-        if(emoteSearchPopout.open) return;
 
         await messageCreate.mutateAsync({
             channel: dialogId,
@@ -64,9 +63,6 @@ export default function MessageInput() {
         {emoteSearchPopout.open ? <LightquarkEmoteSearch message={message} setMessage={(message) => {
             setMessage(message);
             new Audio(nyafile.getCachedData("sfx/button-sidebar-select")).play();
-            setTimeout(function() {
-                emoteSearchPopout.setOpen(false);
-            }, 100)
         }} {...emoteSearchPopout} {...emoteSearchPopout.popoutProps}/> : null}
     </form>)
 }

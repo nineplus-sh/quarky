@@ -39,7 +39,7 @@ export default function useAutocompletePopout({data, search, popoutOptions, fuse
     const results = useMemo(() => fuse && search && popout.open ? fuse.search(search, fuseOptions) : null, [fuse, search, fuseOptions])
     useEffect(() => {
         setActiveIndex(0);
-        popout.setOpen(search !== null);
+        popout.setOpen(!!search);
     }, [search]);
 
     function enterHandler(event) {
