@@ -1,5 +1,5 @@
 import {useParams} from "react-router-dom";
-import {useContext, useEffect, useRef, useState} from "react";
+import {useContext, useEffect, useMemo, useRef, useState} from "react";
 import LQ from "../../util/LQ.js";
 import styles from "./MessageInput.module.css"
 import {autoUpdate, useClick, useFloating, useInteractions, useListNavigation} from "@floating-ui/react";
@@ -14,11 +14,14 @@ import usePopout from "../../hooks/usePopout.js";
 import useAutocompletePopout from "../../hooks/useAutocompletePopout.js";
 import useEmotes from "../_services/lightquark/hooks/useEmotes.js";
 import useChannelMessageCreate from "../_services/lightquark/hooks/useChannelMessageCreate.js";
+import {v4 as uuidv4} from "uuid";
+import byteSize from "byte-size";
 
 export default function MessageInput() {
     const {nyafile} = useContext(AppContext);
     let { quarkId, dialogId } = useParams();
     let [message, setMessage] = useState("");
+    const [files, setFiles] = useState([]);
     const messageBox = useRef(null);
     const messageCreate = useChannelMessageCreate();
 
@@ -43,26 +46,76 @@ export default function MessageInput() {
         return () => document.removeEventListener('keydown', keysmashOutsideHandler);
     }, []);
 
-    return (<form className={styles.messageForm} onSubmit={async (e) => {
-        e.preventDefault();
+    function upload() {
+        let input = document.createElement('input');
+        input.type = 'file';
+        input.accept = "image/*";
+        input.multiple = true;
 
-        await messageCreate.mutateAsync({
-            channel: dialogId,
-            message: {content:message}
-        })
+        input.onchange = async e => {
+            const newFiles = Array.from(e.target.files);
 
-        setMessage("");
-        setTimeout(function() {
-            messageBox.current?.focus();
-        }, 100);
-    }}>
-        <Button onClick={() => NiceModal.show(GameLaunchModal, {quarkId: quarkId.split("lq_")[1]})}>Games</Button>
-        <input type={"text"} disabled={messageCreate.isPending} value={message} onInput={(e) => setMessage(e.target.value)} className={styles.messageBox} {...emoteSearchPopout.sourceProps} ref={mergeRefs(messageBox, emoteSearchPopout.sourceProps.ref)} />
-        <Button {...gifPopout.sourceProps}>GIFs</Button>
+            if((newFiles.length+files.length)>10) return alert("You can't send more than 10 files at a time!")
+            newFiles.forEach(file => file.key = uuidv4())
+            setFiles(pfiles => [...pfiles, ...newFiles]);
+        }
+        input.click();
+    }
+
+    return <>
+        {files.length > 0 ?
+            <span className={styles.pendingFiles}>
+                {files.map(file => <File
+                    file={file}
+                    clear={() =>
+                        setFiles(pfiles => pfiles.filter(ffile => ffile.key !== file.key))
+                    } key={file.key}
+                />)}
+            </span>
+        : null}
+
+        <form className={styles.messageForm} onSubmit={async (e) => {
+            e.preventDefault();
+
+            await messageCreate.mutateAsync({
+                channel: dialogId,
+                message: {content:message},
+                attachments: files
+            })
+
+            setMessage("");
+            setFiles([]);
+            setTimeout(function() {
+                messageBox.current?.focus();
+            }, 100);
+        }}>
+            <Button onClick={upload} disabled={files.length > 9}>Upload</Button>
+            <Button style={{display: "none"}} onClick={() => NiceModal.show(GameLaunchModal, {quarkId: quarkId.split("lq_")[1]})}>Games</Button>
+            <input type={"text"} disabled={messageCreate.isPending} value={message} onInput={(e) => setMessage(e.target.value)} className={styles.messageBox} {...emoteSearchPopout.sourceProps} ref={mergeRefs(messageBox, emoteSearchPopout.sourceProps.ref)} />
+            <Button {...gifPopout.sourceProps}>GIFs</Button>
+        </form>
+
         {gifPopout.open ? <GIFPicker {...gifPopout.popoutProps} hide={gifPopout.toggle}/> : null}
         {emoteSearchPopout.open ? <LightquarkEmoteSearch message={message} setMessage={(message) => {
             setMessage(message);
             new Audio(nyafile.getCachedData("sfx/button-sidebar-select")).play();
         }} {...emoteSearchPopout} {...emoteSearchPopout.popoutProps}/> : null}
-    </form>)
+    </>
+}
+
+function File({file, clear}) {
+    const [dataURI, setDataURI] = useState(null);
+
+    useEffect(() => {
+        if(!file.type.startsWith("image/")) setDataURI(null);
+        const reader = new FileReader();
+        reader.onload = () => setDataURI(reader.result);
+        reader.readAsDataURL(file);
+        return () => {reader.abort()}
+    }, [file]);
+
+    return <div className={styles.file} onClick={clear}>
+        {dataURI ? <img src={dataURI} className={styles.filePreview}/> : null}
+        <div className={styles.fileText}><span className={styles.fileName}>{file.name}</span>({byteSize(file.size, {units: 'iec'}).toString()})</div>
+    </div>
 }
