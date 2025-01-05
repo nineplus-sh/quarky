@@ -29,7 +29,7 @@ export default function DialogMessages({messages, moreMessages}) {
         let sameAuthor = false;
         if(index > 0){
             const prevMessage = messages[index-1];
-            const literalSameAuthor = prevMessage.author._id === message.author._id;
+            const literalSameAuthor = prevMessage.author === message.author;
 
             const botMetadata = message.specialAttributes?.find(attr => attr.type === "botMessage");
             const prevBotMetadata = prevMessage.specialAttributes?.find(attr => attr.type === "botMessage");
@@ -42,6 +42,6 @@ export default function DialogMessages({messages, moreMessages}) {
                 sameAuthor = literalSameAuthor;
             }
         }
-        return <LightquarkMessage message={message} channel={dialogId} quark={quarkId.split("lq_")[1]} isContinuation={sameAuthor} isAuthored={message.author._id === userData._id} key={message._id} />
+        return <LightquarkMessage message={message} channel={dialogId} quark={quarkId.split("lq_")[1]} isContinuation={sameAuthor} isAuthored={message.author === userData._id} key={message._id} />
     }} startReached={moreMessages} initialTopMostItemIndex={messages.length-1} followOutput={"smooth"}/>
 }

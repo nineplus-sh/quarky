@@ -1,8 +1,9 @@
 import useRPC from "./useRPC.js";
-import {useInfiniteQuery} from "@tanstack/react-query";
+import {useInfiniteQuery, useQueryClient} from "@tanstack/react-query";
 
 export default function useChannelMessages(id, options) {
     const apiCall = useRPC();
+    const queryClient = useQueryClient();
 
     return useInfiniteQuery({
         queryFn: async ({pageParam}) => {
@@ -12,7 +13,10 @@ export default function useChannelMessages(id, options) {
                 : `channel/${id}/messages`
 
             const data = await apiCall(route)
-            return data.messages;
+            return data.messages.map(message => {
+                queryClient.setQueryData([`user/${message.author._id}`], message.author)
+                return {...message, author: message.author._id}
+            });
         },
         queryKey: [`channel/${id}`, `messages`],
         getPreviousPageParam: (firstPage) => {

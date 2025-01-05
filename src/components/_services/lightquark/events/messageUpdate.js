@@ -1,4 +1,7 @@
 export default async function messageUpdateHandler(eventData, queryClient) {
+    queryClient.setQueryData([`user/${eventData.message.author._id}`], eventData.message.author);
+    eventData.message.author = eventData.message.author._id;
+
     queryClient.setQueryData([`channel/${eventData.channelId}`, "messages"], (prevData) => {
         if(!prevData) return;
 
