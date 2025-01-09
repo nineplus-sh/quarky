@@ -77,6 +77,7 @@ export default function useGateway(url, enabled) {
     useEffect(() => {
         if(!isBusy && desiredKeys !== null) {
             setApiKeys(prevApiKeys => ({...prevApiKeys, ...desiredKeys}));
+            queryClient.invalidateQueries({queryKey: ["network"]});
             setDesiredKeys(null);
         }
     }, [isBusy, desiredKeys]);

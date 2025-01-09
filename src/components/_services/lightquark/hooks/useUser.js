@@ -17,5 +17,6 @@ export default function useUser(id, options = {}) {
     });
 
     if(me.isSuccess && me.data._id === id) return me;
+    if(!me.isSuccess) return me;
     return userQuery;
 }

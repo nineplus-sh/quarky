@@ -14,7 +14,9 @@ export default function useChannelMessages(id, options) {
 
             const data = await apiCall(route)
             return data.messages.map(message => {
-                queryClient.setQueryData([`user/${message.author._id}`], message.author)
+                queryClient.setQueryData([`user/${message.author._id}`], (prevData) => {
+                    return {...prevData, ...message.author}
+                });
                 return {...message, author: message.author._id}
             });
         },

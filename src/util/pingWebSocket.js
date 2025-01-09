@@ -1,9 +1,8 @@
 export default function pingWebSocket(url) {
-    let startTime = performance.now();
-
     return new Promise((resolve, reject) => {
         const testSock = new WebSocket(url);
         testSock.onopen = () => {
+            let startTime = performance.now();
             testSock.send('{"event": "ping"}');
             testSock.onmessage = () => {
                 testSock.close();

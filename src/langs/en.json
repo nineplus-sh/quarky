@@ -92,6 +92,7 @@
     "SETTINGS_CHAT": "Chat",
     "SETTINGS_LANGUAGE": "Language",
     "SETTINGS_PLAYING": "Playing status",
+    "SETTINGS_NETINFO": "Network info",
     "QUARK_SETTINGS_OVERVIEW": "Overview",
 
     "SETTING_RICH_EMBEDS": "Embed entire websites in messages",

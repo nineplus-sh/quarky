@@ -3,6 +3,7 @@ import UserSettingsChat from "../settings/UserSettingsChat.jsx";
 import UserSettingsPlaying from "../settings/UserSettingsPlaying.jsx";
 import UserSettingsAppearance from "../settings/UserSettingsAppearance.jsx";
 import UserSettingsLanguage from "../settings/UserSettingsLanguage.jsx";
+import UserSettingsNetworkInformation from "../settings/UserSettingsNetworkInformation.jsx";
 
 export default function UserSettingsArea({area}) {
     if (area === "profile") {
@@ -15,5 +16,7 @@ export default function UserSettingsArea({area}) {
         return <UserSettingsAppearance/>
     } else if (area === "language") {
         return <UserSettingsLanguage/>
+    } else if (area === "netinfo") {
+        return <UserSettingsNetworkInformation/>
     }
 }

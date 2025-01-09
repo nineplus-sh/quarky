@@ -6,7 +6,7 @@ import {Virtuoso} from "react-virtuoso";
 
 export default function DialogMessages({messages, moreMessages}) {
     let { quarkId, dialogId } = useParams();
-    const {data: userData, isLoading} = useMe();
+    const {data: userData, isSuccess} = useMe();
 
     const oldLength = useRef(null);
     const firstMessageId = useRef(null);
@@ -24,7 +24,7 @@ export default function DialogMessages({messages, moreMessages}) {
         firstMessageId.current = messages[0]._id;
     }, [messages]);
 
-    if(isLoading) return null;
+    if(!isSuccess) return null;
     return <Virtuoso ref={virtuoso} data={messages} itemContent={(index, message) => {
         let sameAuthor = false;
         if(index > 0){

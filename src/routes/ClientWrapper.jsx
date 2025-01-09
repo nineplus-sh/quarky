@@ -35,7 +35,7 @@ export default function ClientWrapper() {
 
         if (!apiKeys.gatewayURL) {
             const network = await fetch(`${apiKeys.baseURL}/v4/network`).then(res => res.json());
-            setApiKeys(prevApiKeys => ({...prevApiKeys, baseURL: network.baseUrl, gatewayURL: network.gateway}));
+            setApiKeys(prevApiKeys => ({...prevApiKeys, baseURL: network.baseUrl, gatewayURL: network.gateway, cdnURL: network.cdnBaseUrl}));
             setSocket(firstGateway);
         }
     })()}, []);

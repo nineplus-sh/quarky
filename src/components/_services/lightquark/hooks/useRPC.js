@@ -25,7 +25,7 @@ export default function useRPC() {
 
         const eventData = JSON.parse(socket.lastMessage.data)
         if(eventData.event === "rpc" && promiseRef.current[eventData.state]) {
-            if(eventData.body.request.status_code === 401) {
+            if(eventData.body.request?.status_code === 401) {
                 if(renewPromise && !isRefreshing.current) {
                     renewPromise.then(() => socket.sendJsonMessage(messageRef.current[eventData.state]))
                     return;
@@ -45,8 +45,8 @@ export default function useRPC() {
                         refreshToken: apiKeys.refreshToken
                     }
                 })
-            } else if(eventData.body.request.success) {
-                promiseRef.current[eventData.state].resolve(eventData.body.response);
+            } else if(!eventData.body.request || eventData.body.request.success) {
+                promiseRef.current[eventData.state].resolve(eventData.body.response || eventData.body);
                 delete promiseRef.current[eventData.state];
                 delete messageRef.current[eventData.state];
             } else {

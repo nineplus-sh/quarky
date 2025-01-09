@@ -1,0 +1,29 @@
+.infoPanelWrap {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+}
+.servers {
+    display: flex;
+    justify-content: space-between;
+}
+.servers > div:nth-child(2) {
+    flex-direction: row-reverse;
+    text-align: right;
+}
+
+.latencies {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.latencyType {
+    display: flex;
+    flex-direction: column;
+}
+.latencies > .latencyType:nth-child(2) {
+    text-align: right;
+}
+.current {
+    font-weight: bold;
+}

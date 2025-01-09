@@ -18,7 +18,7 @@ export default function QuarkHeader({quark, interaction = true}) {
     const {t} = useTranslation();
     const navigate = useNavigate();
 
-    const {data: userData, isLoading} = useMe();
+    const {data: userData, isSuccess} = useMe();
     const quarkLeave = useQuarkLeave();
 
     async function leaveQuark() {
@@ -28,10 +28,9 @@ export default function QuarkHeader({quark, interaction = true}) {
         }
     }
 
-    if(isLoading) return null;
     return <div className={styles.header}>
         <span>{quark?.name}</span>
-        {interaction === false || quarkId === "lq_100000000000000000000000" ? null :
+        {!isSuccess || interaction === false || quarkId === "lq_100000000000000000000000" ? null :
             quark?.owners.includes(userData._id) ?
             <Button onClick={() => NiceModal.show(SettingsView, {data:{quarkId:quark._id},Sidebar:QuarkSettingsSidebar,Area:QuarkSettingsArea,defaultArea:"overview"})}>{t("MANAGE_QUARK")}</Button> :
             <Button onClick={() => leaveQuark()}>{t("LEAVE_QUARK")}</Button>}

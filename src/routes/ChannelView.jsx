@@ -12,32 +12,32 @@ import WhatsNew from "../components/nav/WhatsNew.jsx";
 
 export default function ChannelView() {
     const {dialogId} = useParams();
-    const {data: channel, isLoading: isChannelLoading} = useChannel(dialogId);
-    const {data: members, isLoading: isMembersLoading} = useChannelMembers(dialogId);
-    const {data: messages, isLoading: isMessagesLoading, isFetchingPreviousPage, fetchPreviousPage} = useChannelMessages(dialogId);
+    const {data: channel, isSuccess: isChannelSuccess} = useChannel(dialogId);
+    const {data: members, isSuccess: isMembersSuccess} = useChannelMembers(dialogId);
+    const {data: messages, isSuccess: isMessagesSuccess, isFetchingPreviousPage, fetchPreviousPage} = useChannelMessages(dialogId);
     const messageArea = useRef(null);
     const {t} = useTranslation();
 
     return (<div className={styles.channelView}>
         <div className={styles.channelTopbar}>
-            {isChannelLoading ? "..." : <>
+            {isChannelSuccess ? <>
                 <b className={styles.channelName}>{channel.name}</b>
                 <span className={styles.channelDesc}>{channel.description}</span>
-            </>}
+            </> : "..."}
             <span style={{marginLeft: "auto"}}><WhatsNew/></span>
         </div>
         <div className={styles.channelContents}>
             <div className={styles.messageArea}>
                 <div className={styles.messages} ref={messageArea}>
-                    {isMessagesLoading ? null : <>
-                        <DialogMessages moreMessages={fetchPreviousPage}
-                                        messages={messages?.pages.flat(1).sort((a, b) => a.timestamp - b.timestamp)}/>
-                    </>}
+                    {isMessagesSuccess ? <>
+                        <DialogMessages messages={messages?.pages.flat(1).sort((a, b) => a.timestamp - b.timestamp)}
+                                        moreMessages={fetchPreviousPage}/>
+                    </> : null}
                 </div>
                 <MessageInput/>
             </div>
             <div className={styles.memberList}>
-                {isMembersLoading ? null : <LightquarkMemberList members={members}/>}
+                {isMembersSuccess ? <LightquarkMemberList members={members}/> : null}
             </div>
         </div>
     </div>)

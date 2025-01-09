@@ -38,12 +38,15 @@ export default function UserSettingsSidebar({area, setArea}) {
         {window.hiddenside?.hardcoreGaming ? <SidebarItem baseI18n={"SETTINGS"} area={"playing"} currentArea={area} setArea={setArea}/> : null }
 
         <div className={styles.separator}/>
-        <SidebarItem baseI18n={"CREDITS"} area={"BUTTON"} onClick={() => NiceModal.show(CreditsModal)}>Credits</SidebarItem>
-        <SidebarItem baseI18n={"SUPPORT"} area={"BUTTON"} onClick={() => window.open("https://www.nineplus.sh/support.html", "_blank")}>Support</SidebarItem>
+
+        <SidebarItem baseI18n={"CREDITS"} area={"BUTTON"} onClick={() => NiceModal.show(CreditsModal)}/>
+        <SidebarItem baseI18n={"SUPPORT"} area={"BUTTON"} onClick={() => window.open("https://www.nineplus.sh/support.html", "_blank")}/>
+        <SidebarItem baseI18n={"SETTINGS"} area={"netinfo"} currentArea={area} setArea={setArea}/>
+        
         <div className={styles.separator}/>
 
-        <div className={styles.seperator}/>
         <SidebarItem baseI18n={"SIGN"} area={"OUT"} onClick={logOut}/>
+
         <div className={styles.separator}/>
 
         <div className={styles.version}>
@@ -51,6 +54,7 @@ export default function UserSettingsSidebar({area, setArea}) {
             <NyafileImage src={"img/nineball"} className={styles.nineplus}/>
         </div>
         <div className={styles.sns}>
+            <a href={"https://bsky.app/profile/nineplus.sh"} target={"_blank"} rel="noreferrer"><NyafileImage src={"img/bluesky"} inlinesvg={true}/></a>
             <a href={"https://twitter.com/nineplus_sh"} target={"_blank"} rel="noreferrer"><NyafileImage src={"img/twitter"} inlinesvg={true}/></a>
             <a href={"https://tumblr.com/nineplus-sh"} target={"_blank"} rel="noreferrer"><NyafileImage src={"img/tumblr"} inlinesvg={true}/></a>
         </div>
