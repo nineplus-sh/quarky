@@ -47,45 +47,11 @@ export default function Root() {
                         setLoadingPercentage(progressEvent.loaded / progressEvent.total * 100);
                         setLoadingPercentageText(`${byteSize(progressEvent.loaded, {units: 'iec'})}/${byteSize(progressEvent.total, {units: 'iec'})}`)
                     },
-                    responseType: "blob"
+                    responseType: "arraybuffer"
                 })
                 await nyafile.load(nyafileBlob.data, true);
-
-                setLoadingPercentage(0);
-
-                nyafile.queueCache("img/hakase_pfp");
-                nyafile.queueCache("img/stars");
-                nyafile.queueCache("img/quark_join");
-                nyafile.queueCache("img/quarky");
-                nyafile.queueCache("music/login");
-                nyafile.queueCache("sfx/crossfade");
-                nyafile.queueCache("sfx/purr");
-
-                nyafile.queueCache("sfx/button-hover");
-                nyafile.queueCache("sfx/button-select");
-                nyafile.queueCache("sfx/button-sidebar-hover");
-                nyafile.queueCache("sfx/button-sidebar-select");
-                nyafile.queueCache("sfx/checkbox-false");
-                nyafile.queueCache("sfx/checkbox-true");
-                nyafile.queueCache("sfx/default-select");
-                nyafile.queueCache("sfx/default-hover");
-                nyafile.queueCache("sfx/dialog-cancel-select");
-                nyafile.queueCache("sfx/dialog-dangerous-select");
-                nyafile.queueCache("sfx/dialog-pop-in");
-                nyafile.queueCache("sfx/error");
-                nyafile.queueCache("sfx/info-modal-pop-in");
-                nyafile.queueCache("sfx/info-modal-pop-out");
-                nyafile.queueCache("sfx/purr");
-                nyafile.queueCache("sfx/success");
-
-                await nyafile.waitAllCached();
             } catch(e) {
-                console.log(e)
-                if(e.message.includes("not found in default nyafile")) {
-                    setLoadingString(`ERROR_NYAFILE_FILE_MISSING_${import.meta.env.PROD ? "PROD" : "DEV"}`)
-                } else {
-                    setLoadingString("ERROR_NYAFILE");
-                }
+                setLoadingString("ERROR_NYAFILE");
                 Sentry.captureException(e);
                 return;
             } finally {

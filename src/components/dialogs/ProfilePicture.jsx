@@ -6,7 +6,7 @@ import classnames from "classnames";
 export default function ProfilePicture({src, px = 64, isMessage = false, doPurr = true, isPurring = false, ...props}) {
     const appContext = useContext(AppContext)
 
-    const [purr] = useState(doPurr ? new Audio(appContext.nyafile.getCachedData("sfx/purr")) : null)
+    const [purr] = useState(doPurr ? new Audio(appContext.nyafile.getFileURL("sfx/purr")) : null)
     if(purr) purr.loop = true;
 
     const [isHovered, setIsHovered] = useState(false);
@@ -15,5 +15,5 @@ export default function ProfilePicture({src, px = 64, isMessage = false, doPurr 
         return () => purr?.pause();
     }, [isHovered]);
 
-    return <img {...props} src={`${src}?size=${px}`} width={px} height={px} className={classnames(props.className, styles.pfp, {[styles.petting]: (doPurr && isHovered) || isPurring, [styles.message]: isMessage})} onMouseOver={() => setIsHovered(true)} onMouseOut={() => setIsHovered(false)}/>
+    return <img {...props} src={`${src}${!src.startsWith("blob") ? `?size=${px}` : ""}`} width={px} height={px} className={classnames(props.className, styles.pfp, {[styles.petting]: (doPurr && isHovered) || isPurring, [styles.message]: isMessage})} onMouseOver={() => setIsHovered(true)} onMouseOut={() => setIsHovered(false)}/>
 }

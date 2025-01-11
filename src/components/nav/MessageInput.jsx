@@ -98,7 +98,7 @@ export default function MessageInput() {
         {gifPopout.open ? <GIFPicker {...gifPopout.popoutProps} hide={gifPopout.toggle}/> : null}
         {emoteSearchPopout.open && emotes.isSuccess ? <LightquarkEmoteSearch message={message} setMessage={(message) => {
             setMessage(message);
-            new Audio(nyafile.getCachedData("sfx/button-sidebar-select")).play();
+            new Audio(nyafile.getFileURL("sfx/button-sidebar-select")).play();
         }} {...emoteSearchPopout} {...emoteSearchPopout.popoutProps}/> : null}
     </>
 }

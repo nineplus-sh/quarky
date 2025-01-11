@@ -40,7 +40,7 @@ export default function QuarkSettingsDelete({quarkId}) {
     }, [isMembersLoading]);
 
     function boom() {
-        new Audio(nyafile.getCachedData("sfx/dialog-pop-in")).play();
+        new Audio(nyafile.getFileURL("sfx/dialog-pop-in")).play();
         setTimeout(async function() {
             if(confirm(t("DELETE_QUARK_CONFIRM", {name:quark.name}))) {
                 await quarkDelete.mutateAsync(quarkId);

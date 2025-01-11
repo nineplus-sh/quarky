@@ -50,9 +50,9 @@ export default function GenericQuark({link, icon, name}) {
         stretchIt(false);
         setTimeout(function() {
             stretchIt(true);
-            new Audio(appContext.nyafile.getCachedData("sfx/default-select")).play();
+            new Audio(appContext.nyafile.getFileURL("sfx/default-select")).play();
         }, 9)
-    }} onMouseEnter={() => new Audio(appContext.nyafile.getCachedData("sfx/default-hover")).play()}>
+    }} onMouseEnter={() => new Audio(appContext.nyafile.getFileURL("sfx/default-hover")).play()}>
         <img src={icon} width={64} height={64} className={styles.icon} ref={tooltipFloat.refs.setReference}/>
     </span>
         {transStyles.isMounted ? <Tooltip floatRef={tooltipFloat.refs.setFloating} floatStyles={tooltipFloat.floatingStyles} transStyles={transStyles.styles} floatProps={tooltipInteractions.getFloatingProps()}>{name}</Tooltip> : null}

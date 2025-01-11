@@ -16,7 +16,7 @@ export default function GenericModal({classNames = "", overlayClassNames = "", c
     useEffect(() => {
         if (firstUpdate.current) { firstUpdate.current = false; return; }
 
-        new Audio(appContext.nyafile.getCachedData(`sfx/info-modal-pop-${modal.visible ? "in" : "out"}`)).play();
+        new Audio(appContext.nyafile.getFileURL(`sfx/info-modal-pop-${modal.visible ? "in" : "out"}`)).play();
         if(!modal.visible) setTimeout(modal.remove, 300)
     }, [modal.visible]);
 

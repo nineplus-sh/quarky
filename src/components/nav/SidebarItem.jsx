@@ -10,14 +10,14 @@ export default function SidebarItem({baseI18n, area, setArea, currentArea, onCli
 
     function setAreaWithSound(area) {
         if(currentArea === area) return;
-        new Audio(nyafile.getCachedData("sfx/button-sidebar-select")).play();
+        new Audio(nyafile.getFileURL("sfx/button-sidebar-select")).play();
         setArea(area);
     }
 
     return <div onClick={() => onClick ? onClick() : setAreaWithSound(area)} className={classnames(styles.sidebarItem, {[styles.active]: currentArea === area})}
                 onMouseEnter={() => {
                     if(currentArea===area) return;
-                    new Audio(nyafile.getCachedData("sfx/button-sidebar-hover")).play();
+                    new Audio(nyafile.getFileURL("sfx/button-sidebar-hover")).play();
                 }}>
         <span>{t(`${baseI18n.toUpperCase()}_${area.toUpperCase()}`)}</span>
     </div>

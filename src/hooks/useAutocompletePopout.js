@@ -46,7 +46,7 @@ export default function useAutocompletePopout({data, search, popoutOptions, fuse
         if(event.key === 'Enter') listRef.current[activeIndex]?.click();
     }
     useEffect(() => {
-        if(activeIndex !== 0) new Audio(nyafile.getCachedData("sfx/button-sidebar-hover")).play();
+        if(activeIndex !== 0) new Audio(nyafile.getFileURL("sfx/button-sidebar-hover")).play();
         document.addEventListener("keydown", enterHandler);
         return () => document.removeEventListener('keydown', enterHandler);
     }, [activeIndex]);

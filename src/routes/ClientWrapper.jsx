@@ -88,7 +88,7 @@ export default function ClientWrapper() {
         }
 
         setClientReady(true);
-        new Audio(nyafile.getCachedData("sfx/crossfade")).play();
+        new Audio(nyafile.getFileURL("sfx/crossfade")).play();
     })
 
     return (<>

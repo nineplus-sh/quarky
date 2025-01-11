@@ -10,6 +10,6 @@ import {useContext} from "react";
 export default function SpaceBackground() {
     const appContext = useContext(AppContext);
     return (
-        <div className={styles.spaceBackground} style={{ background: `url(${appContext.nyafile.getCachedData("img/stars")})` }}></div>
+        <div className={styles.spaceBackground} style={{ background: `url(${appContext.nyafile.getFileURL("img/stars")})` }}></div>
     )
 }

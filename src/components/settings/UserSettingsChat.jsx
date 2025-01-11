@@ -1,6 +1,5 @@
 import SettingsToggleBox from "./SettingsToggleBox.jsx";
 import Message from "../dialogs/Message.jsx";
-import ProfilePicture from "../dialogs/ProfilePicture.jsx";
 import {useContext, useMemo} from "react";
 import {AppContext} from "../../contexts/AppContext.js";
 import {useTranslation} from "react-i18next";
@@ -10,13 +9,13 @@ import richEmbedSamples from "../../util/richEmbedSamples.js";
 import Button from "../nav/Button.jsx";
 
 export default function UserSettingsChat() {
-    const appContext = useContext(AppContext);
+    const {nyafile} = useContext(AppContext);
     const {t} = useTranslation();
     const sample = useMemo(() => richEmbedSamples[Math.floor(Math.random() * richEmbedSamples.length)], []);
 
     return <>
         <SettingsToggleBox setting={"RICH_EMBEDS"} trans={[<a href={"https://youtrack.litdevs.org/articles/q2-A-1"} target={"_blank"} rel={"noreferrer"}/>]}/>
-        <Message username={t("SAMPLE_USER_NAME")} avatarUri={appContext.nyafile.getCachedData("img/hakase_pfp")}
+        <Message username={t("SAMPLE_USER_NAME")} avatarUri={nyafile.getFileURL("img/hakase_pfp")}
                  content={`${t("SAMPLE_USER_MESSAGE_RICH_EMBEDS", {link: null})}${sample}`} />
 
         {window.hiddenside ? <><hr/>
@@ -34,7 +33,7 @@ export function RichEmbedEnhancement({service, url, width}) {
     const {t} = useTranslation();
     return <div className={styles.enhancementUpsell}>
         <span className={styles.enhancementUpsellTitle}>
-            <NyafileImage src={`img/${service}`} alt={service} inlinesvg={true}/>
+            <NyafileImage src={`img/${service}`} alt={service} inlinesvg={true} className={styles.serviceIcon}/>
             <span> {t(`SETTING_RICH_EMBEDS_ENHANCEMENT_${service.toUpperCase()}`)}</span>
         </span>
 

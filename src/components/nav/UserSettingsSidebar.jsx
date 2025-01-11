@@ -54,9 +54,9 @@ export default function UserSettingsSidebar({area, setArea}) {
             <NyafileImage src={"img/nineball"} className={styles.nineplus}/>
         </div>
         <div className={styles.sns}>
-            <a href={"https://bsky.app/profile/nineplus.sh"} target={"_blank"} rel="noreferrer"><NyafileImage src={"img/bluesky"} inlinesvg={true}/></a>
-            <a href={"https://twitter.com/nineplus_sh"} target={"_blank"} rel="noreferrer"><NyafileImage src={"img/twitter"} inlinesvg={true}/></a>
-            <a href={"https://tumblr.com/nineplus-sh"} target={"_blank"} rel="noreferrer"><NyafileImage src={"img/tumblr"} inlinesvg={true}/></a>
+            <a href={"https://bsky.app/profile/nineplus.sh"} target={"_blank"} rel="noreferrer"><NyafileImage src={"img/bluesky"} inlinesvg={true} className={styles.snsIcon}/></a>
+            <a href={"https://twitter.com/nineplus_sh"} target={"_blank"} rel="noreferrer"><NyafileImage src={"img/twitter"} inlinesvg={true} className={styles.snsIcon}/></a>
+            <a href={"https://tumblr.com/nineplus-sh"} target={"_blank"} rel="noreferrer"><NyafileImage src={"img/tumblr"} inlinesvg={true} className={styles.snsIcon}/></a>
         </div>
     </div>
 }

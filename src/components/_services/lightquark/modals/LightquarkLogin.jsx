@@ -81,7 +81,7 @@ export default function LightquarkLogin() {
             switchTab("confirm");
             setSwitching(false);
         } else {
-            new Audio(appContext.nyafile.getCachedData("sfx/error")).play();
+            new Audio(appContext.nyafile.getFileURL("sfx/error")).play();
             setTimeout(() => alert(tokens.response.message), 5);
             setSwitching(false);
         }
@@ -100,7 +100,7 @@ export default function LightquarkLogin() {
         if(tokens.request.success === true) {
             finalizeLogin(tokens.response.access_token, tokens.response.refresh_token)
         } else {
-            new Audio(appContext.nyafile.getCachedData("sfx/error")).play();
+            new Audio(appContext.nyafile.getFileURL("sfx/error")).play();
             setTimeout(() => alert(tokens.response.message), 5);
             setSwitching(false);
         }
@@ -119,7 +119,7 @@ export default function LightquarkLogin() {
         if(tokens.request.success === true) {
             finalizeLogin(tokens.response.access_token, tokens.response.refresh_token)
         } else {
-            new Audio(appContext.nyafile.getCachedData("sfx/error")).play();
+            new Audio(appContext.nyafile.getFileURL("sfx/error")).play();
             setTimeout(() => alert(tokens.response.message), 5);
             setSwitching(false);
         }

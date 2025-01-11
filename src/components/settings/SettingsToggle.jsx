@@ -9,7 +9,7 @@ export default function SettingsToggle({setting}) {
 
     async function changeSetting() {
         setSettings({...settings, [setting]: !settings[setting]});
-        new Audio(nyafile.getCachedData(`sfx/checkbox-${!settings[setting]}`)).play();
+        new Audio(nyafile.getFileURL(`sfx/checkbox-${!settings[setting]}`)).play();
 
         const oldForage = await localForage.getItem("settings")
         await localForage.setItem("settings", {...oldForage, [setting]: !settings[setting]});

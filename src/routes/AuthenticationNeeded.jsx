@@ -39,7 +39,7 @@ export default function AuthenticationNeeded() {
     if(!appContext.apiKeys.accessToken) {
         return (<>
             {import.meta.env.VITE_VERCEL_ENV === "preview" ? <DevBuildBanner/> : null}
-            <audio src={appContext.nyafile.getCachedData("music/login")} loop={true} ref={musicTag}/>
+            <audio src={appContext.nyafile.getFileURL("music/login")} loop={true} ref={musicTag}/>
 
             <SpaceBackground />
             <Header title={t("HEADER_WELCOME")} description={t("HEADER_WELCOME_SUB")}></Header>

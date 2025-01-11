@@ -37,7 +37,7 @@
     justify-content: right;
 }
 
-.sns svg {
-    width: 1em;
-    height: 1em;
+.snsIcon {
+    width: 1.5em;
+    height: 1.5em;
 }

@@ -18,7 +18,7 @@
 }
 
 /* https://github.com/nineplus-sh/Quarky-Classic/blob/senpai/public/client.html#L401 */
-.uploadIcon {
+.uploadIconWrap {
     color: var(--text-color);
     position: absolute;
     width: 80px;
@@ -28,7 +28,7 @@
     cursor: pointer;
     display: none;
 }
-.uploadIcon svg {
+.uploadIcon {
     width: 48px;
     height: 48px;
     position: relative;
@@ -36,18 +36,18 @@
     left: 50%;
     transform: translate(-50%, -50%);
 }
-.profilePictureWrap:hover .uploadIcon, .uploadIcon.uploading {
+.profilePictureWrap:hover .uploadIconWrap, .uploadIconWrap.uploading {
     display: inline;
 }
-.uploadIcon.uploading svg {
+.uploadIconWrap.uploading .uploadIcon {
     animation: stretchcenter 0.3s forwards infinite;
 }
-.uploadIcon.uploading {
+.uploadIconWrap.uploading {
     cursor: default;
 }
 .uploadBar {
     position: absolute;
-    width: 70px;
+    width: 72px;
     height: 70px;
 
     border: 5px solid;

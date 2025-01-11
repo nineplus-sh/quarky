@@ -13,7 +13,7 @@ import useAvatarReset from "../hooks/useAvatarReset.js";
 import useAvatarUpload from "../hooks/useAvatarUpload.js";
 
 export default function SettingsID({quarkId}) {
-    const appContext = useContext(AppContext);
+    const {nyafile} = useContext(AppContext);
     const queryClient = useQueryClient();
 
     const {data: quarkData, isLoading: isQuarkLoading} = useQuark(quarkId, {enabled: !!quarkId});
@@ -43,6 +43,7 @@ export default function SettingsID({quarkId}) {
                 quark: quarkId,
                 progressCallback: (e) => setUploadPercentage(e.loaded / e.total * 100)
             });
+            new Audio(nyafile.getFileURL("sfx/success")).play();
             setUploadPercentage(0);
         }
         input.click();
@@ -50,8 +51,9 @@ export default function SettingsID({quarkId}) {
 
     return <><div className={styles.userInfoWrap}>
         <div onClick={uploadPicture} className={styles.profilePictureWrap}>
-            <NyafileImage src={"img/upload"} inlinesvg={"true"}
-                          className={classnames(styles.uploadIcon, {[styles.uploading]: isUploading})}/>
+            <div className={classnames(styles.uploadIconWrap, {[styles.uploading]: isUploading})}>
+                <NyafileImage src={"img/upload"} inlinesvg={true} className={styles.uploadIcon}/>
+            </div>
             <div className={styles.uploadBar} style={{clipPath: `inset(${100-uploadPercentage}% 0 0 0)`}}/>
             <ProfilePicture src={targetAvatar} px={80} doPurr={false}/>
         </div>
@@ -60,5 +62,5 @@ export default function SettingsID({quarkId}) {
             <div className={styles.userJoinTime}>Born {new Date(parseInt(
                 target._id.substring(0, 8), 16) * 1000).toLocaleDateString()}</div>
         </div>
-    </div>{quarkId ? null : <div><button onClick={() => avatarReset.mutate()}>reset avatar</button></div>}</>;
+    </div>{quarkId ? null : <div><button disabled={isUploading} onClick={() => avatarReset.mutate()}>reset avatar</button></div>}</>;
 }
