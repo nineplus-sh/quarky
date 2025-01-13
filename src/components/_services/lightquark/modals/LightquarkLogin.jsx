@@ -161,7 +161,7 @@ export default function LightquarkLogin() {
                 <div className={styles.networkInfo}>
                     <img className={styles.networkLogo} src={networkData.iconUrl}/>
                     <div className={styles.networkDetails}>
-                        <p className={styles.networkName}>{networkData.name} <button disabled={isSwitching} onClick={() => switchTab("network")}>{t("LOGIN_SWITCH_NETWORKS")}</button></p>
+                        <p className={styles.networkName}>{networkData.name} <Button disabled={isSwitching} onClick={() => switchTab("network")}>{t("LOGIN_SWITCH_NETWORKS")}</Button></p>
                         <p className={styles.networkMetadata}>{t("LOGIN_NETWORK_BYLINE", {domain: networkData.linkBase, version: networkData.version, maintainer: networkData.maintainer, interpolation: { escapeValue: false }})}</p>
                     </div>
                 </div>
@@ -187,9 +187,9 @@ export default function LightquarkLogin() {
                     <input className={`${styles.prettyButton} ${styles.primaryButton}`} type="submit" disabled={isSwitching || Object.keys(networkData).length === 0} value={t(isSwitching ? "LOGIN_SIGNING_IN" : "GO")}/>
                 </form>
             </> : tab === "network" ? <>
-                <div className={styles.formHeader}>
+                <p>
                     <Trans i18nKey={"LOGIN_SWITCH_NETWORKS_BODY"} values={{name: networkData.name}} components={[<a href={"https://youtrack.litdevs.org/articles/LQ4-A-1"} target={"_blank"} rel={"noreferrer"}/>]}></Trans>
-                </div>
+                </p>
 
                 <form onSubmit={switchNetwork} className={styles.loginForm}>
                     <input className={styles.loginInput} required disabled={isSwitching} type="text" placeholder={network} value={networkSwitch} onChange={e => setNetworkSwitch(e.target.value)}/>
