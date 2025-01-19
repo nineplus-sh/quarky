@@ -9,11 +9,11 @@ export default function useChannelMembers(id, options = {}) {
         queryFn: async () => {
             const data = await apiCall(`channel/${id}/members`)
             return data.users.map(user => {
-                queryClient.setQueryData([`user/${user._id}`], user)
+                queryClient.setQueryData(["user",user._id], user)
                 return user._id
             });
         },
-        queryKey: [`channel/${id}`, `members`],
+        queryKey: ["channel", id, "members"],
         ...options
     });
 }

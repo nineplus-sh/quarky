@@ -9,7 +9,7 @@ export default function useMe(options = {}) {
             const data = await apiCall("user/me")
             return data.user;
         },
-        queryKey: ["user/me"],
+        queryKey: ["me"],
         ...options
     });
 }

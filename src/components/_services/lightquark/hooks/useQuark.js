@@ -10,7 +10,7 @@ export default function useQuark(id, options = {}) {
             const data = await apiCall(`quark/${id}`)
             return data.quark;
         },
-        queryKey: [`quark/${id}`],
+        queryKey: ["quark",id],
         ...options
     });
 }

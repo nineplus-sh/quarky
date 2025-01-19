@@ -18,7 +18,7 @@ export default function useQuarkCreate() {
             return res.quark;
         },
         onSuccess: (data) => {
-            queryClient.setQueryData([`quark/${data._id}`], data.quark)
+            queryClient.setQueryData(["quark",data._id], data.quark)
             queryClient.setQueryData([`quarks`], (prevData) => [...prevData, data._id])
         }
     })

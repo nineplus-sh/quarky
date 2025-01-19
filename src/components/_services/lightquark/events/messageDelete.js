@@ -1,5 +1,5 @@
 export default async function messageDeleteHandler(eventData, queryClient) {
-    queryClient.setQueryData([`channel/${eventData.channelId}`, "messages"], (prevData) => {
+    queryClient.setQueryData(["channel",eventData.channelId, "messages"], (prevData) => {
         if(!prevData) return;
 
         return {

@@ -14,7 +14,7 @@ export default function useAvatarUpload() {
             return axiosClient.put(quark ? `quark/${quark}/icon` : "user/me/avatar", data, {onUploadProgress: progressCallback})
         },
         onSuccess: (data, vars) => {
-            if(!vars.quark) queryClient.invalidateQueries(["user/me"])
+            if(!vars.quark) queryClient.invalidateQueries(["me"])
         }
     })
 }

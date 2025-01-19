@@ -14,13 +14,13 @@ export default function useChannelMessages(id, options) {
 
             const data = await apiCall(route)
             return data.messages.map(message => {
-                queryClient.setQueryData([`user/${message.author._id}`], (prevData) => {
+                queryClient.setQueryData(["user",message.author._id], (prevData) => {
                     return {...prevData, ...message.author}
                 });
                 return {...message, author: message.author._id}
             });
         },
-        queryKey: [`channel/${id}`, `messages`],
+        queryKey: ["channel", id, "messages"],
         getPreviousPageParam: (firstPage) => {
             const timestamp = firstPage[firstPage.length-1]?.timestamp;
             if(!timestamp) return undefined;

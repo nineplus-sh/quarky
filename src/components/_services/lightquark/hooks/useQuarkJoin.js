@@ -14,7 +14,7 @@ export default function useQuarkJoin() {
             return res.quark;
         },
         onSuccess: (data) => {
-            queryClient.setQueryData([`quark/${data._id}`], data)
+            queryClient.setQueryData(["quark",data._id], data)
             queryClient.setQueryData([`quarks`], (prevData) => [...prevData, data._id])
         }
     })

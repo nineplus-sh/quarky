@@ -9,7 +9,7 @@ export default function useChannel(id, options = {}) {
             const data = await apiCall(`channel/${id}`)
             return data.channel;
         },
-        queryKey: [`channel/${id}`],
+        queryKey: ["channel",id],
         ...options
     });
 }

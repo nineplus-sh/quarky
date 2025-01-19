@@ -11,7 +11,7 @@ export default function useUser(id, options = {}) {
             const data = await apiCall(`user/${id}`)
             return data.quark;
         },
-        queryKey: [`user/${id}`],
+        queryKey: ["user", id],
         enabled: me.isSuccess && me.data._id !== id,
         ...options
     });

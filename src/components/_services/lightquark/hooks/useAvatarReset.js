@@ -13,7 +13,7 @@ export default function useAvatarReset() {
             })
         },
         onSuccess: () => {
-            queryClient.invalidateQueries({queryKey: ["user/me"]});
+            queryClient.invalidateQueries({queryKey: ["me"]});
         }
     })
 }
