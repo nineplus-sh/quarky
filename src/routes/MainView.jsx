@@ -14,8 +14,8 @@ import classnames from "classnames";
 export default function MainView() {
     const { data, isLoading } = useQuarkList();
     const {t} = useTranslation();
-    let { quarkId, dialogId } = useParams();
-    const [listOpen, setListOpen] = useState(!quarkId && !dialogId);
+    let { dialogId } = useParams();
+    const [listOpen, setListOpen] = useState(!dialogId);
     const [membersOpen, setMembersOpen] = useState(window.innerWidth > 1000);
 
     return <SidebarContext value={{
