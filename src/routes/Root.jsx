@@ -81,5 +81,5 @@ export default function Root() {
 
     if(appContext.loading) return <Loader loadingString={loadingString} progress={loadingPercentage} progressString={loadingPercentageText}/>
 
-    return <Sentry.ErrorBoundary fallback={<WooScreen/>}><Outlet /></Sentry.ErrorBoundary>
+    return <Outlet />
 }

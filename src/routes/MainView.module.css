@@ -12,3 +12,8 @@
 
     background-color: var(--background-color-min)
 }
+@media(max-width: 700px) {
+    .quarkList.closed {
+        display: none;
+    }
+}

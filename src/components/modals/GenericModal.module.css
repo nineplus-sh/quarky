@@ -1,3 +1,7 @@
+.closeButton {
+    float: right;
+}
+
 .genericModalOverlay {
     position: fixed;
     top: 0;
@@ -12,6 +16,7 @@
 
     opacity: 0;
     transition: opacity 0.3s ease-in-out;
+    overflow-y: auto;
 }
 
 .genericModalContent {
@@ -22,17 +27,16 @@
     bottom: 40px;
     border: 1px solid #ccc;
     background: #fff;
-    overflow: auto;
+    overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     border-radius: 15px;
     outline: none;
     padding: 20px;
 
-    max-width: 25%;
+    max-width: max(20vw, 400px);
     height: fit-content;
     inset: unset;
 
-    transform: scaleY(0);
     transition: transform 0.3s cubic-bezier(1.000, -0.250, 0.000, 1.250), max-height 0.3s cubic-bezier(1.000, -0.250, 0.000, 1.250);
     scrollbar-color: var(--accent-color) #2e3035;
     color: var(--text-color-inverted);
@@ -47,6 +51,19 @@
     width: 10px;
 }
 
+@media(max-width: calc(555px)) {
+    .genericModalOverlay {
+        justify-content: unset;
+        align-items: unset;
+    }
+    .genericModalContent {
+        border-radius: 0;
+        width: calc(100vw - 42px);
+        height: calc(100vh - 42px);
+        max-width: unset;
+    }
+}
+
 .genericModalOverlay:global(.ReactModal__Overlay--after-open) {
     opacity: 1;
 }
@@ -55,10 +72,14 @@
     opacity: 0;
 }
 
-.genericModalContent:global(.ReactModal__Content--after-open) {
-    transform: scaleY(1);
-}
-
-.genericModalContent:global(.ReactModal__Content--before-close) {
-    transform: scaleY(0);
+@media(min-width: calc(555px)) {
+    .genericModalContent {
+        transform: scaleY(0);
+    }
+    .genericModalContent:global(.ReactModal__Content--after-open) {
+        transform: scaleY(1);
+    }
+    .genericModalContent:global(.ReactModal__Content--before-close) {
+        transform: scaleY(0);
+    }
 }

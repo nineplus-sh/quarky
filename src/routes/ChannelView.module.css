@@ -21,6 +21,24 @@
     background: var(--background-color-less);
 }
 
+.memberList.closed {
+    display: none;
+}
+
+@media(min-width: 700px) {
+    .uncollapsers {
+        display: none;
+    }
+}
+@media(max-width: 700px) {
+    .channelTopbar {
+        justify-content: space-between;
+    }
+    .channelDesc {
+        display: none;
+    }
+}
+
 .messages {
     flex-grow: 1;
     scrollbar-width: thin;
@@ -47,5 +65,8 @@
 .channelName {
     font-style: italic;
     padding-right: 0.5em;
-    border-right: 2px solid grey;
+}
+.channelDesc {
+    border-left: 2px solid grey;
+    padding-left: 0.5em;
 }

@@ -11,6 +11,7 @@ import useQuarkJoin from "../_services/lightquark/hooks/useQuarkJoin.js";
 import {useNavigate} from "react-router-dom";
 import useQuarkCreate from "../_services/lightquark/hooks/useQuarkCreate.js";
 import {router} from "../../index.jsx";
+import Button from "../nav/Button.jsx";
 
 export default NiceModal.create(() =>{
     const modal = useModal();
@@ -46,14 +47,18 @@ export default NiceModal.create(() =>{
                         <h2 style={{margin: 0}}>{t("JOIN_QUARK")}</h2>
                         <p style={{marginTop: 0}}>{t("JOIN_QUARK_BODY")}</p>
 
-                        <form onSubmit={(e) => handleCall(e,false)}><fieldset disabled={quarkJoin.isPending}>
-                                <input type={"text"} required placeholder={t("JOIN_QUARK_CODE")} value={inviteCode} onChange={e => setInviteCode(e.target.value)}/>
-                                <input type={"submit"}/>
-                            {quarkJoin.isError ? <span><br/>{quarkJoin.error.response.message}</span> : null}
-                        </fieldset></form>
+                        <form onSubmit={(e) => handleCall(e,false)}>
+                            <fieldset disabled={quarkJoin.isPending}>
+                                <input type={"text"} required placeholder={t("JOIN_QUARK_CODE")} value={inviteCode}
+                                       onChange={e => setInviteCode(e.target.value)} style={{width: "100%"}}/>
+                                <br/><br/>
+                                <Button primary puffy type={"submit"} style={{width: "100%"}}>Join</Button>
+                                {quarkJoin.isError ? <span><br/>{quarkJoin.error.response.message}</span> : null}
+                            </fieldset>
+                        </form>
 
                         <p style={{marginBottom: 0}}>
-                            <Trans i18nKey="JOIN_QUARK_CREATE" components={[<button
+                            <Trans i18nKey="JOIN_QUARK_CREATE" components={[<Button
                                 onClick={() => switchTab("create")}/>]}/>
                         </p>
                     </> : tab === "create" ? <>
@@ -62,10 +67,11 @@ export default NiceModal.create(() =>{
                         <form onSubmit={(e) => handleCall(e,true)}>
                             <fieldset disabled={false}>
                                 <input type={"text"} required placeholder={t("CREATE_QUARK_NAME")} value={createName}
-                                       onChange={e => setCreateName(e.target.value)}/>
+                                       onChange={e => setCreateName(e.target.value)} style={{width: "100%"}}/>
                                 <input type={"text"} placeholder={t("CREATE_QUARK_CODE")} value={createCode}
-                                       onChange={e => setCreateCode(e.target.value)}/>
-                                <input type={"submit"}/>
+                                       onChange={e => setCreateCode(e.target.value)} style={{width: "100%"}}/>
+                                <br/><br/>
+                                <Button primary puffy type={"submit"} style={{width: "100%"}}>Create</Button>
                             </fieldset>
                         </form>
 

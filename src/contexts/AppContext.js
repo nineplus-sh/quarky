@@ -14,5 +14,6 @@ export const defaultSettings = {
 export const AppContext = createContext({
     /** @type {import("@litdevs/nyalib").default} **/
     nyafile: null,
-    settings: defaultSettings
+    settings: defaultSettings,
+    sidebarOpen: true
 });

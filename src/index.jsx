@@ -32,6 +32,7 @@ import DemoView from "./routes/DemoView.jsx";
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import {renewPromise} from "./components/_services/lightquark/hooks/useRPC.js";
 import {WebSocketContext} from "./contexts/WebSocketContext.js";
+import WooScreen from "./routes/WooScreen.jsx";
 
 Sentry.init({
     dsn: "https://901c666ed03942d560e61928448bcf68@sentry.yggdrasil.cat/5",
@@ -184,7 +185,7 @@ export function App(props) {
     }))
 
     return (
-        <AppContext.Provider value={{
+        <AppContext value={{
             loading, setLoading, holiday,
             nyafile, setNyafile,
             messageCache, setMessageCache,
@@ -195,12 +196,12 @@ export function App(props) {
             quarkCache, setQuarkCache,
             axiosClient, refreshOverHTTP
         }}>
-            <WebSocketContext.Provider value={{socket, setSocket}}>
+            <WebSocketContext value={{socket, setSocket}}>
                 <QueryClientProvider client={queryClient}>
                     {translationsLoading ? null : props.children}
                 </QueryClientProvider>
-            </WebSocketContext.Provider>
-        </AppContext.Provider>
+            </WebSocketContext>
+        </AppContext>
     )
 }
 
@@ -234,11 +235,13 @@ const ReactQueryDevtoolsProduction = lazy(() =>
 ReactDOM.createRoot(document.getElementById('root')).render(
     //<React.StrictMode>
         <ProfiledApp>
-            <ReactQueryDevtools initialIsOpen={false} />
-            {import.meta.env.VITE_VERCEL_ENV === "preview" ? <ReactQueryDevtoolsProduction/> : null}
-            <NiceModal.Provider>
-                <RouterProvider router={router} />
-            </NiceModal.Provider>
+            <Sentry.ErrorBoundary fallback={<WooScreen/>}>
+                <ReactQueryDevtools initialIsOpen={false} />
+                {import.meta.env.VITE_VERCEL_ENV === "preview" ? <ReactQueryDevtoolsProduction/> : null}
+                <NiceModal.Provider>
+                    <RouterProvider router={router} />
+                </NiceModal.Provider>
+            </Sentry.ErrorBoundary>
         </ProfiledApp>
     //</React.StrictMode>,
 )
