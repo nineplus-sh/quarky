@@ -13,7 +13,7 @@ export default function useQuarkLeave() {
             })
         },
         onSuccess: (data, id) => {
-            queryClient.invalidateQueries([`quark/${id}`])
+            queryClient.invalidateQueries(["quark",id])
             queryClient.setQueryData([`quarks`], (prevData) => prevData.filter(q => q !== id))
         }
     })
