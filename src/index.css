@@ -1,8 +1,14 @@
 body {
   margin: 0;
+  height: 100%;
   font-family: system-ui;
 }
-
+html {
+  height: 100%;
+}
+#root {
+  height: 100%;
+}
 
 
 /* GENERAL APP COLORS */

@@ -3,7 +3,7 @@ html {
 }
 .client {
     display: flex;
-    height: 100vh;
+    height: 100%;
     overflow: hidden;
 
     animation: fadeIn 1s forwards cubic-bezier(1,-0.25,0,1.25);
