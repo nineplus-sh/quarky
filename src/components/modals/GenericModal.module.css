@@ -1,5 +1,6 @@
 .closeButton {
-    float: right;
+    position: absolute;
+    right: 1em;
 }
 
 .genericModalOverlay {

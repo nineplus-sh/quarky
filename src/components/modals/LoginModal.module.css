@@ -25,6 +25,22 @@
     justify-content: center;
 }
 
+@media(max-width: calc(555px)) {
+    .centerwrap {
+        align-items: flex-start;
+    }
+    .login {
+        margin-top: 11em;
+        border-radius: 0;
+        height: 100vh !important;
+        width: 100vw !important;
+        padding: 1em 0;
+        max-width: none;
+
+        align-items: flex-start;
+    }
+}
+
 .characterContainer {
     position: absolute;
     z-index: -1;

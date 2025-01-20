@@ -24,6 +24,5 @@ export default function Header({title, description}) {
             </span>
             <Button className={styles.headerAcknowledgements} onClick={() => NiceModal.show(CreditsModal)}>{t("CREDITS_BUTTON")}</Button>
         </div>
-        <div className={styles.headerShadow}></div>
     </>);
 }
