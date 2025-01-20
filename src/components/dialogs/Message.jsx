@@ -33,7 +33,7 @@ export default function Message({children, avatarUri, username, content, isBot, 
 
     return (<div className={classnames(styles.messagewrapper, {[styles.messagefollowup]: isContinuation, [styles.messagediting]: isEditing})}>
         {isContinuation ? null : <ProfilePicture src={avatarUri} isMessage={!isEditing}/>}
-        <span className={styles.message}>
+        <span className={styles.message} tabIndex={0}>
             <span className={styles.usernameArea}>
                 {isContinuation ? null : <><b>{username}</b>
                 {isBot ? <BotTag name={botName} isDiscord={isDiscord} /> : ""}

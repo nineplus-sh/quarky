@@ -43,5 +43,5 @@ export default function DialogMessages({messages, moreMessages}) {
             }
         }
         return <LightquarkMessage message={message} channel={dialogId} quark={quarkId.split("lq_")[1]} isContinuation={sameAuthor} isAuthored={message.author === userData._id} key={message._id} />
-    }} startReached={moreMessages} initialTopMostItemIndex={messages.length-1} followOutput={"smooth"}/>
+    }} startReached={moreMessages} initialTopMostItemIndex={messages.length-1} followOutput={"smooth"} increaseViewportBy={200}/>
 }

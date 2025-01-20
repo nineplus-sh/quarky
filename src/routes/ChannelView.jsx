@@ -18,11 +18,9 @@ export default function ChannelView() {
     const {data: channel, isSuccess: isChannelSuccess} = useChannel(dialogId);
     const {data: members, isSuccess: isMembersSuccess} = useChannelMembers(dialogId);
     const {data: messages, isSuccess: isMessagesSuccess, isFetchingPreviousPage, fetchPreviousPage} = useChannelMessages(dialogId);
-    const messageArea = useRef(null);
-    const {t} = useTranslation();
     const sidebars = useContext(SidebarContext);
 
-    return (<div className={styles.channelView}>
+    return (<div className={classnames(styles.channelView, {[styles.listUp]: sidebars.listOpen})}>
         <div className={styles.channelTopbar}>
             <Button className={styles.uncollapsers} onClick={() => sidebars.setListOpen((prev) => !prev)}>Channels</Button>
             {isChannelSuccess ? <>
@@ -35,7 +33,7 @@ export default function ChannelView() {
         </div>
         <div className={styles.channelContents}>
             <div className={styles.messageArea}>
-                <div className={styles.messages} ref={messageArea}>
+                <div className={styles.messages}>
                     {isMessagesSuccess ? <>
                         <DialogMessages messages={messages?.pages.flat(1).sort((a, b) => a.timestamp - b.timestamp)}
                                         moreMessages={fetchPreviousPage}/>

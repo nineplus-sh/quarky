@@ -38,6 +38,17 @@
         display: none;
     }
 }
+@media(max-width: 444px) {
+    .channelView.listUp .messageArea {
+        filter: brightness(50%);
+        background: var(--background-color-max);
+        pointer-events: none;
+    }
+    .channelView.listUp .channelTopbar {
+        filter: brightness(50%);
+        pointer-events: none;
+    }
+}
 
 .messages {
     flex-grow: 1;
