@@ -108,10 +108,11 @@ function File({file, clear}) {
 
     useEffect(() => {
         if(!file.type.startsWith("image/")) setDataURI(null);
-        const reader = new FileReader();
-        reader.onload = () => setDataURI(reader.result);
-        reader.readAsDataURL(file);
-        return () => {reader.abort()}
+        setDataURI(URL.createObjectURL(file))
+        return () => {
+            URL.revokeObjectURL(dataURI);
+            setDataURI(null);
+        }
     }, [file]);
 
     return <div className={styles.file} onClick={clear}>

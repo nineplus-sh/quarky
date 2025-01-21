@@ -4,6 +4,7 @@
     flex-grow: 1;
     justify-content: space-between;
     width: 100%;
+    min-width: 0;
 }
 
 .memberList {
@@ -61,11 +62,13 @@
     flex-direction: column;
     flex-grow: 1;
     max-height: 100%;
+    min-width: 0;
 }
 .channelContents {
     display: flex;
     flex-direction: row;
     flex-grow: 1;
+    overflow: auto;
 }
 .channelTopbar {
     display: flex;
