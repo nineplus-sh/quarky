@@ -13,10 +13,14 @@ import {
     useTransitionStyles
 } from "@floating-ui/react";
 import Tooltip from "./Tooltip.jsx";
+import useSound from "../../hooks/useSound.js";
 
 export default function GenericQuark({link, icon, name}) {
     const [isStretching, stretchIt] = useState(false);
     const appContext = useContext(AppContext);
+
+    const {play: hoverPlay} = useSound("sfx/default-hover");
+    const {play: selectPlay} = useSound("sfx/default-select");
 
     const [tooltipOpen, setTooltipOpen] = useState(false);
     const tooltipFloat = useFloating({
@@ -50,9 +54,9 @@ export default function GenericQuark({link, icon, name}) {
         stretchIt(false);
         setTimeout(function() {
             stretchIt(true);
-            new Audio(appContext.nyafile.getFileURL("sfx/default-select")).play();
+            selectPlay();
         }, 9)
-    }} onMouseEnter={() => new Audio(appContext.nyafile.getFileURL("sfx/default-hover")).play()}>
+    }} onMouseEnter={hoverPlay}>
         <img src={icon} width={64} height={64} className={styles.icon} ref={tooltipFloat.refs.setReference}/>
     </span>
         {transStyles.isMounted ? <Tooltip floatRef={tooltipFloat.refs.setFloating} floatStyles={tooltipFloat.floatingStyles} transStyles={transStyles.styles} floatProps={tooltipInteractions.getFloatingProps()}>{name}</Tooltip> : null}

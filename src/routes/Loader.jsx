@@ -22,7 +22,7 @@ export default function Loader({loadingString, progress, progressString, crossfa
 
     function eyeMover(event) {
         if(!quarkyLogo.current) return;
-        const eyeLayer = quarkyLogo.current.contentDocument.querySelector("#eyelayer")
+        const eyeLayer = quarkyLogo.current?.contentDocument?.querySelector("#eyelayer")
         if(!eyeLayer) return;
 
         const rect = quarkyLogo.current.getBoundingClientRect();
