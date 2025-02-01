@@ -78,7 +78,7 @@ export default function Loader({loadingString, progress, progressString, crossfa
                         <div className={styles.loadingBar} onMouseOver={() => {
                             if(pippiDiedBigSadFrownyFace) return;
                             setPippiDiedBigSadFrownyFace(true)
-                            new Audio("/fall.mp3").play()
+                            try {new Audio("/fall.mp3").play()} catch { /*womp!*/ }
                         }}>
                             <div className={styles.loadingBarStretcher} style={{width: `${progress}%`}}></div>
                         </div>

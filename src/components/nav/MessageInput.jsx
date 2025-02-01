@@ -16,6 +16,7 @@ import useEmotes from "../_services/lightquark/hooks/useEmotes.js";
 import useChannelMessageCreate from "../_services/lightquark/hooks/useChannelMessageCreate.js";
 import {v4 as uuidv4} from "uuid";
 import byteSize from "byte-size";
+import useSound from "../../hooks/useSound.js";
 
 export default function MessageInput() {
     const {nyafile} = useContext(AppContext);
@@ -24,6 +25,9 @@ export default function MessageInput() {
     const [files, setFiles] = useState([]);
     const messageBox = useRef(null);
     const messageCreate = useChannelMessageCreate();
+
+    const {play: sidebarSelectPlay} = useSound("sfx/button-sidebar-select");
+    const {play: defaultSelectPlay} = useSound("sfx/default-select");
 
     const gifPopout = usePopout({placement: "top-end"});
     const emotes = useEmotes();
@@ -34,6 +38,7 @@ export default function MessageInput() {
         fuseOptions: {keys: ['name'], threshold: 0.1, limit: 50},
         invertControls: true
     })
+    const ohYayILoveGarbageHacks = useRef(false);
 
     function keysmashOutsideHandler(event) {
         if(document.activeElement?.tagName.toLowerCase() === "input") return;
@@ -76,6 +81,8 @@ export default function MessageInput() {
 
         <form className={styles.messageForm} onSubmit={async (e) => {
             e.preventDefault();
+            if(ohYayILoveGarbageHacks.current) return ohYayILoveGarbageHacks.current = false;
+            defaultSelectPlay();
 
             await messageCreate.mutateAsync({
                 channel: dialogId,
@@ -98,7 +105,8 @@ export default function MessageInput() {
         {gifPopout.open ? <GIFPicker {...gifPopout.popoutProps} hide={gifPopout.toggle}/> : null}
         {emoteSearchPopout.open && emotes.isSuccess ? <LightquarkEmoteSearch message={message} setMessage={(message) => {
             setMessage(message);
-            new Audio(nyafile.getFileURL("sfx/button-sidebar-select")).play();
+            sidebarSelectPlay();
+            ohYayILoveGarbageHacks.current = true;
         }} {...emoteSearchPopout} {...emoteSearchPopout.popoutProps}/> : null}
     </>
 }

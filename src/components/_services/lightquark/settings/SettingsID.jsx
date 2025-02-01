@@ -11,10 +11,10 @@ import {useQueryClient} from "@tanstack/react-query";
 import useRPC from "../hooks/useRPC.js";
 import useAvatarReset from "../hooks/useAvatarReset.js";
 import useAvatarUpload from "../hooks/useAvatarUpload.js";
+import useSound from "../../../../hooks/useSound.js";
 
 export default function SettingsID({quarkId}) {
-    const {nyafile} = useContext(AppContext);
-    const queryClient = useQueryClient();
+    const {play: successPlay} = useSound("sfx/success");
 
     const {data: quarkData, isLoading: isQuarkLoading} = useQuark(quarkId, {enabled: !!quarkId});
     const {data: meData, isLoading: isMeLoading} = useMe({enabled: !quarkId});
@@ -43,7 +43,7 @@ export default function SettingsID({quarkId}) {
                 quark: quarkId,
                 progressCallback: (e) => setUploadPercentage(e.loaded / e.total * 100)
             });
-            new Audio(nyafile.getFileURL("sfx/success")).play();
+            successPlay();
             setUploadPercentage(0);
         }
         input.click();

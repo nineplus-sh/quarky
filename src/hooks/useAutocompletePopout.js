@@ -1,12 +1,13 @@
 import usePopout from "./usePopout.js";
-import {useContext, useEffect, useMemo, useRef, useState} from "react";
+import {useEffect, useMemo, useRef, useState} from "react";
 import {useInteractions, useListNavigation} from "@floating-ui/react";
 import Fuse from "fuse.js";
-import {AppContext} from "../contexts/AppContext.js";
+import useSound from "./useSound.js";
 
 export default function useAutocompletePopout({data, search, popoutOptions, fuseOptions, invertControls}) {
-    const {nyafile} = useContext(AppContext);
     const popout = usePopout(popoutOptions);
+
+    const {play: sidebarHoverPlay} = useSound("sfx/button-sidebar-hover");
 
     const listRef = useRef([]);
     const virtualItemRef = useRef(null);
@@ -46,7 +47,7 @@ export default function useAutocompletePopout({data, search, popoutOptions, fuse
         if(event.key === 'Enter') listRef.current[activeIndex]?.click();
     }
     useEffect(() => {
-        if(activeIndex !== 0) new Audio(nyafile.getFileURL("sfx/button-sidebar-hover")).play();
+        if(activeIndex !== 0) sidebarHoverPlay();
         document.addEventListener("keydown", enterHandler);
         return () => document.removeEventListener('keydown', enterHandler);
     }, [activeIndex]);

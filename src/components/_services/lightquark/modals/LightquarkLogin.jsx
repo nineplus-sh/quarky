@@ -12,6 +12,7 @@ import {useCrossfade} from "../../../../hooks/useCrossfade.js";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeExternalLinks from "rehype-external-links";
+import useSound from "../../../../hooks/useSound.js";
 
 export default function LightquarkLogin() {
     const appContext = useContext(AppContext);
@@ -31,6 +32,8 @@ export default function LightquarkLogin() {
     const [isSwitching, setSwitching] = useState(true);
     const [code, setCode] = useState(null);
     const crossfade = useCrossfade();
+
+    const {play: errorPlay} = useSound("sfx/error");
 
     useEffect( () => {
         async function getNetworkInfo() {
@@ -81,8 +84,8 @@ export default function LightquarkLogin() {
             switchTab("confirm");
             setSwitching(false);
         } else {
-            new Audio(appContext.nyafile.getFileURL("sfx/error")).play();
-            setTimeout(() => alert(tokens.response.message), 5);
+            errorPlay();
+            alert(tokens.response.message);
             setSwitching(false);
         }
     }
@@ -100,8 +103,8 @@ export default function LightquarkLogin() {
         if(tokens.request.success === true) {
             finalizeLogin(tokens.response.access_token, tokens.response.refresh_token)
         } else {
-            new Audio(appContext.nyafile.getFileURL("sfx/error")).play();
-            setTimeout(() => alert(tokens.response.message), 5);
+            errorPlay();
+            alert(tokens.response.message)
             setSwitching(false);
         }
     }
@@ -119,8 +122,8 @@ export default function LightquarkLogin() {
         if(tokens.request.success === true) {
             finalizeLogin(tokens.response.access_token, tokens.response.refresh_token)
         } else {
-            new Audio(appContext.nyafile.getFileURL("sfx/error")).play();
-            setTimeout(() => alert(tokens.response.message), 5);
+            errorPlay();
+            alert(tokens.response.message);
             setSwitching(false);
         }
     }

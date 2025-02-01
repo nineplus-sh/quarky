@@ -11,6 +11,8 @@ import useQuarkDelete from "../hooks/useQuarkDelete.js";
 import {AppContext} from "../../../../contexts/AppContext.js";
 import {useModal} from "@ebay/nice-modal-react";
 import {router} from "../../../../index.jsx";
+import useSound from "../../../../hooks/useSound.js";
+import useUser from "../hooks/useUser.js";
 
 export default function QuarkSettingsDelete({quarkId}) {
     const {nyafile} = useContext(AppContext);
@@ -22,40 +24,44 @@ export default function QuarkSettingsDelete({quarkId}) {
     const eoeWrap = useRef(null);
     const quarkDelete = useQuarkDelete();
 
+    const {play: popInPlay} = useSound("sfx/dialog-pop-in");
+    const {play: cancelPlay} = useSound("sfx/dialog-cancel-select");
+    const {play: explodePlay} = useSound("sfx/explode");
+
     useEffect(() => {
         if(isMembersLoading) return;
         let prevPos = null;
-        let prevAvatar = null;
+        let prevID = null;
         const interval = setInterval(function() {
             const id = Date.now();
-            let pos; let avatar;
+            let pos; let userID;
             do { pos = Math.floor(Math.random()*(parseInt(eoeWrap.current.getBoundingClientRect().width.toString()[0])-1))+1; } while (pos===prevPos);
-            do { avatar = channelMembers[Math.floor(Math.random() * channelMembers.length)].avatarUri; } while (channelMembers.length > 1 && prevAvatar===avatar);
+            do { userID = channelMembers[Math.floor(Math.random() * channelMembers.length)]; } while (channelMembers.length > 1 && prevID===userID);
             prevPos = pos;
-            prevAvatar = avatar;
-            setDeaths(deaths => [...deaths, {id, avatar, pos}]);
+            prevID = userID;
+            setDeaths(deaths => [...deaths, {id, userID, pos}]);
             setTimeout(() => setDeaths(deaths => deaths.filter(death => death.id !== id)), 500)
         }, 1000)
         return () => clearInterval(interval);
     }, [isMembersLoading]);
 
-    function boom() {
-        new Audio(nyafile.getFileURL("sfx/dialog-pop-in")).play();
-        setTimeout(async function() {
-            if(confirm(t("DELETE_QUARK_CONFIRM", {name:quark.name}))) {
-                await quarkDelete.mutateAsync(quarkId);
-                modal.hide();
-                router.navigate("/lq_100000000000000000000000");
-                new Audio("/explode.mp3").play();
-            }
-        }, 20)
+    async function boom() {
+        popInPlay();
+        if(confirm(t("DELETE_QUARK_CONFIRM", {name:quark.name}))) {
+            await quarkDelete.mutateAsync(quarkId);
+            modal.hide();
+            router.navigate("/lq_100000000000000000000000");
+            explodePlay();
+        } else {
+            cancelPlay();
+        }
     }
 
     if(isLoading || isMembersLoading) return null;
 
     return <>
         <div className={styles.members}>
-            {deaths?.map(death => <ProfilePicture src={death.avatar} key={death.id} style={{left: `${death.pos}00px`}}/>)}
+            {deaths?.map(death => <Death id={death.userID} key={death.id} pos={death.pos}/>)}
         </div>
         <div className={styles.eoeGraphic} ref={eoeWrap}>
             <ProfilePicture src={quark.iconUri} px={196} doPurr={false} className={styles.quark}/>
@@ -75,4 +81,11 @@ export default function QuarkSettingsDelete({quarkId}) {
             <Button destructive puffy onClick={boom} className={styles.w3shake}>{t("DONT_CARE")}</Button>
         </div>
     </>
+}
+
+function Death({id, pos}) {
+    const {isSuccess, data} = useUser(id);
+    if(!isSuccess) return null;
+
+    return <ProfilePicture src={data.avatarUri} style={{left: `${pos}00px`}}/>
 }

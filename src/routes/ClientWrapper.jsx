@@ -9,6 +9,7 @@ import {WebSocketContext} from "../contexts/WebSocketContext.js";
 import useRPC from "../components/_services/lightquark/hooks/useRPC.js";
 import useOnceWhen from "../util/useOnceWhen.js";
 import {flushSync} from "react-dom";
+import useSound from "../hooks/useSound.js";
 
 /**
  * The client screen.
@@ -19,14 +20,15 @@ export default function ClientWrapper() {
     const [clientReady, setClientReady] = useState(false);
     const navigate = useNavigate();
     const {apiKeys, setApiKeys, settings,
-        saveSettings, nyafile, refreshOverHTTP} = useContext(AppContext)
+        saveSettings, refreshOverHTTP} = useContext(AppContext);
     const {setSocket} = useContext(WebSocketContext);
     const {pathname} = useLocation();
     const [loadingString, setLoadingString] = useState("LOADING_WEBSOCKET");
     const apiCall = useRPC();
 
-    const firstGateway = useGateway(apiKeys.gatewayURL, !!apiKeys.gatewayURL)
-    //const secondGateway = useGateway(apiKeys.gatewayURL, !!apiKeys.gatewayURL)
+    const gateway = useGateway(apiKeys.gatewayURL, !!apiKeys.gatewayURL);
+
+    const {play: crossfadePlay} = useSound("sfx/crossfade");
 
     useEffect(() => {(async () => {
         if(pathname === "/") navigate("/lq_100000000000000000000000");
@@ -36,21 +38,21 @@ export default function ClientWrapper() {
         if (!apiKeys.gatewayURL) {
             const network = await fetch(`${apiKeys.baseURL}/v4/network`).then(res => res.json());
             setApiKeys(prevApiKeys => ({...prevApiKeys, baseURL: network.baseUrl, gatewayURL: network.gateway, cdnURL: network.cdnBaseUrl}));
-            setSocket(firstGateway);
+            setSocket(gateway);
         }
     })()}, []);
 
     useEffect(() => {
-        if (firstGateway) {
+        if (gateway) {
             setTimeout(() => {
                 flushSync(() => {
-                    setSocket(firstGateway);
+                    setSocket(gateway);
                 });
             }, 0);
         }
-    }, [firstGateway, setSocket]);
+    }, [gateway, setSocket]);
 
-    useOnceWhen(firstGateway.isAuthenticated, true, async () => {
+    useOnceWhen(gateway.isAuthenticated, true, async () => {
         setLoadingString("LOADING_SETTINGS");
         const grabbedSettings = (await apiCall("user/me/preferences/quarky")).preferences;
         Object.entries(grabbedSettings).forEach(([key, value]) => {
@@ -90,7 +92,7 @@ export default function ClientWrapper() {
 
         setLoadingString("HEADER_WELCOME");
         setClientReady(true);
-        new Audio(nyafile.getFileURL("sfx/crossfade")).play();
+        crossfadePlay();
     })
 
     return (<>
