@@ -1,6 +1,7 @@
 html, body {
   height: 100%;
   overscroll-behavior-y: none;
+  font-family: system-ui;
 }
 #root {
   height: 100%;

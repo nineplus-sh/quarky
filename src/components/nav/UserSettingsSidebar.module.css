@@ -25,6 +25,7 @@
     display: flex;
     font-size: smaller;
     gap: 10px;
+    justify-content: flex-end;
 }
 
 .sns a {

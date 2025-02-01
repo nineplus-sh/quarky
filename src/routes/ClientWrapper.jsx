@@ -62,6 +62,7 @@ export default function ClientWrapper() {
         })
 
         if(settings["GAME_ACTIVITY"] && window.hiddenside && window.hiddenside.hardcoreGaming && window.hiddenside.casualGaming) {
+            setLoadingString("LOADING_GAMES");
             fetch("https://gameplus.nineplus.sh/api/games").then(res => res.json()).then(gameData => window.hiddenside.hardcoreGaming(gameData))
 
             // Not using state here since the value is only used inside this effect
@@ -87,6 +88,7 @@ export default function ClientWrapper() {
             })
         }
 
+        setLoadingString("HEADER_WELCOME");
         setClientReady(true);
         new Audio(nyafile.getFileURL("sfx/crossfade")).play();
     })

@@ -5,7 +5,6 @@ const AC = new AudioContext();
 
 /**
  * Play a sound! Loop it, too!
- * TODO: This is a rudimentary implementation. It acts quite weirdly.
  */
 export default function useSound(name, {looping, autoplay} = {}) {
     const {nyafile} = useContext(AppContext);
