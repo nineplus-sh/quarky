@@ -4,6 +4,8 @@ import basicSsl from '@vitejs/plugin-basic-ssl';
 import {sentryVitePlugin} from "@sentry/vite-plugin";
 import "dotenv/config";
 
+console.log("HEWWO EVERNYAN My Sentry Auth Token IS:", process.env.SENTRY_AUTH_TOKEN);
+
 // https://vitejs.dev/config/
 export default defineConfig({
   server: {
