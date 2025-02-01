@@ -22,6 +22,7 @@ export default defineConfig({
       }),
       basicSsl(),
       sentryVitePlugin({
+          url: "https://sentry.yggdrasil.cat/",
           org: "litdevs",
           project: "quarky",
           authToken: process.env.SENTRY_AUTH_TOKEN,
