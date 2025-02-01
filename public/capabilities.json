@@ -1,0 +1,60 @@
+{
+  "$schema": "https://lightquark.network/capability.schema.json",
+  "client": {
+    "name": "Quarky",
+    "author": "ninePLUS",
+    "repository": "https://github.com/nineplus-sh/quarky",
+    "version": "0.3.9",
+    "url": "https://nineplus.sh/quarky/"
+  },
+  "features": {
+    "full": [
+      "general.opensource",
+      "general.authentication",
+      "general.gateway",
+      "general.networks",
+      "quarks.create",
+      "quarks.delete",
+      "quarks.icon",
+      "quarks.list",
+      "quarks.view",
+      "quarks.join",
+      "quarks.leave",
+      "channels.list",
+      "channels.view",
+      "messages.read",
+      "messages.send",
+      "messages.edit",
+      "messages.delete",
+      "messages.botMessage",
+      "messages.attachments",
+      "users.me",
+      "users.avatars",
+      "users.avatar",
+      [
+        {
+          "name": "You can pet people",
+          "description": "Hover over their profile pictures and observe."
+        }
+      ]
+    ],
+    "partial": [
+      {
+        "feature": "channels.history",
+        "reason": "Loading messages prior to startup is capped to last 100 because of a bug with the scrolling detector."
+      }
+    ],
+    "unsupported": [
+      "general.deeplink",
+      "general.notifications",
+      "quarks.edit",
+      "quarks.invite",
+      "quarks.order",
+      "channels.create",
+      "channels.delete",
+      "channels.edit",
+      "messages.me",
+      "users.nickname"
+    ]
+  }
+}
