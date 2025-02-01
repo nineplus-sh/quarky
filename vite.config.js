@@ -35,6 +35,11 @@ export default defineConfig({
           reactComponentAnnotation: { enabled: true },
           sourcemaps: {
               filesToDeleteAfterUpload: "**/*.js.map"
+          },
+          release: {
+              setCommits: {
+                  auto: true
+              }
           }
       })
   ],
