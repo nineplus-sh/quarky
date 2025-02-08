@@ -1,6 +1,6 @@
 import {useEffect, useRef} from "react";
 
-export default function useOnceWhen(variable, value, callback, enabled) {
+export default function useOnceWhen(variable, value, callback, enabled = true) {
     const hasRun = useRef(false);
 
     useEffect(() => {

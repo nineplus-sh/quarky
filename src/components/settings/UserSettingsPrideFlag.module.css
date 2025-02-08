@@ -1,14 +1,16 @@
-.prideSwitcher {
-
-}
-.pridePreviews {
-    display: flex;
-    align-items: center;
-}
 .pridePreviewLinear {
+    position: relative;
     background: linear-gradient(var(--pride-linear));
     width: 5.5em;
     height: 3em;
+
+    left: 0.5em;
+    bottom: 0.5em;
+}
+@media (max-width: 700px) {
+    .pridePreviewConic {
+        display: none;
+    }
 }
 .previewPlanet {
     aspect-ratio: 1/1;
@@ -20,6 +22,7 @@
 }
 .pridePreviewConic {
     position: relative;
+    bottom: 1em;
 }
 .previewPrideRadialWrap {
     position: absolute;

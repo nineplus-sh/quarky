@@ -12,9 +12,10 @@ import Button from "../nav/Button.jsx";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeExternalLinks from "rehype-external-links";
+import useSettings from "../_services/lightquark/hooks/useSettings.js";
 
 export default function Message({children, avatarUri, username, content, isBot, botName, isDiscord, timestamp, edited, attachments, replyTo, isContinuation, game, editFunction, deleteFunction}) {
-    const {settings} = useContext(AppContext)
+    const {data: settings, isSuccess: settingsReady} = useSettings();
     const [isEditing, setEditing] = useState(false);
     const [isSaving, setSaving] = useState(false);
     const [isDeleting, setDeleting] = useState(false);
@@ -31,6 +32,7 @@ export default function Message({children, avatarUri, username, content, isBot, 
         }
     }
 
+    if(!settingsReady) return null;
     return (<div className={classnames(styles.messagewrapper, {[styles.messagefollowup]: isContinuation, [styles.messagediting]: isEditing})}>
         {isContinuation ? null : <ProfilePicture src={avatarUri} isMessage={!isEditing}/>}
         <span className={styles.message} tabIndex={0}>

@@ -10,6 +10,7 @@ import useRPC from "../components/_services/lightquark/hooks/useRPC.js";
 import useOnceWhen from "../util/useOnceWhen.js";
 import {flushSync} from "react-dom";
 import useSound from "../hooks/useSound.js";
+import useSettings from "../components/_services/lightquark/hooks/useSettings.js";
 
 /**
  * The client screen.
@@ -19,14 +20,14 @@ import useSound from "../hooks/useSound.js";
 export default function ClientWrapper() {
     const [clientReady, setClientReady] = useState(false);
     const navigate = useNavigate();
-    const {apiKeys, setApiKeys, settings,
-        saveSettings, refreshOverHTTP} = useContext(AppContext);
+    const {apiKeys, setApiKeys, refreshOverHTTP} = useContext(AppContext);
     const {setSocket} = useContext(WebSocketContext);
     const {pathname} = useLocation();
     const [loadingString, setLoadingString] = useState("LOADING_WEBSOCKET");
     const apiCall = useRPC();
 
     const gateway = useGateway(apiKeys.gatewayURL, !!apiKeys.gatewayURL);
+    const {data: settings, refetch: refetchSettings, isSuccess: settingsReady} = useSettings();
 
     const {play: crossfadePlay} = useSound("sfx/crossfade");
 
@@ -54,46 +55,38 @@ export default function ClientWrapper() {
 
     useOnceWhen(gateway.isAuthenticated, true, async () => {
         setLoadingString("LOADING_SETTINGS");
-        const grabbedSettings = (await apiCall("user/me/preferences/quarky")).preferences;
-        Object.entries(grabbedSettings).forEach(([key, value]) => {
-            key = key.toUpperCase();
-            if(typeof defaultSettings[key] === "object") value = JSON.parse(value);
-            if(settings[key] !== value) saveSettings({
-                [key]: value
-            }, false)
-        })
-
-        if(settings["GAME_ACTIVITY"] && window.hiddenside && window.hiddenside.hardcoreGaming && window.hiddenside.casualGaming) {
-            setLoadingString("LOADING_GAMES");
-            fetch("https://gameplus.nineplus.sh/api/games").then(res => res.json()).then(gameData => window.hiddenside.hardcoreGaming(gameData))
-
-            // Not using state here since the value is only used inside this effect
-            // A state would not update since no new render
-            let currentGameId = "BLELELELE"
-            window.hiddenside.casualGaming((games) => {
-                if(games.length !== 0 && games[0]._id !== currentGameId) {
-                    console.log(`Now playing ${games[0].name} ${games[0]._id}`)
-                    currentGameId = games[0]._id
-                    const formData = new FormData();
-                    formData.append("payload", JSON.stringify({
-                        "type": "playing",
-                        "primaryText": games[0].name,
-                        "primaryImageUri": `https://gameplus.nineplus.sh/game/${games[0]._id}/icon`,
-                        "startTime": new Date()
-                    }));
-
-                    LQ("user/me/status", "PUT", formData)
-                } else if (games.length === 0 && currentGameId !== "BLELELELE") {
-                    currentGameId = "BLELELELE"
-                    LQ("user/me/status", "DELETE")
-                }
-            })
-        }
-
+        await refetchSettings();
         setLoadingString("HEADER_WELCOME");
         setClientReady(true);
-        crossfadePlay();
     })
+
+    useEffect(() => {
+        let currentGameId = "BLELELELE"
+        function gamesDetected(games) {
+            if(games.length !== 0 && games[0]._id !== currentGameId) {
+                console.log(`Now playing ${games[0].name} ${games[0]._id}`)
+                currentGameId = games[0]._id
+                const formData = new FormData();
+                formData.append("payload", JSON.stringify({
+                    "type": "playing",
+                    "primaryText": games[0].name,
+                    "primaryImageUri": `https://gameplus.nineplus.sh/game/${games[0]._id}/icon`,
+                    "startTime": new Date()
+                }));
+
+                LQ("user/me/status", "PUT", formData)
+            } else if (games.length === 0 && currentGameId !== "BLELELELE") {
+                currentGameId = "BLELELELE"
+                LQ("user/me/status", "DELETE")
+            }
+        }
+
+        if(settings && settings.GAME_ACTIVITY && window.hiddenside && window.hiddenside.hardcoreGaming && window.hiddenside.casualGaming) {
+            fetch("https://gameplus.nineplus.sh/api/games").then(res => res.json()).then(gameData => window.hiddenside.hardcoreGaming(gameData))
+            window.hiddenside.casualGaming(gamesDetected);
+        }
+        return () => window.hiddenside?.stompOnCasuals(gamesDetected);
+    }, [settings?.GAME_ACTIVITY]);
 
     return (<>
         {clientReady ? <>

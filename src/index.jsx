@@ -85,14 +85,6 @@ export function App(props) {
     let [socket, setSocket] = useState(null);
 
     useEffect(() => {
-        async function loadConfigs() {
-            const storedSettings = await localForage.getItem("settings")
-            if(storedSettings) {
-                setSettings({...defaultSettings, ...storedSettings})
-            }
-
-            await loadTranslations();
-        }
         async function loadTranslations() {
             const languages = import.meta.glob('./langs/*.json');
 
@@ -128,21 +120,8 @@ export function App(props) {
 
             setHoliday(validHolidays[Math.floor(Math.random() * validHolidays.length)]);
         }
-        loadConfigs();
+        loadTranslations();
     }, []);
-
-    async function saveSettings(toBeWritten, cloud = true) {
-        setSettings({...settings, ...toBeWritten});
-        localForage.setItem("settings", {...settings, ...toBeWritten});
-
-        if(cloud && apiKeys.accessToken) {
-            Object.entries(toBeWritten).forEach(([key, value]) => {
-                LQ(`user/me/preferences/quarky/${key}`, "POST", {
-                    value: typeof value === "object" ? Object.values(value).filter(vvalue => vvalue !== undefined).length === 0 ? null : JSON.stringify(value) : value
-                })
-            })
-        }
-    }
 
     const axiosClient = useMemo(() => axios.create({
         headers: {
@@ -191,7 +170,6 @@ export function App(props) {
             messageCache, setMessageCache,
             userCache, setUserCache,
             drafts, setDrafts,
-            settings, setSettings, saveSettings,
             apiKeys, setApiKeys,
             quarkCache, setQuarkCache,
             axiosClient, refreshOverHTTP

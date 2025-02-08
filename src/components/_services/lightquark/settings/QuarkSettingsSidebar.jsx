@@ -1,5 +1,5 @@
 import SidebarItem from "../../../nav/SidebarItem.jsx";
-import styles from "../../../nav/UserSettingsSidebar.module.css";
+import styles from "../../../settings/UserSettingsSidebar.module.css";
 import LQ from "../../../../util/LQ.js";
 import {useContext} from "react";
 import {AppContext} from "../../../../contexts/AppContext.js";

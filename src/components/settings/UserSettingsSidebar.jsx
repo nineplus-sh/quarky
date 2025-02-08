@@ -1,4 +1,4 @@
-import SidebarItem from "./SidebarItem.jsx";
+import SidebarItem from "../nav/SidebarItem.jsx";
 import {useTranslation} from "react-i18next";
 import styles from "./UserSettingsSidebar.module.css";
 import NyafileImage from "../nyafile/NyafileImage.jsx";
@@ -32,10 +32,10 @@ export default function UserSettingsSidebar({area, setArea}) {
         <div className={styles.sidebarHeader}>
             <span>{t("SETTINGS_APPSETTINGS")}</span>
         </div>
-        <SidebarItem baseI18n={"SETTINGS"} area={"appearance"} currentArea={area} setArea={setArea}/>
         <SidebarItem baseI18n={"SETTINGS"} area={"chat"} currentArea={area} setArea={setArea}/>
         <SidebarItem baseI18n={"SETTINGS"} area={"language"} currentArea={area} setArea={setArea}/>
         {window.hiddenside?.hardcoreGaming ? <SidebarItem baseI18n={"SETTINGS"} area={"playing"} currentArea={area} setArea={setArea}/> : null }
+        <SidebarItem baseI18n={"SETTINGS"} area={"pride"} currentArea={area} setArea={setArea}/>
 
         <div className={styles.separator}/>
 

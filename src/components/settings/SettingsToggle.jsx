@@ -4,21 +4,23 @@ import styles from "./SettingsToggle.module.css"
 import localForage from "localforage";
 import {AppContext} from "../../contexts/AppContext.js";
 import useSound from "../../hooks/useSound.js";
+import useSettingsSet from "../_services/lightquark/hooks/useSettingsSet.js";
+import useSettings from "../_services/lightquark/hooks/useSettings.js";
 
 export default function SettingsToggle({setting}) {
-    const {settings, setSettings, nyafile} = useContext(AppContext);
+    const {nyafile} = useContext(AppContext);
 
     const {play: checkboxEnabledPlay} = useSound("sfx/checkbox-true");
     const {play: checkboxDisabledPlay} = useSound("sfx/checkbox-false");
+    const {data: settings, isSuccess: settingsReady} = useSettings();
+    const {mutate: setSetting} = useSettingsSet();
 
     async function changeSetting() {
-        setSettings({...settings, [setting]: !settings[setting]});
+        setSetting({key: setting, value: !settings[setting]});
         !settings[setting] ? checkboxEnabledPlay() : checkboxDisabledPlay();
-
-        const oldForage = await localForage.getItem("settings")
-        await localForage.setItem("settings", {...oldForage, [setting]: !settings[setting]});
     }
 
+    if(!settingsReady) return null;
     return <div className={styles.toggle} aria-checked={settings[setting]} onClick={changeSetting}>
         <NyafileImage className={styles.toggleSlider} src={`img/vukky${settings[setting] === true ? "" : "disabled"}`}/>
     </div>
