@@ -1,6 +1,5 @@
 import {useParams} from "react-router-dom";
 import {useContext, useEffect, useMemo, useRef, useState} from "react";
-import LQ from "../../util/LQ.js";
 import styles from "./MessageInput.module.css"
 import {autoUpdate, useClick, useFloating, useInteractions, useListNavigation} from "@floating-ui/react";
 import GIFPicker from "../modals/GIFPicker.jsx";

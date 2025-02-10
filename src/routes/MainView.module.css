@@ -4,13 +4,15 @@
     flex: 0 0 auto;
 
     max-height: 100%;
-    overflow-y: hidden;
+    overflow-y: auto;
     overflow-x: hidden;
     padding-right: 0.5em;
     padding-left: 0.3em;
     padding-top: 0.5em;
+    gap: 0.5em;
 
-    background-color: var(--background-color-min)
+    background-color: var(--background-color-min);
+    scrollbar-width: none;
 }
 @media(max-width: 700px) {
     .quarkList.closed {

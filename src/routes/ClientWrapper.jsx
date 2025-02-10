@@ -1,4 +1,4 @@
-import {useContext, useEffect, useState} from "react";
+import {useContext, useEffect, useRef, useState} from "react";
 import {Outlet, useLocation, useNavigate} from "react-router-dom";
 import {AppContext, defaultSettings} from "../contexts/AppContext.js";
 import LQ from "../util/LQ.js";
@@ -24,10 +24,10 @@ export default function ClientWrapper() {
     const {setSocket} = useContext(WebSocketContext);
     const {pathname} = useLocation();
     const [loadingString, setLoadingString] = useState("LOADING_WEBSOCKET");
-    const apiCall = useRPC();
 
     const gateway = useGateway(apiKeys.gatewayURL, !!apiKeys.gatewayURL);
-    const {data: settings, refetch: refetchSettings, isSuccess: settingsReady} = useSettings();
+    const {data: settings, refetch: refetchSettings} = useSettings();
+    const gameID = useRef(null);
 
     const {play: crossfadePlay} = useSound("sfx/crossfade");
 
@@ -58,14 +58,14 @@ export default function ClientWrapper() {
         await refetchSettings();
         setLoadingString("HEADER_WELCOME");
         setClientReady(true);
+        crossfadePlay();
     })
 
     useEffect(() => {
-        let currentGameId = "BLELELELE"
         function gamesDetected(games) {
-            if(games.length !== 0 && games[0]._id !== currentGameId) {
+            if(games.length !== 0 && games[0]._id !== gameID.current) {
                 console.log(`Now playing ${games[0].name} ${games[0]._id}`)
-                currentGameId = games[0]._id
+                gameID.current = games[0]._id
                 const formData = new FormData();
                 formData.append("payload", JSON.stringify({
                     "type": "playing",
@@ -75,9 +75,9 @@ export default function ClientWrapper() {
                 }));
 
                 LQ("user/me/status", "PUT", formData)
-            } else if (games.length === 0 && currentGameId !== "BLELELELE") {
-                currentGameId = "BLELELELE"
+            } else if (games.length === 0 && gameID.current !== null) {
                 LQ("user/me/status", "DELETE")
+                gameID.current = null;
             }
         }
 

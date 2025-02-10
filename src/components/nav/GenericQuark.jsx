@@ -4,7 +4,7 @@ import {useContext, useState} from "react";
 import classnames from "classnames";
 import {AppContext} from "../../contexts/AppContext.js";
 import {
-    autoUpdate,
+    autoUpdate, offset,
     useClick,
     useClientPoint,
     useFloating,
@@ -19,8 +19,8 @@ export default function GenericQuark({link, icon, name}) {
     const [isStretching, stretchIt] = useState(false);
     const appContext = useContext(AppContext);
 
-    const {play: hoverPlay} = useSound("sfx/default-hover");
-    const {play: selectPlay} = useSound("sfx/default-select");
+    const {play: hoverPlay} = useSound("sfx/button-sidebar-hover");
+    const {play: selectPlay} = useSound("sfx/button-sidebar-select");
 
     const [tooltipOpen, setTooltipOpen] = useState(false);
     const tooltipFloat = useFloating({
@@ -28,7 +28,8 @@ export default function GenericQuark({link, icon, name}) {
         strategy: "fixed",
         whileElementsMounted: autoUpdate,
         open: tooltipOpen,
-        onOpenChange: setTooltipOpen
+        onOpenChange: setTooltipOpen,
+        middleware:  [offset(15)]
     });
     const tooltipHover = useHover(tooltipFloat.context);
     const clientPoint = useClientPoint(tooltipFloat.context, {
@@ -45,20 +46,20 @@ export default function GenericQuark({link, icon, name}) {
         },
         close: {
             transformOrigin: "center left",
-            transform: "scale(0) rotateX(0deg)"
+            transform: "scale(0)"
         },
     });
     const tooltipInteractions = useInteractions([tooltipHover, clientPoint]);
 
-    return <><span className={classnames(styles.quark, {[styles.stretch]: isStretching})}  onAnimationEnd={() => stretchIt(false)} onClick={() => {
+    return <><div className={classnames(styles.quark, {[styles.stretch]: isStretching})}  onAnimationEnd={() => stretchIt(false)} onClick={() => {
         stretchIt(false);
         setTimeout(function() {
             stretchIt(true);
             selectPlay();
         }, 9)
-    }} onMouseEnter={hoverPlay}>
-        <img src={icon} width={64} height={64} className={styles.icon} ref={tooltipFloat.refs.setReference}/>
-    </span>
+    }} onMouseEnter={hoverPlay} ref={tooltipFloat.refs.setReference}>
+        <img src={icon} width={64} height={64} className={styles.icon}/>
+    </div>
         {transStyles.isMounted ? <Tooltip floatRef={tooltipFloat.refs.setFloating} floatStyles={tooltipFloat.floatingStyles} transStyles={transStyles.styles} floatProps={tooltipInteractions.getFloatingProps()}>{name}</Tooltip> : null}
     </>
 }

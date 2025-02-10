@@ -4,7 +4,6 @@ import classnames from "classnames";
 import ProfilePicture from "../../../dialogs/ProfilePicture.jsx";
 import {useContext, useState} from "react";
 import {AppContext} from "../../../../contexts/AppContext.js";
-import LQ from "../../../../util/LQ.js";
 import useQuark from "../hooks/useQuark.js";
 import useMe from "../hooks/useMe.js";
 import {useQueryClient} from "@tanstack/react-query";

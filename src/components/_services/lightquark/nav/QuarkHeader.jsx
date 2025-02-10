@@ -3,7 +3,6 @@ import {AppContext} from "../../../../contexts/AppContext.js";
 import {useContext} from "react";
 import styles from "./QuarkHeader.module.css"
 import {useTranslation} from "react-i18next";
-import LQ from "../../../../util/LQ.js";
 import NiceModal from "@ebay/nice-modal-react";
 import SettingsView from "../../../../routes/SettingsView.jsx";
 import QuarkSettingsSidebar from "../settings/QuarkSettingsSidebar.jsx";

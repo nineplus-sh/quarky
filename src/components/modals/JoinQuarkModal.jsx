@@ -6,7 +6,6 @@ import {AppContext} from "../../contexts/AppContext.js";
 import NyafileImage from "../nyafile/NyafileImage.jsx";
 
 import styles from "./JoinQuarkModal.module.css";
-import LQ from "../../util/LQ.js";
 import useQuarkJoin from "../_services/lightquark/hooks/useQuarkJoin.js";
 import {useNavigate} from "react-router-dom";
 import useQuarkCreate from "../_services/lightquark/hooks/useQuarkCreate.js";

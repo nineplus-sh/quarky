@@ -24,7 +24,7 @@ export default function Root() {
     const [loadingPercentage, setLoadingPercentage] = useState(null);
     const [loadingPercentageText, setLoadingPercentageText] = useState("");
 
-    const {data: settings, refetch: refetchSettings, isSuccess: settingsReady} = useSettings();
+    const {data: settings, isSuccess: settingsReady} = useSettings();
 
     useOnceWhen(settingsReady, true, async () => {
         let themePalette = settings.PALETTE;

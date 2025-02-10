@@ -10,7 +10,7 @@ export default async function gatekeeperMeasureHandler(eventData, setApiKeys, ga
     });
 }
 
-const pingPerThing = 5;
+const pingPerThing = 2;
 export async function testServerLatencies({appServers, gateways}) {
     const finalMeasurement = {gateways: [], appServers: []}
     for (const appServer of appServers) {

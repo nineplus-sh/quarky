@@ -23,7 +23,6 @@ import LanguageDetector from "i18next-browser-languagedetector";
 import holidays from './util/holidays.json';
 import MainView from "./routes/MainView.jsx";
 import localForage from "localforage";
-import LQ from "./util/LQ.js";
 import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
 import axios from "axios";
 import {version} from "../package.json";
