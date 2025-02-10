@@ -3,9 +3,9 @@ import GenericModal from "./GenericModal.jsx";
 import {useEffect, useState} from "react";
 import {useTranslation} from "react-i18next";
 import styles from "./GamePLUSuggestModal.module.css"
-import loginStyles from "../_services/lightquark/modals/LightquarkLogin.module.css"
-import ftmStyles from "./FirstTimeModal.module.css";
 import classnames from "classnames";
+import dedupe from "../../util/dedupe.js";
+import Button from "../nav/Button.jsx";
 
 export default NiceModal.create(() =>{
     const modal = useModal();
@@ -15,15 +15,19 @@ export default NiceModal.create(() =>{
     const [isSubmitting, setSubmitting] = useState(false);
 
     function processHandler(processes) {
-        setProcesses(processes.reverse());
+        const procs = dedupe(processes, "name").sort((a,b) => b.pid-a.pid).filter(proc => !proc.cmd.startsWith("[") && !proc.cmd.endsWith("]") && proc.cmd.replace(/\\/g, '/').includes("/"));
+        setProcesses(procs)
     }
     useEffect(() => {
-        window.hiddenside.babyGaming(processHandler);
+        const cleanupListener = window.hiddenside.babyGaming(processHandler);
         window.hiddenside.birthOfGaming();
         return () => {
-            window.hiddenside.byeBaby(processHandler);
+            cleanupListener();
         };
     }, []);
+    useEffect(() => {
+        if(processes.filter(proc => selectedProcess?.pid === proc.pid).length === 0) setProcess(null);
+    }, [processes, selectedProcess]);
     async function submitGame() {
         setSubmitting(true);
         await fetch("https://gameplus.nineplus.sh/api/suggest", {
@@ -54,9 +58,13 @@ export default NiceModal.create(() =>{
                 </div>
             )}
         </div>
-        <button disabled={isSubmitting || selectedProcess === null} onClick={submitGame}
-                className={classnames(loginStyles.prettyButton, loginStyles.primaryButton, ftmStyles.ultraWideButton)}>
-            {t(isSubmitting ? "SUGGEST_GAME_SUGGESTING" : "SUGGEST_GAME_BUTTON")}
-        </button>
+        <div className={styles.actions}>
+            <Button primary puffy disabled={isSubmitting || selectedProcess === null} onClick={submitGame}>
+                {t(isSubmitting ? "SUGGEST_GAME_SUGGESTING" : "SUGGEST_GAME_BUTTON")}
+            </Button>
+            <Button puffy disabled={isSubmitting} onClick={() => window.hiddenside.birthOfGaming()}>
+                {t("REFRESH")}
+            </Button>
+        </div>
     </GenericModal>;
 })
