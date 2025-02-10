@@ -3,9 +3,13 @@ const { contextBridge, ipcRenderer } = require('electron/renderer');
 contextBridge.exposeInMainWorld('hiddenside', {
     platform: process.platform,
     hardcoreGaming: (games) => ipcRenderer.send('game-database-update', games),
-    casualGaming: (callback) => ipcRenderer.on('detected-games', (_event, value) => callback(value)),
-    stompOnCasuals: (callback) => ipcRenderer.removeListener('detected-games', callback),
+    casualGaming: (callback) => createListener('detected-games', callback),
     birthOfGaming: () => ipcRenderer.send('get-all-processes'),
-    babyGaming: (callback) => ipcRenderer.on('detected-processes', (_event, value) => callback(value)),
-    byeBaby: (callback) => ipcRenderer.removeListener('detected-processes', callback)
+    babyGaming: (callback) => createListener('detected-processes', callback),
 })
+
+function createListener(channel, callback) {
+    const trueCB = (event, ...args) => callback(...args);
+    ipcRenderer.on(channel, trueCB)
+    return () => ipcRenderer.removeListener(channel, trueCB);
+}

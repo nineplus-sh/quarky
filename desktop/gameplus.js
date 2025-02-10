@@ -32,7 +32,7 @@ async function getProcesses() {
 }
 
 function checkLambda(executable, process) {
-    return process.cmd.toLowerCase().replace(/\\/g, '/').includes(`/${executable.name}`) && process.cmd.includes(executable.arguments)
+    return process.cmd.toLowerCase().replace(/\\/g, '/').includes(`/${executable.name}`) && (!executable.arguments || process.cmd.includes(executable.arguments))
 }
 
 let processBlacklist = [];
