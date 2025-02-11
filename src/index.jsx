@@ -37,7 +37,7 @@ Sentry.init({
     dsn: "https://901c666ed03942d560e61928448bcf68@sentry.yggdrasil.cat/5",
 
     //tunnel: "https://quarky.skin/diagtun",
-    environment: import.meta.env.VITE_VERCEL_ENV || import.meta.env.MODE || "development",
+    environment: (import.meta.env.VITE_GIT_BRANCH ? import.meta.env.VITE_GIT_BRANCH === "senpai" ? "production" : "preview" : undefined) || import.meta.env.MODE || "development",
     transport: Sentry.makeBrowserOfflineTransport(Sentry.makeFetchTransport),
 
     integrations: [
@@ -214,7 +214,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <ProfiledApp>
             <Sentry.ErrorBoundary fallback={<WooScreen/>}>
                 <ReactQueryDevtools initialIsOpen={false} />
-                {import.meta.env.VITE_VERCEL_ENV === "preview" ? <ReactQueryDevtoolsProduction/> : null}
+                {import.meta.env.VITE_GIT_BRANCH && import.meta.env.VITE_GIT_BRANCH !== "senpai" ? <ReactQueryDevtoolsProduction/> : null}
                 <NiceModal.Provider>
                     <RouterProvider router={router} />
                 </NiceModal.Provider>
