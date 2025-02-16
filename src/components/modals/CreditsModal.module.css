@@ -1,0 +1,19 @@
+.buttonContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5em;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttonContainer a {
+    display:flex;
+    height: 100%;
+}
+
+.creditsModal p, .creditsModal h2 {
+    margin: 0;
+}
+.legalTexts p {
+    margin: 1em 0;
+}
