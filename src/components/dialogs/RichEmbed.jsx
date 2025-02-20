@@ -44,7 +44,13 @@ export default function RichEmbed({url}) {
 
     if(!url.startsWith('http')) return;
 
-    const urlWrap = new URL(url);
+    let urlWrap = null;
+    try {
+        urlWrap = new URL(url);
+    } catch {
+        // bwuh
+    }
+    if(!urlWrap) return null;
 
     let tumblr;
     if(!tumblr) tumblr = urlWrap.href.match(/https?:\/\/([\w-]+)\.tumblr\.com\/post\/(\d+)/);
