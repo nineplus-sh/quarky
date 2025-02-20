@@ -4,6 +4,7 @@ import NiceModal, {useModal} from "@ebay/nice-modal-react";
 import localForage from "localforage";
 import {useContext} from "react";
 import {AppContext} from "../../contexts/AppContext.js";
+import {useQueryClient} from "@tanstack/react-query";
 
 export default NiceModal.create(({ name, maintainer, signOut }) =>{
     const modal = useModal();

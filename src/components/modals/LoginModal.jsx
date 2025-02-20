@@ -1,7 +1,7 @@
-import LightquarkLogin from "../_services/lightquark/modals/LightquarkLogin.jsx";
 import styles from "./LoginModal.module.css"
 import NyafileImage from "../nyafile/NyafileImage.jsx";
 import SmoothResize from "../nav/SmoothResize.jsx";
+import LightquarkLogin from "../_services/lightquark/modals/LightquarkLogin.jsx";
 
 /**
  * The login modal of the authentication needed screen.

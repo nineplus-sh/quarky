@@ -8,6 +8,7 @@ import CreditsModal from "../modals/CreditsModal.jsx";
 import localForage from "localforage";
 import {useContext} from "react";
 import {AppContext} from "../../contexts/AppContext.js";
+import {useQueryClient} from "@tanstack/react-query";
 
 export default function UserSettingsSidebar({area, setArea}) {
     const modal = useModal();

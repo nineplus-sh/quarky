@@ -26,6 +26,8 @@
     "LOGIN_USERNAME": "Username",
     "LOGIN_EMAIL": "hakase@litdevs.org",
     "LOGIN_PASSWORD": "(password)",
+    "LOGIN_PASSWORD_CONFIRM": "(confirm password)",
+    "LOGIN_VERIFICATION_CODE": "Verification code",
     "LOGIN_SWITCH_NETWORKS": "Switch network",
     "LOGIN_SWITCHING_NETWORKS": "Switching networks...",
     "LOGIN_SIGNING_IN": "Signing in...",
@@ -40,6 +42,7 @@
     "LOGIN_SIGN_UP_CODE_OPEN": "Open my inbox",
 
     "GO": "Go!",
+    "GOING": "Going...",
     "OKAY": "Got it",
     "BACK": "Never mind",
     "CANCEL": "Cancel",
