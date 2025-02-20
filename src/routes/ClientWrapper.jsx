@@ -1,12 +1,10 @@
 import {useContext, useEffect, useRef, useState} from "react";
 import {Outlet, useLocation, useNavigate} from "react-router-dom";
 import {AppContext, defaultSettings} from "../contexts/AppContext.js";
-import LQ from "../util/LQ.js";
 import styles from "./ClientWrapper.module.css";
 import Loader from "./Loader.jsx";
 import useGateway from "../components/_services/lightquark/hooks/useGateway.js";
 import {WebSocketContext} from "../contexts/WebSocketContext.js";
-import useRPC from "../components/_services/lightquark/hooks/useRPC.js";
 import useOnceWhen from "../util/useOnceWhen.js";
 import {flushSync} from "react-dom";
 import useSound from "../hooks/useSound.js";

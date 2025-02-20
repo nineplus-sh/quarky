@@ -14,21 +14,18 @@ import remarkGfm from "remark-gfm";
 import rehypeExternalLinks from "rehype-external-links";
 import useSettings from "../_services/lightquark/hooks/useSettings.js";
 
-export default function Message({children, avatarUri, username, content, isBot, botName, isDiscord, timestamp, edited, attachments, replyTo, isContinuation, game, editFunction, deleteFunction}) {
+export default function Message({children, avatarUri, username, content, isBot, botName, isDiscord, timestamp, edited, attachments, replyTo, isContinuation, game, editFunction, deleteFunction, mutatorIsBusy, mutatorError}) {
     const {data: settings, isSuccess: settingsReady} = useSettings();
     const [isEditing, setEditing] = useState(false);
-    const [isSaving, setSaving] = useState(false);
-    const [isDeleting, setDeleting] = useState(false);
-    const [editText, setEditText] = useState(content);
+    const [editText, setEditText] = useState(content || "");
 
     async function checkEditKey(e) {
         if(e.key === "Enter" && !e.shiftKey) {
-            setSaving(true);
             await editFunction(editText);
-            setSaving(false); setEditing(false);
+            setEditing(false);
         } else if (e.key === "Escape") {
             setEditing(false);
-            setEditText(content);
+            setEditText(content || "");
         }
     }
 
@@ -42,17 +39,15 @@ export default function Message({children, avatarUri, username, content, isBot, 
                 <TimeAgo className={styles.timestamp} date={timestamp} /></>}
 
                 <span className={styles.interactions}>
-                    {editFunction ? <Button disabled={isDeleting} onClick={() => setEditing(!isEditing)}>{isEditing ? "cancel" : "edit"}</Button> : null}
+                    {editFunction ? <Button disabled={mutatorIsBusy} onClick={() => setEditing(!isEditing)}>{isEditing ? "cancel" : "edit"}</Button> : null}
                     {editFunction && isEditing ? <Button onClick={() => checkEditKey({key: "Enter"})}>save</Button> : null}
-                    {deleteFunction && !isEditing ? <Button disabled={isDeleting} onClick={() => {
-                        setDeleting(true);
-                        deleteFunction();
-                    }}>delete</Button> : null}
+                    {deleteFunction && !isEditing ? <Button disabled={mutatorIsBusy} onClick={deleteFunction}>delete</Button> : null}
+                    {mutatorError ? "failed!!" : null}
                 </span>
             </span>
 
             <span className={styles.messagecontent}>
-                {isEditing ? <textarea autoFocus={true} value={editText} disabled={isSaving} onKeyDown={(e) => checkEditKey(e)} onChange={(e ) => setEditText(e.target.value)}/> : <>
+                {isEditing ? <textarea autoFocus={true} value={editText} disabled={mutatorIsBusy} onKeyDown={(e) => checkEditKey(e)} onChange={(e ) => setEditText(e.target.value)}/> : <>
                     {edited ? <div className={styles.edited}>edited</div> : null}
 
                     <Markdown components={{p: "span"}} remarkPlugins={[remarkGfm]} rehypePlugins={[[rehypeExternalLinks, {"target": "_blank", "rel": ["noreferrer", "noopener", "nofollow"]}]]}>
