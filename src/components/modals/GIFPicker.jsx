@@ -3,11 +3,13 @@ import {useEffect, useState} from "react";
 import Masonry, {ResponsiveMasonry} from "react-responsive-masonry/lib/index.js";
 import {useParams} from "react-router-dom";
 import LQ from "../../util/LQ.js";
+import useChannelMessageCreate from "../_services/lightquark/hooks/useChannelMessageCreate.js";
 
 export default function GIFPicker({hide, ...props}) {
     let { dialogId } = useParams();
     const [search, setSearch] = useState("");
     const [gifs, setGIFs] = useState([]);
+    const sendMessage = useChannelMessageCreate();
 
     useEffect(() => {
         async function searchyWearchy() {
@@ -18,9 +20,7 @@ export default function GIFPicker({hide, ...props}) {
 
      function sendGIF(url) {
         hide();
-        const formData = new FormData();
-        formData.append("payload", JSON.stringify({content: url}));
-        LQ(`channel/${dialogId}/messages`, "POST", formData)
+        sendMessage.mutate({channel: dialogId, message: {content: url}})
     }
 
     return <div className={styles.gifpickwrap} {...props}>
