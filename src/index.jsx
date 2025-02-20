@@ -32,6 +32,7 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import {renewPromise} from "./components/_services/lightquark/hooks/useRPC.js";
 import {WebSocketContext} from "./contexts/WebSocketContext.js";
 import WooScreen from "./routes/WooScreen.jsx";
+import SentryWrap from "./routes/SentryWrap.jsx";
 
 Sentry.init({
     dsn: "https://901c666ed03942d560e61928448bcf68@sentry.yggdrasil.cat/5",
@@ -186,14 +187,16 @@ export function App(props) {
 const sentryCreateBrowserRouter = Sentry.wrapCreateBrowserRouter(createBrowserRouter);
 export const router = sentryCreateBrowserRouter(
     createRoutesFromElements(
-        <Route path="/" element={<Root />}>
-            <Route path="/demo/:quarkId?/:channelId?" element={<DemoView />} />
+        <Route path="/" element={<SentryWrap />}>
+            <Route path="/" element={<Root />}>
+                <Route path="/demo/:quarkId?/:channelId?" element={<DemoView />} />
 
-            <Route path="/" element={<AuthenticationNeeded />}>
-                <Route path="/" element={<ClientWrapper />}>
-                    <Route path="/" element={<MainView />}>
-                        <Route path="/:quarkId" element={<QuarkView />} >
-                            <Route path="/:quarkId/:dialogId" element={<ChannelView />} />
+                <Route path="/" element={<AuthenticationNeeded />}>
+                    <Route path="/" element={<ClientWrapper />}>
+                        <Route path="/" element={<MainView />}>
+                            <Route path="/:quarkId" element={<QuarkView />} >
+                                <Route path="/:quarkId/:dialogId" element={<ChannelView />} />
+                            </Route>
                         </Route>
                     </Route>
                 </Route>
