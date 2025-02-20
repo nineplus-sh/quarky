@@ -111,8 +111,8 @@ describe("Tweets", () => {
 
 describe("YouTube videos", () => {
     const expected = {
-        url: new URL("https://www.youtube-nocookie.com/embed/hJWSBBQ04XI"),
-        urlStamped: new URL("https://www.youtube-nocookie.com/embed/hJWSBBQ04XI?t=12"),
+        url: new URL("https://www.youtube.com/embed/hJWSBBQ04XI"),
+        urlStamped: new URL("https://www.youtube.com/embed/hJWSBBQ04XI?t=12"),
         title: "Embedded YouTube video"
     };
 

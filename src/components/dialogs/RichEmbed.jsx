@@ -3,11 +3,10 @@ import styles from "./RichEmbed.module.css";
 import attachStyles from "../_services/lightquark/dialogs/LightquarkAttachments.module.css";
 
 let tenor = /https?:\/\/tenor\.com\/view\/[a-z-]*(\d*)/
-export let badLinks = /(?:https?:\/\/tenor\.com\/view\/[a-z-]*\d*|https?:\/\/(?:huh\.nya\.tf|wanderers\.cloud)\/file\/.+)/g
-export let imageHosts = /https?:\/\/(?:huh\.nya\.tf|wanderers\.cloud)\/file\/.+/;
+export let badLinks = /(?:https?:\/\/tenor\.com\/view\/[a-z-]*\d*)/g
 
 export default function RichEmbed({url}) {
-    const [embedHeight, setEmbedHeight] = useState(0);
+    const [embedHeight, setEmbedHeight] = useState(null);
     const [imageSource, setImageSource] = useState(null);
     const ourFrame = useRef(null);
     useEffect(() => {
@@ -34,6 +33,7 @@ export default function RichEmbed({url}) {
             if(tenorID) {
                 const results = await fetch(`https://tenor.googleapis.com/v2/posts?ids=${tenorID[1]}&key=${import.meta.env.VITE_TENOR}&media_filter=gif`).then(res => res.json())
                 setImageSource(results.results[0].media_formats.gif.url);
+                setEmbedHeight(results.results[0].media_formats.gif.dims[1]);
             }
         }
 
@@ -44,9 +44,13 @@ export default function RichEmbed({url}) {
 
     if(!url.startsWith('http')) return;
 
-    const urlWrap = new URL(url);
-
-    if(urlWrap.href.match(imageHosts) && imageSource === null) setImageSource(urlWrap.href);
+    let urlWrap = null;
+    try {
+        urlWrap = new URL(url);
+    } catch {
+        // bwuh
+    }
+    if(!urlWrap) return null;
 
     let tumblr;
     if(!tumblr) tumblr = urlWrap.href.match(/https?:\/\/([\w-]+)\.tumblr\.com\/post\/(\d+)/);
@@ -77,7 +81,7 @@ export default function RichEmbed({url}) {
 
     let youtube = urlWrap.href.match(/https?:\/\/(?:www\.)?(?:youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]+)(?:[?&]\S*?&?t=([0-9smhdw]+))?(?:[?&]\S*)?/);
     if(youtube) {
-        return <iframe width="400" height="225" src={`https://www.youtube-nocookie.com/embed/${youtube[1]}${youtube[2] ? `?t=${youtube[2]}` : ""}`} title="Embedded YouTube video" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" className={styles.richEmbed}></iframe>
+        return <iframe width="400" height="225" src={`https://www.youtube.com/embed/${youtube[1]}${youtube[2] ? `?t=${youtube[2]}` : ""}`} title="Embedded YouTube video" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; fullscreen; picture-in-picture; web-share" className={styles.richEmbed}></iframe>
     }
 
     let lichessStudy = urlWrap.href.match(/https?:\/\/lichess\.org\/study\/([a-zA-Z0-9]{8})\/([a-zA-Z0-9]{8})(#\d+|)/)
@@ -91,6 +95,6 @@ export default function RichEmbed({url}) {
     }
 
     if (imageSource) {
-        return <div className={attachStyles.attachment}><img src={imageSource} className={styles.richEmbed}/></div>
+        return <div className={attachStyles.attachment}><img src={imageSource} height={embedHeight} className={styles.richEmbed}/></div>
     }
 }

@@ -125,7 +125,7 @@
     image-rendering: pixelated;
     animation: floatAway 1s forwards ease-in;
 
-    z-index: 1;
+    z-index: 1000;
     pointer-events: none;
 }
 @keyframes floatAway {
@@ -140,4 +140,20 @@
         transform: translateY(50px);
         opacity: 0;
     }
+}
+
+.crossfade {
+    animation: fadeOut 1s forwards cubic-bezier(1,-0.25,0,1.25);
+    pointer-events: none;
+}
+.crossfade object:global(#preloadlogo) {
+    animation: cwazyScale 1s forwards cubic-bezier(1,-0.25,0,1.25);
+}
+@keyframes fadeOut {
+    from {opacity: 1}
+    to {opacity: 0}
+}
+@keyframes cwazyScale {
+    from {transform: scale(1)}
+    to {transform: scale(5)}
 }

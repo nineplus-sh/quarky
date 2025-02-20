@@ -1,0 +1,12 @@
+{
+  "name": "Quarky",
+  "background_color": "#0194da",
+  "theme_color": "#00a8f3",
+  "icons": [
+    {
+      "src": "quarky.svg",
+      "sizes": "any"
+    }
+  ],
+  "display": "standalone"
+}

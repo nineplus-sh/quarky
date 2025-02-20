@@ -1,18 +1,26 @@
 .radioSelector {
     display: flex;
     height: 2em;
-    margin-bottom: 0.5em;
     padding: 0.5em;
     background-color: var(--background-color-less);
-    border-radius: 5px;
+
+    margin-bottom: 5px;
 
     align-items: center;
     cursor: pointer;
+
+    overflow: hidden;
+}
+.radioSelector:hover {
+
 }
 .radioSelector.radioSelected {
     background-color: var(--background-color-lesser);
 }
-.radioIcon {
+.radioIconLeft {
+    max-height: 2em;
+}
+.radioIconRight {
     max-height: 2em;
     margin-left: auto;
 }

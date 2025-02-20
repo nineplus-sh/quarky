@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react'
+import {lazy, useCallback, useEffect, useMemo, useRef, useState} from 'react'
 import ReactDOM from 'react-dom/client'
 import {
     createBrowserRouter,
@@ -15,7 +15,6 @@ import ClientWrapper from "./routes/ClientWrapper.jsx";
 import QuarkView from "./routes/QuarkView.jsx";
 import ChannelView from "./routes/ChannelView.jsx";
 import * as Sentry from "@sentry/react";
-import {FlagProvider} from '@unleash/proxy-client-react';
 import NiceModal from '@ebay/nice-modal-react';
 import i18next from "i18next";
 import {initReactI18next} from "react-i18next";
@@ -24,50 +23,47 @@ import LanguageDetector from "i18next-browser-languagedetector";
 import holidays from './util/holidays.json';
 import MainView from "./routes/MainView.jsx";
 import localForage from "localforage";
-import LQ from "./util/LQ.js";
 import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
 import axios from "axios";
 import {version} from "../package.json";
 import createAuthRefreshInterceptor from "axios-auth-refresh";
 import DemoView from "./routes/DemoView.jsx";
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+import {renewPromise} from "./components/_services/lightquark/hooks/useRPC.js";
+import {WebSocketContext} from "./contexts/WebSocketContext.js";
+import WooScreen from "./routes/WooScreen.jsx";
+import SentryWrap from "./routes/SentryWrap.jsx";
 
 Sentry.init({
     dsn: "https://901c666ed03942d560e61928448bcf68@sentry.yggdrasil.cat/5",
+
     //tunnel: "https://quarky.skin/diagtun",
-    environment: import.meta.env.MODE || "development",
+    environment: (import.meta.env.VITE_GIT_BRANCH ? import.meta.env.VITE_GIT_BRANCH === "senpai" ? "production" : "preview" : undefined) || import.meta.env.MODE || "development",
+    transport: Sentry.makeBrowserOfflineTransport(Sentry.makeFetchTransport),
+
     integrations: [
-        new Sentry.BrowserTracing({
-            // Set 'tracePropagationTargets' to control for which URLs distributed tracing should be enabled
-            tracePropagationTargets: ["localhost"],
-            routingInstrumentation: Sentry.reactRouterV6Instrumentation(
-                useEffect,
-                useLocation,
-                useNavigationType,
-                createRoutesFromElements,
-                matchRoutes
-            ),
+        Sentry.reactRouterV6BrowserTracingIntegration({
+            useEffect,
+            useLocation,
+            useNavigationType,
+            createRoutesFromElements,
+            matchRoutes
         }),
-        new Sentry.Replay({
+        Sentry.replayIntegration({
             useCompression: false
         }),
         Sentry.browserProfilingIntegration()
     ],
+
     // Performance Monitoring
     tracesSampleRate: 1.0, // Capture 100% of the transactions
     profilesSampleRate: 1.0,
+
     // Session Replay
     replaysSessionSampleRate: 0.1, // This sets the sample rate at 10%. You may want to change it to 100% while in development and then sample at a lower rate in production.
     replaysOnErrorSampleRate: 1.0, // If you're not already sampling the entire session, change the sample rate to 100% when sampling sessions where errors occur.
     enabled: import.meta.env.MODE === "production"
 });
-
-const unleashConfig = {
-    url: "https://feature-gacha.litdevs.org/api/frontend", // Your front-end API URL or the Unleash proxy's URL (https://<proxy-url>/proxy)
-    clientKey: import.meta.env.MODE === "production" ? "default:production.da748f8d265a85d1b487cd21ab7ead43596aaeb8f7b3f5a70f606457" : "default:development.1166a6d9ad3507ff9e5df9e0ee2a308a449da96f191909e97f00f2f2", // A client-side API token OR one of your proxy's designated client keys (previously known as proxy secrets)
-    refreshInterval: 15, // How often (in seconds) the client should poll the proxy for updates
-    appName: 'quarky2', // The name of your application. It's only used for identifying your application
-};
 
 /**
  * Wraps the route provider in an App, mainly so the app context can be real.
@@ -85,18 +81,10 @@ export function App(props) {
     let [settings, setSettings] = useState(defaultSettings);
     let [drafts, setDrafts] = useState({});
     let [quarkCache, setQuarkCache] = useState({});
-    let [quarkList, setQuarkList] = useState([]);
     let [apiKeys, setApiKeys] = useState({});
+    let [socket, setSocket] = useState(null);
 
     useEffect(() => {
-        async function loadConfigs() {
-            const storedSettings = await localForage.getItem("settings")
-            if(storedSettings) {
-                setSettings({...defaultSettings, ...storedSettings})
-            }
-
-            await loadTranslations();
-        }
         async function loadTranslations() {
             const languages = import.meta.glob('./langs/*.json');
 
@@ -111,8 +99,7 @@ export function App(props) {
                 }))
                 .use(LanguageDetector)
                 .init({
-                    fallbackLng: 'en',
-                    debug: true
+                    fallbackLng: 'en'
                 })
 
             await setThatHoliday();
@@ -133,74 +120,66 @@ export function App(props) {
 
             setHoliday(validHolidays[Math.floor(Math.random() * validHolidays.length)]);
         }
-        loadConfigs();
+        loadTranslations();
     }, []);
 
-    async function saveSettings(toBeWritten, cloud = true) {
-        setSettings({...settings, ...toBeWritten});
-        localForage.setItem("settings", {...settings, ...toBeWritten});
-
-        if(cloud && apiKeys.accessToken) {
-            Object.entries(toBeWritten).forEach(([key, value]) => {
-                LQ(`user/me/preferences/quarky/${key}`, "POST", {
-                    value: typeof value === "object" ? Object.values(value).filter(vvalue => vvalue !== undefined).length === 0 ? null : JSON.stringify(value) : value
-                })
-            })
-        }
-    }
-
-    const axiosClient = axios.create({
-        baseURL: apiKeys.baseURL + "/v4/",
+    const axiosClient = useMemo(() => axios.create({
         headers: {
-            "lq-agent": `Quarky/${version}`
-        }
-    })
-    axiosClient.interceptors.request.use(config => {
-        if (apiKeys.accessToken) {
-            config.headers.Authorization = `Bearer ${apiKeys.accessToken}`;
-        }
-        return config;
-    });
-    createAuthRefreshInterceptor(axiosClient, async function() {
+            "lq-agent": `Quarky/${version}`,
+            "authorization": `Bearer ${apiKeys.accessToken}`
+        },
+        baseURL: `${apiKeys.baseURL}/v4`
+    }), [apiKeys.accessToken, apiKeys.baseURL]);
+
+    async function refreshOverHTTP() {
         return axiosClient.post("auth/refresh",
             {accessToken: apiKeys.accessToken, refreshToken: apiKeys.refreshToken}, {skipAuthRefresh: true})
             .then(async (response) => {
-                setApiKeys({...apiKeys, accessToken: response.accessToken})
+                await setApiKeys(prevApiKeys => ({...prevApiKeys, accessToken: response.data.response.accessToken}))
                 await localForage.setItem("lightquark", {
                     network: {
                         baseUrl: apiKeys.baseURL
                     },
-                    token: response.accessToken,
+                    token: response.data.response.accessToken,
                     refreshToken: apiKeys.refreshToken
                 });
+                return response.data.response.accessToken
             })
+            .catch(async () => {
+                await localForage.removeItem("lightquark");
+                setApiKeys({});
+            })
+    }
+    createAuthRefreshInterceptor(axiosClient, async function() {
+        if(renewPromise) return renewPromise;
+        return refreshOverHTTP()
     })
-    const queryClient = new QueryClient({
+    const [queryClient] = useState(new QueryClient({
         defaultOptions: {
             queries: {
-                queryFn: async ({queryKey}) => {
-                    return (await axiosClient.get(queryKey[0])).data.response
-                },
                 retry: false,
+                staleTime: Infinity
             },
         }
-    });
+    }))
 
     return (
-        <AppContext.Provider value={{
+        <AppContext value={{
             loading, setLoading, holiday,
             nyafile, setNyafile,
             messageCache, setMessageCache,
             userCache, setUserCache,
             drafts, setDrafts,
-            settings, setSettings, saveSettings,
             apiKeys, setApiKeys,
-            quarkCache, setQuarkCache, quarkList, setQuarkList
+            quarkCache, setQuarkCache,
+            axiosClient, refreshOverHTTP
         }}>
-            <QueryClientProvider client={queryClient}>
-                {translationsLoading ? null : props.children}
-            </QueryClientProvider>
-        </AppContext.Provider>
+            <WebSocketContext value={{socket, setSocket}}>
+                <QueryClientProvider client={queryClient}>
+                    {translationsLoading ? null : props.children}
+                </QueryClientProvider>
+            </WebSocketContext>
+        </AppContext>
     )
 }
 
@@ -208,14 +187,16 @@ export function App(props) {
 const sentryCreateBrowserRouter = Sentry.wrapCreateBrowserRouter(createBrowserRouter);
 export const router = sentryCreateBrowserRouter(
     createRoutesFromElements(
-        <Route path="/" element={<Root />}>
-            <Route path="/demo/:quarkId?/:channelId?" element={<DemoView />} />
+        <Route path="/" element={<SentryWrap />}>
+            <Route path="/" element={<Root />}>
+                <Route path="/demo/:quarkId?/:channelId?" element={<DemoView />} />
 
-            <Route path="/" element={<AuthenticationNeeded />}>
-                <Route path="/" element={<ClientWrapper />}>
-                    <Route path="/" element={<MainView />}>
-                        <Route path="/:quarkId" element={<QuarkView />} >
-                            <Route path="/:quarkId/:dialogId" element={<ChannelView />} />
+                <Route path="/" element={<AuthenticationNeeded />}>
+                    <Route path="/" element={<ClientWrapper />}>
+                        <Route path="/" element={<MainView />}>
+                            <Route path="/:quarkId" element={<QuarkView />} >
+                                <Route path="/:quarkId/:dialogId" element={<ChannelView />} />
+                            </Route>
                         </Route>
                     </Route>
                 </Route>
@@ -225,15 +206,22 @@ export const router = sentryCreateBrowserRouter(
 )
 
 const ProfiledApp = Sentry.withProfiler(App);
+const ReactQueryDevtoolsProduction = lazy(() =>
+    import('@tanstack/react-query-devtools/production').then((d) => ({
+        default: d.ReactQueryDevtools,
+    })),
+)
+
 ReactDOM.createRoot(document.getElementById('root')).render(
     //<React.StrictMode>
-        <FlagProvider config={unleashConfig}>
-            <ProfiledApp>
+        <ProfiledApp>
+            <Sentry.ErrorBoundary fallback={<WooScreen/>}>
                 <ReactQueryDevtools initialIsOpen={false} />
+                {import.meta.env.VITE_GIT_BRANCH && import.meta.env.VITE_GIT_BRANCH !== "senpai" ? <ReactQueryDevtoolsProduction/> : null}
                 <NiceModal.Provider>
                     <RouterProvider router={router} />
                 </NiceModal.Provider>
-            </ProfiledApp>
-        </FlagProvider>
+            </Sentry.ErrorBoundary>
+        </ProfiledApp>
     //</React.StrictMode>,
 )

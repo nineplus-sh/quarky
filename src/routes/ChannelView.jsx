@@ -2,42 +2,48 @@ import MessageInput from "../components/nav/MessageInput.jsx";
 import DialogMessages from "../components/nav/DialogMessages.jsx";
 import styles from "./ChannelView.module.css";
 import LightquarkMemberList from "../components/_services/lightquark/nav/LightquarkMemberList.jsx";
-import {useContext, useEffect, useState} from "react";
-import LQ from "../util/LQ.js";
-import {AppContext} from "../contexts/AppContext.js";
+import {useContext, useRef} from "react";
 import {useParams} from "react-router-dom";
+import useChannelMembers from "../components/_services/lightquark/hooks/useChannelMembers.js";
+import useChannelMessages from "../components/_services/lightquark/hooks/useChannelMessages.js";
+import {useTranslation} from "react-i18next";
+import useChannel from "../components/_services/lightquark/hooks/useChannel.js";
+import WhatsNew from "../components/nav/WhatsNew.jsx";
+import classnames from "classnames";
+import {SidebarContext} from "../contexts/SidebarContext.js";
+import Button from "../components/nav/Button.jsx";
 
 export default function ChannelView() {
-    const [messages, setMessages] = useState([]);
-    const appContext = useContext(AppContext);
     const {dialogId} = useParams();
+    const {data: channel, isSuccess: isChannelSuccess} = useChannel(dialogId);
+    const {data: members, isSuccess: isMembersSuccess} = useChannelMembers(dialogId);
+    const {data: messages, isSuccess: isMessagesSuccess, isFetchingPreviousPage, fetchPreviousPage} = useChannelMessages(dialogId);
+    const sidebars = useContext(SidebarContext);
 
-    useEffect(() => {
-        (async () => {
-            if(!appContext.messageCache[dialogId]) {
-                const _messages = (await LQ(`channel/${dialogId}/messages`)).response.messages
-
-                appContext.setMessageCache(previousValue => {
-                    previousValue = { ...previousValue }
-                    previousValue[dialogId] = _messages;
-                    return previousValue;
-                });
-            }
-        })()
-    }, [dialogId])
-
-    useEffect(() => {
-        if(!appContext.messageCache[dialogId]) return setMessages([]);
-        setMessages(appContext.messageCache[dialogId].sort((a, b) => a.timestamp - b.timestamp))
-    }, [dialogId, appContext.messageCache])
-
-    return (<>
-        <div className={styles.messageArea}>
-            <div className={styles.messages}><DialogMessages messages={messages}/></div>
-            <MessageInput/>
+    return (<div className={classnames(styles.channelView, {[styles.listUp]: sidebars.listOpen})}>
+        <div className={styles.channelTopbar}>
+            <Button className={styles.uncollapsers} onClick={() => sidebars.setListOpen((prev) => !prev)}>Channels</Button>
+            {isChannelSuccess ? <>
+                <span>
+                    <b className={styles.channelName}>{channel.name}</b>
+                    {channel.description ? <span className={styles.channelDesc}>{channel.description}</span> : null}
+                </span>
+            </> : "..."}
+            <Button className={styles.uncollapsers} onClick={() => sidebars.setMembersOpen((prev) => !prev)}>Members</Button>
         </div>
-        <div className={styles.memberList}>
-            <LightquarkMemberList/>
+        <div className={styles.channelContents}>
+            <div className={styles.messageArea}>
+                <div className={styles.messages}>
+                    {isMessagesSuccess ? <>
+                        <DialogMessages messages={messages?.pages.flat(1).sort((a, b) => a.timestamp - b.timestamp)}
+                                        moreMessages={fetchPreviousPage}/>
+                    </> : null}
+                </div>
+                <MessageInput/>
+            </div>
+            <div className={classnames(styles.memberList, {[styles.closed]: !sidebars.membersOpen})}>
+                {isMembersSuccess ? <LightquarkMemberList members={members}/> : null}
+            </div>
         </div>
-    </>)
+    </div>)
 }

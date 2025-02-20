@@ -6,11 +6,7 @@
 }
 
 .messagefollowup .message {
-    margin-left: 64px;
-}
-
-.messagefollowup .messagecontent {
-    margin-top: 0;
+    padding-left: 72px;
 }
 
 .messagefollowup .messagecontent:not(.NUHUH)::before {
@@ -29,7 +25,6 @@
     background: var(--background-color-lesser);
     border-radius: 10px;
     padding: 0.5em;
-    margin-top: 8px;
 
     min-height: 22px;
     min-width: 22px;
@@ -38,6 +33,7 @@
     width: fit-content;
 
     white-space: pre-wrap;
+    word-break: break-all;
 }
 
 .messagediting .messagecontent {
@@ -66,6 +62,7 @@
     align-items: center;
     height: 1.35em;
     gap: 4px;
+    padding-bottom: 8px;
 }
 
 .timestamp {
@@ -80,6 +77,23 @@
 
     position: absolute;
     font-size: 0.7em;
-    right: -2.7em;
-    top: -0.4em;
+    right: -1em;
+    top: -0.2em;
+
+    user-select: none;
+    transform: rotate(5deg);
+}
+
+.messagewrapper .interactions {
+    display: none;
+}
+.messagewrapper:hover .interactions {
+    display: flex;
+    gap: 0.25em;
+}
+
+.messagefollowup .message {
+    flex-direction: row-reverse;
+    align-items: flex-end;
+    gap: 0.5em;
 }

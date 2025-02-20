@@ -1,17 +1,15 @@
 import {Link, useParams} from "react-router-dom";
-import classnames from "classnames";
-import styles from "./LightquarkChannel.module.css";
-import {AppContext} from "../../../../contexts/AppContext.js";
+import GenericChannel from "../../../nav/GenericChannel.jsx";
+import {SidebarContext} from "../../../../contexts/SidebarContext.js";
 import {useContext} from "react";
 
 export default function LightquarkChannel({demo, channel, quarkId}) {
-    const appContext = useContext(AppContext);
     const {dialogId} = useParams();
+    const sidebars = useContext(SidebarContext);
 
     return <Link to={demo ? `/demo/${quarkId}/${channel._id}` : `/lq_${quarkId}/${channel._id}`}
-                 className={classnames(styles.channel, {[styles.active]: channel._id === dialogId})}
-                 onMouseEnter={() => new Audio(appContext.nyafile.getCachedData("sfx/default-hover")).play()}
-                 onClick={() => new Audio(appContext.nyafile.getCachedData("sfx/default-select")).play()}>
-        {channel.name}
+                 onClick={() => sidebars.setListOpen(false)}
+                 style={{textDecoration:'none'}}>
+        <GenericChannel name={"# " + channel.name} active={channel._id === dialogId} />
     </Link>
 }

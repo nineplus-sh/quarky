@@ -1,0 +1,61 @@
+.pridePreviewLinear {
+    position: relative;
+    background: linear-gradient(var(--pride-linear));
+    width: 5.5em;
+    height: 3em;
+
+    left: 0.5em;
+    bottom: 0.5em;
+}
+@media (max-width: 700px) {
+    .pridePreviewConic {
+        display: none;
+    }
+}
+.previewPlanet {
+    aspect-ratio: 1/1;
+    width: 5em;
+}
+.previewPrideRadialWrap, .previewPrideRadial, .pridePreviewConic {
+    aspect-ratio: 1/1;
+    width: 8em;
+}
+.pridePreviewConic {
+    position: relative;
+    bottom: 1em;
+}
+.previewPrideRadialWrap {
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.previewPrideRadial {
+    top: unset;
+    left: unset;
+    right: unset;
+    margin: unset;
+    height: unset;
+}
+.previewPlanet {
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    animation: 5s float ease-in-out infinite;
+}
+
+@keyframes float {
+    0% {
+        transform: translate(-50%, -50%) translateY(0);
+    }
+    50% {
+        transform: translate(-50%, -50%) translateY(-5px);
+    }
+    100% {
+        transform: translate(-50%, -50%) translateY(0);
+    }
+}

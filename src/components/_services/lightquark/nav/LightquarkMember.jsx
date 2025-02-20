@@ -4,16 +4,21 @@ import {useContext} from "react";
 import NiceModal from "@ebay/nice-modal-react";
 import UserPopoutModal from "../modals/UserPopoutModal.jsx";
 import {AppContext} from "../../../../contexts/AppContext.js";
+import useUser from "../hooks/useUser.js";
 
-export function LightquarkMember({member}) {
-    const {userCache} = useContext(AppContext)
-    
+export function LightquarkMember({id}) {
+    const {isSuccess, data: member} = useUser(id);
+
+    if (!isSuccess) return <div className={styles.member}>
+        <span className={styles.memberName}>Loading...</span>
+    </div>
+
     return (
-        <div className={styles.member} onClick={() => NiceModal.show(UserPopoutModal, {userId: member._id})}>
-            <ProfilePicture src={userCache[member._id].avatarUri} px={40}/>
+        <div className={styles.member} onClick={() => NiceModal.show(UserPopoutModal, {user: member})}>
+            <ProfilePicture src={member.avatarUri} px={40}/>
             <span className={styles.memberName}>
-                {userCache[member._id].username}
-                {userCache[member._id].status ? <span className={styles.memberStatus}>⮡ {userCache[member._id].status.type} <i>{userCache[member._id].status.primaryText}</i></span> : null}
+                {member.username}
+                {member.status ? <span className={styles.memberStatus}>⮡ {member.status.type} <i>{member.status.primaryText}</i></span> : null}
             </span>
         </div>
     )

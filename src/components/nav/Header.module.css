@@ -3,6 +3,13 @@
     background-color: var(--accent-color);
     height: 60px;
     display: flex;
+    border-bottom: 5px solid var(--darker-accent-color);
+}
+
+@media(max-width: calc(555px)) {
+    .header p {
+        display: none;
+    }
 }
 
 .header h1, .header p {
@@ -20,7 +27,7 @@
 .headerText {
     display: flex;
     flex-direction: column;
-    padding-top: 0.7em;
+    justify-content: center;
 }
 
 .headerLogo {
@@ -31,13 +38,6 @@
 
 .header p {
     padding-left: 1em;
-}
-
-.headerShadow {
-    height: 5px;
-    background-color: var(--darker-accent-color);
-    width: 100%;
-    content: ""
 }
 
 .headerAcknowledgements {

@@ -15,7 +15,7 @@ const elapse = function(value, unit) {
  * @returns {JSX.Element}
  * @constructor
  */
-export default NiceModal.create(({userId}) => {
+export default NiceModal.create(({user}) => {
     const modal = useModal();
     const {userCache} = useContext(AppContext)
     const { t } = useTranslation();
@@ -23,14 +23,14 @@ export default NiceModal.create(({userId}) => {
     return (<>
         <GenericModal modal={modal}>
             <div className={styles.introduction}>
-                <ProfilePicture src={userCache[userId].avatarUri} px={48}/>
-                <p className={styles.name}>{userCache[userId].username}</p>
+                <ProfilePicture src={user.avatarUri} px={48}/>
+                <p className={styles.name}>{user.username}</p>
             </div>
-            {userCache[userId].status ? <><p>is playing a game:</p><div className={styles.status}>
-                <img src={userCache[userId].status.primaryImage} width={96}/>
+            {user.status ? <><p>is playing a game:</p><div className={styles.status}>
+                <img src={user.status.primaryImage} width={96}/>
                 <span className={styles.gameinfo}>
-                    <b>{userCache[userId].status.primaryText}</b>
-                    {userCache[userId].status.startTime && !userCache[userId].status.endTime ? <><br/><TimeAgo date={userCache[userId].status.startTime} formatter={elapse} maxPeriod={1}/></> : null}
+                    <b>{user.status.primaryText}</b>
+                    {user.status.startTime && !user.status.endTime ? <><br/><TimeAgo date={user.status.startTime} formatter={elapse} maxPeriod={1}/></> : null}
                 </span>
             </div></> : <><p>isn't doing anything at the moment.</p></>}
         </GenericModal>

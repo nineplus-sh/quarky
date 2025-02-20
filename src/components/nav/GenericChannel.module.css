@@ -1,0 +1,20 @@
+.channel {
+    color: var(--text-color);
+    text-decoration: none;
+    cursor: pointer;
+
+    display: block;
+    padding: 0.5em;
+}
+
+.active {
+    background-color: var(--background-color-max);
+}
+.channel:not(.active):hover {
+    background-color: var(--background-color-lesser);
+}
+
+.channel.slim {
+    font-size: smaller;
+    font-style: italic;
+}

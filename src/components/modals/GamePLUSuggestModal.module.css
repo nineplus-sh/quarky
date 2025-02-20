@@ -27,6 +27,16 @@
 .game.selected {
     background-color: var(--accent-color)
 }
+.game.selected .name {
+    font-weight: bold;
+}
 .game .cmd {
     font-size: smaller;
+}
+
+.actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    margin-top: 0.5em;
 }

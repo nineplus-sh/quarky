@@ -1,8 +1,10 @@
 .centerwrap {
     position: fixed;
-    top: 55%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100%;
+    min-width: 100vw;
 }
 
 .login {
@@ -13,12 +15,40 @@
     padding: 1em;
     /* TODO: Modal bounce for tab changes */
     max-width: 25em;
+
+    transition: all 0.5s ease;
+    transform-origin: center;
+    overflow: visible;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media(max-width: calc(555px)) {
+    .centerwrap {
+        align-items: flex-start;
+    }
+    .login {
+        margin-top: 11em;
+        border-radius: 0;
+        height: 100vh !important;
+        width: 100vw !important;
+        padding: 1em 0;
+        max-width: none;
+
+        align-items: flex-start;
+    }
 }
 
 .characterContainer {
-    position: relative;
+    position: absolute;
     z-index: -1;
     animation: 5s float ease-in-out infinite;
+    top: -8.5em;
+    left: 0;
+    right: 0;
+    margin:0 auto;
 }
 
 .prideRadial {
@@ -30,7 +60,7 @@
 
     z-index: -3;
     position: absolute;
-    top: -11.5em;
+    top: -4em;
     left: 0;
     right: 0;
     margin:0px auto;
@@ -41,17 +71,15 @@
 .planet {
     z-index: -1;
     position: absolute;
-    top: -7.5em;
-    left: 0;
-    right: 0;
+    left:0;
+    right:0;
     margin:0 auto;
-
     width: 11em;
 }
 
 .orbs {
     position: absolute;
-    top: -4em;
+    top: 4em;
     left: 0;
     right: 0;
     margin:0px auto;

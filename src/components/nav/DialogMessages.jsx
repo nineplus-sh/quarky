@@ -1,22 +1,35 @@
-import {useLayoutEffect} from "react";
+import {useEffect, useLayoutEffect, useRef} from "react";
 import {useParams} from "react-router-dom";
 import LightquarkMessage from "../_services/lightquark/dialogs/LightquarkMessage.jsx";
 import useMe from "../_services/lightquark/hooks/useMe.js";
+import {Virtuoso} from "react-virtuoso";
 
-export default function DialogMessages({messages}) {
+export default function DialogMessages({messages, moreMessages}) {
     let { quarkId, dialogId } = useParams();
-    const {data: userData, isLoading} = useMe();
+    const {data: userData, isSuccess} = useMe();
 
-    useLayoutEffect(() => {
-        document.querySelector("div[class^='_messages_']").lastChild?.scrollIntoView({"behavior": "smooth"});
+    const oldLength = useRef(null);
+    const firstMessageId = useRef(null);
+    const virtuoso = useRef(null);
+    useEffect(() => {
+        if(!virtuoso.current) return;
+        if(!messages?.[0]?._id) return;
+
+        /*console.log(oldLength.current, firstMessageId.current, messages.length, messages[0]._id)
+        console.log(virtuoso.current.scrollTop)*/
+        if(oldLength.current < messages.length && firstMessageId.current !== messages[0]._id) {
+            virtuoso.current.scrollToIndex(oldLength.current - 1);
+        }
+        oldLength.current = messages.length;
+        firstMessageId.current = messages[0]._id;
     }, [messages]);
 
-    if(isLoading) return null;
-    return messages.map((message, index) => {
+    if(!isSuccess) return null;
+    return <Virtuoso ref={virtuoso} data={messages} itemContent={(index, message) => {
         let sameAuthor = false;
         if(index > 0){
             const prevMessage = messages[index-1];
-            const literalSameAuthor = prevMessage.author._id === message.author._id;
+            const literalSameAuthor = prevMessage.author === message.author;
 
             const botMetadata = message.specialAttributes?.find(attr => attr.type === "botMessage");
             const prevBotMetadata = prevMessage.specialAttributes?.find(attr => attr.type === "botMessage");
@@ -29,6 +42,6 @@ export default function DialogMessages({messages}) {
                 sameAuthor = literalSameAuthor;
             }
         }
-        return <LightquarkMessage message={message} channel={dialogId} quark={quarkId.split("lq_")[1]} isContinuation={sameAuthor} isAuthored={message.author._id === userData._id} key={message.id} />
-    })
+        return <LightquarkMessage message={message} channel={dialogId} quark={quarkId.split("lq_")[1]} isContinuation={sameAuthor} isAuthored={message.author === userData._id} key={message._id} />
+    }} startReached={moreMessages} initialTopMostItemIndex={messages.length-1} followOutput={"smooth"} increaseViewportBy={200}/>
 }

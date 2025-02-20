@@ -9,6 +9,7 @@ import NiceModal from "@ebay/nice-modal-react";
 import FirstTimeModal from "../components/modals/FirstTimeModal.jsx";
 import useMe from "../components/_services/lightquark/hooks/useMe.js";
 import Loader from "./Loader.jsx";
+import DevBuildBanner from "../components/modals/DevBuildBanner.jsx";
 
 /**
  * The authentication needed ("login") screen.
@@ -27,21 +28,18 @@ export default function AuthenticationNeeded() {
     }, [playMusic])
     const { t } = useTranslation();
 
-    const {data, isLoading} = useMe();
-    const needsAuth = !isLoading && data == null;
-
     useEffect(() => {
-        if(needsAuth && !firstTime) {
+        if(!appContext.apiKeys.accessToken && !firstTime) {
             NiceModal.show(FirstTimeModal, {playMusic: setPlayMusic});
         } else {
             setPlayMusic(true);
         }
     }, []);
 
-    if(isLoading) return <Loader loadingString={"LOADING_WEBSOCKET"} />;
-    if(needsAuth) {
+    if(!appContext.apiKeys.accessToken) {
         return (<>
-            <audio src={appContext.nyafile.getCachedData("music/login")} loop={true} ref={musicTag}/>
+            {import.meta.env.VITE_GIT_BRANCH && import.meta.env.VITE_GIT_BRANCH !== "senpai" ? <DevBuildBanner/> : null}
+            <audio src={appContext.nyafile.getFileURL("music/login")} loop={true} ref={musicTag}/>
 
             <SpaceBackground />
             <Header title={t("HEADER_WELCOME")} description={t("HEADER_WELCOME_SUB")}></Header>

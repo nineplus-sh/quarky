@@ -1,11 +1,15 @@
 .quark {
-    padding-bottom: 0.5em;
+    cursor: pointer;
 }
 
 .icon {
     border-radius: 10px;
 }
 
+.quark .icon, .quark {
+    width: 64px;
+    height: 64px;
+}
 .quark.stretch .icon {
     animation: stretch 0.3s forwards;
 }

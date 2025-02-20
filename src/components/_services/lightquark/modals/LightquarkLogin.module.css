@@ -37,37 +37,60 @@
 .loginInput {
     margin-bottom: 0.5em;
 }
-.prettyButton {
-    padding: 0.5em;
-    margin: 0.5em;
-    border-radius: 10px;
-    border: none;
 
+.routes {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.route {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
     cursor: pointer;
+    padding: 0.5em;
 }
-.prettyButton:not([disabled]):hover {
-    transform: translateY(-2px);
+.route img {
+    width: auto;
+    height: auto;
+    align-self: center;
 }
-.prettyButton:not([disabled]):hover:active {
-    transform: translateY(0px);
+.route:hover {
+    transform: translateY(-5px)
+}
+.routeSplitter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: stretch;
+    gap: 0.5em;
+    font-size: smaller;
+}
+.routeSplitter::before, .routeSplitter::after {
+    display: block;
+    content: " ";
+    background-color: var(--darkest-accent-color);
+    flex-grow: 1;
+    width: 2px;
+    height: auto;
 }
 
-.primaryButton {
-    background-color: var(--primary-button-color);
-    color: black;
-    box-shadow: 0 5px var(--primary-button-shadow);
-}
-.primaryButton[disabled], .primaryButton:not([disabled]):hover:active {
-    background-color: var(--primary-button-shadow);
-    box-shadow: 0 3px var(--primary-button-active-shadow);
-}
+.formHeader {
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+    margin-bottom: 0.5em;
 
-.otherButton {
-    background-color: var(--other-button-color);
-    color: black;
-    box-shadow: 0 5px var(--other-button-shadow);
+    justify-content: space-between;
+    align-items: stretch;
 }
-.otherButton[disabled], .otherButton:not([disabled]):hover:active {
-    background-color: var(--other-button-shadow);
-    box-shadow: 0 3px var(--other-button-active-shadow);
+.microLogo {
+    width: 1.5em;
+    height: 1.5em;
+    border-radius: 5px;
+}
+.formHeaderText {
+    display: flex;
+    gap: 0.25em;
+    align-items: center;
 }

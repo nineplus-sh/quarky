@@ -1,7 +1,7 @@
 import styles from "./Loader.module.css"
 import {version, author} from "../../package.json"
 import {useTranslation} from "react-i18next";
-import {useContext, useEffect, useRef, useState} from "react";
+import {useContext, useEffect, useRef, useState, useLayoutEffect} from "react";
 import {AppContext} from "../contexts/AppContext.js";
 import NyafileImage from "../components/nyafile/NyafileImage.jsx";
 import classnames from "classnames";
@@ -11,7 +11,7 @@ import classnames from "classnames";
  * @returns {JSX.Element}
  * @constructor
  */
-export default function Loader({loadingString, progress, progressString}) {
+export default function Loader({loadingString, progress, progressString, crossfade}) {
     const { t } = useTranslation();
     const { holiday } = useContext(AppContext);
     const [pippiDiedBigSadFrownyFace, setPippiDiedBigSadFrownyFace] = useState(false);
@@ -22,13 +22,16 @@ export default function Loader({loadingString, progress, progressString}) {
 
     function eyeMover(event) {
         if(!quarkyLogo.current) return;
+        const eyeLayer = quarkyLogo.current?.contentDocument?.querySelector("#eyelayer")
+        if(!eyeLayer) return;
+
         const rect = quarkyLogo.current.getBoundingClientRect();
         const rectX = rect.left + (rect.width / 2);
         const rectY = rect.top + (rect.height / 2);
         const calcX = (event.clientX - rectX) / 80;
         const calcY = (event.clientY - rectY) / 80;
 
-        quarkyLogo.current.contentDocument.querySelector("#eyelayer").style.transform = `
+        eyeLayer.style.transform = `
             translateX(${Math.max(-7, Math.min(7, calcX))}px) 
             translateY(${Math.max(-5, Math.min(5, calcY))}px)
         `
@@ -54,12 +57,13 @@ export default function Loader({loadingString, progress, progressString}) {
     }, []);
 
     return (<><div className={styles.hitsplats}>{splats.map(splat => <Hitsplat data={splat} key={splat.seed}/>)}</div>
-        <div id="superpreload">
+        <div id="superpreload" className={classnames({[styles.crossfade]: crossfade})}>
+            <div id="preloadwrap">
             <div className={classnames(styles.logoEffectWrap, {[styles.stabbed]: stabbed && HP > 0})} onClick={owie}>
                 {HP === 0 ? <img src={"/explode.gif"} height={160} id="preloadlogo"/> : <object data={"/quarky.svg"} id="preloadlogo" ref={quarkyLogo}/>}
             </div>
 
-            <span id="preloadtext">
+                {loadingString ? <span id="preloadtext">
             {t(loadingString)}
                 <br/>
             <i>{t(`${holiday}_LINK`) !== `${holiday}_LINK` ?
@@ -74,7 +78,7 @@ export default function Loader({loadingString, progress, progressString}) {
                         <div className={styles.loadingBar} onMouseOver={() => {
                             if(pippiDiedBigSadFrownyFace) return;
                             setPippiDiedBigSadFrownyFace(true)
-                            new Audio("/fall.mp3").play()
+                            try {new Audio("/fall.mp3").play()} catch { /*womp!*/ }
                         }}>
                             <div className={styles.loadingBarStretcher} style={{width: `${progress}%`}}></div>
                         </div>
@@ -84,8 +88,8 @@ export default function Loader({loadingString, progress, progressString}) {
                         </div>
                     </div>
                 </> : null}
-        </span>
-    </div></>)
+            </span> : null}
+        </div></div></>)
 }
 
 export function Hitsplat({data}) {

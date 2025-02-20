@@ -2,12 +2,13 @@ import styles from "./GIFPicker.module.css";
 import {useEffect, useState} from "react";
 import Masonry, {ResponsiveMasonry} from "react-responsive-masonry/lib/index.js";
 import {useParams} from "react-router-dom";
-import LQ from "../../util/LQ.js";
+import useChannelMessageCreate from "../_services/lightquark/hooks/useChannelMessageCreate.js";
 
-export default function GIFPicker({floatRef, floatStyles, floatProps, setOpen}) {
+export default function GIFPicker({hide, ...props}) {
     let { dialogId } = useParams();
     const [search, setSearch] = useState("");
     const [gifs, setGIFs] = useState([]);
+    const sendMessage = useChannelMessageCreate();
 
     useEffect(() => {
         async function searchyWearchy() {
@@ -17,13 +18,11 @@ export default function GIFPicker({floatRef, floatStyles, floatProps, setOpen}) 
     }, [search]);
 
      function sendGIF(url) {
-        setOpen(false);
-        const formData = new FormData();
-        formData.append("payload", JSON.stringify({content: url}));
-        LQ(`channel/${dialogId}/messages`, "POST", formData)
+        hide();
+        sendMessage.mutate({channel: dialogId, message: {content: url}})
     }
 
-    return <div className={styles.gifpickwrap} ref={floatRef} style={floatStyles} {...floatProps}>
+    return <div className={styles.gifpickwrap} {...props}>
         <div className={styles.searchArea}>
             <input className={styles.searchbar} placeholder="Search Tenor" type="text"
                    value={search} onChange={e => setSearch(e.target.value)}/>

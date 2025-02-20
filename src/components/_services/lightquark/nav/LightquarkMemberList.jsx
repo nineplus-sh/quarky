@@ -1,33 +1,14 @@
-import {useContext, useEffect, useState} from "react";
-import LQ from "../../../../util/LQ.js";
-import {useParams} from "react-router-dom";
 import {LightquarkMember} from "./LightquarkMember.jsx";
 import styles from "./LightquarkMemberList.module.css";
-import {AppContext} from "../../../../contexts/AppContext.js";
+import {useQueryClient} from "@tanstack/react-query";
 
-export default function LightquarkMemberList() {
-    const [members, setMembers] = useState([])
-    const {setUserCache} = useContext(AppContext)
-    const {dialogId} = useParams();
-
-    useEffect(() => {
-        (async () => {
-            let members = await LQ(`channel/${dialogId}/members`);
-            members.response.users.forEach(member => {
-                setUserCache(p => {
-                    p[member._id] = member
-                    return p;
-                })
-            })
-            setMembers(members.response.users);
-        })()
-    }, [dialogId])
-
+export default function LightquarkMemberList({members}) {
+    const queryClient = useQueryClient();
     return <>
         <p className={styles.memberHeader}>{members.length} members</p>
         {members
-            .sort((a, b) => a.username.toLowerCase().localeCompare(b.username.toLowerCase()))
-            .map((member) => <LightquarkMember member={member} key={member._id} />)
+            .sort((a,b) => queryClient.getQueryData(["user",a]).username.localeCompare(queryClient.getQueryData(["user",b]).username))
+            .map((member) => <LightquarkMember id={member} key={member} />)
         }
     </>
 }

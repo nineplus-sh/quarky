@@ -1,0 +1,14 @@
+.devBuildBanner {
+    background: black;
+    padding: 0.5em;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: 2px yellow dashed;
+
+    font-family: monospace;
+}
+.devBuildBanner a {
+    color: yellow;
+}

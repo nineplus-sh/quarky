@@ -9,6 +9,9 @@ import * as i18n from "i18next";
 import WooScreen from "./WooScreen.jsx";
 import axios from "axios";
 import byteSize from "byte-size";
+import useSettings from "../components/_services/lightquark/hooks/useSettings.js";
+import useOnceWhen from "../util/useOnceWhen.js";
+import {availableFlags} from "../components/settings/UserSettingsPrideFlag.jsx";
 
 /**
  * The root. Wraps later routes so that Nyafiles can be real.
@@ -21,93 +24,70 @@ export default function Root() {
     const [loadingPercentage, setLoadingPercentage] = useState(null);
     const [loadingPercentageText, setLoadingPercentageText] = useState("");
 
-    useEffect(() => {
-        async function loadNyafile() {
-            let themePalette = await localForage.getItem("palette");
-            if(!themePalette) {
-                const wantsDark = window.matchMedia('(prefers-color-scheme: dark)').matches
-                themePalette = wantsDark ? "dark" : "light";
-            }
-            document.documentElement.classList.add(`theme-${themePalette}`);
-            window.matchMedia('(prefers-color-scheme: dark)').addEventListener("change", async e => {
-                if(await localForage.getItem("palette")) return;
-                document.documentElement.classList.remove("theme-light", "theme-dark", "theme-hotdog");
-                document.documentElement.classList.add(`theme-${e.matches ? "dark" : "light"}`);
-            })
+    const {data: settings, isSuccess: settingsReady} = useSettings();
 
-            document.documentElement.classList.add(`pride-${appContext.settings.PRIDE_FLAG}`);
-
-            setLoadingString("LOADING_NYAFILE");
-
-            const nyafile = new NyaFile();
-
-            try {
-                const nyafileBlob = await axios.get("/quarky.nya", {
-                    onDownloadProgress: progressEvent => {
-                        setLoadingPercentage(progressEvent.loaded / progressEvent.total * 100);
-                        setLoadingPercentageText(`${byteSize(progressEvent.loaded, {units: 'iec'})}/${byteSize(progressEvent.total, {units: 'iec'})}`)
-                    },
-                    responseType: "blob"
-                })
-                await nyafile.load(nyafileBlob.data, true);
-
-                nyafile.queueCache("img/hakase_pfp");
-                nyafile.queueCache("img/stars");
-                nyafile.queueCache("img/quark_join");
-                nyafile.queueCache("img/quarky");
-                nyafile.queueCache("music/login");
-                nyafile.queueCache("sfx/button-hover");
-                nyafile.queueCache("sfx/button-select");
-                nyafile.queueCache("sfx/button-sidebar-hover");
-                nyafile.queueCache("sfx/button-sidebar-select");
-                nyafile.queueCache("sfx/checkbox-false");
-                nyafile.queueCache("sfx/checkbox-true");
-                nyafile.queueCache("sfx/default-select");
-                nyafile.queueCache("sfx/default-hover");
-                nyafile.queueCache("sfx/dialog-cancel-select");
-                nyafile.queueCache("sfx/dialog-dangerous-select");
-                nyafile.queueCache("sfx/dialog-pop-in");
-                nyafile.queueCache("sfx/error");
-                nyafile.queueCache("sfx/info-modal-pop-in");
-                nyafile.queueCache("sfx/info-modal-pop-out");
-                nyafile.queueCache("sfx/purr");
-                nyafile.queueCache("sfx/success");
-
-                await nyafile.waitAllCached();
-            } catch(e) {
-                console.log(e)
-                if(e.message.includes("not found in default nyafile")) {
-                    setLoadingString(`ERROR_NYAFILE_FILE_MISSING_${import.meta.env.PROD ? "PROD" : "DEV"}`)
-                } else {
-                    setLoadingString("ERROR_NYAFILE");
-                }
-                Sentry.captureException(e);
-                return;
-            }
-
-            appContext.setNyafile(nyafile);
-
-            const localConfig = await localForage.getItem("lightquark")
-            if(localConfig?.token) {
-                setLoadingString("LOADING_WEBSOCKET");
-
-                appContext.setApiKeys({
-                    baseURL: localConfig.network.baseUrl,
-                    accessToken: localConfig.token,
-                    refreshToken: localConfig.refreshToken
-                })
-            }
-
-            appContext.setLoading(false);
+    useOnceWhen(settingsReady, true, async () => {
+        let themePalette = settings.PALETTE;
+        if(!themePalette) {
+            const wantsDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+            themePalette = wantsDark ? "dark" : "light";
         }
-        loadNyafile();
-    }, []);
+        document.documentElement.classList.add(`theme-${themePalette}`);
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener("change", async e => {
+            if(settings.PALETTE) return;
+            document.documentElement.classList.remove("theme-light", "theme-dark", "theme-hotdog");
+            document.documentElement.classList.add(`theme-${e.matches ? "dark" : "light"}`);
+        })
+
+        document.documentElement.classList.add(`pride-${settings.PRIDE_FLAG}`);
+
+        setLoadingString("LOADING_NYAFILE");
+
+        const nyafile = new NyaFile();
+
+        try {
+            const nyafileBlob = await axios.get("/quarky.nya", {
+                onDownloadProgress: progressEvent => {
+                    setLoadingPercentage(progressEvent.loaded / progressEvent.total * 100);
+                    setLoadingPercentageText(`${byteSize(progressEvent.loaded, {units: 'iec'})}/${byteSize(progressEvent.total, {units: 'iec'})}`)
+                },
+                responseType: "arraybuffer"
+            })
+            await nyafile.load(nyafileBlob.data, true);
+        } catch(e) {
+            setLoadingString("ERROR_NYAFILE");
+            Sentry.captureException(e);
+            return;
+        } finally {
+            setLoadingPercentage(0);
+        }
+
+        appContext.setNyafile(nyafile);
+
+        const localConfig = await localForage.getItem("lightquark")
+        if(localConfig?.token) {
+            appContext.setApiKeys(prevApiKeys => ({
+                ...prevApiKeys,
+                baseURL: localConfig.network.baseUrl,
+                accessToken: localConfig.token,
+                refreshToken: localConfig.refreshToken
+            }))
+        }
+
+        appContext.setLoading(false);
+    })
 
     useEffect(() => {
-        i18n.changeLanguage(appContext.settings.LANGUAGE)
-    }, [appContext.settings.LANGUAGE])
+        if(!settings || !settings.LANGUAGE) return;
+        i18n.changeLanguage(settings?.LANGUAGE)
+    }, [settings?.LANGUAGE])
+    useEffect(() => {
+        if(!settings || !settings.PRIDE_FLAG) return;
+        document.documentElement.classList.remove(...availableFlags.map(flag => `pride-${flag}`)); // TODO: Make less clunky
+        document.documentElement.classList.add(`pride-${settings.PRIDE_FLAG}`);
+    }, [settings?.PRIDE_FLAG]);
 
     if(appContext.loading) return <Loader loadingString={loadingString} progress={loadingPercentage} progressString={loadingPercentageText}/>
 
-    return <Sentry.ErrorBoundary fallback={<WooScreen/>}><Outlet /></Sentry.ErrorBoundary>
+    return <Outlet />
 }

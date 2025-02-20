@@ -4,17 +4,21 @@ import {useContext, useEffect, useRef, useState} from "react";
 import classnames from "classnames";
 import {AppContext} from "../contexts/AppContext.js";
 import Modal from "react-modal";
+import Button from "../components/nav/Button.jsx";
+import useSound from "../hooks/useSound.js";
 
 export default NiceModal.create(({Sidebar, Area, defaultArea, data}) => {
     const modal = useModal();
     const [area, setArea] = useState(defaultArea)
     const firstUpdate = useRef(true);
-    let appContext = useContext(AppContext);
+
+    const {play: popInPlay} = useSound("sfx/info-modal-pop-in");
+    const {play: popOutPlay} = useSound("sfx/info-modal-pop-out");
 
     useEffect(() => {
         if (firstUpdate.current) { firstUpdate.current = false; return; }
 
-        new Audio(appContext.nyafile.getCachedData(`sfx/info-modal-pop-${modal.visible ? "in" : "out"}`)).play();
+        modal.visible ? popInPlay() : popOutPlay();
         if(!modal.visible) setTimeout(modal.remove, 200)
     }, [modal.visible]);
 
@@ -31,7 +35,7 @@ export default NiceModal.create(({Sidebar, Area, defaultArea, data}) => {
                 <div className={styles.settingsArea}>
                     <Area area={area} data={data}/>
                 </div>
-                <button onClick={() => {modal.hide()}}>Close</button>
+                <Button puffy onClick={() => {modal.hide()}}>Close</Button>
             </div>
         </div>
     </Modal>

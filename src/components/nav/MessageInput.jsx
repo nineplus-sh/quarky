@@ -1,6 +1,5 @@
 import {useParams} from "react-router-dom";
-import {useContext, useEffect, useRef, useState} from "react";
-import LQ from "../../util/LQ.js";
+import {useContext, useEffect, useMemo, useRef, useState} from "react";
 import styles from "./MessageInput.module.css"
 import {autoUpdate, useClick, useFloating, useInteractions, useListNavigation} from "@floating-ui/react";
 import GIFPicker from "../modals/GIFPicker.jsx";
@@ -9,129 +8,122 @@ import NiceModal from "@ebay/nice-modal-react";
 import GameLaunchModal from "../modals/GameLaunchModal.jsx";
 import mergeRefs from "merge-refs";
 import LightquarkEmoteSearch from "../_services/lightquark/dialogs/LightquarkEmoteSearch.jsx";
+import Button from "./Button.jsx";
+import usePopout from "../../hooks/usePopout.js";
+import useAutocompletePopout from "../../hooks/useAutocompletePopout.js";
+import useEmotes from "../_services/lightquark/hooks/useEmotes.js";
+import useChannelMessageCreate from "../_services/lightquark/hooks/useChannelMessageCreate.js";
+import {v4 as uuidv4} from "uuid";
+import byteSize from "byte-size";
+import useSound from "../../hooks/useSound.js";
 
 export default function MessageInput() {
+    const {nyafile} = useContext(AppContext);
     let { quarkId, dialogId } = useParams();
     let [message, setMessage] = useState("");
-    const {settings, saveSettings, nyafile} = useContext(AppContext);
-    const [typingTimeout, setTypingTimeout] = useState(null);
-    const [isSending, setSending] = useState(false);
+    const [files, setFiles] = useState([]);
     const messageBox = useRef(null);
+    const messageCreate = useChannelMessageCreate();
 
-    const [gifOpen, setGifOpen] = useState(false);
-    const gifFloat = useFloating({
-        placement: "top-end",
-        strategy: "fixed",
-        whileElementsMounted: autoUpdate,
-        open: gifOpen,
-        onOpenChange: setGifOpen
-    });
-    const gifClick = useClick(gifFloat.context);
-    const gifInteractions = useInteractions([gifClick]);
-    const [emoteSearchOpen, setEmoteSearchOpen] = useState(false);
-    const emoteSearchFloat = useFloating({
-        placement: "top-start",
-        strategy: "fixed",
-        whileElementsMounted: autoUpdate,
-        open: emoteSearchOpen,
-        onOpenChange: setEmoteSearchOpen
-    });
-    const emoteSearchListRef = useRef([]);
-    const emoteSearchVirtRef = useRef(null);
-    const [emoteSearchActiveIndex, setEmoteSearchActiveIndex] = useState(null);
-    const emoteSearchNavigation = useListNavigation(emoteSearchFloat.context, {
-        listRef: emoteSearchListRef,
-        virtualItemRef: emoteSearchVirtRef,
-        activeIndex: emoteSearchActiveIndex,
-        onNavigate: setEmoteSearchActiveIndex,
-        virtual: true,
-        focusItemOnOpen: true,
-        loop: true
+    const {play: sidebarSelectPlay} = useSound("sfx/button-sidebar-select");
+    const {play: defaultSelectPlay} = useSound("sfx/default-select");
+
+    const gifPopout = usePopout({placement: "top-end"});
+    const emotes = useEmotes();
+    const emoteSearchPopout = useAutocompletePopout({
+        data: emotes.data?.flatMap(q => q.emotes),
+        search: message.match(/:(\w{2,})$/)?.[1],
+        popoutOptions: {placement: "top-start"},
+        fuseOptions: {keys: ['name'], threshold: 0.1, limit: 50},
+        invertControls: true
     })
-    const oldKeyDown = emoteSearchNavigation.reference.onKeyDown;
-    emoteSearchNavigation.reference.onKeyDown = function(event) {
-        if(event.key === "ArrowUp") {
-            event.key = "ArrowDown";
-        } else if (event.key === "ArrowDown") {
-            event.key = "ArrowUp";
-        }
-        oldKeyDown(event);
-    }
-    const emoteSearchInteractions = useInteractions([emoteSearchNavigation]);
+    const ohYayILoveGarbageHacks = useRef(false);
 
     function keysmashOutsideHandler(event) {
         if(document.activeElement?.tagName.toLowerCase() === "input") return;
-        if(event.key === "Tab") return;
+        if(document.activeElement?.tagName.toLowerCase() === "textarea") return;
+        if(event.key === "Tab" || event.key === "Enter") return;
         messageBox.current?.focus();
     }
     useEffect(() => {
         document.addEventListener("keydown", keysmashOutsideHandler);
         return () => document.removeEventListener('keydown', keysmashOutsideHandler);
     }, []);
-    useEffect(() => {
-        if (settings.DRAFTS[dialogId] && message === "") setMessage(settings.DRAFTS[dialogId].content);
-    }, [dialogId, settings.DRAFTS]);
-    useEffect(() => {
-        if (!settings.DRAFTS[dialogId]) setMessage("");
-    }, [dialogId]);
-    useEffect(() => {
-        /*if(typingTimeout) clearTimeout(typingTimeout);
-        setTypingTimeout(setTimeout(() => {
-            if(message === settings.DRAFTS[dialogId]?.content) return;
-            if(message === "" && !settings.DRAFTS[dialogId]) return;
-            saveSettings({
-                DRAFTS: {
-                    ...settings.DRAFTS,
-                    [dialogId]: message === "" ? undefined : {
-                        content: message
-                    }
-                }
-            })
-        }, 5000));*/
 
-        setEmoteSearchOpen(/:\w{2,}$/.test(message));
-    }, [message]);
+    function upload() {
+        let input = document.createElement('input');
+        input.type = 'file';
+        input.accept = "image/*";
+        input.multiple = true;
 
-    return (<form className={styles.messageForm} onSubmit={async (e) => {
-        e.preventDefault();
-        if(emoteSearchOpen) return;
+        input.onchange = async e => {
+            const newFiles = Array.from(e.target.files);
 
-        setSending(true);
-        let wantedMessage = message;
-        if(typingTimeout) {
-            clearTimeout(typingTimeout);
-            setTypingTimeout(null);
+            if((newFiles.length+files.length)>10) return alert("You can't send more than 10 files at a time!")
+            newFiles.forEach(file => file.key = uuidv4())
+            setFiles(pfiles => [...pfiles, ...newFiles]);
         }
+        input.click();
+    }
 
-        const formData = new FormData();
-        formData.append("payload", JSON.stringify({
-            ...(settings.DRAFTS[dialogId] || {}),
-            content: wantedMessage,
-        }));
+    return <>
+        {files.length > 0 ?
+            <span className={styles.pendingFiles}>
+                {files.map(file => <File
+                    file={file}
+                    clear={() =>
+                        setFiles(pfiles => pfiles.filter(ffile => ffile.key !== file.key))
+                    } key={file.key}
+                />)}
+            </span>
+        : null}
 
-        await LQ(`channel/${dialogId}/messages`, "POST", formData)
-        setMessage("")
-        saveSettings({
-            DRAFTS: {
-                ...settings.DRAFTS,
-                [dialogId]: undefined
-            }
-        })
-        setSending(false);
-        setTimeout(function() {
-            messageBox.current?.focus();
-        }, 100);
-    }}>
-        <button type="button" onClick={() => NiceModal.show(GameLaunchModal, {quarkId: quarkId.split("lq_")[1]})}>Games</button>
-        <input type={"text"} ref={mergeRefs(messageBox, emoteSearchFloat.refs.setReference)} disabled={isSending} value={message} onInput={(e) => setMessage(e.target.value)} className={styles.messageBox} {...emoteSearchInteractions.getReferenceProps()}/>
-        <button type="button" ref={gifFloat.refs.setReference} {...gifInteractions.getReferenceProps()}>GIFs</button>
-        {gifOpen ? <GIFPicker floatRef={gifFloat.refs.setFloating} floatStyles={gifFloat.floatingStyles} floatProps={gifInteractions.getFloatingProps()} setOpen={setGifOpen}/> : null}
-        {emoteSearchOpen ? <LightquarkEmoteSearch message={message} setMessage={(message) => {
-            setMessage(message);
-            new Audio(nyafile.getCachedData("sfx/button-sidebar-select")).play();
+        <form className={styles.messageForm} onSubmit={async (e) => {
+            e.preventDefault();
+            if(ohYayILoveGarbageHacks.current) return ohYayILoveGarbageHacks.current = false;
+            defaultSelectPlay();
+
+            await messageCreate.mutateAsync({
+                channel: dialogId,
+                message: {content:message},
+                attachments: files
+            })
+
+            setMessage("");
+            setFiles([]);
             setTimeout(function() {
-                setEmoteSearchOpen(false);
-            }, 100)
-        }} floatRef={emoteSearchFloat.refs.setFloating} floatStyles={emoteSearchFloat.floatingStyles} floatProps={emoteSearchInteractions.getFloatingProps()} activeIndex={emoteSearchActiveIndex} listRef={emoteSearchListRef} itemProps={emoteSearchInteractions.getItemProps()} virtualItemRef={emoteSearchVirtRef}/> : null}
-    </form>)
+                messageBox.current?.focus();
+            }, 100);
+        }}>
+            <Button onClick={upload} disabled={files.length > 9}>Upload</Button>
+            <Button style={{display: "none"}} onClick={() => NiceModal.show(GameLaunchModal, {quarkId: quarkId.split("lq_")[1]})}>Games</Button>
+            <input type={"text"} disabled={messageCreate.isPending} value={message} onInput={(e) => setMessage(e.target.value)} className={styles.messageBox} {...emoteSearchPopout.sourceProps} ref={mergeRefs(messageBox, emoteSearchPopout.sourceProps.ref)} />
+            <Button {...gifPopout.sourceProps}>GIFs</Button>
+        </form>
+
+        {gifPopout.open ? <GIFPicker {...gifPopout.popoutProps} hide={gifPopout.toggle}/> : null}
+        {emoteSearchPopout.open && emotes.isSuccess ? <LightquarkEmoteSearch message={message} setMessage={(message) => {
+            setMessage(message);
+            sidebarSelectPlay();
+            ohYayILoveGarbageHacks.current = true;
+        }} {...emoteSearchPopout} {...emoteSearchPopout.popoutProps}/> : null}
+    </>
+}
+
+function File({file, clear}) {
+    const [dataURI, setDataURI] = useState(null);
+
+    useEffect(() => {
+        if(!file.type.startsWith("image/")) setDataURI(null);
+        setDataURI(URL.createObjectURL(file))
+        return () => {
+            URL.revokeObjectURL(dataURI);
+            setDataURI(null);
+        }
+    }, [file]);
+
+    return <div className={styles.file} onClick={clear}>
+        {dataURI ? <img src={dataURI} className={styles.filePreview}/> : null}
+        <div className={styles.fileText}><span className={styles.fileName}>{file.name}</span>({byteSize(file.size, {units: 'iec'}).toString()})</div>
+    </div>
 }
