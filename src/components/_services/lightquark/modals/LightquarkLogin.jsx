@@ -1,7 +1,7 @@
 import styles from "./LightquarkLogin.module.css";
-import {useContext, useEffect, useState} from "react";
+import {useContext, useEffect, useRef, useState} from "react";
 import {useMutation, useQuery, useQueryClient} from "@tanstack/react-query";
-import {useCrossfade} from "../../../../hooks/useCrossfade.js";
+import {useCrossfade, useCrossfadeTrigger} from "../../../../hooks/useCrossfade.js";
 import {Trans, useTranslation} from "react-i18next";
 import Button from "../../../nav/Button.jsx";
 import Markdown from "react-markdown";
@@ -16,7 +16,8 @@ export default function LightquarkLogin() {
     const {setApiKeys} = useContext(AppContext);
     const {t} = useTranslation();
     const [tab, _switchTab] = useState("splash");
-    const crossfade = useCrossfade();
+    const ref = useRef();
+    const crossfade = useCrossfadeTrigger(ref);
 
     async function switchTab(tab) {
         await crossfade();
@@ -109,21 +110,22 @@ export default function LightquarkLogin() {
             setFormNetworkUrl("");
             _switchTab("splash");
         } else if (network.isError) {
+            console.error(network.error);
             alert("Something went wrong, going back to the previous network")
             setNetworkUrl(lastNetworkUrl)
         }
     }, [network.isSuccess, network.isError, networkUrl]);
     if (!network.isSuccess) return <p>{t("LOGIN_NETWORK_FETCHING")}</p>
 
-    function MicroNetworkHeader({string, back, backString}) {
-        return <div className={styles.formHeader}>
-            <span className={styles.formHeaderText}><img src={network.data.iconUrl} className={styles.microLogo}/> {t(string, {name: network.data.name})}</span>
-            {back ? <Button onClick={back}>{t(backString || "BACK")}</Button> : null}
+    function ButtonPair({label, disabledLabel, disabled, noEscape}) {
+        return <div className={styles.buttonPair}>
+            <Button puffy primary disabled={disabled} type="submit">{t(disabled && disabledLabel ? disabledLabel : label)}</Button>
+            {noEscape ? null : <Button puffy disabled={disabled} onClick={() => switchTab("splash")}>{t("BACK")}</Button>}
         </div>
     }
 
     return (<>
-        {tab === "splash" || tab === "network" ? <div className={styles.networkInfoArea}>
+        <div className={styles.networkInfoArea}>
             <div className={styles.networkInfo}>
                 <img className={styles.networkLogo} src={network.data.iconUrl}/>
                 <div className={styles.networkDetails}>
@@ -132,70 +134,65 @@ export default function LightquarkLogin() {
                 </div>
             </div>
             <Markdown className={styles.networkDescription} remarkPlugins={[remarkGfm]} rehypePlugins={[[rehypeExternalLinks, {"target": "_blank", "rel": ["noreferrer", "noopener", "nofollow"]}]]}>{network.data.description}</Markdown>
-        </div> : null}
+        </div>
 
-        {tab === "splash" ? <div className={styles.routes}>
-            <div role={"button"} aria-label={t("LOGIN_CREATE_ACCOUNT")} onClick={() => switchTab("create")} className={styles.route}>
-                <NyafileImage src={"img/create_user"}/>
-                <span>{t("LOGIN_CREATE_ACCOUNT")}</span>
-            </div>
-            <div className={styles.routeSplitter}>{t("OR")}</div>
-            <div role={"button"} aria-label={t("SIGN_IN")} onClick={() => switchTab("login")} className={styles.route}>
-                <NyafileImage src={"img/sign_in"}/>
-                <span>{t("SIGN_IN")}</span>
-            </div>
-        </div> : tab === "login" ? <>
-            <MicroNetworkHeader string={"LOGIN_SIGN_IN_FORM"} back={() => switchTab("splash")}/>
+        <div ref={ref}>
+            {tab === "splash" ? <div className={styles.routes}>
+                <div role={"button"} aria-label={t("LOGIN_CREATE_ACCOUNT")} onClick={() => switchTab("create")} className={styles.route}>
+                    <NyafileImage src={"img/create_user"}/>
+                    <span>{t("LOGIN_CREATE_ACCOUNT")}</span>
+                </div>
+                <div className={styles.routeSplitter}>{t("OR")}</div>
+                <div role={"button"} aria-label={t("SIGN_IN")} onClick={() => switchTab("login")} className={styles.route}>
+                    <NyafileImage src={"img/sign_in"}/>
+                    <span>{t("SIGN_IN")}</span>
+                </div>
+            </div> : tab === "login" ? <>
+                <form onSubmit={(e) => {e.preventDefault();loginByPassword.mutate()}} className={styles.loginForm}>
+                    <input className={styles.loginInput} required type="email" placeholder={t("LOGIN_EMAIL")} value={email} onChange={e => setEmail(e.target.value)} />
+                    <input className={styles.loginInput} required type="password" placeholder={t("LOGIN_PASSWORD")} value={password} onChange={e => setPassword(e.target.value)} />
+                    <ButtonPair label={"SIGN_IN"} disabledLabel={"LOGIN_SIGNING_IN"} disabled={loginByPassword.isPending}/>
+                </form>
+            </> : tab === "network" ? <>
+                <p>
+                    <Trans i18nKey={"LOGIN_SWITCH_NETWORKS_BODY"} values={{name: network.data.name}} components={[<a href={"https://youtrack.litdevs.org/articles/LQ4-A-1"} target={"_blank"} rel={"noreferrer"}/>]}></Trans>
+                </p>
 
-            <form onSubmit={(e) => {e.preventDefault();loginByPassword.mutate()}} className={styles.loginForm}>
-                <input className={styles.loginInput} required type="email" placeholder={t("LOGIN_EMAIL")} value={email} onChange={e => setEmail(e.target.value)} />
-                <input className={styles.loginInput} required type="password" placeholder={t("LOGIN_PASSWORD")} value={password} onChange={e => setPassword(e.target.value)} />
-                <Button puffy primary type="submit" disabled={loginByPassword.isPending}>{t(loginByPassword.isPending ? "LOGIN_SIGNING_IN" : "GO")}</Button>
-            </form>
-        </> : tab === "network" ? <>
-            <p>
-                <Trans i18nKey={"LOGIN_SWITCH_NETWORKS_BODY"} values={{name: network.data.name}} components={[<a href={"https://youtrack.litdevs.org/articles/LQ4-A-1"} target={"_blank"} rel={"noreferrer"}/>]}></Trans>
-            </p>
+                <form onSubmit={(e) => {e.preventDefault();setNetworkUrl(formNetworkUrl)}} className={styles.loginForm}>
+                    <input className={styles.loginInput} required type="text" placeholder={networkUrl} value={formNetworkUrl} onChange={e => setFormNetworkUrl(e.target.value)}/>
+                    <ButtonPair label={"LOGIN_SWITCH_NETWORKS"}/>
+                </form>
+            </> : tab === "create" ? <>
+                <form onSubmit={(e) => {
+                    e.preventDefault();
+                    requestCode.mutate()
+                }} className={styles.loginForm}>
+                    <input className={styles.loginInput} required type="text" placeholder={t("LOGIN_USERNAME")}
+                           value={username} onChange={e => setUsername(e.target.value)}/>
+                    <input className={styles.loginInput} required type="email" placeholder={t("LOGIN_EMAIL")}
+                           value={email} onChange={e => setEmail(e.target.value)}/>
+                    <input className={styles.loginInput} required type="password" placeholder={t("LOGIN_PASSWORD")}
+                           value={password} onChange={e => setPassword(e.target.value)}/>
+                    <input className={styles.loginInput} required type="password" placeholder={t("LOGIN_PASSWORD_CONFIRM")}
+                           value={passwordConfirm} onChange={e => setPasswordConfirm(e.target.value)}/>
 
-            <form onSubmit={(e) => {e.preventDefault();setNetworkUrl(formNetworkUrl)}} className={styles.loginForm}>
-                <input className={styles.loginInput} required type="text" placeholder={networkUrl} value={formNetworkUrl} onChange={e => setFormNetworkUrl(e.target.value)}/>
-                <Button puffy type="submit">{t( "LOGIN_SWITCH_NETWORKS")}</Button>
-                <Button puffy primary type="button" onClick={() => switchTab("splash")}>{t("BACK")}</Button>
-            </form>
-        </> : tab === "create" ? <>
-            <MicroNetworkHeader string={"LOGIN_SIGN_UP_FORM"} back={() => switchTab("splash")}/>
+                    {requestCode.error ? requestCode.error : null}
 
-            <form onSubmit={(e) => {
-                e.preventDefault();
-                requestCode.mutate()
-            }} className={styles.loginForm}>
-                <input className={styles.loginInput} required type="text" placeholder={t("LOGIN_USERNAME")}
-                       value={username} onChange={e => setUsername(e.target.value)}/>
-                <input className={styles.loginInput} required type="email" placeholder={t("LOGIN_EMAIL")}
-                       value={email} onChange={e => setEmail(e.target.value)}/>
-                <input className={styles.loginInput} required type="password" placeholder={t("LOGIN_PASSWORD")}
-                       value={password} onChange={e => setPassword(e.target.value)}/>
-                <input className={styles.loginInput} required type="password" placeholder={t("LOGIN_PASSWORD_CONFIRM")}
-                       value={passwordConfirm} onChange={e => setPasswordConfirm(e.target.value)}/>
+                    <ButtonPair label={"GO"} disabledLabel={"GOING"} disabled={password !== passwordConfirm || requestCode.isPending}/>
+                </form>
+            </> : tab === "confirm" ? <>
+                <span>{t("LOGIN_SIGN_UP_CODE", {email})}</span>
 
-                {requestCode.error ? requestCode.error : null}
+                <form onSubmit={(e) => {e.preventDefault();loginByCode.mutate()}} className={styles.loginForm}>
+                    <input className={styles.loginInput} required type="number" placeholder={t("LOGIN_VERIFICATION_CODE")}
+                           value={code} onChange={e => setCode(e.target.value)}/>
 
-                <Button puffy primary type="submit"
-                        disabled={password !== passwordConfirm || requestCode.isPending}>{t(requestCode.isPending ? "GOING" : "GO")}</Button>
-            </form>
-        </> : tab === "confirm" ? <>
-            <MicroNetworkHeader string={"LOGIN_SIGN_UP_FORM"} back={() => switchTab("create")} backString={"CANCEL"}/>
+                    {loginByCode.error ? loginByCode.error : null}
 
-            <span>{t("LOGIN_SIGN_UP_CODE", {email})}</span>
-
-            <form onSubmit={(e) => {e.preventDefault();loginByCode.mutate()}} className={styles.loginForm}>
-                <input className={styles.loginInput} required type="number" placeholder={t("LOGIN_VERIFICATION_CODE")}
-                       value={code} onChange={e => setCode(e.target.value)}/>
-
-                {loginByCode.error ? loginByCode.error : null}
-
-                <Button puffy primary type="submit" disabled={loginByCode.isPending}>{t(loginByCode.isPending ? "GOING" : "GO")}</Button>
-            </form>
-        </> : null}
+                    <Button puffy primary type="submit" disabled={loginByCode.isPending}>{t(loginByCode.isPending ? "GOING" : "GO")}</Button>
+                    <ButtonPair label={"GO"} disabledLabel={"GOING"} disabled={loginByCode.isPending} noEscape/>
+                </form>
+            </> : null}
+        </div>
     </>);
 }

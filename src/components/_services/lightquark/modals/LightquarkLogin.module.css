@@ -94,3 +94,10 @@
     gap: 0.25em;
     align-items: center;
 }
+
+.buttonPair {
+    display: flex;
+    flex-direction: column;
+    margin-top: 0.5em;
+    gap: 0.5em;
+}

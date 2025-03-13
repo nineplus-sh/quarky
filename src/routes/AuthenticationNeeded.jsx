@@ -1,4 +1,4 @@
-import Header from "../components/nav/Header.jsx";
+import Footer from "../components/nav/Footer.jsx";
 import SpaceBackground from "../components/backgrounds/fullsize/SpaceBackground.jsx";
 import {Outlet} from "react-router-dom";
 import {AppContext} from "../contexts/AppContext.js";
@@ -42,9 +42,9 @@ export default function AuthenticationNeeded() {
             <audio src={appContext.nyafile.getFileURL("music/login")} loop={true} ref={musicTag}/>
 
             <SpaceBackground />
-            <Header title={t("HEADER_WELCOME")} description={t("HEADER_WELCOME_SUB")}></Header>
-
             <LoginModal />
+
+            <Footer title={t("HEADER_WELCOME")} description={t("HEADER_WELCOME_SUB")}></Footer>
         </>)
     }
     return <Outlet />

@@ -27,7 +27,7 @@ if (isDev) {
             title: 'Who wants a Quarky Desktop update?~ Youuuuuu! :3',
             message: "Quarky Desktop has a new update available!",
             detail: 'And it\'s already downloaded - just click update below to restart!',
-            icon: nativeImage.createFromPath(__dirname + "/resources/update.png")
+            icon: nativeImage.createFromPath(path.join(__dirname, "resources", "update.png"))
         }
         dialog.showMessageBox(dialogOpts).then((returnValue) => {
             if (returnValue.response === 0) autoUpdater.quitAndInstall()
@@ -39,7 +39,7 @@ const createWindow = () => {
     const win = new BrowserWindow({
         width: 800,
         height: 600,
-        icon: nativeImage.createFromPath(__dirname + `/resources/quarky.${os.platform() === "win32" ? "ico" : "png"}`),
+        icon: nativeImage.createFromPath(path.join(__dirname, "resources", `quarky.${os.platform() === "win32" ? "ico" : "png"}`)),
         webPreferences: {
             preload: path.join(__dirname, 'preload.js')
         }
@@ -88,7 +88,7 @@ const createWindow = () => {
             console.log(rebloggingFrom)
             if(rebloggingFrom) {
                 childWindow.setTitle(`Tumblr: Reblogging from ${rebloggingFrom[1] || rebloggingFrom[2]}`);
-                childWindow.setIcon(nativeImage.createFromPath(__dirname + `/resources/tumblr.png`))
+                childWindow.setIcon(nativeImage.createFromPath(path.join(__dirname, "resources", "tumblr.png")))
             }
         });
     });

@@ -1,5 +1,5 @@
 import {Fragment, useEffect, useRef, useState} from "react";
-import {CrossfadeContext} from "../../hooks/useCrossfade.js";
+import {CrossfadeContext, useCrossfadeTrigger} from "../../hooks/useCrossfade.js";
 
 /**
  * Causes a smooth resizing effect. Useful if the div has dramatic size changes.
@@ -12,6 +12,7 @@ import {CrossfadeContext} from "../../hooks/useCrossfade.js";
 export default function SmoothResize({autoCrossfade = true, children, wrapperProps, childProps, decorators}) {
     const [size, setSize] = useState(null);
     const ref = useRef(null);
+    const crossfade = useCrossfadeTrigger(ref);
 
     useEffect(() => {
         const resizeObserver = new ResizeObserver((entries) => {
@@ -25,24 +26,6 @@ export default function SmoothResize({autoCrossfade = true, children, wrapperPro
         if(ref.current) resizeObserver.observe(ref.current);
         return () => resizeObserver.disconnect();
     }, []);
-
-    async function crossfade() {
-        if (ref.current) {
-            await ref.current.animate([{opacity: 1}, {opacity: 0}], {
-                duration: 200,
-                easing: "ease",
-                fill: "forwards"
-            }).finished;
-            setTimeout(function () {
-                ref.current.style.visibility = "visible";
-                ref.current.animate([{opacity: 0}, {opacity: 1}], {
-                    duration: 200,
-                    easing: "ease",
-                    fill: "forwards"
-                })
-            }, 300)
-        }
-    }
 
     return <div {...wrapperProps} style={{...size, ...wrapperProps?.style}}>
         {decorators}

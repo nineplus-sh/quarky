@@ -2,7 +2,7 @@
     position: fixed;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: end;
     min-height: 100%;
     min-width: 100vw;
 }
@@ -11,10 +11,10 @@
     background-color: white;
     border-radius: 10px;
     color: black;
-    width: fit-content;
-    padding: 1em;
-    /* TODO: Modal bounce for tab changes */
-    max-width: 25em;
+    width: 25em;
+    height: 25em;
+
+    padding: 0 0 min(calc(70vh - 25em), 400px);
 
     transition: all 0.5s ease;
     transform-origin: center;
@@ -34,10 +34,7 @@
         border-radius: 0;
         height: 100vh !important;
         width: 100vw !important;
-        padding: 1em 0;
         max-width: none;
-
-        align-items: flex-start;
     }
 }
 

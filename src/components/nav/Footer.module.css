@@ -1,0 +1,64 @@
+.footerShift {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+}
+
+.headerWrap {
+    width: calc(100% - 1em);
+    background-color: var(--accent-color);
+    height: 3em;
+    border-bottom: 5px solid var(--darker-accent-color);
+    padding: 0.5em;
+
+    display: flex;
+    align-items: center;
+}
+
+.primaryClouds {
+    z-index: 2;
+}
+
+.headerContent {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    flex-grow: 1;
+}
+
+.headerText {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: right;
+}
+
+@media(max-width: calc(555px)) {
+    .headerContent {
+        grid-template-columns: 1fr 1fr;
+    }
+    .headerText {
+        display: none;
+    }
+}
+
+.headerContent h1, .headerContent p {
+    margin: 0;
+}
+
+.headerContent h1 {
+    font-size: 1em;
+}
+
+.headerContent p {
+    margin-top: -0.2em;
+}
+
+.headerLogo {
+    width: 6em;
+    height: 3em;
+}
+
+.headerAcknowledgements {
+    align-self: center;
+    height: 2em;
+}

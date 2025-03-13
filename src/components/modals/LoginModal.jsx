@@ -2,6 +2,9 @@ import styles from "./LoginModal.module.css"
 import NyafileImage from "../nyafile/NyafileImage.jsx";
 import SmoothResize from "../nav/SmoothResize.jsx";
 import LightquarkLogin from "../_services/lightquark/modals/LightquarkLogin.jsx";
+import {useRef} from "react";
+import {CrossfadeContext, useCrossfadeTrigger} from "../../hooks/useCrossfade.js";
+import Clouds from "../backgrounds/decorators/Clouds.jsx";
 
 /**
  * The login modal of the authentication needed screen.
@@ -9,15 +12,20 @@ import LightquarkLogin from "../_services/lightquark/modals/LightquarkLogin.jsx"
  * @constructor
  */
 export default function LoginModal() {
+
     return <div className={styles.centerwrap}>
-        <SmoothResize autoCrossfade={false} wrapperProps={{className: styles.login}} childProps={{style:{maxWidth: "25em"}}} decorators={<VukkyPlanet/>}>
-            <LightquarkLogin/>
-        </SmoothResize>
+        <div className={styles.login}>
+            <VukkyPlanet/>
+            <div style={{height: "100%", margin: "0.5em", marginTop: "3em"}}>
+                <LightquarkLogin/>
+            </div>
+        </div>
     </div>
 }
 
 function VukkyPlanet() {
-    return <div style={{position: "relative", width:"inherit", height:"inherit"}}>
+    return <div style={{position: "absolute", width:"inherit", height:"inherit",pointerEvents: "none"}}>
+        <Clouds primaryColor={"white"}/>
         <div className={styles.characterContainer}>
             <NyafileImage src={"img/loginheadervukky"} className={styles.planet}/>
             <div className={styles.prideRadial}/>

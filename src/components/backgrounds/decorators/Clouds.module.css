@@ -1,0 +1,31 @@
+.clouds {
+    position: absolute;
+    width: 100%;
+    top: -3.5em;
+}
+
+.primaryClouds, .secondaryClouds {
+    height: 2em;
+    background-color: var(--primary-cloud-color);
+    mask-size: contain;
+    mask-repeat: round no-repeat;
+}
+
+.secondaryClouds {
+    position: relative;
+    z-index: -1;
+    background-color: var(--secondary-cloud-color);
+    top: 1em;
+    right: 2em;
+    width: calc(100% + 2em);
+}
+
+.clouds.animate .primaryClouds, .clouds.animate .secondaryClouds {
+    animation: clouds 60s linear infinite;
+}
+
+@keyframes clouds {
+    100% {
+        mask-position: right;
+    }
+}
